@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultulangues — Concept 1 · Wordmark Crown</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium-home.css">
+  <link rel="stylesheet" href="../css/model-1.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    :root {
+      --cv-orange: #FA4E30;
+      --cv-amber: #FC9705;
+      --cv-green: #73CE65;
+      --cv-blue: #264EBF;
+      --cv-ink: #111111;
+      --cv-muted: #6B7280;
+      --cv-line: #E5E7EB;
+    }
+
+    .cv-hero { background: #fff; }
+
+    .v1-hero { padding: calc(80px + 56px) 0 0; }
+
+    .v1-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    /* Large logo as the crown of the page */
+    .v1-logo {
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    .v1-logo img {
+      width: 260px;
+      height: auto;
+      filter: drop-shadow(0 8px 22px rgba(250, 78, 48, 0.18));
+      transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .v1-logo:hover img { transform: translateY(-3px); }
+
+    .v1-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid var(--cv-line);
+      padding: 7px 18px 7px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    .v1-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cv-green);
+      box-shadow: 0 0 8px rgba(115, 206, 101, 0.5);
+      animation: cvPulse 2s infinite;
+    }
+    @keyframes cvPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .v1-h1 {
+      font-size: clamp(2rem, 4.6vw, 3.3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--cv-ink);
+      max-width: 780px;
+      margin: 0 auto 16px;
+    }
+    .v1-h1 .cv-gradient {
+      background: linear-gradient(135deg, var(--cv-orange), var(--cv-amber));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .v1-sub {
+      color: var(--cv-muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    .v1-check { max-width: 520px; margin: 0 auto 26px; text-align: left; }
+
+    .v1-ctas { justify-content: center; margin-bottom: 22px; }
+
+    .v1-stats { justify-content: center; margin-bottom: 0; }
+
+    .v1-rule {
+      height: 1px;
+      max-width: 760px;
+      margin: 46px auto 0;
+      background: linear-gradient(90deg, transparent, var(--cv-orange), var(--cv-amber), transparent);
+      opacity: 0.35;
+    }
+
+    /* Hero image stays large below the logo block */
+    .v1-visual {
+      max-width: 1200px;
+      margin: 52px auto 0;
+      padding: 0 24px;
+    }
+    .v1-visual img {
+      width: 100%;
+      display: block;
+      border-radius: 26px;
+      box-shadow: 0 24px 60px rgba(250, 78, 48, 0.16);
+    }
+
+    .cv-footer {
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9CA3AF;
+      border-top: 1px solid var(--cv-line);
+      margin-top: 60px;
+    }
+
+    .cv-pill {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2000;
+      background: #111;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 9px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      font-family: var(--font);
+    }
+    .cv-pill:hover { background: var(--cv-orange); }
+
+    @media (max-width: 900px) {
+      .v1-hero { padding-top: calc(80px + 32px); }
+      .v1-logo img { width: 220px; }
+      .v1-h1 { font-size: 1.7rem; }
+    }
+    @media (max-width: 600px) {
+      .v1-ctas { flex-direction: column; }
+      .v1-ctas a { justify-content: center; text-align: center; }
+      .v1-stats { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAVIGATION (small logo, unchanged) ══════════ -->
+  <header class="ph-nav" id="header">
+    <div class="ph-nav-inner">
+      <a href="#" class="ph-nav-logo">
+        <img src="../img/image-Photoroom.png" alt="Cultulangues">
+      </a>
+      <nav class="ph-nav-links">
+        <a href="#" class="active">Accueil</a>
+        <a href="#">Programmes</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="ph-nav-actions">
+        <a href="#" class="ph-nav-login">Connexion</a>
+        <a href="#" class="ph-nav-cta">S'inscrire</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ CONCEPT 1 — WORDMARK CROWN ══════════ -->
+  <section class="cv-hero v1-hero" id="hero">
+    <div class="v1-inner">
+      <div class="v1-logo">
+        <img src="../img/image-Photoroom.png" alt="Cultulangues — logo" loading="eager">
+      </div>
+
+      <div class="v1-eyebrow">
+        <span class="v1-dot"></span>
+        <span>École certifiée — +950 étudiants</span>
+      </div>
+
+      <h1 class="v1-h1">Chez CultuLangues, nous construisons<br>votre réussite et donnons un nouvel<br>élan à vos <span class="cv-gradient">projets</span>.</h1>
+
+      <p class="v1-sub">Vous souhaitez apprendre l'une des langues officielles du Canada pour :</p>
+
+      <div class="m1-check v1-check">
+        <div class="m1-check-item">
+          <div class="m1-check-icon m1-check-orange">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span>Faire évoluer votre carrière</span>
+        </div>
+        <div class="m1-check-item">
+          <div class="m1-check-icon m1-check-green">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span>Réussir votre projet d'immigration</span>
+        </div>
+        <div class="m1-check-item">
+          <div class="m1-check-icon m1-check-blue">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span>Gagner confiance et autonomie dans la vie quotidienne</span>
+        </div>
+      </div>
+
+      <div class="m1-ctas v1-ctas">
+        <a href="#" class="ph-btn ph-btn-primary">
+          <span>Découvrez nos parcours d'apprentissage</span>
+          <svg class="ph-btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="ph-btn ph-btn-ghost">
+          <span>Choisissez le format qui vous ressemble</span>
+        </a>
+      </div>
+
+      <div class="m1-stats-row v1-stats">
+        <div class="m1-stat"><div class="m1-stat-value orange">+950</div><div class="m1-stat-label">étudiants</div></div>
+        <div class="m1-stat"><div class="m1-stat-value green">4.9 / 5</div><div class="m1-stat-label">note Google</div></div>
+        <div class="m1-stat"><div class="m1-stat-value blue">12 ans</div><div class="m1-stat-label">d'expérience</div></div>
+      </div>
+    </div>
+
+    <div class="v1-rule"></div>
+
+    <div class="v1-visual">
+      <img src="../img/hero-maitrisez-langues.png" alt="Cultulangues — Apprendre une langue" loading="eager">
+    </div>
+  </section>
+
+  <footer class="cv-footer">© 2026 Cultulangues — Hero Concept 1 · Wordmark Crown</footer>
+
+  <a class="cv-pill" href="#hero">Concept 1 · Wordmark Crown</a>
+
+</body>
+</html>

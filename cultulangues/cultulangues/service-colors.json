@@ -1,0 +1,272 @@
+{
+  "parcours-linguistique": {
+    "primary": "#E80B01",
+    "palette": [
+      "#E80B01",
+      "#D88605",
+      "#D7BC08",
+      "#E80B01",
+      "#E80B01"
+    ]
+  },
+  "lingo-test": {
+    "primary": "#A73815",
+    "palette": [
+      "#A73815",
+      "#C56232",
+      "#AA6A20",
+      "#A73815",
+      "#A73815"
+    ]
+  },
+  "preparation-tcf": {
+    "primary": "#9E5C34",
+    "palette": [
+      "#9E5C34",
+      "#C57A56",
+      "#E69764",
+      "#9E5C34",
+      "#9E5C34"
+    ]
+  },
+  "english-linguistic-pathway": {
+    "primary": "#BB0700",
+    "palette": [
+      "#BB0700",
+      "#D9261C",
+      "#E23F39",
+      "#BB0700",
+      "#BB0700"
+    ]
+  },
+  "formation-solo": {
+    "primary": "#C71400",
+    "palette": [
+      "#C71400",
+      "#DB3B0E",
+      "#E66623",
+      "#C71400",
+      "#C71400"
+    ]
+  },
+  "ateliers": {
+    "primary": "#BC1500",
+    "palette": [
+      "#BC1500",
+      "#D13D15",
+      "#C86620",
+      "#BC1500",
+      "#BC1500"
+    ]
+  },
+  "francais-express": {
+    "primary": "#E8710E",
+    "palette": [
+      "#E8710E",
+      "#E67F29",
+      "#2E8EE0",
+      "#E8710E",
+      "#E8710E"
+    ]
+  },
+  "soiree-linguo": {
+    "primary": "#6BB803",
+    "palette": [
+      "#6BB803",
+      "#93CE1E",
+      "#DE5E07",
+      "#6BB803",
+      "#6BB803"
+    ]
+  },
+  "samedis-en-francais": {
+    "primary": "#004EBF",
+    "palette": [
+      "#004EBF",
+      "#1487DC",
+      "#E31820",
+      "#004EBF",
+      "#004EBF"
+    ]
+  },
+  "english-express": {
+    "primary": "#0D56BF",
+    "palette": [
+      "#0D56BF",
+      "#3065C3",
+      "#E9791D",
+      "#0D56BF",
+      "#0D56BF"
+    ]
+  },
+  "evening-lingo": {
+    "primary": "#6AC50A",
+    "palette": [
+      "#6AC50A",
+      "#90D41B",
+      "#E74B12",
+      "#6AC50A",
+      "#6AC50A"
+    ]
+  },
+  "saturdays-english": {
+    "primary": "#005DE4",
+    "palette": [
+      "#005DE4",
+      "#1280F0",
+      "#005DE4",
+      "#005DE4",
+      "#005DE4"
+    ]
+  },
+  "oral-b-partiel": {
+    "primary": "#0060E7",
+    "palette": [
+      "#0060E7",
+      "#0C87F1",
+      "#0060E7",
+      "#0060E7",
+      "#0060E7"
+    ]
+  },
+  "oral-b-intensif": {
+    "primary": "#6EBC00",
+    "palette": [
+      "#6EBC00",
+      "#97D018",
+      "#E45909",
+      "#6EBC00",
+      "#6EBC00"
+    ]
+  },
+  "oral-c-partiel": {
+    "primary": "#864BCA",
+    "palette": [
+      "#864BCA",
+      "#E6673F",
+      "#619D35",
+      "#864BCA",
+      "#864BCA"
+    ]
+  },
+  "oral-c-intensif": {
+    "primary": "#F47300",
+    "palette": [
+      "#F47300",
+      "#FC9E02",
+      "#F47300",
+      "#F47300",
+      "#F47300"
+    ]
+  },
+  "tcf-quebec-partiel": {
+    "primary": "#003CCF",
+    "palette": [
+      "#003CCF",
+      "#1462DF",
+      "#F56814",
+      "#003CCF",
+      "#003CCF"
+    ]
+  },
+  "tcf-quebec-intensif": {
+    "primary": "#68B901",
+    "palette": [
+      "#68B901",
+      "#87CB1B",
+      "#EC6E0C",
+      "#68B901",
+      "#68B901"
+    ]
+  },
+  "tcf-canada-partiel": {
+    "primary": "#6B1FBD",
+    "palette": [
+      "#6B1FBD",
+      "#8336D6",
+      "#EE4B11",
+      "#6B1FBD",
+      "#6B1FBD"
+    ]
+  },
+  "tcf-canada-intensif": {
+    "primary": "#E53B00",
+    "palette": [
+      "#E53B00",
+      "#EA550B",
+      "#F5711C",
+      "#E53B00",
+      "#E53B00"
+    ]
+  },
+  "solo-5h": {
+    "primary": "#6FCE0B",
+    "palette": [
+      "#6FCE0B",
+      "#99DA18",
+      "#E41708",
+      "#6FCE0B",
+      "#6FCE0B"
+    ]
+  },
+  "solo-10h": {
+    "primary": "#004DD9",
+    "palette": [
+      "#004DD9",
+      "#176FEE",
+      "#004DD9",
+      "#004DD9",
+      "#004DD9"
+    ]
+  },
+  "solo-15h": {
+    "primary": "#C42D2E",
+    "palette": [
+      "#C42D2E",
+      "#C7484D",
+      "#D0606B",
+      "#C42D2E",
+      "#C42D2E"
+    ]
+  },
+  "solo-20h": {
+    "primary": "#FD7D00",
+    "palette": [
+      "#FD7D00",
+      "#FD7D00",
+      "#FD7D00",
+      "#FD7D00",
+      "#FD7D00"
+    ]
+  },
+  "atelier-conversation": {
+    "primary": "#4572D7",
+    "palette": [
+      "#4572D7",
+      "#528AEB",
+      "#DC5F23",
+      "#4572D7",
+      "#4572D7"
+    ]
+  },
+  "atelier-culture": {
+    "primary": "#DC100A",
+    "palette": [
+      "#DC100A",
+      "#EA291F",
+      "#ED482B",
+      "#DC100A",
+      "#DC100A"
+    ]
+  },
+  "atelier-maintien": {
+    "primary": "#73B918",
+    "palette": [
+      "#73B918",
+      "#92CD2A",
+      "#E74E0C",
+      "#73B918",
+      "#73B918"
+    ]
+  }
+}

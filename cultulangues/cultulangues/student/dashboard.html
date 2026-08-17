@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="student.dashboard.page_title">Tableau de bord — Cultulangues</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+
+    <!-- --- SIDEBAR --- -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a>
+      </div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">—</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebarUserName">Étudiant·e</div>
+          <div class="sidebar-user-role" id="sidebarUserRole">Étudiante</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="student.sidebar.navigation">Navigation</div>
+        <a class="sidebar-item active" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span> <span data-i18n="student.sidebar.dashboard">Tableau de bord</span></a>
+        <a class="sidebar-item" data-href="my-programs.html"><span class="sidebar-item-icon">📚</span> <span data-i18n="student.sidebar.my_programs">Mes programmes</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span> <span data-i18n="student.sidebar.calendar">Mon calendrier</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span> <span data-i18n="student.sidebar.payments">Paiements & factures</span></a>
+        <a class="sidebar-item" data-href="level-tests.html"><span class="sidebar-item-icon">📝</span> <span data-i18n="student.sidebar.level_tests">Tests de niveau</span></a>
+        <div class="sidebar-section" data-i18n="student.sidebar.settings">Paramètres</div>
+        <a class="sidebar-item" data-href="profile.html"><span class="sidebar-item-icon">⚙</span> <span data-i18n="student.sidebar.profile">Profil</span></a>
+        <a class="sidebar-item" data-href="support.html"><span class="sidebar-item-icon">🛠</span> <span data-i18n="student.sidebar.support">Support</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span> <span data-i18n="student.sidebar.logout">Déconnexion</span></a>
+      </div>
+    </aside>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+
+    <!-- --- MAIN --- -->
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle">☰</button>
+          <h1 class="topbar-title" data-i18n="student.dashboard.title">Tableau de bord</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-search">
+            <span class="topbar-search-icon">🔍</span>
+            <input type="text" placeholder="Rechercher..." data-i18n-placeholder="student.common.search">
+          </div>
+          <button class="topbar-notification" id="notifBell" title="Notifications">
+            🔔
+            <span class="notification-dot" id="notifDot" style="display:none;"></span>
+          </button>
+          <div class="avatar avatar-sm" id="topbarAvatar">—</div>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+        <!-- Stats -->
+        <div class="stats-grid stagger-children">
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon green">📚</div>
+              <span class="badge badge-green">Actif</span>
+            </div>
+            <div class="stat-card-value" id="statActivePrograms">—</div>
+            <div class="stat-card-label" data-i18n="student.dashboard.active_programs">Programmes en cours</div>
+            <div class="stat-card-change" id="statActiveProgramsSub">Chargement...</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon blue">📅</div>
+            </div>
+            <div class="stat-card-value" id="statUpcomingSessions">—</div>
+            <div class="stat-card-label" data-i18n="student.dashboard.upcoming_sessions">Séances à venir</div>
+            <div class="stat-card-change" id="statUpcomingSessionsSub">Chargement...</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon gold">📈</div>
+            </div>
+            <div class="stat-card-value" id="statGlobalProgress">—</div>
+            <div class="stat-card-label" data-i18n="student.dashboard.global_progress">Progression globale</div>
+            <div class="stat-card-change" id="statGlobalProgressSub">Chargement...</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-card-icon emerald">🎓</div>
+            </div>
+            <div class="stat-card-value" id="statCurrentLevel">—</div>
+            <div class="stat-card-label" data-i18n="student.dashboard.current_level">Niveau actuel</div>
+            <div class="stat-card-change" id="statCurrentLevelSub">Chargement...</div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid-sidebar">
+          <!-- Next Session -->
+          <div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title" data-i18n="student.dashboard.next_session">Prochaine séance</h3>
+                <a href="calendar.html" class="btn btn-link btn-sm" data-i18n="student.dashboard.view_calendar">Voir calendrier</a>
+              </div>
+              <div id="nextSessionContent"></div>
+            </div>
+
+            <!-- Progress -->
+            <div class="card mt-md">
+              <div class="card-header">
+                <h3 class="card-title" data-i18n="student.dashboard.my_progress">Ma progression</h3>
+              </div>
+              <div style="padding: var(--space-sm) 0;">
+                <div style="margin-bottom: var(--space-md);">
+                  <div class="flex justify-between mb-sm">
+                    <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="student.dashboard.listening">Compréhension orale</span>
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary);" id="skillListeningPct">—</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar" id="skillListeningBar" style="width: 0%;"></div>
+                  </div>
+                </div>
+                <div style="margin-bottom: var(--space-md);">
+                  <div class="flex justify-between mb-sm">
+                    <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="student.dashboard.reading">Compréhension écrite</span>
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary);" id="skillReadingPct">—</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar gold" id="skillReadingBar" style="width: 0%;"></div>
+                  </div>
+                </div>
+                <div style="margin-bottom: var(--space-md);">
+                  <div class="flex justify-between mb-sm">
+                    <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="student.dashboard.speaking">Expression orale</span>
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary);" id="skillSpeakingPct">—</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar blue" id="skillSpeakingBar" style="width: 0%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-sm">
+                    <span style="font-size: 0.875rem; font-weight: 600;" data-i18n="student.dashboard.writing">Expression écrite</span>
+                    <span style="font-size: 0.8125rem; color: var(--color-text-secondary);" id="skillWritingPct">—</span>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar" id="skillWritingBar" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications -->
+          <div>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title" data-i18n="student.dashboard.notifications">Notifications</h3>
+              </div>
+              <div id="notificationsList" style="display: flex; flex-direction: column; gap: var(--space-md);"></div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="card mt-md">
+              <div class="card-header">
+                <h3 class="card-title" data-i18n="student.dashboard.quick_actions">Actions rapides</h3>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                <a href="level-tests.html" class="btn btn-outline w-full" style="justify-content: flex-start;">📝 <span data-i18n="student.dashboard.take_level_test">Passer un test de niveau</span></a>
+                <a href="../booking.html" class="btn btn-outline w-full" style="justify-content: flex-start;">📅 <span data-i18n="student.dashboard.book_program">Réserver un programme</span></a>
+                <a href="payments.html" class="btn btn-outline w-full" style="justify-content: flex-start;">🧾 <span data-i18n="student.dashboard.view_invoices">Voir mes factures</span></a>
+                <a href="support.html" class="btn btn-outline w-full" style="justify-content: flex-start;">💬 <span data-i18n="student.dashboard.contact_support">Contacter le support</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var DAYS = ['DIM', 'LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM'];
+
+      function requireStudent() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = '../index.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') { window.location.href = '../teacher/dashboard.html'; return false; }
+        if (role === 'admin') { window.location.href = '../admin/dashboard.html'; return false; }
+        return true;
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        try {
+          var d = new Date(val);
+          if (isNaN(d.getTime())) return val;
+          return d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'short', year: 'numeric' });
+        } catch (e) { return val; }
+      }
+
+      function formatTime(val) {
+        if (!val) return '—';
+        var m = String(val).match(/^(\d{1,2}):(\d{2})/);
+        if (m) return m[1] + 'h' + m[2];
+        return val;
+      }
+
+      function setText(id, text) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = text;
+      }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || 'Étudiant·e';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+        var level = user.current_level ? 'Étudiante à ' + user.current_level : 'Étudiante';
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('sidebarUserRole', level);
+        setText('topbarAvatar', initials);
+      }
+
+      function renderStats(stats) {
+        stats = stats || {};
+        var active = stats.active_programs || 0;
+        var upcoming = stats.upcoming_sessions || 0;
+        var progress = Math.round(stats.global_progress || 0);
+        var level = stats.current_level || '—';
+        var target = stats.target_level || '—';
+
+        setText('statActivePrograms', active);
+        setText('statActiveProgramsSub', active + ' actif(s) sur ' + (stats.enrollments_count || 0));
+        setText('statUpcomingSessions', upcoming);
+        setText('statGlobalProgress', progress + '%');
+        setText('statCurrentLevel', level);
+        setText('statCurrentLevelSub', 'Objectif : ' + target);
+      }
+
+      function renderNextSession(slot) {
+        var container = document.getElementById('nextSessionContent');
+        if (!container) return;
+
+        if (!slot) {
+          container.innerHTML = '<div class="text-center text-muted" style="padding: var(--space-lg) 0;">Aucune séance à venir.</div>';
+          setText('statUpcomingSessionsSub', 'Aucune séance prévue');
+          return;
+        }
+
+        var d = new Date(slot.slot_date);
+        var dayName = (!isNaN(d.getTime())) ? DAYS[d.getDay()] : '—';
+        var dayNum = (!isNaN(d.getTime())) ? d.getDate() : '—';
+        var serviceName = (slot.service && (slot.service.name_fr || slot.service.slug)) || 'Séance';
+        var time = slot.slot_time ? formatTime(slot.slot_time) : '—';
+
+        container.innerHTML =
+          '<div class="flex items-center gap-lg" style="padding: var(--space-sm) 0;">' +
+            '<div style="width: 56px; height: 56px; background: var(--color-bg-cream); border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;">' +
+              '<span style="font-size: 0.75rem; font-weight: 700; color: var(--color-emerald); text-transform: uppercase;">' + dayName + '</span>' +
+              '<span style="font-family: var(--font); font-size: 1.25rem; font-weight: 700; color: var(--color-emerald);">' + dayNum + '</span>' +
+            '</div>' +
+            '<div style="flex: 1;">' +
+              '<h4 style="font-size: 1rem; margin-bottom: 4px;">' + escapeHtml(serviceName) + '</h4>' +
+              '<p style="font-size: 0.875rem; color: var(--color-text-secondary); margin: 0;">' + time + '</p>' +
+              '<p style="font-size: 0.875rem; color: var(--color-text-tertiary); margin: 0;">' + formatDate(slot.slot_date) + '</p>' +
+            '</div>' +
+            '<a href="calendar.html" class="btn btn-outline btn-sm">Rejoindre</a>' +
+          '</div>';
+      }
+
+      var SKILL_IDS = {
+        listening: ['skillListeningPct', 'skillListeningBar'],
+        reading: ['skillReadingPct', 'skillReadingBar'],
+        speaking: ['skillSpeakingPct', 'skillSpeakingBar'],
+        writing: ['skillWritingPct', 'skillWritingBar']
+      };
+
+      function renderProgress(progressBySkill) {
+        (progressBySkill || []).forEach(function (p) {
+          var ids = SKILL_IDS[p.skill];
+          if (!ids) return;
+          var pct = Math.round(Number(p.percentage) || 0);
+          setText(ids[0], pct + '%');
+          var bar = document.getElementById(ids[1]);
+          if (bar) bar.style.width = pct + '%';
+        });
+      }
+
+      function renderNotifications(notifications) {
+        var container = document.getElementById('notificationsList');
+        if (!container) return;
+
+        if (!notifications || !notifications.length) {
+          container.innerHTML = '<div class="text-center text-muted" style="padding: var(--space-lg) 0;">Aucune notification.</div>';
+          return;
+        }
+
+        container.innerHTML = notifications.map(function (n) {
+          var dot = n.is_read
+            ? ''
+            : '<span style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); flex-shrink: 0; margin-top: 7px;"></span>';
+          return '<div class="flex" style="gap: var(--space-sm);">' +
+            dot +
+            '<div>' +
+              '<p style="font-size: 0.875rem; margin: 0; font-weight: 600;">' + escapeHtml(n.title || 'Notification') + '</p>' +
+              '<p style="font-size: 0.8125rem; color: var(--color-text-tertiary); margin: 0;">' + escapeHtml(n.message || '') + '</p>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+      }
+
+      function loadDashboard() {
+        if (!requireStudent()) return;
+
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        CultulanguesAPI.get('/student/dashboard').then(function (resp) {
+          var data = resp.data || {};
+          renderUser(data.user || cached);
+          renderStats(data.stats);
+          renderNextSession(data.next_session);
+          renderProgress(data.progress_by_skill);
+          renderNotifications(data.notifications);
+          var unread = (data.stats && data.stats.unread_notifications) || 0;
+          var dot = document.getElementById('notifDot');
+          if (dot) dot.style.display = unread > 0 ? '' : 'none';
+        }).catch(function (err) {
+          var unauthorized = err && (err.status === 401 || (err.response && err.response.status === 401));
+          var msg = (err && err.message) ? err.message : 'Serveur indisponible';
+          document.getElementById('nextSessionContent').innerHTML = '<div class="text-center text-muted" style="padding: var(--space-lg) 0;">Erreur de chargement : ' + escapeHtml(msg) + '</div>';
+          if (unauthorized) window.location.href = '../index.html';
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../index.html'; };
+          if (window.CultulanguesAPI) {
+            CultulanguesAPI.logout().then(goHome).catch(goHome);
+          } else {
+            goHome();
+          }
+        });
+      }
+
+      bindLogout();
+      loadDashboard();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

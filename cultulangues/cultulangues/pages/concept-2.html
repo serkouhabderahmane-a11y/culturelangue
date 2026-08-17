@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Français Express – Progressez vite, gagnez en confiance | Cultulangues</title>
+  <meta name="description" content="Programme intensif de 4 semaines à Gatineau. 60 heures, petits groupes, encadrement expert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0A0A1A;
+      color: #E8E8F0;
+      line-height: 1.6;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Header */
+    header {
+      padding: 20px 0;
+      background: #0A0A1A;
+      border-bottom: 1px solid rgba(0, 245, 255, 0.08);
+    }
+    header .container { display: flex; align-items: center; }
+    .logo-img { height: 42px; width: auto; filter: brightness(0) invert(1); }
+
+    /* Hero */
+    .hero {
+      padding: 72px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(0,245,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -20%;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(ellipse at center, rgba(255,51,102,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .breadcrumb {
+      font-size: 13px;
+      color: rgba(232,232,240,0.5);
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+    .breadcrumb a { color: rgba(232,232,240,0.5); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: #00F5FF; }
+    .breadcrumb span { color: #00F5FF; font-weight: 500; }
+    h1 {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .hero-subtitle {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(232,232,240,0.65);
+      margin-bottom: 28px;
+    }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      background: rgba(0,245,255,0.06);
+      border: 1px solid rgba(0,245,255,0.12);
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(232,232,240,0.8);
+    }
+    .hero-chip i { color: #00F5FF; font-size: 12px; }
+    .hero-ctas .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #00F5FF, #00C4D4);
+      color: #0A0A1A;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 20px rgba(0,245,255,0.2);
+    }
+    .hero-ctas .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0,245,255,0.35);
+    }
+
+    /* Hero Booking Card */
+    .hero-booking-card {
+      background: #1E1E3F;
+      border: 1px solid rgba(0,245,255,0.12);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,245,255,0.05);
+      overflow: hidden;
+      position: sticky;
+      top: 24px;
+    }
+    .hero-booking-header {
+      padding: 24px;
+      border-bottom: 1px solid rgba(0,245,255,0.08);
+    }
+    .hero-booking-header h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .hbh-price { font-size: 24px; font-weight: 800; color: #00F5FF; }
+    .hbh-price small { font-size: 13px; font-weight: 400; color: rgba(232,232,240,0.5); }
+    .hero-booking-body { padding: 24px; }
+    .hero-booking-facts { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .hero-bf {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .hero-bf i { color: #00F5FF; width: 16px; text-align: center; font-size: 14px; }
+    .bfv { font-weight: 600; color: #fff; }
+    .bfl { color: rgba(232,232,240,0.4); margin-left: auto; }
+    .hero-booking-cta .btn-primary {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      background: linear-gradient(135deg, #00F5FF, #00C4D4);
+      color: #0A0A1A;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-booking-cta .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(0,245,255,0.3);
+    }
+
+    /* Section */
+    .section { padding: 56px 0; }
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+    }
+
+    /* Summary Pills */
+    .summary-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .summary-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: rgba(30,30,63,0.6);
+      border: 1px solid rgba(0,245,255,0.08);
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(232,232,240,0.8);
+    }
+    .summary-pill i { color: #00F5FF; font-size: 14px; }
+
+    /* Section Block */
+    .section-block { margin-bottom: 56px; }
+    .section-title-group { margin-bottom: 24px; }
+    .section-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 24px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .section-badge--blue { background: rgba(0,245,255,0.1); color: #00F5FF; border: 1px solid rgba(0,245,255,0.15); }
+    .section-badge--orange { background: rgba(255,51,102,0.1); color: #FF3366; border: 1px solid rgba(255,51,102,0.15); }
+    .section-badge--green { background: rgba(0,255,136,0.1); color: #00FF88; border: 1px solid rgba(0,255,136,0.15); }
+
+    /* Feature Cards */
+    .feature-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .feature-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: #1E1E3F;
+      border: 1px solid rgba(0,245,255,0.06);
+      border-radius: 12px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(0,245,255,0.15);
+      box-shadow: 0 0 20px rgba(0,245,255,0.04);
+    }
+    .feature-card-icon i { font-size: 22px; color: #00F5FF; margin-top: 2px; }
+    .feature-card-text p { font-size: 14px; line-height: 1.6; color: rgba(232,232,240,0.85); }
+
+    /* Tarif */
+    .tarif-text {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(232,232,240,0.7);
+      padding: 20px 24px;
+      border-left: 3px solid #00F5FF;
+      background: rgba(30,30,63,0.5);
+      border-radius: 0 12px 12px 0;
+    }
+
+    /* Session Cards */
+    .session-timeline { display: flex; flex-direction: column; gap: 20px; }
+    .session-card-premium {
+      background: #1E1E3F;
+      border: 1px solid rgba(0,245,255,0.06);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .session-card-premium:hover {
+      border-color: rgba(0,245,255,0.12);
+    }
+    .session-card-premium.featured {
+      border-color: rgba(0,245,255,0.2);
+      box-shadow: 0 0 30px rgba(0,245,255,0.06);
+    }
+    .session-card-premium.pause {
+      background: rgba(30,30,63,0.4);
+      border-color: rgba(232,232,240,0.06);
+    }
+    .scp-featured-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: linear-gradient(135deg, #00F5FF, #00C4D4);
+      color: #0A0A1A;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .scp-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .scp-season-icon i { font-size: 22px; color: #00F5FF; }
+    .scp-season { flex: 1; }
+    .scp-season-label { font-size: 11px; color: rgba(232,232,240,0.4); text-transform: uppercase; letter-spacing: 1px; }
+    .scp-season-title { font-size: 17px; font-weight: 700; color: #fff; }
+    .scp-season-date { font-size: 13px; color: rgba(232,232,240,0.5); }
+    .scp-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .scp-status--open { color: #00FF88; }
+    .scp-status i { font-size: 8px; }
+    .scp-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(0,245,255,0.06);
+    }
+    .scp-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(232,232,240,0.6);
+      background: rgba(0,245,255,0.05);
+      padding: 5px 12px;
+      border-radius: 6px;
+    }
+    .scp-chip i { font-size: 11px; color: #00F5FF; }
+    .scp-actions { margin-top: 16px; }
+    .scp-actions .btn-primary {
+      display: inline-block;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, #00F5FF, #00C4D4);
+      color: #0A0A1A;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .scp-actions .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 16px rgba(0,245,255,0.25);
+    }
+    .scp-pause-body { display: flex; align-items: center; gap: 14px; }
+    .scp-pause-icon i { font-size: 28px; color: rgba(232,232,240,0.15); }
+    .scp-pause-text { font-size: 13px; color: rgba(232,232,240,0.4); }
+
+    /* Sidebar */
+    .detail-sidebar { position: sticky; top: 24px; }
+    .booking-card {
+      background: #1E1E3F;
+      border: 1px solid rgba(0,245,255,0.12);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,245,255,0.05);
+      overflow: hidden;
+    }
+    .booking-card-header {
+      padding: 24px;
+      border-bottom: 1px solid rgba(0,245,255,0.08);
+    }
+    .booking-card-header h3 { font-size: 18px; font-weight: 700; color: #fff; }
+    .bch-price { font-size: 24px; font-weight: 800; color: #00F5FF; }
+    .bch-price small { font-size: 13px; font-weight: 400; color: rgba(232,232,240,0.5); }
+    .booking-card-body { padding: 24px; }
+    .booking-facts { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .booking-fact {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .bf-icon i { color: #00F5FF; width: 16px; text-align: center; }
+    .bf-value { font-weight: 600; color: #fff; }
+    .bf-label { color: rgba(232,232,240,0.4); margin-left: auto; }
+    .trust-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(232,232,240,0.6);
+    }
+    .trust-badge i { color: #00F5FF; width: 16px; }
+    .booking-cta .btn-primary {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      background: linear-gradient(135deg, #00F5FF, #00C4D4);
+      color: #0A0A1A;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .booking-cta .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(0,245,255,0.3);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(0,245,255,0.06);
+      padding: 28px 0;
+      text-align: center;
+    }
+    footer span { font-size: 13px; color: rgba(232,232,240,0.35); }
+
+    @media (max-width: 768px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .detail-layout { grid-template-columns: 1fr; }
+      .feature-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../index.html"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <div class="breadcrumb"><a href="../index.html">Accueil</a> / <a href="parcours-linguistique.html">Parcours linguistique</a> / <span>Français Express</span></div>
+        <h1>Français Express – Progressez vite</h1>
+        <p class="hero-subtitle">Vous souhaitez améliorer votre français rapidement pour le travail, les études ou votre vie quotidienne ? Français Express est un programme intensif conçu pour vous faire avancer en seulement 4 semaines.</p>
+        <div class="hero-chips">
+          <span class="hero-chip"><i class="fas fa-clock"></i> 4 semaines</span>
+          <span class="hero-chip"><i class="fas fa-book-open"></i> 60 heures</span>
+          <span class="hero-chip"><i class="fas fa-users"></i> 5 max</span>
+          <span class="hero-chip"><i class="fas fa-calendar"></i> Lun–Ven 17–20h</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="../booking.html?course=francais-express" class="btn-primary">Réservez maintenant &rarr;</a>
+        </div>
+      </div>
+      <div class="hero-booking-card">
+        <div class="hero-booking-header">
+          <h3>Français Express</h3>
+          <div class="hbh-price">600 $ <small>Tout compris</small></div>
+        </div>
+        <div class="hero-booking-body">
+          <div class="hero-booking-facts">
+            <div class="hero-bf"><i class="fas fa-clock"></i><span class="bfv">4 semaines</span><span class="bfl">Durée</span></div>
+            <div class="hero-bf"><i class="fas fa-book-open"></i><span class="bfv">60 h</span><span class="bfl">Volume</span></div>
+            <div class="hero-bf"><i class="fas fa-users"></i><span class="bfv">5 max</span><span class="bfl">Groupe</span></div>
+            <div class="hero-bf"><i class="fas fa-clock"></i><span class="bfv">17–20h</span><span class="bfl">Lun–Ven</span></div>
+          </div>
+          <div class="hero-booking-cta">
+            <a href="../booking.html?course=francais-express" class="btn-primary">Réservez maintenant &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="detail-layout">
+        <div class="detail-main">
+
+          <div class="summary-pills">
+            <span class="summary-pill"><i class="fas fa-clock"></i> 4 semaines</span>
+            <span class="summary-pill"><i class="fas fa-book-open"></i> 60 heures</span>
+            <span class="summary-pill"><i class="fas fa-users"></i> 5 max par groupe</span>
+            <span class="summary-pill"><i class="fas fa-calendar"></i> Lun–Ven 17h–20h</span>
+          </div>
+
+          <div class="section-block">
+            <div class="section-title-group">
+              <span class="section-badge section-badge--blue">Ce que vous obtenez</span>
+            </div>
+            <div class="feature-cards">
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-clock"></i></div>
+                <div class="feature-card-text"><p>60 heures d'apprentissage structuré</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-calendar"></i></div>
+                <div class="feature-card-text"><p>3 h de cours par jour, du lundi au vendredi (17 h – 20 h)</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-hourglass-half"></i></div>
+                <div class="feature-card-text"><p>Durée : 4 semaines</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-users"></i></div>
+                <div class="feature-card-text"><p>Petits groupes (max. 5) pour un accompagnement réellement personnalisé</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-award"></i></div>
+                <div class="feature-card-text"><p>Certificat de fin de session</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-file-alt"></i></div>
+                <div class="feature-card-text"><p>Rapport de progression détaillé</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <div class="section-title-group">
+              <span class="section-badge section-badge--orange">Pourquoi ça fonctionne</span>
+            </div>
+            <div class="feature-cards">
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-bolt"></i></div>
+                <div class="feature-card-text"><p>Un format intensif qui maximise la pratique réelle</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-crosshairs"></i></div>
+                <div class="feature-card-text"><p>Un suivi individuel pour cibler vos besoins</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-heart"></i></div>
+                <div class="feature-card-text"><p>Une ambiance motivante et bienveillante qui favorise la prise de parole</p></div>
+              </div>
+              <div class="feature-card">
+                <div class="feature-card-icon"><i class="fas fa-sync-alt"></i></div>
+                <div class="feature-card-text"><p>Une nouvelle session chaque début de mois pour s'adapter à votre emploi du temps</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <div class="section-title-group">
+              <span class="section-badge section-badge--green">Tarif</span>
+            </div>
+            <p class="tarif-text">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus</p>
+          </div>
+
+          <div class="section-block">
+            <div class="section-title-group">
+              <span class="section-badge section-badge--blue">Calendrier 2026–2027</span>
+              <p style="color:rgba(232,232,240,0.5);font-size:14px;margin-top:8px;">Chaque mois, une nouvelle session démarre. Choisissez la période qui vous convient et réservez votre place.</p>
+            </div>
+            <div class="session-timeline">
+
+              <div class="session-card-premium featured">
+                <span class="scp-featured-badge">Prochaine</span>
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-leaf"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Automne</div>
+                    <div class="scp-season-title">Septembre 2026</div>
+                    <div class="scp-season-date">14 sept → 9 oct 2026</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                  <span class="scp-chip"><i class="fas fa-book-open"></i> 60 h</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-leaf"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Automne</div>
+                    <div class="scp-season-title">Octobre 2026</div>
+                    <div class="scp-season-date">12 oct → 6 nov 2026</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-leaf"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Automne</div>
+                    <div class="scp-season-title">Novembre 2026</div>
+                    <div class="scp-season-date">9 nov → 6 déc 2026</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium pause">
+                <div class="scp-pause-body">
+                  <div class="scp-pause-icon"><i class="fas fa-pause-circle"></i></div>
+                  <div>
+                    <div class="scp-season-title" style="font-size:0.95rem;">Décembre 2026 — Pause</div>
+                    <div class="scp-pause-text">Aucune classe du 14 au 31 décembre 2026. Bonnes fêtes!</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-snowflake"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Hiver</div>
+                    <div class="scp-season-title">Janvier 2027</div>
+                    <div class="scp-season-date">4 jan → 29 jan 2027</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-snowflake"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Hiver</div>
+                    <div class="scp-season-title">Février 2027</div>
+                    <div class="scp-season-date">1 fév → 26 fév 2027</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-cloud-sun"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Printemps</div>
+                    <div class="scp-season-title">Mars 2027</div>
+                    <div class="scp-season-date">1 mar → 26 mar 2027</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-cloud-sun"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Printemps</div>
+                    <div class="scp-season-title">Avril 2027</div>
+                    <div class="scp-season-date">29 mar → 23 avr 2027</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-cloud-sun"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Printemps</div>
+                    <div class="scp-season-title">Mai 2027</div>
+                    <div class="scp-season-date">26 avr → 21 mai 2027</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+              <div class="session-card-premium">
+                <div class="scp-header">
+                  <div class="scp-season-icon"><i class="fas fa-sun"></i></div>
+                  <div class="scp-season">
+                    <div class="scp-season-label">Été</div>
+                    <div class="scp-season-title">Juin 2027</div>
+                    <div class="scp-season-date">24 mai → 19 juin 2027</div>
+                  </div>
+                  <span class="scp-status scp-status--open"><i class="fas fa-circle"></i> Ouvert</span>
+                </div>
+                <div class="scp-details">
+                  <span class="scp-chip"><i class="fas fa-clock"></i> Lun–Ven 17h–20h</span>
+                  <span class="scp-chip"><i class="fas fa-calendar-week"></i> 4 semaines</span>
+                  <span class="scp-chip"><i class="fas fa-users"></i> 5 max</span>
+                </div>
+                <div class="scp-actions"><a href="../booking.html?course=francais-express" class="btn-primary">Réserver</a></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="detail-sidebar">
+          <div class="booking-card">
+            <div class="booking-card-header">
+              <h3>Français Express</h3>
+              <div class="bch-price">600 $ <small>Tout compris</small></div>
+            </div>
+            <div class="booking-card-body">
+              <div class="booking-facts">
+                <div class="booking-fact"><span class="bf-icon"><i class="fas fa-clock"></i></span><span class="bf-value">4 semaines</span><span class="bf-label">Durée</span></div>
+                <div class="booking-fact"><span class="bf-icon"><i class="fas fa-book-open"></i></span><span class="bf-value">60 h</span><span class="bf-label">Volume</span></div>
+                <div class="booking-fact"><span class="bf-icon"><i class="fas fa-users"></i></span><span class="bf-value">5 max</span><span class="bf-label">Groupe</span></div>
+                <div class="booking-fact"><span class="bf-icon"><i class="fas fa-clock"></i></span><span class="bf-value">Lun–Ven 17–20h</span><span class="bf-label">Horaire</span></div>
+              </div>
+              <div class="trust-badges">
+                <span class="trust-badge"><i class="fas fa-shield-alt"></i> Paiement sécurisé</span>
+                <span class="trust-badge"><i class="fas fa-award"></i> Certificat inclus</span>
+              </div>
+              <div class="booking-cta">
+                <a href="../booking.html?course=francais-express" class="btn-primary">Réservez maintenant &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>&copy; 2026 Cultulangues. Tous droits réservés.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

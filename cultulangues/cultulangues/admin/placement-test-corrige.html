@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test de niveau — Barème + Corrigé | Admin</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    .staff-doc-card{max-width:680px;margin:0 auto}
+    .staff-doc-icon{width:64px;height:64px;border-radius:var(--radius-lg,16px);background:linear-gradient(135deg,rgba(255,107,157,.12),rgba(255,142,83,.1));display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:14px}
+    .staff-doc-title{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+    .staff-doc-sub{font-size:.85rem;color:var(--color-text-tertiary,#7F8C8D);margin-bottom:18px}
+    .staff-doc-desc{font-size:.88rem;color:var(--color-text-secondary,#2C3E50);line-height:1.65;margin-bottom:22px}
+    .staff-doc-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .staff-msg{display:none;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:var(--radius-md,12px);font-size:.85rem;line-height:1.5;margin-top:18px}
+    .staff-msg.error{display:flex;background:rgba(231,76,60,.07);border:1px solid rgba(231,76,60,.18);color:var(--color-danger,#E74C3C)}
+    .staff-msg.info{display:flex;background:rgba(74,144,217,.07);border:1px solid rgba(74,144,217,.18);color:var(--color-primary,#4A90D9)}
+    .staff-msg i{margin-top:2px;flex-shrink:0}
+  </style>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user"><div class="avatar">A</div><div class="sidebar-user-info"><div class="sidebar-user-name">Admin</div><div class="sidebar-user-role">Administrateur</div></div></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.gestion">Gestion</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span><span data-i18n="admin.sidebar.overview">Vue d'ensemble</span></a>
+        <a class="sidebar-item" data-href="programs.html"><span class="sidebar-item-icon">📚</span><span data-i18n="admin.sidebar.programs">Programmes</span></a>
+        <a class="sidebar-item" data-href="teachers.html"><span class="sidebar-item-icon">👩</span><span data-i18n="admin.sidebar.teachers">Enseignants</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span><span data-i18n="admin.sidebar.students">Étudiants</span></a>
+        <a class="sidebar-item" data-href="bookings.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.bookings">Réservations</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span><span data-i18n="admin.sidebar.payments">Paiements</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.calendar">Calendrier</span></a>
+        <a class="sidebar-item" data-href="analytics.html"><span class="sidebar-item-icon">📈</span><span data-i18n="admin.sidebar.analytics">Analytiques</span></a>
+        <a class="sidebar-item active" data-href="placement-test-corrige.html"><span class="sidebar-item-icon">📝</span><span>Corrigé — Test de niveau</span></a>
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.system">Système</div>
+        <a class="sidebar-item" data-href="settings.html"><span class="sidebar-item-icon">⚙</span><span data-i18n="admin.sidebar.settings">Paramètres</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" data-href="../index.html"><span class="sidebar-item-icon">🚪</span><span data-i18n="admin.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title">Corrigé — Test de niveau</h1></div>
+        <div class="topbar-right"><div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" data-i18n-placeholder="admin.common.search" placeholder="Rechercher..."></div><button class="topbar-notification">🔔<span class="notification-dot"></span></button><div class="avatar avatar-sm">A</div></div>
+      </header>
+      <div class="dashboard-content">
+        <div class="card staff-doc-card">
+          <div class="card-body">
+            <div class="staff-doc-icon">📝</div>
+            <div class="staff-doc-title">Cultulangues – Test de Niveau — Barème + Corrigé</div>
+            <div class="staff-doc-sub">Document officiel — Accès réservé au personnel (administration &amp; enseignants)</div>
+            <div class="staff-doc-desc">
+              Ce document contient les réponses du test de niveau ainsi que le barème d'interprétation des résultats. Il est destiné exclusivement à l'équipe de Cultulangues et ne doit en aucun cas être transmis aux étudiants.
+            </div>
+            <div class="staff-doc-actions">
+              <button class="btn btn-primary" id="openCorrigeBtn">📄 Ouvrir le corrigé (docx)</button>
+              <button class="btn btn-outline" id="downloadCorrigeBtn">⬇ Télécharger</button>
+            </div>
+            <div class="staff-msg error" id="staffMsg"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var API = window.CultulanguesAPI;
+      var endpoint = '/staff/documents/placement-test-corrige';
+      var fileName = 'Cultulangues – Test de Niveau -Barême + Corrigé (1).docx';
+
+      function showMsg(html) {
+        var el = document.getElementById('staffMsg');
+        el.className = 'staff-msg error';
+        el.innerHTML = '<i class="fas fa-shield-alt"></i><div>' + html + '</div>';
+        el.style.display = 'flex';
+      }
+
+      function fetchDocx() {
+        return fetch(API.base + endpoint, {
+          headers: { 'Accept': 'application/octet-stream', 'Authorization': 'Bearer ' + API.getToken() }
+        }).then(function (resp) {
+          if (resp.status === 401 || resp.status === 403) {
+            var e = new Error('forbidden');
+            e.status = resp.status;
+            throw e;
+          }
+          if (!resp.ok) {
+            var err = new Error('request_failed');
+            err.status = resp.status;
+            throw err;
+          }
+          return resp.blob();
+        });
+      }
+
+      function triggerDownload(blob, isOpen) {
+        var url = URL.createObjectURL(blob);
+        if (isOpen) {
+          window.open(url, '_blank');
+        } else {
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        }
+        setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+      }
+
+      function handleAccess(open) {
+        if (!API || !API.isAuthenticated()) {
+          showMsg('Vous devez être connecté pour accéder à ce document. <a href="login.html" style="color:inherit;font-weight:700">Se connecter →</a>');
+          return;
+        }
+        var btn = open ? document.getElementById('openCorrigeBtn') : document.getElementById('downloadCorrigeBtn');
+        var orig = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Chargement...';
+        fetchDocx().then(function (blob) {
+          triggerDownload(blob, open);
+        }).catch(function (e) {
+          if (e.status === 401 || e.status === 403) {
+            showMsg('Accès refusé. Ce document est réservé à l\'administration et aux enseignants. <a href="login.html" style="color:inherit;font-weight:700">Se connecter avec un compte autorisé →</a>');
+          } else {
+            showMsg('Impossible de récupérer le document. Le serveur est peut-être inaccessible. Réessayez plus tard.');
+          }
+        }).finally(function () {
+          btn.disabled = false;
+          btn.innerHTML = orig;
+        });
+      }
+
+      document.getElementById('openCorrigeBtn').addEventListener('click', function () { handleAccess(true); });
+      document.getElementById('downloadCorrigeBtn').addEventListener('click', function () { handleAccess(false); });
+    })();
+  </script>
+</body>
+</html>

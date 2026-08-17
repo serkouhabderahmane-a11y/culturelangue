@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservations — Admin</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+<style>
+    .status-select{border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 10px;font-size:.78rem;background:var(--bg);color:var(--text);font-family:var(--font);outline:none;cursor:pointer}
+    .status-select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,142,83,.1)}
+  </style>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user"><div class="avatar">A</div><div class="sidebar-user-info"><div class="sidebar-user-name">Admin</div><div class="sidebar-user-role">Administrateur</div></div></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.gestion">Gestion</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span><span data-i18n="admin.sidebar.overview">Vue d'ensemble</span></a>
+        <a class="sidebar-item" data-href="programs.html"><span class="sidebar-item-icon">📚</span><span data-i18n="admin.sidebar.programs">Programmes</span></a>
+        <a class="sidebar-item" data-href="teachers.html"><span class="sidebar-item-icon">👩</span><span data-i18n="admin.sidebar.teachers">Enseignants</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span><span data-i18n="admin.sidebar.students">Étudiants</span></a>
+        <a class="sidebar-item active" data-href="bookings.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.bookings">Réservations</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span><span data-i18n="admin.sidebar.payments">Paiements</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.calendar">Calendrier</span></a>
+        <a class="sidebar-item" data-href="analytics.html"><span class="sidebar-item-icon">📈</span><span data-i18n="admin.sidebar.analytics">Analytiques</span></a>
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.system">Système</div>
+        <a class="sidebar-item" data-href="settings.html"><span class="sidebar-item-icon">⚙</span><span data-i18n="admin.sidebar.settings">Paramètres</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" data-href="../index.html"><span class="sidebar-item-icon">🚪</span><span data-i18n="admin.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="admin.bookings.title">Réservations</h1></div>
+        <div class="topbar-right"><div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" id="bookingSearch" placeholder="Rechercher (nom, courriel, référence)"></div><button class="topbar-notification">🔔<span class="notification-dot"></span></button><div class="avatar avatar-sm">A</div></div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-content-header">
+          <h2 data-i18n="admin.bookings.management">Gestion des réservations</h2>
+          <div class="flex items-center gap-sm">
+            <select class="form-select" id="statusFilter" style="width: auto; padding: 8px 32px 8px 12px;">
+              <option value="all" data-i18n="admin.bookings.filter.all">Toutes les réservations</option>
+              <option value="pending" data-i18n="admin.bookings.filter.pending">En attente</option>
+              <option value="confirmed" data-i18n="admin.bookings.filter.confirmed">Confirmées</option>
+              <option value="completed">Terminées</option>
+              <option value="cancelled" data-i18n="admin.bookings.filter.cancelled">Annulées</option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="table-container">
+            <table class="table">
+              <thead><tr><th data-i18n="admin.table.booking">Réservation</th><th data-i18n="admin.table.student">Étudiant</th><th data-i18n="admin.table.contact">Contact</th><th data-i18n="admin.table.service">Service</th><th data-i18n="admin.table.date">Date</th><th data-i18n="admin.table.status">Statut</th><th></th></tr></thead>
+              <tbody id="bookingsBody">
+                <tr><td colspan="7" class="text-muted" style="text-align:center;padding:24px">Chargement des réservations...</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination" id="bookingsPagination" style="padding:12px 16px"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    var STATUS_BADGE = {
+      pending: 'badge-gold',
+      confirmed: 'badge-emerald',
+      completed: 'badge-emerald',
+      cancelled: 'badge-red'
+    };
+    var STATUS_LABEL = {
+      pending: 'En attente',
+      confirmed: 'Confirmée',
+      completed: 'Terminée',
+      cancelled: 'Annulée'
+    };
+    var STATUS_OPTIONS = ['pending', 'confirmed', 'completed', 'cancelled'];
+
+    var currentPage = 1;
+    var totalPages = 1;
+
+    function requireAdmin() {
+      if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+        window.location.href = 'login.html';
+        return false;
+      }
+      return true;
+    }
+
+    function formatDate(val) {
+      if (!val) return '—';
+      try {
+        var d = new Date(val);
+        if (isNaN(d.getTime())) return val;
+        return d.toLocaleDateString('fr-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch (e) { return val; }
+    }
+
+    function statusBadge(status) {
+      return '<span class="badge ' + (STATUS_BADGE[status] || 'badge-gold') + '">' + (STATUS_LABEL[status] || status) + '</span>';
+    }
+
+    function statusSelect(b) {
+      var html = '<select class="status-select" data-booking-id="' + b.id + '" title="Changer le statut">';
+      STATUS_OPTIONS.forEach(function (s) {
+        html += '<option value="' + s + '"' + (b.status === s ? ' selected' : '') + '>' + STATUS_LABEL[s] + '</option>';
+      });
+      html += '</select>';
+      return html;
+    }
+
+    function serviceName(b) {
+      var s = b.service;
+      if (!s) return '—';
+      return s.name_fr || s.name_en || s.slug || 'Service #' + s.id;
+    }
+
+    function renderBookings(bookings) {
+      var body = document.getElementById('bookingsBody');
+      if (!bookings || !bookings.length) {
+        body.innerHTML = '<tr><td colspan="7" class="text-muted" style="text-align:center;padding:24px">Aucune réservation trouvée.</td></tr>';
+        return;
+      }
+      body.innerHTML = bookings.map(function (b) {
+        var dateStr = b.preferred_date ? formatDate(b.preferred_date) : 'à déterminer';
+        if (b.preferred_time || b.preferred_slot) {
+          dateStr += ' à ' + (b.preferred_time || b.preferred_slot);
+        }
+        return '<tr>' +
+          '<td><strong>' + (b.booking_ref || '—') + '</strong></td>' +
+          '<td>' + (b.first_name + ' ' + b.last_name).trim() + '</td>' +
+          '<td>' + (b.email || '—') + (b.phone ? '<br><small class="text-muted">' + b.phone + '</small>' : '') + '</td>' +
+          '<td>' + serviceName(b) + '</td>' +
+          '<td>' + dateStr + '</td>' +
+          '<td>' + statusBadge(b.status) + '</td>' +
+          '<td class="table-actions">' + statusSelect(b) + '</td>' +
+          '</tr>';
+      }).join('');
+
+      body.querySelectorAll('.status-select').forEach(function (sel) {
+        sel.addEventListener('change', function () {
+          updateBookingStatus(sel.getAttribute('data-booking-id'), sel.value, sel);
+        });
+      });
+    }
+
+    function renderPagination(meta) {
+      var container = document.getElementById('bookingsPagination');
+      if (!meta) { container.innerHTML = ''; return; }
+      totalPages = meta.last_page || 1;
+      currentPage = meta.current_page || 1;
+      var html = '<span class="text-muted" style="font-size:.8rem">' + meta.total + ' réservation(s) à page ' + currentPage + ' / ' + totalPages + '</span> ';
+      html += '<button class="btn btn-link btn-sm" id="prevPageBtn" ' + (currentPage <= 1 ? 'disabled' : '') + '>‹ Précédent</button> ';
+      html += '<button class="btn btn-link btn-sm" id="nextPageBtn" ' + (currentPage >= totalPages ? 'disabled' : '') + '>Suivant ›</button>';
+      container.innerHTML = html;
+      var prev = document.getElementById('prevPageBtn');
+      var next = document.getElementById('nextPageBtn');
+      if (prev) prev.addEventListener('click', function () { if (currentPage > 1) { currentPage--; loadBookings(); } });
+      if (next) next.addEventListener('click', function () { if (currentPage < totalPages) { currentPage++; loadBookings(); } });
+    }
+
+    function loadBookings() {
+      if (!requireAdmin()) return;
+      var params = { per_page: 20, page: currentPage };
+      var status = document.getElementById('statusFilter').value;
+      if (status && status !== 'all') params.status = status;
+      var search = document.getElementById('bookingSearch').value.trim();
+      if (search) params.search = search;
+
+      document.getElementById('bookingsBody').innerHTML = '<tr><td colspan="7" class="text-muted" style="text-align:center;padding:24px">Chargement des réservations...</td></tr>';
+
+      CultulanguesAPI.get('/admin/bookings', params).then(function (resp) {
+        renderBookings(resp.data);
+        renderPagination(resp.meta);
+      }).catch(function (err) {
+        if (window.CultulanguesAPI && !CultulanguesAPI.getToken()) {
+          window.location.href = 'login.html';
+          return;
+        }
+        document.getElementById('bookingsBody').innerHTML = '<tr><td colspan="7" class="text-muted" style="text-align:center;padding:24px">Erreur de chargement : ' + ((err && err.message) || 'Serveur indisponible') + '</td></tr>';
+      });
+    }
+
+    function updateBookingStatus(id, status, sel) {
+      sel.disabled = true;
+      CultulanguesAPI.put('/admin/bookings/' + id + '/status', { status: status }).then(function () {
+        if (window.showToast) showToast('Statut mis à jour', 'success');
+        loadBookings();
+      }).catch(function (err) {
+        sel.disabled = false;
+        var msg = (err && err.message) ? err.message : 'Impossible de mettre à jour le statut.';
+        if (window.showToast) showToast(msg, 'error'); else alert(msg);
+      });
+    }
+
+    var searchTimer = null;
+    document.getElementById('statusFilter').addEventListener('change', function () {
+      currentPage = 1;
+      loadBookings();
+    });
+    document.getElementById('bookingSearch').addEventListener('input', function () {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(function () {
+        currentPage = 1;
+        loadBookings();
+      }, 400);
+    });
+
+    if (window.CultulanguesAPI) loadBookings();
+  </script>
+  <script src="../js/api.js"></script>
+  <script>
+    if (window.CultulanguesAPI) loadBookings();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire d'inscription — Cultulangues</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --pink:#FF6B9D;--orange:#FF8E53;--yellow:#FFD93D;--blue:#4A90D9;--green:#2ECC71;--red:#E74C3C;
+      --bg:#F4F6FA;--bg-card:#FFFFFF;--text:#2C3E50;--text-secondary:#7F8C8D;--text-tertiary:#BDC3C7;--border:#E8ECF1;
+      --shadow-sm:0 2px 8px rgba(0,0,0,0.04);--shadow-md:0 4px 20px rgba(0,0,0,0.08);--shadow-lg:0 12px 40px rgba(0,0,0,0.1);
+      --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:9999px;
+      --transition:300ms cubic-bezier(0.4,0,0.2,1);--font:'Plus Jakarta Sans',sans-serif;--accent:var(--orange);
+    }
+    html{font-size:15px;scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:var(--radius-full)}
+
+    .doc-wrap{max-width:860px;margin:0 auto;padding:24px 20px 64px}
+    .doc-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .doc-back{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:600;color:var(--text-secondary);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-full);padding:9px 18px;text-decoration:none;transition:all var(--transition)}
+    .doc-back:hover{border-color:var(--pink);color:var(--pink)}
+    .doc-step{margin-left:auto;font-size:0.75rem;font-weight:700;color:var(--text-tertiary);display:flex;align-items:center;gap:8px}
+    .doc-step .step-pips{display:flex;gap:5px}
+    .doc-step .pip{width:20px;height:6px;border-radius:var(--radius-full);background:var(--border)}
+    .doc-step .pip.active{background:var(--accent)}
+
+    .doc-header{text-align:center;margin-bottom:24px}
+    .doc-header .brand-icon{width:48px;height:48px;border-radius:var(--radius-md);background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:800;margin:0 auto 12px}
+    .doc-header h1{font-size:1.4rem;font-weight:800;background:var(--accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .doc-header p{font-size:0.85rem;color:var(--text-secondary);margin-top:4px}
+    .doc-header .doc-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:4px 16px;border-radius:var(--radius-full);background:rgba(74,144,217,0.08);border:1px solid rgba(74,144,217,0.15);color:var(--blue);font-size:0.68rem;font-weight:700;letter-spacing:0.02em}
+
+    .doc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:36px 40px;animation:fadeInUp 0.35s ease}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:640px){.doc-card{padding:24px 20px}}
+
+    .official-title{font-size:1.15rem;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+    .official-title .file-ico{width:34px;height:34px;border-radius:var(--radius-md);background:rgba(255,142,83,0.1);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0}
+    .official-sub{font-size:0.78rem;color:var(--text-tertiary);margin-bottom:24px;display:flex;align-items:center;gap:6px}
+
+    .form-section{border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:18px;animation:fadeInUp 0.35s ease}
+    .form-section .sec-title{font-size:0.95rem;font-weight:800;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .form-section .sec-title .sec-num{width:26px;height:26px;border-radius:50%;background:var(--accent);color:white;font-size:0.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+    .field{margin-bottom:14px}
+    .field-label{font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:7px;display:block}
+    .field-label .req{color:var(--orange)}
+    .field input[type="text"],.field input[type="email"],.field input[type="tel"],.field textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.85rem;outline:none;transition:all var(--transition);font-family:var(--font);background:var(--bg);color:var(--text)}
+    .field input:focus,.field textarea:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,107,157,0.06);background:white}
+    .field textarea{resize:vertical;min-height:80px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:600px){.form-row{grid-template-columns:1fr}}
+
+    .opt-group{margin-bottom:12px}
+    .opt-group .opt-title{font-size:0.8rem;font-weight:600;color:var(--text-secondary);margin-bottom:9px}
+    .opt-list{display:flex;flex-direction:column;gap:8px}
+    .opt-list.inline{flex-direction:row;flex-wrap:wrap;gap:8px}
+    .opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all var(--transition);font-size:0.85rem;font-weight:500;background:var(--bg-card);user-select:none}
+    .opt:hover{border-color:var(--pink)}
+    .opt.checked{border-color:var(--pink);background:rgba(255,107,157,0.05);font-weight:600}
+    .opt input{display:none}
+    .opt .box{width:18px;height:18px;border-radius:5px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.55rem;color:transparent;flex-shrink:0;transition:all var(--transition)}
+    .opt input[type="radio"] + .box{border-radius:50%}
+    .opt.checked .box{border-color:var(--pink);background:var(--pink);color:white}
+    .opt .other-input{margin-left:4px;flex:1;min-width:120px}
+    .opt .other-input input{width:100%;padding:7px 10px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;outline:none;font-family:var(--font);background:var(--bg)}
+    .opt .other-input input:focus{border-color:var(--pink)}
+
+    .required-note{font-size:0.7rem;color:var(--text-tertiary);margin-bottom:18px}
+    .doc-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap}
+    .doc-footer .info{font-size:0.72rem;color:var(--text-tertiary);display:flex;align-items:center;gap:6px}
+    .btn{padding:12px 28px;border-radius:var(--radius-md);font-size:0.85rem;font-weight:700;border:none;cursor:pointer;transition:all var(--transition);font-family:var(--font);display:inline-flex;align-items:center;gap:8px}
+    .btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-primary:not(:disabled):hover{box-shadow:0 6px 20px rgba(255,107,157,0.3);transform:translateY(-1px)}
+
+    .success-page{text-align:center;padding:36px 20px;animation:fadeInUp 0.35s ease}
+    .success-icon{width:72px;height:72px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem;color:white}
+    .success-page h2{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+    .success-page p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:28px}
+    .success-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .hidden{display:none!important}
+  </style>
+</head>
+<body>
+<div class="doc-wrap">
+
+  <div class="doc-topbar">
+    <a href="booking.html" class="doc-back"><i class="fas fa-arrow-left"></i> Retour à l'inscription</a>
+    <div class="doc-step">
+      <span>Étape 1 / 4</span>
+      <div class="step-pips"><span class="pip active"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+    </div>
+  </div>
+
+  <div class="doc-header">
+    <img src="img/image-Photoroom.png" alt="Cultulangues" style="width:200px;height:auto;object-fit:contain;margin:0 auto 14px;display:block">
+    <h1>Formulaire d'inscription</h1>
+    <p>Complétez et soumettez le formulaire d'inscription pour ouvrir votre dossier</p>
+    <span class="doc-badge"><i class="fas fa-file-signature"></i> Document officiel Cultulangues</span>
+  </div>
+
+  <div class="doc-card" id="formCard">
+    <div class="official-title"><span class="file-ico"><i class="fas fa-file-word"></i></span> Formulaire d'inscription</div>
+    <div class="official-sub"><i class="fas fa-info-circle"></i> Les champs marqués <span class="req" style="color:var(--orange)">*</span> sont requis</div>
+
+    <form id="registrationForm" novalidate>
+
+      <div class="form-section" data-sec="1">
+        <div class="sec-title"><span class="sec-num">1</span> Informations personnelles / Personal Information</div>
+
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label">Nom complet / Full Name : <span class="req">*</span></label>
+            <input type="text" id="fullName" required>
+          </div>
+          <div class="field">
+            <label class="field-label">Ville / City : <span class="req">*</span></label>
+            <input type="text" id="city" required>
+          </div>
+          <div class="field">
+            <label class="field-label">Pays / Country : <span class="req">*</span></label>
+            <input type="text" id="country" required>
+          </div>
+          <div class="field">
+            <label class="field-label">Téléphone / Phone Number : <span class="req">*</span></label>
+            <input type="tel" id="phone" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Courriel / Email : <span class="req">*</span></label>
+          <input type="email" id="email" required>
+        </div>
+      </div>
+
+      <div class="form-section" data-sec="2">
+        <div class="sec-title"><span class="sec-num">2</span> Langue &amp; niveau / Language &amp; Level</div>
+
+        <div class="opt-group">
+          <div class="opt-title">Langue ciblée / Target Language :</div>
+          <div class="opt-list inline" data-name="langue">
+            <label class="opt"><input type="checkbox" name="langue" value="Français / French"><span class="box"><i class="fas fa-check"></i></span> Français / French</label>
+            <label class="opt"><input type="checkbox" name="langue" value="Anglais / English"><span class="box"><i class="fas fa-check"></i></span> Anglais / English</label>
+            <label class="opt"><input type="checkbox" name="langue" value="Autre"><span class="box"><i class="fas fa-check"></i></span> Autre / Other :
+              <span class="other-input"><input type="text" id="langueOther" placeholder="Précisez..."></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="opt-group">
+          <div class="opt-title">Niveau actuel (auto-évaluation) / Current Level (SelfAssessment) :</div>
+          <div class="opt-list inline" data-name="niveau">
+            <label class="opt"><input type="radio" name="niveau" value="Débutant / Beginner"><span class="box"></span> Débutant / Beginner</label>
+            <label class="opt"><input type="radio" name="niveau" value="Intermédiaire / Intermediate"><span class="box"></span> Intermédiaire / Intermediate</label>
+            <label class="opt"><input type="radio" name="niveau" value="Avancé / Advanced"><span class="box"></span> Avancé / Advanced</label>
+            <label class="opt"><input type="radio" name="niveau" value="À déterminer / To be determined"><span class="box"></span> À déterminer / To be determined</label>
+          </div>
+        </div>
+
+        <div class="opt-group">
+          <div class="opt-title">Avez-vous déjà suivi une formation linguistique ? / Have you previously taken language training ?</div>
+          <div class="opt-list inline" data-name="formation">
+            <label class="opt"><input type="radio" name="formation" value="Oui / Yes"><span class="box"></span> Oui / Yes</label>
+            <label class="opt"><input type="radio" name="formation" value="Non / No"><span class="box"></span> Non / No</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Si oui, précisez / If yes, please specify :</label>
+          <input type="text" id="formationDetails">
+        </div>
+      </div>
+
+      <div class="form-section" data-sec="3">
+        <div class="sec-title"><span class="sec-num">3</span> Objectifs de la formation / Training Objectives</div>
+
+        <div class="opt-list" data-name="objectifs">
+          <label class="opt"><input type="checkbox" name="objectifs" value="Communication orale / Oral communication"><span class="box"><i class="fas fa-check"></i></span> Communication orale / Oral communication</label>
+          <label class="opt"><input type="checkbox" name="objectifs" value="Préparation à un examen / Exam preparation"><span class="box"><i class="fas fa-check"></i></span> Préparation à un examen / Exam preparation</label>
+          <label class="opt"><input type="checkbox" name="objectifs" value="Besoins professionnels / Professional needs"><span class="box"><i class="fas fa-check"></i></span> Besoins professionnels / Professional needs</label>
+          <label class="opt"><input type="checkbox" name="objectifs" value="Autre"><span class="box"><i class="fas fa-check"></i></span> Autre / Other :
+            <span class="other-input"><input type="text" id="objectifsOther" placeholder="Précisez..."></span>
+          </label>
+        </div>
+
+        <div class="field" style="margin-top:14px">
+          <label class="field-label">Commentaires ou besoins spécifiques / Comments or specific needs :</label>
+          <textarea id="comments"></textarea>
+        </div>
+      </div>
+
+      <div class="form-section" data-sec="4">
+        <div class="sec-title"><span class="sec-num">4</span> Type de formation / Type of Training :</div>
+
+        <div class="opt-list inline" data-name="typeFormation">
+          <label class="opt"><input type="checkbox" name="typeFormation" value="Individuelle / Individual"><span class="box"><i class="fas fa-check"></i></span> Individuelle / Individual</label>
+          <label class="opt"><input type="checkbox" name="typeFormation" value="Groupe / Group"><span class="box"><i class="fas fa-check"></i></span> Groupe / Group</label>
+          <label class="opt"><input type="checkbox" name="typeFormation" value="Atelier thématique / Thematic workshop"><span class="box"><i class="fas fa-check"></i></span> Atelier thématique / Thematic workshop</label>
+        </div>
+      </div>
+
+      <div class="form-section" data-sec="5">
+        <div class="sec-title"><span class="sec-num">5</span> Informations complémentaires :</div>
+        <div class="field" style="margin-bottom:0">
+          <textarea id="complementaryInfo" style="min-height:110px"></textarea>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <div class="info" id="formInfo"><i class="fas fa-info-circle"></i> <span>Vérifiez vos informations avant de soumettre</span></div>
+        <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fas fa-paper-plane"></i> Soumettre mon formulaire d'inscription</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="doc-card hidden" id="successCard">
+    <div class="success-page">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <h2>Formulaire soumis avec succès !</h2>
+      <p>Votre formulaire d'inscription a bien été enregistré. Passez maintenant à l'étape suivante : le test de niveau.</p>
+      <div class="success-actions">
+        <button class="btn btn-primary" id="goTestBtn">Commencer le test de niveau <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script>
+  (function () {
+    'use strict';
+
+    function getParam(name) {
+      var m = location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+      return m ? decodeURIComponent(m[1]) : null;
+    }
+
+    var course = getParam('course') || 'private';
+    var program = getParam('program') || '';
+    var pkg = getParam('pkg') || '';
+
+    var backHref = 'booking.html?course=' + encodeURIComponent(course);
+    if (program) backHref += '&program=' + encodeURIComponent(program);
+    if (pkg) backHref += '&pkg=' + encodeURIComponent(pkg);
+    document.querySelector('.doc-back').setAttribute('href', backHref);
+
+    function syncCheckboxes() {
+      document.querySelectorAll('.opt').forEach(function (el) {
+        var input = el.querySelector('input');
+        if (!input) return;
+        el.classList.toggle('checked', input.checked);
+      });
+    }
+    document.querySelectorAll('.opt input').forEach(function (input) {
+      input.addEventListener('change', syncCheckboxes);
+    });
+
+    document.getElementById('registrationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var data = {
+        nom_complet: document.getElementById('fullName').value.trim(),
+        ville: document.getElementById('city').value.trim(),
+        pays: document.getElementById('country').value.trim(),
+        telephone: document.getElementById('phone').value.trim(),
+        courriel: document.getElementById('email').value.trim(),
+        langue_ciblee: [],
+        niveau_actuel: null,
+        formation_linguistique: null,
+        formation_details: document.getElementById('formationDetails').value.trim(),
+        objectifs: [],
+        type_formation: [],
+        commentaires: document.getElementById('comments').value.trim(),
+        informations_complementaires: document.getElementById('complementaryInfo').value.trim()
+      };
+
+      var langueOther = document.getElementById('langueOther').value.trim();
+      var objectifsOther = document.getElementById('objectifsOther').value.trim();
+
+      document.querySelectorAll('input[name="langue"]:checked').forEach(function (cb) {
+        var v = cb.value;
+        if (v === 'Autre' && langueOther) v = 'Autre / Other : ' + langueOther;
+        data.langue_ciblee.push(v);
+      });
+      var niveauSel = document.querySelector('input[name="niveau"]:checked');
+      data.niveau_actuel = niveauSel ? niveauSel.value : null;
+      var formationSel = document.querySelector('input[name="formation"]:checked');
+      data.formation_linguistique = formationSel ? formationSel.value : null;
+      document.querySelectorAll('input[name="objectifs"]:checked').forEach(function (cb) {
+        var v = cb.value;
+        if (v === 'Autre' && objectifsOther) v = 'Autre / Other : ' + objectifsOther;
+        data.objectifs.push(v);
+      });
+      document.querySelectorAll('input[name="typeFormation"]:checked').forEach(function (cb) {
+        data.type_formation.push(cb.value);
+      });
+
+      var nameParts = data.nom_complet.split(/\s+/);
+      var firstName = nameParts.shift() || '';
+      var lastName = nameParts.join(' ') || '';
+
+      try {
+        var previous = JSON.parse(localStorage.getItem('cultulangues_inscription') || 'null') || {};
+        previous[course] = data;
+        localStorage.setItem('cultulangues_inscription', JSON.stringify(previous));
+      } catch (err) {}
+
+      try {
+        var docs = JSON.parse(localStorage.getItem('cultulangues_documents') || 'null') || {};
+        docs.registration = 'done';
+        localStorage.setItem('cultulangues_documents', JSON.stringify(docs));
+      } catch (err) {}
+
+      if (window.CultulanguesAPI) {
+        var serviceId = window.CultulanguesAPI.resolveServiceId(course, pkg);
+        window.CultulanguesAPI.createBooking({
+          service_id: serviceId,
+          first_name: firstName,
+          last_name: lastName,
+          email: data.courriel,
+          phone: data.telephone,
+          contact_preference: 'Courriel',
+          notes: [
+            'Ville : ' + data.ville,
+            'Pays : ' + data.pays,
+            'Langue ciblée : ' + (data.langue_ciblee.join(', ') || '—'),
+            'Niveau (auto-évaluation) : ' + (data.niveau_actuel || '—'),
+            'Formation linguistique antérieure : ' + (data.formation_linguistique || '—'),
+            'Objectifs : ' + (data.objectifs.join(', ') || '—'),
+            'Type de formation : ' + (data.type_formation.join(', ') || '—')
+          ].join('\n'),
+          source: 'formulaire-inscription'
+        }).catch(function () {});
+      }
+
+      document.getElementById('formCard').classList.add('hidden');
+      document.getElementById('successCard').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      var testHref = 'test-de-niveau.html?course=' + encodeURIComponent(course);
+      if (program) testHref += '&program=' + encodeURIComponent(program);
+      if (pkg) testHref += '&pkg=' + encodeURIComponent(pkg);
+      if (firstName) testHref += '&name=' + encodeURIComponent(data.nom_complet);
+      if (data.courriel) testHref += '&email=' + encodeURIComponent(data.courriel);
+      if (data.telephone) testHref += '&phone=' + encodeURIComponent(data.telephone);
+      document.getElementById('goTestBtn').onclick = function () {
+        window.location.href = testHref;
+      };
+    });
+  })();
+</script>
+</body>
+</html>

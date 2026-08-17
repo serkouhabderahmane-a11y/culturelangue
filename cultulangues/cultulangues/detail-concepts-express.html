@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Service Detail Concepts — Cultulangues</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #f5f5f7; color: #1a1a2e; }
+  .page-header { text-align: center; padding: 60px 24px 40px; background: #fff; border-bottom: 1px solid #e5e5e5; }
+  .page-header h1 { font-size: 2.5rem; font-weight: 800; color: #111; margin-bottom: 8px; }
+  .page-header h1 span { background: linear-gradient(135deg, #FA4E30, #FC9705); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .page-header .subtitle { color: #888; font-size: 1rem; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  .dc-nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; padding: 20px 24px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+  .dc-nav a { text-decoration: none; font-size: 0.75rem; font-weight: 600; color: #555; padding: 6px 14px; border-radius: 20px; background: #f5f5f7; transition: all 0.2s; }
+  .dc-nav a:hover { background: #FA4E30; color: #fff; }
+
+  .concept { max-width: 1280px; margin: 0 auto 80px; padding: 0 24px; }
+  .concept-header { margin-bottom: 20px; }
+  .concept-header .concept-num { font-size: 0.7rem; font-weight: 700; color: #FA4E30; letter-spacing: 3px; text-transform: uppercase; }
+  .concept-header h2 { font-size: 1.5rem; font-weight: 700; color: #111; margin-top: 4px; }
+  .concept-header .tagline { color: #888; font-size: 0.85rem; }
+  
+  .dc-preview {
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 2px 30px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .dc-preview-inner { width: 100%; }
+  
+  /* Shared mock content elements */
+  .dc-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #e5e5e5; padding: 5px 14px 5px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: #555; width: fit-content; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .dc-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #73CE65; box-shadow: 0 0 8px rgba(115,206,101,0.5); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  
+  .dc-tag { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+  
+  .dc-section-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 6px; width: fit-content; }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .page-header h1 { font-size: 1.8rem; }
+    .concept-header h2 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>10 concepts <span>service detail</span></h1>
+  <p class="subtitle">Redesigns complets pour les pages de détail de services Cultulangues. Chaque concept présente une philosophie de design unique avec le même contenu.</p>
+</div>
+
+<nav class="dc-nav" id="dc-nav">
+  <a href="#c1">1 Apple</a>
+  <a href="#c2">2 University</a>
+  <a href="#c3">3 Editorial</a>
+  <a href="#c4">4 SaaS</a>
+  <a href="#c5">5 Bento</a>
+  <a href="#c6">6 Magazine</a>
+  <a href="#c7">7 Timeline</a>
+  <a href="#c8">8 Split</a>
+  <a href="#c9">9 Glass</a>
+  <a href="#c10">10 Bold</a>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 1 — Apple Minimal -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c1">
+  <div class="concept-header">
+    <div class="concept-num">Concept 01</div>
+    <h2>Apple Minimal</h2>
+    <p class="tagline">Inspiré d'Apple. Espace généreux, typographie San-Francisco, image hero plein écran, détails subtils.</p>
+  </div>
+  <div class="dc-preview" style="background:#fff;">
+    <div class="dc-preview-inner">
+      <!-- Hero -->
+      <div style="background:#111;padding:0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;min-height:600px;">
+          <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center;">
+            <div class="dc-badge" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">
+              <div class="dc-badge-dot"></div>
+              Français Express
+            </div>
+            <h1 style="font-size:3rem;font-weight:700;color:#fff;margin:16px 0 8px;letter-spacing:-0.03em;line-height:1.1;">
+              Français Express – 4 semaines <span style="background:linear-gradient(135deg,#FA4E30,#FC9705);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">intensives</span>
+            </h1>
+            <p style="font-size:1.1rem;color:rgba(255,255,255,0.6);line-height:1.5;margin-bottom:20px;">Maîtrisez le français en 4 semaines avec un programme intensif en petit groupe. Lun–Ven 17–20h.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+              <span class="dc-tag" style="background:rgba(250,78,48,0.15);color:#FA4E30;"><span style="font-size:1.1rem;">●</span> 4 semaines</span>
+              <span class="dc-tag" style="background:rgba(115,206,101,0.15);color:#73CE65;"><span style="font-size:1.1rem;">●</span> 60 heures</span>
+              <span class="dc-tag" style="background:rgba(38,78,191,0.15);color:#4A7BEF;"><span style="font-size:1.1rem;">●</span> Lun–Ven 17–20h</span>
+              <span class="dc-tag" style="background:rgba(255,204,0,0.15);color:#D4A800;"><span style="font-size:1.1rem;">●</span> 600 $</span>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:14px 28px;border-radius:12px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;">Réservez maintenant <span style="font-size:1.1rem;">→</span></a>
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.7);padding:14px 28px;border-radius:12px;font-weight:500;font-size:0.9rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);">Choisissez le format</a>
+            </div>
+          </div>
+          <div style="position:relative;overflow:hidden;">
+            <img src="img/hero-cours-solo-new.png" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+            <div style="position:absolute;inset:0;background:linear-gradient(90deg,#111 0%,transparent 40%);"></div>
+            <div style="position:absolute;bottom:32px;left:32px;display:flex;gap:12px;">
+              <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(12px);border-radius:12px;padding:14px 20px;border:1px solid rgba(255,255,255,0.1);">
+                <div style="font-weight:700;font-size:1.1rem;color:#fff;">+950</div>
+                <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px;">Étudiants</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(12px);border-radius:12px;padding:14px 20px;border:1px solid rgba(255,255,255,0.1);">
+                <div style="font-weight:700;font-size:1.1rem;color:#73CE65;">4.9/5</div>
+                <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px;">Note Google</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.12);backdrop-filter:blur(12px);border-radius:12px;padding:14px 20px;border:1px solid rgba(255,255,255,0.1);">
+                <div style="font-weight:700;font-size:1.1rem;color:#4A7BEF;">12 ans</div>
+                <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px;">Expérience</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Trust strip -->
+      <div style="padding:16px 56px;background:#f8f8fa;border-bottom:1px solid #eee;">
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#555;"><span style="color:#73CE65;">✓</span> Évaluation de placement incluse</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#555;"><span style="color:#73CE65;">✓</span> Certificat inclus</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#555;"><span style="color:#73CE65;">✓</span> 4 semaines intensives</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#555;"><span style="color:#73CE65;">✓</span> 5 max par groupe</div>
+        </div>
+      </div>
+      <!-- Content: Two-column minimal layout -->
+      <div style="max-width:1100px;margin:0 auto;padding:64px 56px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:64px;">
+          <div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Avantages</div>
+            <h2 style="font-size:1.8rem;font-weight:700;color:#111;margin-bottom:16px;letter-spacing:-0.02em;">Pourquoi Français <span style="background:linear-gradient(135deg,#FA4E30,#FC9705);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Express</span> ?</h2>
+            <p style="color:#666;font-size:0.95rem;line-height:1.7;margin-bottom:24px;">Un accompagnement individuel pensé pour adultes exigeants qui veulent des résultats rapides et durables.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:#f8f8fa;border-radius:14px;padding:20px;">
+                <div style="font-size:1.5rem;margin-bottom:8px;">📅</div>
+                <h3 style="font-size:0.95rem;font-weight:600;color:#111;margin-bottom:4px;">4 semaines intensives</h3>
+                <p style="font-size:0.8rem;color:#888;line-height:1.5;">15 h/semaine avec des formateurs experts FLE.</p>
+              </div>
+              <div style="background:#f8f8fa;border-radius:14px;padding:20px;">
+                <div style="font-size:1.5rem;margin-bottom:8px;">🎯</div>
+                <h3 style="font-size:0.95rem;font-weight:600;color:#111;margin-bottom:4px;">60 heures encadrées</h3>
+                <p style="font-size:0.8rem;color:#888;line-height:1.5;">Programme structuré couvrant les 4 compétences linguistiques.</p>
+              </div>
+              <div style="background:#f8f8fa;border-radius:14px;padding:20px;">
+                <div style="font-size:1.5rem;margin-bottom:8px;">📦</div>
+                <h3 style="font-size:0.95rem;font-weight:600;color:#111;margin-bottom:4px;">Petits groupes (5 max)</h3>
+                <p style="font-size:0.8rem;color:#888;line-height:1.5;">Maximum 5 apprenants pour un suivi personnalisé.</p>
+              </div>
+              <div style="background:#f8f8fa;border-radius:14px;padding:20px;">
+                <div style="font-size:1.5rem;margin-bottom:8px;">🏆</div>
+                <h3 style="font-size:0.95rem;font-weight:600;color:#111;margin-bottom:4px;">Résultats garantis</h3>
+                <p style="font-size:0.8rem;color:#888;line-height:1.5;">Progression mesurable dès la 1re semaine.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="dc-section-badge" style="background:#E8EEFD;color:#264EBF;margin-bottom:12px;">Public cible</div>
+            <h2 style="font-size:1.8rem;font-weight:700;color:#111;margin-bottom:16px;letter-spacing:-0.02em;">Pour <span style="background:linear-gradient(135deg,#FA4E30,#FC9705);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">qui</span> ?</h2>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:14px;padding:14px;background:#f8f8fa;border-radius:12px;">
+                <span style="font-size:1.3rem;">💼</span>
+                <div><div style="font-weight:600;font-size:0.9rem;color:#111;margin-bottom:2px;">Professionnels en activité</div><p style="font-size:0.8rem;color:#888;line-height:1.5;">Cours en soirée (17–20h) compatibles avec votre horaire de travail.</p></div>
+              </div>
+              <div style="display:flex;gap:14px;padding:14px;background:#f8f8fa;border-radius:12px;">
+                <span style="font-size:1.3rem;">📝</span>
+                <div><div style="font-weight:600;font-size:0.9rem;color:#111;margin-bottom:2px;">Candidats aux examens</div><p style="font-size:0.8rem;color:#888;line-height:1.5;">Préparation intensive TCF, TEF, DELF/DALF en 4 semaines.</p></div>
+              </div>
+              <div style="display:flex;gap:14px;padding:14px;background:#f8f8fa;border-radius:12px;">
+                <span style="font-size:1.3rem;">🔝</span>
+                <div><div style="font-weight:600;font-size:0.9rem;color:#111;margin-bottom:2px;">Apprenants ambitieux</div><p style="font-size:0.8rem;color:#888;line-height:1.5;">Intégration linguistique accélérée en petit groupe.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description callout -->
+        <div style="background:linear-gradient(135deg,#f8f8fa,#f0f0f4);border-radius:16px;padding:32px;margin-bottom:48px;border-left:4px solid #73CE65;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="font-size:1.2rem;">📖</span>
+            <div>
+              <h3 style="font-weight:600;font-size:1rem;color:#111;margin-bottom:8px;">Description complète</h3>
+              <p style="font-size:0.85rem;color:#666;line-height:1.7;margin-bottom:8px;">Boostez votre français avec Français Express, le programme intensif en 4 semaines :</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;">
+                <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#555;"><span style="color:#73CE65;">✓</span> Compréhension et expression orale</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#555;"><span style="color:#73CE65;">✓</span> Grammaire et vocabulaire appliqués</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#555;"><span style="color:#73CE65;">✓</span> Mises en situation réelles</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#555;"><span style="color:#73CE65;">✓</span> Rapport de progression inclus</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#555;"><span style="color:#73CE65;">✓</span> Certificat de fin de session</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#555;"><span style="color:#73CE65;">✓</span> Exercices intensifs quotidiens</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;color:#555;"><span style="color:#73CE65;">✓</span> Suivi personnalisé en groupe</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing -->
+        <div style="margin-bottom:48px;">
+          <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Tarif</div>
+          <h2 style="font-size:1.5rem;font-weight:700;color:#111;margin-bottom:4px;letter-spacing:-0.02em;">Forfait unique</h2>
+          <p style="color:#888;font-size:0.9rem;margin-bottom:24px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+          <div style="background:linear-gradient(135deg,#111,#1a1a2e);border-radius:16px;padding:32px;text-align:center;">
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Français Express</div>
+            <div style="font-size:3rem;font-weight:800;color:#fff;letter-spacing:-0.03em;">600 $</div>
+            <div style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:4px;">Tout compris</div>
+            <div style="display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+              <span style="display:flex;align-items:center;gap:4px;font-size:0.75rem;color:rgba(255,255,255,0.6);">✓ Évaluation de placement</span>
+              <span style="display:flex;align-items:center;gap:4px;font-size:0.75rem;color:rgba(255,255,255,0.6);">✓ 60 h d'enseignement</span>
+              <span style="display:flex;align-items:center;gap:4px;font-size:0.75rem;color:rgba(255,255,255,0.6);">✓ Rapport final</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- How it works + Outcomes -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;">
+          <div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Démarche</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#111;margin-bottom:16px;">Comment ça marche ?</h3>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:12px;align-items:center;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;flex-shrink:0;">1</div>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#111;">Choisissez votre session</div><div style="font-size:0.75rem;color:#888;">Consultez le calendrier et réservez votre mois.</div></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:center;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;flex-shrink:0;">2</div>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#111;">Évaluation de placement</div><div style="font-size:0.75rem;color:#888;">Remplissez la fiche d'inscription pour évaluer votre niveau.</div></div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:center;">
+                <div style="width:32px;height:32px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;flex-shrink:0;">3</div>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#111;">Démarrez le programme</div><div style="font-size:0.75rem;color:#888;">Lun–Ven 17–20h pendant 4 semaines.</div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="dc-section-badge" style="background:#E8EEFD;color:#264EBF;margin-bottom:12px;">Résultats</div>
+            <h3 style="font-size:1.1rem;font-weight:700;color:#111;margin-bottom:16px;">Ce que ce parcours vous apporte</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#f8f8fa;border-radius:10px;padding:14px;">
+                <div style="font-size:1.1rem;margin-bottom:4px;">🚀</div>
+                <div style="font-weight:600;font-size:0.8rem;color:#111;">Résultats visibles dès la 1re semaine</div>
+              </div>
+              <div style="background:#f8f8fa;border-radius:10px;padding:14px;">
+                <div style="font-size:1.1rem;margin-bottom:4px;">📋</div>
+                <div style="font-weight:600;font-size:0.8rem;color:#111;">Niveau supérieur garanti</div>
+              </div>
+              <div style="background:#f8f8fa;border-radius:10px;padding:14px;">
+                <div style="font-size:1.1rem;margin-bottom:4px;">🔄</div>
+                <div style="font-weight:600;font-size:0.8rem;color:#111;">Flexibilité</div>
+              </div>
+              <div style="background:#f8f8fa;border-radius:10px;padding:14px;">
+                <div style="font-size:1.1rem;margin-bottom:4px;">💬</div>
+                <div style="font-weight:600;font-size:0.8rem;color:#111;">Certificat de fin de session</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div style="margin-bottom:48px;">
+          <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Témoignages</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+            <div style="background:#f8f8fa;border-radius:14px;padding:20px;">
+              <div style="color:#F5A623;font-size:0.8rem;margin-bottom:8px;">★★★★★</div>
+              <p style="font-size:0.8rem;color:#555;line-height:1.6;font-style:italic;margin-bottom:12px;">« Le format intensif m'a permis de passer de A1 à A2 en seulement 4 semaines. Incroyable ! »</p>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.7rem;">S</div>
+                <div><div style="font-weight:600;font-size:0.75rem;color:#111;">Marie‑Claire D.</div><div style="font-size:0.65rem;color:#999;">Niveau débutant</div></div>
+              </div>
+            </div>
+            <div style="background:#f8f8fa;border-radius:14px;padding:20px;">
+              <div style="color:#F5A623;font-size:0.8rem;margin-bottom:8px;">★★★★★</div>
+              <p style="font-size:0.8rem;color:#555;line-height:1.6;font-style:italic;margin-bottom:12px;">« J'ai préparé mon TCF et obtenu B2 grâce à ce programme intensif. »</p>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#73CE65;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.7rem;">A</div>
+                <div><div style="font-weight:600;font-size:0.75rem;color:#111;">Jean‑Luc T.</div><div style="font-size:0.65rem;color:#999;">Professionnel</div></div>
+              </div>
+            </div>
+            <div style="background:#f8f8fa;border-radius:14px;padding:20px;">
+              <div style="color:#F5A623;font-size:0.8rem;margin-bottom:8px;">★★★★★</div>
+              <p style="font-size:0.8rem;color:#555;line-height:1.6;font-style:italic;margin-bottom:12px;">« Les cours de 17h à 20h sont parfaits pour les professionnels. Formateurs compétents. »</p>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#264EBF;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.7rem;">L</div>
+                <div><div style="font-weight:600;font-size:0.75rem;color:#111;">Fatima Z.</div><div style="font-size:0.65rem;color:#999;">Candidat TCF</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="margin-bottom:48px;">
+          <div class="dc-section-badge" style="background:#F0E8FD;color:#864BCA;margin-bottom:12px;">FAQ</div>
+          <h3 style="font-size:1.1rem;font-weight:700;color:#111;margin-bottom:16px;">Questions fréquentes</h3>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="border:1px solid #eee;border-radius:10px;padding:14px 16px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:500;font-size:0.85rem;color:#111;">Quand débutent les prochaines sessions ?</span><span style="color:#999;">+</span></div>
+            </div>
+            <div style="border:1px solid #eee;border-radius:10px;padding:14px 16px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:500;font-size:0.85rem;color:#111;">Quels sont les prérequis ?</span><span style="color:#999;">+</span></div>
+            </div>
+            <div style="border:1px solid #eee;border-radius:10px;padding:14px 16px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:500;font-size:0.85rem;color:#111;">Y a-t-il une évaluation initiale ?</span><span style="color:#999;">+</span></div>
+            </div>
+            <div style="border:1px solid #eee;border-radius:10px;padding:14px 16px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-weight:500;font-size:0.85rem;color:#111;">Cours en ligne ou en présentiel ?</span><span style="color:#999;">+</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mid CTA -->
+        <div style="background:#111;border-radius:16px;padding:40px;text-align:center;">
+          <h3 style="font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:8px;">Prêt à commencer ?</h3>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:20px;">Choisissez votre session, réservez votre première séance.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;border-radius:10px;font-weight:600;font-size:0.9rem;text-decoration:none;">Réservez Français Express →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 2 — Premium University -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c2">
+  <div class="concept-header">
+    <div class="concept-num">Concept 02</div>
+    <h2>Premium University</h2>
+    <p class="tagline">Inspiré des grandes universités (Oxford, Harvard). Sérif, crests, tons chauds, tradition et excellence.</p>
+  </div>
+  <div class="dc-preview" style="background:#FBF8F3;font-family:'EB Garamond',Georgia,serif;">
+    <div class="dc-preview-inner">
+      <div style="position:relative;overflow:hidden;background:#2B2118;padding:0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;min-height:560px;">
+          <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+              <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(250,78,48,0.6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:#FA4E30;font-weight:700;">C</div>
+              <span style="font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;">École Certifiée · +950 étudiants</span>
+            </div>
+            <h1 style="font-family:'EB Garamond',Georgia,serif;font-size:3.5rem;font-weight:700;color:#fff;line-height:1.1;margin-bottom:8px;letter-spacing:-0.01em;">Français <span style="color:#FA4E30;">Express</span></h1>
+            <p style="font-family:'EB Garamond',Georgia,serif;font-size:1.2rem;color:rgba(255,255,255,0.6);line-height:1.5;font-style:italic;margin-bottom:24px;max-width:400px;">Le programme intensif Français Express – 4 semaines pour des résultats concrets.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;">
+              <span class="dc-tag" style="background:rgba(250,78,48,0.12);color:#FA4E30;font-family:'Inter',sans-serif;">4 semaines</span>
+              <span class="dc-tag" style="background:rgba(115,206,101,0.12);color:#73CE65;font-family:'Inter',sans-serif;">60 heures</span>
+              <span class="dc-tag" style="background:rgba(255,204,0,0.12);color:#D4A800;font-family:'Inter',sans-serif;">600 $</span>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez maintenant →</a>
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.6);padding:12px 28px;font-family:'Inter',sans-serif;font-weight:500;font-size:0.85rem;text-decoration:none;border:1px solid rgba(255,255,255,0.15);">Choisissez le format</a>
+            </div>
+          </div>
+          <div style="position:relative;display:flex;align-items:center;justify-content:center;padding:48px;">
+            <div style="width:300px;height:380px;border-radius:4px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+              <img src="img/hero-cours-solo-new.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div style="position:absolute;bottom:48px;right:32px;display:flex;flex-direction:column;gap:6px;">
+              <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;">
+                <span style="font-weight:700;color:#FA4E30;font-size:0.85rem;">+950</span>
+                <span style="color:rgba(255,255,255,0.5);font-size:0.6rem;margin-left:6px;">étudiants</span>
+              </div>
+              <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;">
+                <span style="font-weight:700;color:#73CE65;font-size:0.85rem;">4.9/5</span>
+                <span style="color:rgba(255,255,255,0.5);font-size:0.6rem;margin-left:6px;">Google</span>
+              </div>
+              <div style="background:rgba(255,255,255,0.08);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 14px;">
+                <span style="font-weight:700;color:#D4A800;font-size:0.85rem;">12 ans</span>
+                <span style="color:rgba(255,255,255,0.5);font-size:0.6rem;margin-left:6px;">d'expérience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:14px 56px;background:#F5F0EB;border-bottom:1px solid #E8E0D6;">
+        <div style="display:flex;gap:32px;flex-wrap:wrap;font-family:'Inter',sans-serif;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> Évaluation de placement incluse</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> Certificat inclus</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> 4 semaines intensives</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> 5 max par groupe</div>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:0 auto;padding:64px 56px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:56px;">
+          <div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;font-family:'Inter',sans-serif;margin-bottom:12px;">Avantages</div>
+            <h2 style="font-family:'EB Garamond',Georgia,serif;font-size:2.2rem;font-weight:700;color:#2B2118;margin-bottom:12px;">Pourquoi choisir Français Express ?</h2>
+            <p style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#7A7068;line-height:1.7;margin-bottom:20px;">Un accompagnement individuel pensé pour adultes exigeants qui veulent des résultats rapides et durables.</p>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:14px;padding:14px 18px;background:#F5F0EB;border-radius:8px;">
+                <span style="font-size:1.3rem;">📅</span>
+                <div><div style="font-weight:600;font-size:0.9rem;color:#2B2118;">4 semaines intensives</div><p style="font-size:0.8rem;color:#7A7068;line-height:1.5;">15 h/semaine avec des formateurs experts FLE.</p></div>
+              </div>
+              <div style="display:flex;gap:14px;padding:14px 18px;background:#F5F0EB;border-radius:8px;">
+                <span style="font-size:1.3rem;">🎯</span>
+                <div><div style="font-weight:600;font-size:0.9rem;color:#2B2118;">60 heures encadrées</div><p style="font-size:0.8rem;color:#7A7068;line-height:1.5;">Un programme sur mesure adapté à votre niveau.</p></div>
+              </div>
+              <div style="display:flex;gap:14px;padding:14px 18px;background:#F5F0EB;border-radius:8px;">
+                <span style="font-size:1.3rem;">📦</span>
+                <div><div style="font-weight:600;font-size:0.9rem;color:#2B2118;">Petits groupes (5 max)</div><p style="font-size:0.8rem;color:#7A7068;line-height:1.5;">Maximum 5 apprenants pour un suivi personnalisé.</p></div>
+              </div>
+              <div style="display:flex;gap:14px;padding:14px 18px;background:#F5F0EB;border-radius:8px;">
+                <span style="font-size:1.3rem;">🏆</span>
+                <div><div style="font-weight:600;font-size:0.9rem;color:#2B2118;">Résultats garantis</div><p style="font-size:0.8rem;color:#7A7068;line-height:1.5;">Progression mesurable dès la 1re semaine.</p></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="dc-section-badge" style="background:#E8EEFD;color:#264EBF;font-family:'Inter',sans-serif;margin-bottom:12px;">Public cible</div>
+            <h2 style="font-family:'EB Garamond',Georgia,serif;font-size:2.2rem;font-weight:700;color:#2B2118;margin-bottom:12px;">Pour qui ?</h2>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="border-left:3px solid #FA4E30;padding:14px 18px;background:#F5F0EB;border-radius:0 8px 8px 0;">
+                <h3 style="font-weight:600;font-size:0.95rem;color:#2B2118;margin-bottom:2px;">💼 Professionnels en activité</h3>
+                <p style="font-size:0.8rem;color:#7A7068;line-height:1.5;">Cours en soirée (17–20h) compatibles avec votre horaire de travail.</p>
+              </div>
+              <div style="border-left:3px solid #73CE65;padding:14px 18px;background:#F5F0EB;border-radius:0 8px 8px 0;">
+                <h3 style="font-weight:600;font-size:0.95rem;color:#2B2118;margin-bottom:2px;">📝 Candidats aux examens</h3>
+                <p style="font-size:0.8rem;color:#7A7068;line-height:1.5;">Préparation intensive TCF, TEF, DELF/DALF en 4 semaines.</p>
+              </div>
+              <div style="border-left:3px solid #264EBF;padding:14px 18px;background:#F5F0EB;border-radius:0 8px 8px 0;">
+                <h3 style="font-weight:600;font-size:0.95rem;color:#2B2118;margin-bottom:2px;">🔝 Apprenants ambitieux</h3>
+                <p style="font-size:0.8rem;color:#7A7068;line-height:1.5;">Intégration linguistique accélérée en petit groupe.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#F5F0EB;border-radius:8px;padding:32px 40px;margin-bottom:48px;position:relative;">
+          <div style="font-size:3rem;color:#FA4E30;opacity:0.3;position:absolute;top:16px;left:16px;line-height:1;">"</div>
+          <p style="font-size:1rem;color:#5A5048;line-height:1.8;font-style:italic;font-family:'EB Garamond',Georgia,serif;max-width:700px;">Boostez votre français avec Français Express – 4 semaines intensives, 60 h, 5 max/groupe.</p>
+        </div>
+        <div style="margin-bottom:48px;">
+          <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;font-family:'Inter',sans-serif;margin-bottom:12px;">Tarif</div>
+          <h2 style="font-family:'EB Garamond',Georgia,serif;font-size:1.8rem;font-weight:700;color:#2B2118;margin-bottom:4px;">Forfait unique</h2>
+          <p style="font-family:'Inter',sans-serif;font-size:0.85rem;color:#7A7068;margin-bottom:20px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+          <div style="background:#2B2118;border-radius:12px;padding:36px;text-align:center;">
+            <div style="font-family:'EB Garamond',Georgia,serif;font-size:0.85rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">Français Express</div>
+            <div style="font-family:'EB Garamond',Georgia,serif;font-size:3rem;font-weight:700;color:#fff;">600 $</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:2px;">Tout compris</div>
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:14px;flex-wrap:wrap;font-family:'Inter',sans-serif;">
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Évaluation de placement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ 60 h d'enseignement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Rapport final</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:48px;">
+          <div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;font-family:'Inter',sans-serif;margin-bottom:12px;">Démarche</div>
+            <h3 style="font-family:'EB Garamond',Georgia,serif;font-size:1.4rem;font-weight:700;color:#2B2118;margin-bottom:12px;">Comment ça marche ?</h3>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:14px;">
+                <div style="width:36px;height:36px;border-radius:50%;border:2px solid #FA4E30;color:#FA4E30;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">1</div>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#2B2118;">Choisissez votre session</div><div style="font-size:0.75rem;color:#7A7068;">Consultez le calendrier et réservez votre mois.</div></div>
+              </div>
+              <div style="display:flex;gap:14px;">
+                <div style="width:36px;height:36px;border-radius:50%;border:2px solid #FA4E30;color:#FA4E30;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">2</div>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#2B2118;">Évaluation de placement</div><div style="font-size:0.75rem;color:#7A7068;">Remplissez la fiche d'inscription pour évaluer votre niveau.</div></div>
+              </div>
+              <div style="display:flex;gap:14px;">
+                <div style="width:36px;height:36px;border-radius:50%;border:2px solid #FA4E30;color:#FA4E30;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">3</div>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#2B2118;">Démarrez le programme</div><div style="font-size:0.75rem;color:#7A7068;">Lun–Ven 17–20h pendant 4 semaines.</div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="dc-section-badge" style="background:#E8EEFD;color:#264EBF;font-family:'Inter',sans-serif;margin-bottom:12px;">Résultats</div>
+            <h3 style="font-family:'EB Garamond',Georgia,serif;font-size:1.4rem;font-weight:700;color:#2B2118;margin-bottom:12px;">Ce que ce parcours vous apporte</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#F5F0EB;border-radius:6px;padding:14px;text-align:center;"><div style="font-size:1.3rem;margin-bottom:4px;">🚀</div><div style="font-weight:600;font-size:0.8rem;color:#2B2118;">Progression</div></div>
+              <div style="background:#F5F0EB;border-radius:6px;padding:14px;text-align:center;"><div style="font-size:1.3rem;margin-bottom:4px;">📋</div><div style="font-weight:600;font-size:0.8rem;color:#2B2118;">Objectifs</div></div>
+              <div style="background:#F5F0EB;border-radius:6px;padding:14px;text-align:center;"><div style="font-size:1.3rem;margin-bottom:4px;">🔄</div><div style="font-weight:600;font-size:0.8rem;color:#2B2118;">Flexibilité</div></div>
+              <div style="background:#F5F0EB;border-radius:6px;padding:14px;text-align:center;"><div style="font-size:1.3rem;margin-bottom:4px;">💬</div><div style="font-weight:600;font-size:0.8rem;color:#2B2118;">Confiance</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:48px;">
+          <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;font-family:'Inter',sans-serif;margin-bottom:12px;">Témoignages</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+            <div style="background:#F5F0EB;border-radius:8px;padding:24px;"><div style="color:#F5A623;font-size:0.8rem;">★★★★★</div><p style="font-style:italic;color:#5A5048;font-size:0.85rem;line-height:1.6;margin:8px 0 12px;">« Le format intensif m'a permis de passer de A1 à A2 en seulement 4 semaines. »</p><div style="font-weight:600;font-size:0.8rem;color:#2B2118;">Marie‑Claire D.</div><div style="font-size:0.65rem;color:#7A7068;">Niveau débutant</div></div>
+            <div style="background:#F5F0EB;border-radius:8px;padding:24px;"><div style="color:#F5A623;font-size:0.8rem;">★★★★★</div><p style="font-style:italic;color:#5A5048;font-size:0.85rem;line-height:1.6;margin:8px 0 12px;">« J'ai préparé mon TCF et obtenu B2 grâce à ce programme intensif. »</p><div style="font-weight:600;font-size:0.8rem;color:#2B2118;">Jean‑Luc T.</div><div style="font-size:0.65rem;color:#7A7068;">Professionnel</div></div>
+            <div style="background:#F5F0EB;border-radius:8px;padding:24px;"><div style="color:#F5A623;font-size:0.8rem;">★★★★★</div><p style="font-style:italic;color:#5A5048;font-size:0.85rem;line-height:1.6;margin:8px 0 12px;">« Les cours en soirée sont parfaits pour les professionnels. »</p><div style="font-weight:600;font-size:0.8rem;color:#2B2118;">Fatima Z.</div><div style="font-size:0.65rem;color:#7A7068;">Intermédiaire</div></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:32px;">
+          <div>
+            <div class="dc-section-badge" style="background:#F0E8FD;color:#864BCA;font-family:'Inter',sans-serif;margin-bottom:12px;">FAQ</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="border-bottom:1px solid #E8E0D6;padding:10px 0;"><div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#2B2118;"><span>Quand débutent les sessions ?</span><span style="color:#C4B8AD;">+</span></div></div>
+              <div style="border-bottom:1px solid #E8E0D6;padding:10px 0;"><div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#2B2118;"><span>Quels sont les prérequis ?</span><span style="color:#C4B8AD;">+</span></div></div>
+              <div style="border-bottom:1px solid #E8E0D6;padding:10px 0;"><div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#2B2118;"><span>Y a-t-il une évaluation ?</span><span style="color:#C4B8AD;">+</span></div></div>
+              <div style="border-bottom:1px solid #E8E0D6;padding:10px 0;"><div style="display:flex;justify-content:space-between;font-size:0.85rem;color:#2B2118;"><span>Cours en ligne ou en présentiel ?</span><span style="color:#C4B8AD;">+</span></div></div>
+            </div>
+          </div>
+          <div style="background:#2B2118;border-radius:8px;padding:28px;text-align:center;">
+            <h3 style="font-family:'EB Garamond',Georgia,serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:6px;">Prêt à commencer ?</h3>
+            <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:16px;">Choisissez votre session.</p>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:10px 24px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.8rem;text-decoration:none;">Réservez →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 3 — Luxury Editorial -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c3">
+  <div class="concept-header">
+    <div class="concept-num">Concept 03</div>
+    <h2>Luxury Editorial</h2>
+    <p class="tagline">Élégance haut de gamme. Grand format typographique, pull quotes, grille éditoriale, tons neutres chauds.</p>
+  </div>
+  <div class="dc-preview" style="background:#FEFCF8;font-family:'Outfit',sans-serif;">
+    <div class="dc-preview-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;min-height:560px;">
+        <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <span style="width:32px;height:2px;background:#FA4E30;"></span>
+            <span style="font-size:0.65rem;letter-spacing:2px;color:#C4B8AD;text-transform:uppercase;">Cultulangues · Français Express</span>
+          </div>
+          <h1 style="font-size:3.2rem;font-weight:800;color:#1A1512;line-height:1.05;margin-bottom:12px;letter-spacing:-0.03em;">Français <span style="color:#FA4E30;">Express</span></h1>
+          <p style="font-size:1rem;color:#7A7068;line-height:1.6;margin-bottom:20px;max-width:420px;">Maîtrisez le français en 4 semaines. 60 h, 5 max/groupe, Lun–Ven 17–20h.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+            <span class="dc-tag" style="background:#F5F0EB;color:#5A5048;">4 semaines</span>
+            <span class="dc-tag" style="background:#F5F0EB;color:#5A5048;">60 heures</span>
+            <span class="dc-tag" style="background:#F5F0EB;color:#5A5048;">Lun–Ven 17–20h</span>
+            <span class="dc-tag" style="background:#F5F0EB;color:#5A5048;">600 $</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#1A1512;color:#fff;padding:14px 32px;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez maintenant →</a>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#5A5048;padding:14px 32px;font-weight:500;font-size:0.85rem;text-decoration:none;">Choisissez le format</a>
+          </div>
+        </div>
+        <div style="position:relative;overflow:hidden;">
+          <img src="img/hero-cours-solo-new.png" alt="" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
+          <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(254,252,248,0.8) 0%,transparent 50%);"></div>
+          <div style="position:absolute;bottom:32px;right:32px;display:flex;gap:8px;">
+            <div style="background:rgba(255,255,255,0.9);border-radius:6px;padding:8px 14px;text-align:center;">
+              <div style="font-weight:700;font-size:1rem;color:#1A1512;">+950</div>
+              <div style="font-size:0.5rem;color:#999;text-transform:uppercase;">Étudiants</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.9);border-radius:6px;padding:8px 14px;text-align:center;">
+              <div style="font-weight:700;font-size:1rem;color:#1A1512;">4.9/5</div>
+              <div style="font-size:0.5rem;color:#999;text-transform:uppercase;">Google</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.9);border-radius:6px;padding:8px 14px;text-align:center;">
+              <div style="font-weight:700;font-size:1rem;color:#1A1512;">12 ans</div>
+              <div style="font-size:0.5rem;color:#999;text-transform:uppercase;">Expérience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:14px 56px;background:#F5F0EB;">
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> Évaluation de placement incluse</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> Certificat inclus</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> 4 semaines intensives</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:0.8rem;color:#7A7068;"><span style="color:#73CE65;">✓</span> 5 max par groupe</div>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:0 auto;padding:64px 56px;">
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:40px;margin-bottom:48px;">
+          <div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Avantages</div>
+            <h2 style="font-size:2rem;font-weight:700;color:#1A1512;margin-bottom:8px;letter-spacing:-0.02em;">Pourquoi Français Express ?</h2>
+            <p style="color:#7A7068;font-size:0.9rem;line-height:1.7;margin-bottom:20px;">Un accompagnement individuel pensé pour adultes exigeants qui veulent des résultats rapides.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="border:1px solid #E8E0D6;border-radius:8px;padding:16px;">
+                <div style="font-size:1.2rem;margin-bottom:6px;">📅</div>
+                <h3 style="font-size:0.85rem;font-weight:600;color:#1A1512;">4 semaines intensives</h3>
+                <p style="font-size:0.75rem;color:#7A7068;">15 h/semaine avec des formateurs experts.</p>
+              </div>
+              <div style="border:1px solid #E8E0D6;border-radius:8px;padding:16px;">
+                <div style="font-size:1.2rem;margin-bottom:6px;">🎯</div>
+                <h3 style="font-size:0.85rem;font-weight:600;color:#1A1512;">60 heures encadrées</h3>
+                <p style="font-size:0.75rem;color:#7A7068;">Programme adapté à vos objectifs.</p>
+              </div>
+              <div style="border:1px solid #E8E0D6;border-radius:8px;padding:16px;">
+                <div style="font-size:1.2rem;margin-bottom:6px;">📦</div>
+                <h3 style="font-size:0.85rem;font-weight:600;color:#1A1512;">Petits groupes (5 max)</h3>
+                <p style="font-size:0.75rem;color:#7A7068;">Maximum 5 apprenants.</p>
+              </div>
+              <div style="border:1px solid #E8E0D6;border-radius:8px;padding:16px;">
+                <div style="font-size:1.2rem;margin-bottom:6px;">🏆</div>
+                <h3 style="font-size:0.85rem;font-weight:600;color:#1A1512;">Résultats garantis</h3>
+                <p style="font-size:0.75rem;color:#7A7068;">Progression mesurable dès la 1re semaine.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="dc-section-badge" style="background:#E8EEFD;color:#264EBF;margin-bottom:12px;">Public</div>
+            <h3 style="font-size:1.1rem;font-weight:600;color:#1A1512;margin-bottom:12px;">Pour qui ?</h3>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="padding:12px;background:#F8F6F2;border-radius:6px;">
+                <div style="font-weight:600;font-size:0.85rem;color:#1A1512;">💼 Professionnels</div>
+                <p style="font-size:0.75rem;color:#7A7068;">Horaire fixe Lun–Ven 17–20h, idéal après le travail.</p>
+              </div>
+              <div style="padding:12px;background:#F8F6F2;border-radius:6px;">
+                <div style="font-weight:600;font-size:0.85rem;color:#1A1512;">📝 Candidats examens</div>
+                <p style="font-size:0.75rem;color:#7A7068;">Programme intensif TCF, TEF, DELF/DALF.</p>
+              </div>
+              <div style="padding:12px;background:#F8F6F2;border-radius:6px;">
+                <div style="font-weight:600;font-size:0.85rem;color:#1A1512;">🔝 Ambitieux</div>
+                <p style="font-size:0.75rem;color:#7A7068;">Progression rapide en 1-to-1.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <blockquote style="border-left:3px solid #FA4E30;padding:16px 24px;margin-bottom:48px;background:#F8F6F2;border-radius:0 8px 8px 0;">
+          <p style="font-size:1rem;color:#5A5048;line-height:1.7;font-style:italic;">« Boostez votre français avec Français Express – 4 semaines intensives, 60 h, 5 max/groupe. »</p>
+        </blockquote>
+        <div style="margin-bottom:48px;">
+          <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Tarif</div>
+          <h2 style="font-size:1.3rem;font-weight:700;color:#1A1512;margin-bottom:4px;">Forfait unique</h2>
+          <p style="color:#7A7068;font-size:0.85rem;margin-bottom:20px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+          <div style="background:#1A1512;border-radius:12px;padding:36px;text-align:center;">
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">Français Express</div>
+            <div style="font-size:3rem;font-weight:700;color:#fff;">600 $</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:2px;">Tout compris</div>
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:14px;flex-wrap:wrap;">
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Évaluation de placement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ 60 h d'enseignement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Rapport final</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;">
+          <div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Démarche</div>
+            <h3 style="font-size:1rem;font-weight:600;color:#1A1512;margin-bottom:12px;">Comment ça marche ?</h3>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:12px;padding:10px;background:#F8F6F2;border-radius:6px;">
+                <span style="font-weight:700;color:#FA4E30;font-size:1rem;">01</span>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#1A1512;">Choisissez votre session</div><div style="font-size:0.75rem;color:#7A7068;">Consultez le calendrier.</div></div>
+              </div>
+              <div style="display:flex;gap:12px;padding:10px;background:#F8F6F2;border-radius:6px;">
+                <span style="font-weight:700;color:#FA4E30;font-size:1rem;">02</span>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#1A1512;">Évaluation de placement</div><div style="font-size:0.75rem;color:#7A7068;">Inscription et évaluation de niveau.</div></div>
+              </div>
+              <div style="display:flex;gap:12px;padding:10px;background:#F8F6F2;border-radius:6px;">
+                <span style="font-weight:700;color:#FA4E30;font-size:1rem;">03</span>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#1A1512;">Démarrez le programme</div><div style="font-size:0.75rem;color:#7A7068;">Lun–Ven 17–20h pendant 4 semaines.</div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="dc-section-badge" style="background:#E8EEFD;color:#264EBF;margin-bottom:12px;">Résultats</div>
+            <h3 style="font-size:1rem;font-weight:600;color:#1A1512;margin-bottom:12px;">Ce que vous apporte ce parcours</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <div style="border:1px solid #E8E0D6;border-radius:6px;padding:12px;text-align:center;">
+                <div style="font-size:1.5rem;">🚀</div>
+                <div style="font-size:0.75rem;font-weight:600;color:#1A1512;">Progression</div>
+              </div>
+              <div style="border:1px solid #E8E0D6;border-radius:6px;padding:12px;text-align:center;">
+                <div style="font-size:1.5rem;">📋</div>
+                <div style="font-size:0.75rem;font-weight:600;color:#1A1512;">Objectifs</div>
+              </div>
+              <div style="border:1px solid #E8E0D6;border-radius:6px;padding:12px;text-align:center;">
+                <div style="font-size:1.5rem;">🔄</div>
+                <div style="font-size:0.75rem;font-weight:600;color:#1A1512;">Flexibilité</div>
+              </div>
+              <div style="border:1px solid #E8E0D6;border-radius:6px;padding:12px;text-align:center;">
+                <div style="font-size:1.5rem;">💬</div>
+                <div style="font-size:0.75rem;font-weight:600;color:#1A1512;">Confiance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:48px;">
+          <div style="background:#F8F6F2;border-radius:8px;padding:20px;"><div style="color:#F5A623;">★★★★★</div><p style="font-size:0.8rem;color:#5A5048;font-style:italic;margin:8px 0;">« 4 semaines seulement et j'ai vu une vraie différence. Format intensif très efficace. »</p><div style="font-weight:600;font-size:0.8rem;color:#1A1512;">Marie‑Claire D.</div></div>
+          <div style="background:#F8F6F2;border-radius:8px;padding:20px;"><div style="color:#F5A623;">★★★★★</div><p style="font-size:0.8rem;color:#5A5048;font-style:italic;margin:8px 0;">« J'ai préparé mon TCF et obtenu B2 grâce à ce programme intensif. »</p><div style="font-weight:600;font-size:0.8rem;color:#1A1512;">Jean‑Luc T.</div></div>
+          <div style="background:#F8F6F2;border-radius:8px;padding:20px;"><div style="color:#F5A623;">★★★★★</div><p style="font-size:0.8rem;color:#5A5048;font-style:italic;margin:8px 0;">« Les cours en soirée sont parfaits pour les professionnels. »</p><div style="font-weight:600;font-size:0.8rem;color:#1A1512;">Fatima Z.</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+          <div>
+            <div class="dc-section-badge" style="background:#F0E8FD;color:#864BCA;margin-bottom:12px;">FAQ</div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="border-bottom:1px solid #E8E0D6;padding:8px 0;display:flex;justify-content:space-between;font-size:0.8rem;color:#1A1512;"><span>Quand débutent les sessions ?</span><span style="color:#C4B8AD;">+</span></div>
+              <div style="border-bottom:1px solid #E8E0D6;padding:8px 0;display:flex;justify-content:space-between;font-size:0.8rem;color:#1A1512;"><span>Quels sont les prérequis ?</span><span style="color:#C4B8AD;">+</span></div>
+              <div style="border-bottom:1px solid #E8E0D6;padding:8px 0;display:flex;justify-content:space-between;font-size:0.8rem;color:#1A1512;"><span>Y a-t-il une évaluation ?</span><span style="color:#C4B8AD;">+</span></div>
+            </div>
+          </div>
+          <div style="background:#1A1512;border-radius:8px;padding:28px;text-align:center;">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px;">Prêt à commencer ?</h3>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:16px;">Choisissez votre session.</p>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:10px 24px;font-weight:600;font-size:0.8rem;text-decoration:none;">Réservez →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 4 — Modern SaaS -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c4">
+  <div class="concept-header">
+    <div class="concept-num">Concept 04</div>
+    <h2>Modern SaaS</h2>
+    <p class="tagline">Dashboard vivant avec widgets métriques, barres de progression et cartes de données. Interface produit.</p>
+  </div>
+  <div class="dc-preview" style="background:#F8FAFC;font-family:'Inter',sans-serif;">
+    <div class="dc-preview-inner">
+      <div style="background:linear-gradient(135deg,#0F172A,#1E293B);padding:0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;min-height:540px;">
+          <div style="padding:56px 48px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:16px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#73CE65;"></span>
+              <span style="font-size:0.7rem;color:#73CE65;font-weight:600;">+950 étudiants nous font confiance</span>
+            </div>
+            <h1 style="font-size:2.8rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:8px;letter-spacing:-0.03em;">Français <span style="color:#FA4E30;">Express</span></h1>
+            <p style="font-size:1rem;color:#94A3B8;line-height:1.6;margin-bottom:20px;max-width:420px;">4 semaines intensives – 60 h encadrées, 5 max/groupe, Lun–Ven 17–20h. 600 $ tout compris.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+              <span class="dc-tag" style="background:rgba(250,78,48,0.12);color:#FA4E30;">4 semaines</span>
+              <span class="dc-tag" style="background:rgba(115,206,101,0.12);color:#73CE65;">60 heures</span>
+              <span class="dc-tag" style="background:rgba(99,102,241,0.12);color:#818CF8;">Lun–Ven 17–20h</span>
+              <span class="dc-tag" style="background:rgba(245,158,11,0.12);color:#F59E0B;">600 $</span>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:14px 28px;border-radius:10px;font-weight:600;font-size:0.9rem;text-decoration:none;">Commencer →</a>
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#94A3B8;padding:14px 28px;border-radius:10px;font-weight:500;font-size:0.9rem;text-decoration:none;border:1px solid #334155;">En savoir plus</a>
+            </div>
+          </div>
+          <div style="padding:56px 48px;display:flex;flex-direction:column;justify-content:center;gap:12px;">
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:0.75rem;color:#64748B;">Progression moyenne</span>
+                <span style="font-weight:700;font-size:0.8rem;color:#fff;">+85%</span>
+              </div>
+              <div style="height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden;"><div style="width:+85%;height:100%;background:linear-gradient(90deg,#FA4E30,#FC9705);border-radius:3px;"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:12px;">
+                <span style="font-size:0.7rem;color:#64748B;">de nos apprenants améliorent leur niveau</span>
+                <span style="font-size:0.7rem;color:#64748B;">+950 avis</span>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
+                <div style="font-size:1.3rem;font-weight:800;color:#FA4E30;">+950</div>
+                <div style="font-size:0.6rem;color:#64748B;text-transform:uppercase;">Étudiants</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
+                <div style="font-size:1.3rem;font-weight:800;color:#73CE65;">4.9/5</div>
+                <div style="font-size:0.6rem;color:#64748B;text-transform:uppercase;">Note Google</div>
+              </div>
+              <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;grid-column:span 2;">
+                <div style="font-size:1rem;font-weight:800;color:#818CF8;">12 ans d'expérience</div>
+                <div style="font-size:0.6rem;color:#64748B;text-transform:uppercase;">+950 étudiants accompagnés</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:12px 48px;background:#F1F5F9;border-bottom:1px solid #E2E8F0;">
+        <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:0.8rem;color:#64748B;">
+          <span>✓ Évaluation de placement incluse</span><span>✓ Certificat inclus</span><span>✓ 4 semaines intensives</span><span>✓ 5 max par groupe</span>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:0 auto;padding:48px 48px 64px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;">
+          <div style="background:#fff;border-radius:12px;border:1px solid #E2E8F0;padding:28px;">
+            <div class="dc-section-badge" style="background:#FEF2F2;color:#FA4E30;margin-bottom:12px;">Avantages</div>
+            <h2 style="font-size:1.4rem;font-weight:700;color:#0F172A;margin-bottom:12px;">Pourquoi Français Express ?</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#F8FAFC;border-radius:8px;padding:14px;"><div style="font-size:1.1rem;">📅</div><div style="font-weight:600;font-size:0.8rem;color:#0F172A;margin-top:4px;">4 semaines intensives</div></div>
+              <div style="background:#F8FAFC;border-radius:8px;padding:14px;"><div style="font-size:1.1rem;">🎯</div><div style="font-weight:600;font-size:0.8rem;color:#0F172A;margin-top:4px;">60 heures encadrées</div></div>
+              <div style="background:#F8FAFC;border-radius:8px;padding:14px;"><div style="font-size:1.1rem;">📦</div><div style="font-weight:600;font-size:0.8rem;color:#0F172A;margin-top:4px;">Petits groupes (5 max)</div></div>
+              <div style="background:#F8FAFC;border-radius:8px;padding:14px;"><div style="font-size:1.1rem;">🏆</div><div style="font-weight:600;font-size:0.8rem;color:#0F172A;margin-top:4px;">Résultats garantis</div></div>
+            </div>
+          </div>
+          <div style="background:#fff;border-radius:12px;border:1px solid #E2E8F0;padding:28px;">
+            <div class="dc-section-badge" style="background:#EFF6FF;color:#3B82F6;margin-bottom:12px;">Public cible</div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;">Démarche</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;gap:8px;align-items:center;font-size:0.8rem;color:#0F172A;"><span style="width:22px;height:22px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;">1</span> Choisissez votre session</div>
+              <div style="display:flex;gap:8px;align-items:center;font-size:0.8rem;color:#0F172A;"><span style="width:22px;height:22px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;">2</span> Évaluation de placement</div>
+              <div style="display:flex;gap:8px;align-items:center;font-size:0.8rem;color:#0F172A;"><span style="width:22px;height:22px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;">3</span> Démarrez le programme</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:24px;margin-bottom:32px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#73CE65;"></span>
+            <span style="font-weight:600;font-size:0.9rem;color:#0F172A;">Description du programme</span>
+          </div>
+          <p style="font-size:0.85rem;color:#64748B;line-height:1.7;">Boostez votre français avec Français Express. Choisissez exactement ce dont vous avez besoin : parcours complet, Cap sur l'oral, préparation TCF, module de révision, tests fonction publique, simulations d'examen, maintien du niveau.</p>
+        </div>
+        <div style="margin-bottom:32px;">
+          <div class="dc-section-badge" style="background:#FEF2F2;color:#FA4E30;margin-bottom:12px;">Tarif</div>
+          <h2 style="font-size:1.2rem;font-weight:700;color:#0F172A;margin-bottom:4px;">Forfait unique</h2>
+          <p style="font-size:0.85rem;color:#64748B;margin-bottom:16px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+          <div style="background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;padding:32px;text-align:center;">
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">Français Express</div>
+            <div style="font-size:2.5rem;font-weight:800;color:#fff;">600 $</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:2px;">Tout compris</div>
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Évaluation de placement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ 60 h d'enseignement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Rapport final</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;">
+          <div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:20px;">
+            <div class="dc-section-badge" style="background:#EFF6FF;color:#3B82F6;margin-bottom:8px;">Résultats</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <div style="padding:10px;text-align:center;"><div style="font-size:1.3rem;">🚀</div><div style="font-size:0.75rem;color:#0F172A;font-weight:600;">Progression</div></div>
+              <div style="padding:10px;text-align:center;"><div style="font-size:1.3rem;">📋</div><div style="font-size:0.75rem;color:#0F172A;font-weight:600;">Objectifs</div></div>
+              <div style="padding:10px;text-align:center;"><div style="font-size:1.3rem;">🔄</div><div style="font-size:0.75rem;color:#0F172A;font-weight:600;">Flexibilité</div></div>
+              <div style="padding:10px;text-align:center;"><div style="font-size:1.3rem;">💬</div><div style="font-size:0.75rem;color:#0F172A;font-weight:600;">Confiance</div></div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:20px;">
+            <div class="dc-section-badge" style="background:#FEF2F2;color:#FA4E30;margin-bottom:8px;">Témoignages</div>
+            <div style="font-size:0.75rem;color:#0F172A;font-style:italic;margin-bottom:8px;">« Le format intensif m'a permis de passer de A1 à A2 en seulement 4 semaines. »</div>
+            <div style="display:flex;align-items:center;gap:6px;"><div style="width:20px;height:20px;border-radius:50%;background:#FA4E30;color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:700;">S</div><div><div style="font-weight:600;font-size:0.7rem;color:#0F172A;">Marie‑Claire D.</div></div></div>
+          </div>
+        </div>
+        <div style="background:#0F172A;border-radius:12px;padding:32px;text-align:center;">
+          <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px;">Prêt à maîtriser le français en 4 semaines ?</h3>
+          <p style="font-size:0.8rem;color:#64748B;margin-bottom:16px;">Choisissez votre session et commencez dès maintenant.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;border-radius:10px;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez Français Express →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 5 — Bento Grid -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c5">
+  <div class="concept-header">
+    <div class="concept-num">Concept 05</div>
+    <h2>Bento Grid</h2>
+    <p class="tagline">Grille asymétrique façon Apple/Stripe. Chaque section est une carte indépendante sur fond pastel doux.</p>
+  </div>
+  <div class="dc-preview" style="background:#FAFAFA;font-family:'Inter',sans-serif;">
+    <div class="dc-preview-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;">
+        <div style="padding:56px 48px;background:linear-gradient(135deg,#fff,#F8F8FA);display:flex;flex-direction:column;justify-content:center;">
+          <div class="dc-badge" style="margin-bottom:12px;"><div class="dc-badge-dot"></div>École certifiée — +950 étudiants</div>
+          <h1 style="font-size:2.8rem;font-weight:800;color:#111;line-height:1.1;margin-bottom:8px;letter-spacing:-0.03em;">Français <span class="gradient" style="background:linear-gradient(135deg,#FA4E30,#FC9705);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Express</span></h1>
+          <p style="font-size:0.95rem;color:#666;line-height:1.6;margin-bottom:20px;">Maîtrisez le français en 4 semaines. 60 h, 5 max/groupe, Lun–Ven 17–20h.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+            <span class="dc-tag" style="background:#FEF0EC;color:#FA4E30;">4 semaines</span>
+            <span class="dc-tag" style="background:#F0FAF0;color:#73CE65;">60 heures</span>
+            <span class="dc-tag" style="background:#F0F4FF;color:#4A7BEF;">Lun–Ven 17–20h</span>
+            <span class="dc-tag" style="background:#FFF8E7;color:#D4A800;">600 $</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;border-radius:12px;font-weight:600;font-size:0.85rem;text-decoration:none;box-shadow:0 4px 14px rgba(250,78,48,0.3);">Réservez maintenant →</a>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#555;padding:12px 28px;border-radius:12px;font-weight:500;font-size:0.85rem;text-decoration:none;border:1px solid #ddd;">Choisissez le format</a>
+          </div>
+        </div>
+        <div style="padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#F0F2F5;">
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+            <img src="img/hero-cours-solo-new.png" alt="" style="width:100%;border-radius:8px;">
+          </div>
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);display:flex;flex-direction:column;justify-content:center;text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:#FA4E30;">+950</div>
+            <div style="font-size:0.6rem;color:#999;text-transform:uppercase;">Étudiants</div>
+          </div>
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);display:flex;flex-direction:column;justify-content:center;text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:#73CE65;">4.9/5</div>
+            <div style="font-size:0.6rem;color:#999;text-transform:uppercase;">Google</div>
+          </div>
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);display:flex;flex-direction:column;justify-content:center;text-align:center;">
+            <div style="font-size:1.2rem;font-weight:800;color:#4A7BEF;">12 ans</div>
+            <div style="font-size:0.6rem;color:#999;text-transform:uppercase;">Expérience</div>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:0 auto;padding:48px 24px;">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:10px;">
+          <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,0.04);grid-row:span 2;">
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:8px;">Avantages</div>
+            <h2 style="font-size:1.3rem;font-weight:700;color:#111;margin-bottom:12px;">Pourquoi Français Express ?</h2>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:10px;padding:10px;background:#F8F8FA;border-radius:8px;"><span>📅</span><div><div style="font-weight:600;font-size:0.8rem;color:#111;">4 semaines intensives</div><p style="font-size:0.7rem;color:#888;">Choisissez vos horaires.</p></div></div>
+              <div style="display:flex;gap:10px;padding:10px;background:#F8F8FA;border-radius:8px;"><span>🎯</span><div><div style="font-weight:600;font-size:0.8rem;color:#111;">60 heures encadrées</div><p style="font-size:0.7rem;color:#888;">Programme structuré.</p></div></div>
+              <div style="display:flex;gap:10px;padding:10px;background:#F8F8FA;border-radius:8px;"><span>📦</span><div><div style="font-weight:600;font-size:0.8rem;color:#111;">Petits groupes (5 max)</div><p style="font-size:0.7rem;color:#888;">Tarif dégressif.</p></div></div>
+              <div style="display:flex;gap:10px;padding:10px;background:#F8F8FA;border-radius:8px;"><span>🏆</span><div><div style="font-weight:600;font-size:0.8rem;color:#111;">Résultats garantis</div><p style="font-size:0.7rem;color:#888;">Progression dès la 1re semaine.</p></div></div>
+            </div>
+          </div>
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+            <div class="dc-section-badge" style="background:#EFF6FF;color:#3B82F6;margin-bottom:6px;">Public</div>
+            <div style="font-size:0.75rem;color:#555;">Professionnels en activité, candidats aux examens, nouveaux arrivants</div>
+          </div>
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+            <div class="dc-section-badge" style="background:#FEF2F2;color:#FA4E30;margin-bottom:6px;">Démarche</div>
+            <div style="display:flex;flex-direction:column;gap:4px;font-size:0.75rem;color:#555;">
+              <span>1. Choisissez votre session</span>
+              <span>2. Évaluation de placement</span>
+              <span>3. Démarrez le programme</span>
+            </div>
+          </div>
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);grid-column:span 1;">
+            <div class="dc-section-badge" style="background:#F0FAF0;color:#73CE65;margin-bottom:6px;">Résultats</div>
+            <div style="display:flex;gap:6px;">
+              <span>🚀</span><span>📋</span><span>🔄</span><span>💬</span>
+            </div>
+          </div>
+          <div style="background:#fff;border-radius:16px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04);background:linear-gradient(135deg,#FA4E30,#FC9705);">
+            <div style="font-weight:700;font-size:0.9rem;color:#fff;margin-bottom:4px;">Prêt à commencer ?</div>
+            <a href="#" style="color:#fff;font-size:0.75rem;font-weight:600;">Réservez →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 6 — Magazine Story -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c6">
+  <div class="concept-header">
+    <div class="concept-num">Concept 06</div>
+    <h2>Magazine Story</h2>
+    <p class="tagline">Narrative immersive. Grand écrin visuel, colonnes éditoriales, drop caps, rythme de lecture.</p>
+  </div>
+  <div class="dc-preview" style="background:#fff;font-family:'Playfair Display',Georgia,serif;">
+    <div class="dc-preview-inner">
+      <div style="position:relative;min-height:520px;background:#111;overflow:hidden;">
+        <img src="img/hero-cours-solo-new.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.5;">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.3),rgba(0,0,0,0.7));"></div>
+        <div style="position:relative;z-index:1;max-width:800px;margin:0 auto;padding:120px 48px;text-align:center;">
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;">Cultulangues · Reportage</div>
+          <h1 style="font-size:3.5rem;font-weight:900;color:#fff;line-height:1.1;margin-bottom:12px;font-family:'Playfair Display',Georgia,serif;">Français Express</h1>
+          <div style="width:60px;height:2px;background:#FA4E30;margin:0 auto 16px;"></div>
+          <p style="font-family:'Inter',sans-serif;font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.6;max-width:500px;margin:0 auto 24px;">Le programme intensif Français Express – 4 semaines pour des résultats concrets.</p>
+          <div style="display:flex;gap:12px;justify-content:center;font-family:'Inter',sans-serif;">
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez maintenant →</a>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,0.7);padding:12px 28px;font-weight:500;font-size:0.85rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);">Choisissez le format</a>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:0 auto;padding:48px 48px 64px;font-family:'Inter',sans-serif;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;">
+          <div>
+            <div style="font-size:2rem;font-weight:400;color:#ddd;line-height:1;font-family:'Playfair Display',Georgia,serif;margin-bottom:-8px;">Pourquoi choisir</div>
+            <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:2.2rem;font-weight:700;color:#111;margin-bottom:16px;">Français Express ?</h2>
+            <p style="font-size:0.85rem;color:#666;line-height:1.7;margin-bottom:16px;">Un accompagnement individuel pensé pour adultes exigeants qui veulent des résultats rapides et durables.</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="border-left:2px solid #FA4E30;padding:6px 14px;background:#F8F8FA;"><div style="font-weight:600;font-size:0.85rem;color:#111;">📅 4 semaines intensives</div><p style="font-size:0.75rem;color:#888;">15 h/semaine avec des formateurs experts.</p></div>
+              <div style="border-left:2px solid #73CE65;padding:6px 14px;background:#F8F8FA;"><div style="font-weight:600;font-size:0.85rem;color:#111;">🎯 60 heures encadrées</div><p style="font-size:0.75rem;color:#888;">Programme structuré.</p></div>
+              <div style="border-left:2px solid #4A7BEF;padding:6px 14px;background:#F8F8FA;"><div style="font-weight:600;font-size:0.85rem;color:#111;">📦 Petits groupes (5 max)</div><p style="font-size:0.75rem;color:#888;">Tarif dégressif.</p></div>
+              <div style="border-left:2px solid #D4A800;padding:6px 14px;background:#F8F8FA;"><div style="font-weight:600;font-size:0.85rem;color:#111;">🏆 Résultats garantis</div><p style="font-size:0.75rem;color:#888;">Dès les premières séances.</p></div>
+            </div>
+          </div>
+          <div style="background:linear-gradient(135deg,#F8F8FA,#F0F0F4);border-radius:12px;padding:28px;">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div><span style="font-size:0.65rem;color:#999;text-transform:uppercase;letter-spacing:1px;">Public cible</span><div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+                <div style="display:flex;gap:8px;font-size:0.85rem;color:#111;"><span>💼</span> Professionnels en activité</div>
+                <div style="display:flex;gap:8px;font-size:0.85rem;color:#111;"><span>📝</span> Candidats aux examens</div>
+                <div style="display:flex;gap:8px;font-size:0.85rem;color:#111;"><span>🔝</span> Apprenants ambitieux</div>
+              </div></div>
+              <div style="border-top:1px solid #ddd;padding-top:12px;margin-top:4px;">
+                <span style="font-size:0.65rem;color:#999;text-transform:uppercase;letter-spacing:1px;">Démarche</span>
+                <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;font-size:0.85rem;color:#111;">
+                  <span>1. Choisissez votre session</span>
+                  <span>2. Évaluation de placement</span>
+                  <span>3. Démarrez le programme</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#F8F8FA;border-radius:12px;padding:32px;margin-bottom:40px;">
+          <p style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-style:italic;color:#555;line-height:1.8;text-align:center;">« Boostez votre français avec Français Express – 4 semaines intensives, 60 h, 5 max/groupe. »</p>
+        </div>
+        <div style="margin-bottom:40px;">
+          <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:12px;font-family:'Inter',sans-serif;">Tarif</div>
+          <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;font-weight:700;color:#111;margin-bottom:4px;">Forfait unique</h2>
+          <p style="font-family:'Inter',sans-serif;font-size:0.85rem;color:#666;margin-bottom:16px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+          <div style="background:#111;border-radius:12px;padding:32px;text-align:center;">
+            <div style="font-family:'Playfair Display',Georgia,serif;font-size:0.85rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">Français Express</div>
+            <div style="font-family:'Playfair Display',Georgia,serif;font-size:3rem;font-weight:700;color:#fff;">600 $</div>
+            <div style="font-family:'Inter',sans-serif;font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:2px;">Tout compris</div>
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:14px;flex-wrap:wrap;font-family:'Inter',sans-serif;">
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Évaluation de placement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ 60 h d'enseignement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Rapport final</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;">
+          <div>
+            <div class="dc-section-badge" style="background:#EFF6FF;color:#3B82F6;margin-bottom:8px;font-family:'Inter',sans-serif;">Résultats</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <div style="background:#F8F8FA;border-radius:6px;padding:12px;text-align:center;"><div style="font-size:1.3rem;">🚀</div><div style="font-weight:600;font-size:0.75rem;">Progression</div></div>
+              <div style="background:#F8F8FA;border-radius:6px;padding:12px;text-align:center;"><div style="font-size:1.3rem;">📋</div><div style="font-weight:600;font-size:0.75rem;">Objectifs</div></div>
+              <div style="background:#F8F8FA;border-radius:6px;padding:12px;text-align:center;"><div style="font-size:1.3rem;">🔄</div><div style="font-weight:600;font-size:0.75rem;">Flexibilité</div></div>
+              <div style="background:#F8F8FA;border-radius:6px;padding:12px;text-align:center;"><div style="font-size:1.3rem;">💬</div><div style="font-weight:600;font-size:0.75rem;">Confiance</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:8px;font-family:'Inter',sans-serif;">Témoignages</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="background:#F8F8FA;border-radius:6px;padding:10px;font-size:0.8rem;color:#555;font-style:italic;">« Le format intensif m'a permis de passer de A1 à A2 en seulement 4 semaines. » <span style="font-weight:600;color:#111;font-style:normal;">— Marie‑Claire D.</span></div>
+              <div style="background:#F8F8FA;border-radius:6px;padding:10px;font-size:0.8rem;color:#555;font-style:italic;">« J'ai préparé mon TCF et obtenu B2 grâce à ce programme intensif. » <span style="font-weight:600;color:#111;font-style:normal;">— Jean‑Luc T.</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#111;border-radius:12px;padding:40px;text-align:center;">
+          <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:8px;">Prêt à commencer ?</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:20px;">Choisissez votre session et réservez votre première séance.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;font-family:'Inter',sans-serif;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez Français Express →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 7 — Interactive Timeline -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c7">
+  <div class="concept-header">
+    <div class="concept-num">Concept 07</div>
+    <h2>Interactive Timeline</h2>
+    <p class="tagline">Parcours en timeline verticale. Chaque section est une étape numérotée. Récit progressif.</p>
+  </div>
+  <div class="dc-preview" style="background:#FAFAFA;font-family:'Space Grotesk',sans-serif;">
+    <div class="dc-preview-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;min-height:520px;background:#fff;">
+        <div style="padding:56px 48px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="dc-badge" style="margin-bottom:12px;"><div class="dc-badge-dot"></div>+950 étudiants certifiés</div>
+          <h1 style="font-size:2.6rem;font-weight:700;color:#111;line-height:1.1;margin-bottom:8px;letter-spacing:-0.02em;">Français <span style="color:#FA4E30;">Express</span></h1>
+          <p style="font-size:0.9rem;color:#666;line-height:1.6;margin-bottom:20px;">Un programme intensif de 4 semaines pour des résultats rapides. Lun–Ven 17–20h.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+            <span class="dc-tag" style="background:#FEF0EC;color:#FA4E30;">4 semaines</span>
+            <span class="dc-tag" style="background:#F0FAF0;color:#73CE65;">60 heures</span>
+            <span class="dc-tag" style="background:#F0F4FF;color:#4A7BEF;">Lun–Ven 17–20h</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 24px;border-radius:8px;font-weight:600;font-size:0.85rem;text-decoration:none;">Commencer →</a>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#555;padding:12px 24px;border-radius:8px;font-weight:500;font-size:0.85rem;text-decoration:none;border:1px solid #ddd;">En savoir plus</a>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;padding:48px;background:linear-gradient(135deg,#F8F8FA,#F0F0F4);">
+          <div style="position:relative;">
+            <div style="width:260px;height:340px;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.1);">
+              <img src="img/hero-cours-solo-new.png" alt="" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div style="position:absolute;top:-12px;right:-12px;background:#FA4E30;color:#fff;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;box-shadow:0 4px 12px rgba(250,78,48,0.3);">4.9</div>
+          </div>
+        </div>
+      </div>
+      <!-- Timeline content -->
+      <div style="max-width:1000px;margin:0 auto;padding:56px 48px 64px;">
+        <div style="position:relative;">
+          <div style="position:absolute;left:24px;top:0;bottom:0;width:2px;background:#E5E7EB;"></div>
+          <!-- Step 1 -->
+          <div style="position:relative;padding-left:60px;margin-bottom:32px;">
+            <div style="position:absolute;left:12px;top:0;width:24px;height:24px;border-radius:50%;background:#FA4E30;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;z-index:1;">1</div>
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;">
+              <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:8px;">Pourquoi Français Express ?</div>
+              <p style="font-size:0.85rem;color:#666;line-height:1.7;margin-bottom:12px;">Un accompagnement individuel pour adultes exigeants qui veulent des résultats rapides.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="background:#F8F8FA;border-radius:6px;padding:10px;font-size:0.85rem;color:#111;"><span>📅</span> 4 semaines intensives</div>
+                <div style="background:#F8F8FA;border-radius:6px;padding:10px;font-size:0.85rem;color:#111;"><span>🎯</span> 60 heures encadrées</div>
+                <div style="background:#F8F8FA;border-radius:6px;padding:10px;font-size:0.85rem;color:#111;"><span>📦</span> Petits groupes (5 max)</div>
+                <div style="background:#F8F8FA;border-radius:6px;padding:10px;font-size:0.85rem;color:#111;"><span>🏆</span> Résultats garantis</div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div style="position:relative;padding-left:60px;margin-bottom:32px;">
+            <div style="position:absolute;left:12px;top:0;width:24px;height:24px;border-radius:50%;background:#73CE65;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;z-index:1;">2</div>
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;">
+              <div class="dc-section-badge" style="background:#EFF6FF;color:#3B82F6;margin-bottom:8px;">Public cible &amp; Démarche</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div><div style="font-weight:600;font-size:0.85rem;color:#111;margin-bottom:6px;">Pour qui ?</div>
+                  <div style="display:flex;flex-direction:column;gap:4px;font-size:0.8rem;color:#555;">
+                    <span>💼 Professionnels</span><span>📝 Candidats examens</span><span>🔝 Ambitieux</span>
+                  </div>
+                </div>
+                <div><div style="font-weight:600;font-size:0.85rem;color:#111;margin-bottom:6px;">Comment ça marche ?</div>
+                  <div style="display:flex;flex-direction:column;gap:4px;font-size:0.8rem;color:#555;">
+                    <span>1. Choisissez votre session</span><span>2. Évaluation de placement</span><span>3. Démarrez le programme</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div style="position:relative;padding-left:60px;margin-bottom:32px;">
+            <div style="position:absolute;left:12px;top:0;width:24px;height:24px;border-radius:50%;background:#D4A800;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;z-index:1;">3</div>
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;">
+              <div class="dc-section-badge" style="background:#F0FAF0;color:#73CE65;margin-bottom:8px;">Tarif</div>
+              <p style="font-size:0.85rem;color:#666;line-height:1.6;margin-bottom:12px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+              <div style="background:linear-gradient(135deg,#111,#1a1a2e);border-radius:12px;padding:24px;text-align:center;">
+                <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;">Français Express</div>
+                <div style="font-size:2rem;font-weight:700;color:#fff;margin:4px 0;">600 $</div>
+                <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Tout compris</div>
+                <div style="display:flex;gap:12px;justify-content:center;margin-top:10px;flex-wrap:wrap;">
+                  <span style="font-size:0.7rem;color:rgba(255,255,255,0.5);">✓ Évaluation de placement</span>
+                  <span style="font-size:0.7rem;color:rgba(255,255,255,0.5);">✓ 60 h d'enseignement</span>
+                  <span style="font-size:0.7rem;color:rgba(255,255,255,0.5);">✓ Rapport final</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div style="position:relative;padding-left:60px;margin-bottom:32px;">
+            <div style="position:absolute;left:12px;top:0;width:24px;height:24px;border-radius:50%;background:#4A7BEF;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;z-index:1;">4</div>
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;">
+              <div class="dc-section-badge" style="background:#FEF0EC;color:#FA4E30;margin-bottom:8px;">Résultats &amp; Témoignages</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div><div style="font-weight:600;font-size:0.85rem;color:#111;margin-bottom:6px;">Ce que vous apporte ce parcours</div>
+                  <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                    <span style="background:#F8F8FA;padding:4px 10px;border-radius:4px;font-size:0.75rem;">🚀 Progression</span>
+                    <span style="background:#F8F8FA;padding:4px 10px;border-radius:4px;font-size:0.75rem;">📋 Objectifs</span>
+                    <span style="background:#F8F8FA;padding:4px 10px;border-radius:4px;font-size:0.75rem;">🔄 Flexibilité</span>
+                    <span style="background:#F8F8FA;padding:4px 10px;border-radius:4px;font-size:0.75rem;">💬 Confiance</span>
+                  </div>
+                </div>
+                <div>
+                  <div style="background:#F8F8FA;border-radius:8px;padding:10px;">
+                    <div style="color:#F5A623;font-size:0.7rem;">★★★★★</div>
+                    <p style="font-size:0.75rem;color:#555;font-style:italic;margin:4px 0;">« Le format intensif m'a permis de passer de A1 à A2 en seulement 4 semaines. »</p>
+                    <div style="font-weight:600;font-size:0.7rem;color:#111;">Marie‑Claire D.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#111;border-radius:12px;padding:32px;text-align:center;margin-top:8px;">
+          <h3 style="font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:6px;">Prêt à commencer ?</h3>
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:16px;">Choisissez votre session et commencez dès aujourd'hui.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;border-radius:8px;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez Français Express →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 8 — Split Screen -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c8">
+  <div class="concept-header">
+    <div class="concept-num">Concept 08</div>
+    <h2>Split Screen</h2>
+    <p class="tagline">Alternance image/texte par section. Rythme visuel binaire. Grands blocs graphiques.</p>
+  </div>
+  <div class="dc-preview" style="background:#fff;font-family:'Manrope',sans-serif;">
+    <div class="dc-preview-inner">
+      <div style="display:grid;grid-template-columns:1fr 1fr;min-height:560px;">
+        <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center;background:#fff;">
+          <div class="dc-badge" style="margin-bottom:12px;"><div class="dc-badge-dot"></div>École certifiée — +950 étudiants</div>
+          <h1 style="font-size:3rem;font-weight:800;color:#0F172A;line-height:1.05;margin-bottom:8px;letter-spacing:-0.03em;">Français <span style="color:#FA4E30;">Express</span></h1>
+          <p style="font-size:1rem;color:#64748B;line-height:1.6;margin-bottom:20px;max-width:400px;">4 semaines intensives – 60 h encadrées, 5 max/groupe, Lun–Ven 17–20h. 600 $ tout compris.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+            <span class="dc-tag" style="background:#F1F5F9;color:#475569;">4 semaines</span>
+            <span class="dc-tag" style="background:#F1F5F9;color:#475569;">60 heures</span>
+            <span class="dc-tag" style="background:#F1F5F9;color:#475569;">Lun–Ven 17–20h</span>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:14px 32px;font-weight:600;font-size:0.9rem;text-decoration:none;">Réservez maintenant →</a>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#64748B;padding:14px 32px;font-weight:500;font-size:0.9rem;text-decoration:none;">Découvrir</a>
+          </div>
+        </div>
+        <div style="background:#1E293B;display:flex;align-items:center;justify-content:center;padding:48px;">
+          <div style="text-align:center;">
+            <img src="img/hero-cours-solo-new.png" alt="" style="width:80%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:16px;">
+              <div style="text-align:center;"><div style="font-weight:800;font-size:1.3rem;color:#FA4E30;">+950</div><div style="font-size:0.55rem;color:#94A3B8;text-transform:uppercase;">Étudiants</div></div>
+              <div style="text-align:center;"><div style="font-weight:800;font-size:1.3rem;color:#73CE65;">4.9/5</div><div style="font-size:0.55rem;color:#94A3B8;text-transform:uppercase;">Google</div></div>
+              <div style="text-align:center;"><div style="font-weight:800;font-size:1.3rem;color:#F59E0B;">12 ans</div><div style="font-size:0.55rem;color:#94A3B8;text-transform:uppercase;">Expérience</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Split content sections -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;min-height:320px;">
+        <div style="background:#F8FAFC;padding:48px 56px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="dc-section-badge" style="background:#FEF2F2;color:#FA4E30;margin-bottom:8px;">Avantages</div>
+          <h2 style="font-size:1.5rem;font-weight:700;color:#0F172A;margin-bottom:8px;">Pourquoi Français Express ?</h2>
+          <p style="font-size:0.85rem;color:#64748B;margin-bottom:16px;line-height:1.7;">Un accompagnement individuel pour adultes exigeants qui veulent des résultats rapides.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#0F172A;"><span style="font-size:1.1rem;">📅</span> 4 semaines intensives</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#0F172A;"><span style="font-size:1.1rem;">🎯</span> 60 heures encadrées</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#0F172A;"><span style="font-size:1.1rem;">📦</span> Petits groupes (5 max)</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#0F172A;"><span style="font-size:1.1rem;">🏆</span> Résultats garantis</div>
+          </div>
+        </div>
+        <div style="padding:48px 56px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="dc-section-badge" style="background:#EFF6FF;color:#3B82F6;margin-bottom:8px;">Public cible</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:10px;font-size:0.85rem;color:#0F172A;"><span>💼</span> Professionnels en activité</div>
+            <div style="display:flex;gap:10px;font-size:0.85rem;color:#0F172A;"><span>📝</span> Candidats aux examens</div>
+            <div style="display:flex;gap:10px;font-size:0.85rem;color:#0F172A;"><span>🔝</span> Apprenants ambitieux</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;min-height:280px;">
+        <div style="padding:48px 56px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="dc-section-badge" style="background:#FEF2F2;color:#FA4E30;margin-bottom:8px;">Démarche</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;gap:10px;font-size:0.85rem;color:#0F172A;"><span style="font-weight:700;color:#FA4E30;">1.</span> Choisissez votre session</div>
+            <div style="display:flex;gap:10px;font-size:0.85rem;color:#0F172A;"><span style="font-weight:700;color:#FA4E30;">2.</span> Évaluation de placement</div>
+            <div style="display:flex;gap:10px;font-size:0.85rem;color:#0F172A;"><span style="font-weight:700;color:#FA4E30;">3.</span> Démarrez le programme</div>
+          </div>
+        </div>
+        <div style="background:#F8FAFC;padding:48px 56px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="dc-section-badge" style="background:#F0FAF0;color:#73CE65;margin-bottom:8px;">Résultats</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.85rem;color:#0F172A;"><span>🚀</span> Progression</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.85rem;color:#0F172A;"><span>📋</span> Objectifs</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.85rem;color:#0F172A;"><span>🔄</span> Flexibilité</div>
+            <div style="display:flex;align-items:center;gap:6px;font-size:0.85rem;color:#0F172A;"><span>💬</span> Confiance</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;min-height:300px;">
+        <div style="background:#1E293B;padding:48px 56px;display:flex;flex-direction:column;justify-content:center;color:#fff;">
+          <div class="dc-section-badge" style="background:rgba(255,255,255,0.1);color:#F5A623;margin-bottom:8px;">Témoignages</div>
+          <p style="font-size:1rem;font-style:italic;color:#CBD5E1;margin-bottom:12px;">« Le format intensif m'a permis de passer de A1 à A2 en seulement 4 semaines. Incroyable ! »</p>
+          <div style="font-weight:600;font-size:0.85rem;color:#fff;">Marie‑Claire D.</div>
+          <div style="font-size:0.7rem;color:#64748B;">Niveau débutant</div>
+        </div>
+        <div style="padding:48px 56px;display:flex;flex-direction:column;justify-content:center;">
+          <div class="dc-section-badge" style="background:#F0E8FD;color:#864BCA;margin-bottom:8px;">Tarif</div>
+          <p style="font-size:0.85rem;color:#64748B;line-height:1.6;margin-bottom:16px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+          <div style="background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;padding:24px;text-align:center;">
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;">Français Express</div>
+            <div style="font-size:2rem;font-weight:800;color:#fff;margin:4px 0;">600 $</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Tout compris</div>
+            <div style="display:flex;gap:12px;justify-content:center;margin-top:10px;flex-wrap:wrap;">
+              <span style="font-size:0.7rem;color:rgba(255,255,255,0.5);">✓ Évaluation de placement</span>
+              <span style="font-size:0.7rem;color:rgba(255,255,255,0.5);">✓ 60 h d'enseignement</span>
+              <span style="font-size:0.7rem;color:rgba(255,255,255,0.5);">✓ Rapport final</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#FA4E30,#FC9705);padding:40px;text-align:center;">
+        <h3 style="font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:6px;">Prêt à maîtriser le français en 4 semaines ?</h3>
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-bottom:16px;">Choisissez votre session et réservez votre première séance.</p>
+        <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:#FA4E30;padding:12px 28px;font-weight:600;font-size:0.85rem;text-decoration:none;border-radius:8px;">Réservez maintenant →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 9 — Glassmorphism -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c9">
+  <div class="concept-header">
+    <div class="concept-num">Concept 09</div>
+    <h2>Glassmorphism</h2>
+    <p class="tagline">Fond dégradé abstrait. Cartes en verre avec blur. Effet de profondeur et de transparence.</p>
+  </div>
+  <div class="dc-preview" style="background:linear-gradient(135deg,#F8F9FC,#E8ECF4,#F0E8FD);font-family:'Plus Jakarta Sans',sans-serif;">
+    <div class="dc-preview-inner">
+      <div style="position:relative;overflow:hidden;padding:0;">
+        <div style="position:absolute;top:-80px;right:-40px;width:300px;height:300px;border-radius:50%;background:linear-gradient(135deg,rgba(250,78,48,0.15),rgba(252,151,5,0.1));filter:blur(40px);"></div>
+        <div style="position:absolute;bottom:-60px;left:-60px;width:250px;height:250px;border-radius:50%;background:rgba(115,206,101,0.1);filter:blur(50px);"></div>
+        <div style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:56px 48px;">
+          <div style="backdrop-filter:blur(20px);background:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.5);border-radius:24px;padding:48px;box-shadow:0 8px 32px rgba(0,0,0,0.04);margin-bottom:24px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+              <div>
+                <div class="dc-badge" style="background:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.8);"><div class="dc-badge-dot"></div>+950 étudiants</div>
+                <h1 style="font-size:2.6rem;font-weight:800;color:#0F172A;line-height:1.1;margin:12px 0 8px;letter-spacing:-0.03em;">Français <span style="color:#FA4E30;">Express</span></h1>
+                <p style="font-size:0.95rem;color:#475569;line-height:1.6;margin-bottom:16px;">Maîtrisez le français en 4 semaines. 60 h, 5 max/groupe, Lun–Ven 17–20h.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+                  <span class="dc-tag" style="background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);color:#475569;">4 semaines</span>
+                  <span class="dc-tag" style="background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);color:#475569;">60 heures</span>
+                  <span class="dc-tag" style="background:rgba(255,255,255,0.5);backdrop-filter:blur(8px);color:#475569;">Lun–Ven 17–20h</span>
+                </div>
+                <div style="display:flex;gap:12px;">
+                  <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;border-radius:12px;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez maintenant →</a>
+                  <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#475569;padding:12px 28px;border-radius:12px;font-weight:500;font-size:0.85rem;text-decoration:none;backdrop-filter:blur(8px);background:rgba(255,255,255,0.3);border:1px solid rgba(255,255,255,0.5);">Découvrir</a>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;">
+                <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.6);border-radius:16px;padding:20px;text-align:center;">
+                  <img src="img/hero-cours-solo-new.png" alt="" style="width:100%;border-radius:8px;max-height:180px;object-fit:cover;">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+                  <div style="backdrop-filter:blur(12px);background:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.5);border-radius:12px;padding:12px;text-align:center;">
+                    <div style="font-weight:800;font-size:1rem;color:#FA4E30;">+950</div>
+                    <div style="font-size:0.55rem;color:#64748B;">Étudiants</div>
+                  </div>
+                  <div style="backdrop-filter:blur(12px);background:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.5);border-radius:12px;padding:12px;text-align:center;">
+                    <div style="font-weight:800;font-size:1rem;color:#73CE65;">4.9/5</div>
+                    <div style="font-size:0.55rem;color:#64748B;">Google</div>
+                  </div>
+                  <div style="backdrop-filter:blur(12px);background:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.5);border-radius:12px;padding:12px;text-align:center;">
+                    <div style="font-weight:800;font-size:1rem;color:#818CF8;">12 ans</div>
+                    <div style="font-size:0.55rem;color:#64748B;">Expérience</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px;">
+            <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.5);border-radius:20px;padding:28px;">
+              <div class="dc-section-badge" style="background:rgba(250,78,48,0.1);color:#FA4E30;margin-bottom:8px;">Avantages</div>
+              <h2 style="font-size:1.2rem;font-weight:700;color:#0F172A;margin-bottom:12px;">Pourquoi Français Express ?</h2>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div style="backdrop-filter:blur(8px);background:rgba(255,255,255,0.3);border-radius:10px;padding:14px;"><div style="font-weight:600;font-size:0.85rem;color:#0F172A;">📅 Flexibilité</div><p style="font-size:0.7rem;color:#64748B;">Vos horaires</p></div>
+                <div style="backdrop-filter:blur(8px);background:rgba(255,255,255,0.3);border-radius:10px;padding:14px;"><div style="font-weight:600;font-size:0.85rem;color:#0F172A;">🎯 60 heures encadrées</div><p style="font-size:0.7rem;color:#64748B;">Sur mesure</p></div>
+                <div style="backdrop-filter:blur(8px);background:rgba(255,255,255,0.3);border-radius:10px;padding:14px;"><div style="font-weight:600;font-size:0.85rem;color:#0F172A;">📦 4 semaines intensives</div><p style="font-size:0.7rem;color:#64748B;">60 h, Lun–Ven 17–20h</p></div>
+                <div style="backdrop-filter:blur(8px);background:rgba(255,255,255,0.3);border-radius:10px;padding:14px;"><div style="font-weight:600;font-size:0.85rem;color:#0F172A;">🏆 Résultats</div><p style="font-size:0.7rem;color:#64748B;">Rapides</p></div>
+              </div>
+            </div>
+            <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.5);border-radius:20px;padding:24px;">
+              <div class="dc-section-badge" style="background:rgba(59,130,246,0.1);color:#3B82F6;margin-bottom:8px;">Démarche</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;gap:8px;font-size:0.8rem;color:#0F172A;"><span style="font-weight:700;color:#FA4E30;">1</span> Choisissez votre session</div>
+                <div style="display:flex;gap:8px;font-size:0.8rem;color:#0F172A;"><span style="font-weight:700;color:#FA4E30;">2</span> Évaluation de placement</div>
+                <div style="display:flex;gap:8px;font-size:0.8rem;color:#0F172A;"><span style="font-weight:700;color:#FA4E30;">3</span> Démarrez le programme</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <div class="dc-section-badge" style="background:rgba(250,78,48,0.1);color:#FA4E30;margin-bottom:8px;">Tarif</div>
+            <p style="font-size:0.85rem;color:#475569;line-height:1.6;margin-bottom:12px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+            <div style="backdrop-filter:blur(16px);background:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.5);border-radius:20px;padding:28px;text-align:center;">
+              <div style="font-size:0.7rem;color:#64748B;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">Français Express</div>
+              <div style="font-size:2.5rem;font-weight:800;color:#0F172A;">600 $</div>
+              <div style="font-size:0.8rem;color:#64748B;margin-top:2px;">Tout compris</div>
+              <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+                <span style="font-size:0.75rem;color:#64748B;">✓ Évaluation de placement</span>
+                <span style="font-size:0.75rem;color:#64748B;">✓ 60 h d'enseignement</span>
+                <span style="font-size:0.75rem;color:#64748B;">✓ Rapport final</span>
+              </div>
+            </div>
+          </div>
+          <div style="backdrop-filter:blur(20px);background:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.5);border-radius:20px;padding:32px;text-align:center;">
+            <h3 style="font-size:1.2rem;font-weight:700;color:#0F172A;margin-bottom:4px;">Prêt à commencer ?</h3>
+            <p style="font-size:0.8rem;color:#64748B;margin-bottom:16px;">Choisissez votre session et laissez-vous guider.</p>
+            <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:12px 28px;border-radius:12px;font-weight:600;font-size:0.85rem;text-decoration:none;">Réservez Français Express →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT 10 — Bold Editorial -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div class="concept" id="c10">
+  <div class="concept-header">
+    <div class="concept-num">Concept 10</div>
+    <h2>Bold Editorial</h2>
+    <p class="tagline">Typo surdimensionnée, blocs de couleur vifs, contraste fort. Design audacieux et mémorable.</p>
+  </div>
+  <div class="dc-preview" style="background:#fff;font-family:'Syne',sans-serif;">
+    <div class="dc-preview-inner">
+      <div style="background:#0F172A;padding:0;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;min-height:560px;">
+          <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+              <span style="width:40px;height:4px;background:#FA4E30;"></span>
+              <span style="font-size:0.7rem;color:#FA4E30;font-weight:600;letter-spacing:1px;">FRANÇAIS EXPRESS</span>
+            </div>
+            <h1 style="font-size:4rem;font-weight:900;color:#fff;line-height:1;margin-bottom:12px;letter-spacing:-0.04em;text-transform:uppercase;">
+              Express<br><span style="color:#FA4E30;">Intensif</span>
+            </h1>
+            <p style="font-size:0.95rem;color:#94A3B8;line-height:1.6;margin-bottom:20px;max-width:380px;">Français Express – 4 semaines intensives, 60 h, 5 max/groupe.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+              <span class="dc-tag" style="background:#FA4E30;color:#fff;">4 semaines</span>
+              <span class="dc-tag" style="background:rgba(255,255,255,0.1);color:#94A3B8;">60 h</span>
+              <span class="dc-tag" style="background:rgba(255,255,255,0.1);color:#94A3B8;">600 $</span>
+            </div>
+            <div style="display:flex;gap:12px;">
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:14px 32px;font-weight:700;font-size:0.9rem;text-decoration:none;">Réservez →</a>
+              <a href="#" style="display:inline-flex;align-items:center;gap:8px;color:#94A3B8;padding:14px 32px;font-weight:600;font-size:0.9rem;text-decoration:none;border:2px solid #334155;">Détails</a>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;padding:32px;gap:12px;">
+            <div style="background:linear-gradient(135deg,#FA4E30,#FC9705);border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-size:2.5rem;font-weight:900;color:#fff;">+950</div>
+              <div style="font-size:0.65rem;color:rgba(255,255,255,0.7);text-transform:uppercase;">Étudiants</div>
+            </div>
+            <div style="background:#1E293B;border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;">
+              <div style="font-size:2.5rem;font-weight:900;color:#73CE65;">4.9</div>
+              <div style="font-size:0.65rem;color:#64748B;text-transform:uppercase;">Note Google</div>
+            </div>
+            <div style="background:#1E293B;border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;grid-column:span 2;">
+              <div style="font-size:2rem;font-weight:900;color:#F59E0B;">12 ans</div>
+              <div style="font-size:0.65rem;color:#64748B;text-transform:uppercase;">D'expérience · +950 accompagnés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:0 auto;padding:56px 48px 64px;">
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-bottom:40px;">
+          <div style="background:#FA4E30;border-radius:12px;padding:32px;color:#fff;">
+            <div style="font-weight:700;font-size:0.7rem;letter-spacing:2px;margin-bottom:8px;">POURQUOI</div>
+            <h2 style="font-size:2rem;font-weight:800;color:#fff;margin-bottom:8px;">Choisir Français Express ?</h2>
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.7);margin-bottom:16px;line-height:1.7;">Un accompagnement individuel pour adultes exigeants qui veulent des résultats rapides.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;font-weight:600;">📅 Flexibilité</div>
+              <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;font-weight:600;">🎯 60 heures encadrées</div>
+              <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;font-weight:600;">📦 Petits groupes (5 max)</div>
+              <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:12px;font-weight:600;">🏆 Résultats</div>
+            </div>
+          </div>
+          <div style="background:#F8FAFC;border-radius:12px;padding:24px;">
+            <div style="font-weight:700;font-size:0.7rem;color:#64748B;letter-spacing:2px;margin-bottom:8px;">PUBLIC</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:8px;font-size:0.85rem;color:#0F172A;font-weight:600;"><span>💼</span> Professionnels</div>
+              <div style="display:flex;gap:8px;font-size:0.85rem;color:#0F172A;font-weight:600;"><span>📝</span> Candidats examens</div>
+              <div style="display:flex;gap:8px;font-size:0.85rem;color:#0F172A;font-weight:600;"><span>🔝</span> Ambitieux</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom:32px;">
+          <div style="font-weight:700;font-size:0.7rem;color:#64748B;letter-spacing:2px;margin-bottom:8px;">TARIF</div>
+          <p style="font-size:0.9rem;color:#0F172A;font-weight:500;margin-bottom:16px;">600 $ – Évaluation de placement, 60 heures d'enseignement qualifié et rapport final inclus.</p>
+          <div style="background:linear-gradient(135deg,#0F172A,#1E293B);border-radius:12px;padding:32px;text-align:center;">
+            <div style="font-size:0.7rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2px;">Français Express</div>
+            <div style="font-size:2.5rem;font-weight:900;color:#fff;margin:4px 0;">600 $</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);">Tout compris</div>
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Évaluation de placement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ 60 h d'enseignement</span>
+              <span style="font-size:0.75rem;color:rgba(255,255,255,0.5);">✓ Rapport final</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:32px;">
+          <div style="border:2px solid #0F172A;border-radius:10px;padding:20px;">
+            <div style="font-weight:700;font-size:0.7rem;color:#64748B;letter-spacing:1px;margin-bottom:8px;">DÉMARCHE</div>
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:0.85rem;color:#0F172A;font-weight:600;">
+              <span>1. Choisissez</span><span>2. Rencontre</span><span>3. Réservez</span>
+            </div>
+          </div>
+          <div style="border:2px solid #0F172A;border-radius:10px;padding:20px;">
+            <div style="font-weight:700;font-size:0.7rem;color:#64748B;letter-spacing:1px;margin-bottom:8px;">RÉSULTATS</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span style="background:#F8FAFC;padding:4px 8px;border-radius:4px;font-size:0.8rem;">🚀 Progression</span>
+              <span style="background:#F8FAFC;padding:4px 8px;border-radius:4px;font-size:0.8rem;">📋 Objectifs</span>
+              <span style="background:#F8FAFC;padding:4px 8px;border-radius:4px;font-size:0.8rem;">🔄 Flexibilité</span>
+              <span style="background:#F8FAFC;padding:4px 8px;border-radius:4px;font-size:0.8rem;">💬 Confiance</span>
+            </div>
+          </div>
+          <div style="border:2px solid #0F172A;border-radius:10px;padding:20px;">
+            <div style="font-weight:700;font-size:0.7rem;color:#64748B;letter-spacing:1px;margin-bottom:8px;">TÉMOIGNAGE</div>
+            <p style="font-size:0.8rem;color:#0F172A;font-style:italic;margin-bottom:4px;">« 4 semaines intensives qui changent la donne. Format express très efficace. »</p>
+            <div style="font-weight:600;font-size:0.7rem;color:#FA4E30;">Marie‑Claire D.</div>
+          </div>
+        </div>
+        <div style="background:#0F172A;border-radius:12px;padding:40px;text-align:center;">
+          <h3 style="font-size:1.8rem;font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:6px;letter-spacing:-0.02em;">Prêt à parler français en 4 semaines ?</h3>
+          <p style="font-size:0.85rem;color:#64748B;margin-bottom:20px;">Choisissez votre session et réservez votre première séance dès maintenant.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:8px;background:#FA4E30;color:#fff;padding:14px 36px;font-weight:700;font-size:0.9rem;text-decoration:none;">Réservez Français Express →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<!-- Généré par gen-express-demo.py le 30/07/2026 -->
