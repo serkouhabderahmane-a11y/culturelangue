@@ -22,8 +22,8 @@ class PageSeeder extends Seeder
                 'slug' => 'contact',
                 'title_fr' => 'Contact',
                 'title_en' => 'Contact',
-                'content_fr' => "<p>Contactez-nous pour plus d'informations sur nos programmes de formation linguistique.</p><p>Adresse : 468 rue Plouffe suite 3, Gatineau J8P 4B7 (QC)</p><p>Email : Admin@cultulangues.ca</p>",
-                'content_en' => "<p>Contact us for more information about our language training programs.</p><p>Address: 468 rue Plouffe suite 3, Gatineau J8P 4B7 (QC)</p><p>Email: Admin@cultulangues.ca</p>",
+                'content_fr' => "<p>Contactez-nous pour plus d'informations sur nos programmes de formation linguistique.</p><p>Adresse : 468 rue Plouffe suite 3, Gatineau J8P 4B7 (QC)</p><p>Email : admin@cultulangues.ca</p>",
+                'content_en' => "<p>Contact us for more information about our language training programs.</p><p>Address: 468 rue Plouffe suite 3, Gatineau J8P 4B7 (QC)</p><p>Email: admin@cultulangues.ca</p>",
                 'template' => 'contact',
             ],
             [

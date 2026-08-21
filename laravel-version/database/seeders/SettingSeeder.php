@@ -18,7 +18,7 @@ class SettingSeeder extends Seeder
             ['key' => 'hero_cta_primary', 'value' => 'Découvrez nos parcours d\'apprentissage', 'type' => 'text', 'group' => 'home'],
             ['key' => 'hero_cta_secondary', 'value' => 'Choisissez le format qui vous ressemble', 'type' => 'text', 'group' => 'home'],
             ['key' => 'address', 'value' => '468 rue Plouffe suite 3, Gatineau J8P 4B7 (QC)', 'type' => 'text', 'group' => 'contact'],
-            ['key' => 'email', 'value' => 'Admin@cultulangues.ca', 'type' => 'text', 'group' => 'contact'],
+            ['key' => 'email', 'value' => 'admin@cultulangues.ca', 'type' => 'text', 'group' => 'contact'],
             ['key' => 'phone', 'value' => 'à venir', 'type' => 'text', 'group' => 'contact'],
             ['key' => 'google_rating', 'value' => '4.9', 'type' => 'text', 'group' => 'home'],
         ];

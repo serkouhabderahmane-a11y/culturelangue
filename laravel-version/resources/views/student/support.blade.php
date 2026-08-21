@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="admin-section">
-<p>Besoin d'aide ? Contactez notre équipe de support par email à <strong>Admin@cultulangues.ca</strong>.</p>
+<p>Besoin d'aide ? Contactez notre équipe de support par email à <strong>admin@cultulangues.ca</strong>.</p>
 <p>Nous vous répondrons dans les plus brefs délais.</p>
 </div>
 @endsection

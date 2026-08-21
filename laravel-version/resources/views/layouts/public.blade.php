@@ -111,7 +111,7 @@
           <h4>Contact</h4>
           <div class="ph-footer-contact">
             <span>✉</span>
-            <span>{{ $settings['email'] ?? 'Admin@cultulangues.ca' }}</span>
+            <span>{{ $settings['email'] ?? 'admin@cultulangues.ca' }}</span>
           </div>
           <div class="ph-footer-contact">
             <span>📍</span>

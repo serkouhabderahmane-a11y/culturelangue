@@ -14,7 +14,7 @@ class ContactInfoSeeder extends Seeder
                 'type' => 'email',
                 'label_fr' => 'Email',
                 'label_en' => 'Email',
-                'value' => 'Admin@cultulangues.ca',
+                'value' => 'admin@cultulangues.ca',
                 'icon' => 'envelope',
                 'order' => 1,
             ],
