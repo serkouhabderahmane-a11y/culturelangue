@@ -8,6 +8,34 @@
   <link rel="stylesheet" href="../css/premium.css">
   <link rel="stylesheet" href="../css/read-more.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    /* ══ Démarche — Comment ça marche ? (page-scoped) ══ */
+    .dmp-wrap{background:var(--color-bg-warm);border:1px solid var(--color-border-light);border-radius:var(--radius-2xl);padding:clamp(32px,5vw,64px)}
+    .dmp-head{text-align:center;max-width:620px;margin:0 auto var(--space-2xl)}
+    .dmp-title{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin:var(--space-md) 0 var(--space-sm)}
+    .dmp-sub{color:var(--color-text-secondary);font-size:1rem;margin:0}
+    .dmp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
+    .dmp-step{position:relative;background:var(--color-white);border:1px solid var(--color-border-light);border-radius:var(--radius-xl);padding:var(--space-xl);box-shadow:var(--shadow-sm);transition:all var(--transition-base)}
+    .dmp-step:hover{transform:translateY(-4px);box-shadow:var(--shadow-card-hover);border-color:var(--color-border)}
+    .dmp-step-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-md)}
+    .dmp-num{width:56px;height:56px;border-radius:var(--radius-full);display:inline-flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:var(--color-white);letter-spacing:-0.02em}
+    .dmp-ico{width:44px;height:44px;border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;font-size:1.25rem}
+    .dmp-step--blue .dmp-num{background:var(--color-blue)}
+    .dmp-step--green .dmp-num{background:var(--color-green)}
+    .dmp-step--pink .dmp-num{background:var(--color-pink)}
+    .dmp-step--blue .dmp-ico{background:var(--ph-blue-bg)}
+    .dmp-step--green .dmp-ico{background:var(--ph-green-bg)}
+    .dmp-step--pink .dmp-ico{background:var(--ph-orange-bg)}
+    .dmp-step-title{font-size:1.0625rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:var(--space-sm)}
+    .dmp-step-desc{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0}
+    @media (min-width:901px){
+      .dmp-step:not(:last-child)::after{content:'';position:absolute;top:calc(var(--space-xl) + 28px);right:calc(-1 * var(--space-lg) - 2px);width:calc(var(--space-lg) + 4px);height:2px;background:var(--color-border)}
+    }
+    @media (max-width:900px){
+      .dmp-steps{grid-template-columns:1fr;gap:var(--space-md)}
+      .dmp-step:not(:last-child)::after{content:'';position:absolute;left:60px;bottom:calc(-1 * var(--space-md) - 2px);width:2px;height:calc(var(--space-md) + 4px);background:var(--color-border)}
+    }
+  </style>
 </head>
 <body>
 
@@ -205,6 +233,45 @@
             <div class="contact-cta-links">
               <a href="../index.html" class="btn btn-primary w-full"><i class="ch-icon">✦</i> Découvrir nos programmes</a>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DÉMARCHE ══ -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="dmp-wrap">
+        <div class="dmp-head">
+          <span class="section-badge section-badge--blue">Démarche</span>
+          <h2 class="dmp-title">Comment <span class="text-gradient">ça marche</span> ?</h2>
+          <p class="dmp-sub">Pour commencer votre inscription, suivez ces trois étapes simples :</p>
+        </div>
+        <div class="dmp-steps">
+          <div class="dmp-step dmp-step--blue">
+            <div class="dmp-step-top">
+              <span class="dmp-num">1</span>
+              <span class="dmp-ico">📝</span>
+            </div>
+            <h3 class="dmp-step-title">Remplissez le formulaire de contact</h3>
+            <p class="dmp-step-desc">Indiquez vos informations de base afin que nous puissions ouvrir votre dossier.</p>
+          </div>
+          <div class="dmp-step dmp-step--green">
+            <div class="dmp-step-top">
+              <span class="dmp-num">2</span>
+              <span class="dmp-ico">📊</span>
+            </div>
+            <h3 class="dmp-step-title">Complétez le test de niveau</h3>
+            <p class="dmp-step-desc">Il nous permet d'évaluer votre compréhension écrite et votre expression écrite.</p>
+          </div>
+          <div class="dmp-step dmp-step--pink">
+            <div class="dmp-step-top">
+              <span class="dmp-num">3</span>
+              <span class="dmp-ico">🗣️</span>
+            </div>
+            <h3 class="dmp-step-title">Prenez rendez-vous pour votre évaluation orale</h3>
+            <p class="dmp-step-desc">Vous rencontrerez notre évaluateur afin de déterminer votre niveau d'expression orale.</p>
           </div>
         </div>
       </div>
