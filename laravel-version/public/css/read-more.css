@@ -1,0 +1,88 @@
+/* ══════════════════════════════════════════════════════════════
+   READ MORE / READ LESS — Reusable expand-collapse component
+   Add class="read-more" to any long text block.
+   JS auto-clamps after ~3 lines and adds a toggle button.
+   ══════════════════════════════════════════════════════════════ */
+
+.read-more {
+  position: relative;
+}
+
+/* ── Content wrapper (added by JS) ── */
+.read-more .read-more-content {
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.read-more.is-clamped .read-more-content {
+  max-height: var(--rm-collapsed-height);
+}
+
+.read-more.is-expanded .read-more-content {
+  max-height: var(--rm-expanded-height);
+}
+
+/* ── Toggle button ── */
+.read-more-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ph-orange, #FA4E30);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0 0;
+  margin-top: 2px;
+  line-height: 1.4;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.read-more-toggle:hover {
+  color: #D94020;
+  gap: 8px;
+}
+
+.read-more-toggle:focus-visible {
+  outline: 2px solid var(--ph-orange, #FA4E30);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Chevron icon ── */
+.read-more-toggle .rm-chevron {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.625rem;
+  line-height: 1;
+}
+
+.read-more.is-expanded .read-more-toggle .rm-chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Fade gradient at bottom when clamped ── */
+.read-more.is-clamped::after {
+  content: '';
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  height: 3.5em;
+  background: linear-gradient(to bottom, transparent, var(--color-bg, #fff));
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.read-more.is-expanded::after {
+  opacity: 0;
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 768px) {
+  .read-more-toggle {
+    font-size: 0.8125rem;
+  }
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="student.support.page_title">Support — Cultulangues</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user"><div class="avatar" id="sidebarAvatar">—</div><div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Étudiant·e</div><div class="sidebar-user-role" id="sidebarUserRole">Étudiante</div></div></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="student.sidebar.navigation">Navigation</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span> <span data-i18n="student.sidebar.dashboard">Tableau de bord</span></a>
+        <a class="sidebar-item" data-href="my-programs.html"><span class="sidebar-item-icon">📚</span> <span data-i18n="student.sidebar.my_programs">Mes programmes</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span> <span data-i18n="student.sidebar.calendar">Mon calendrier</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span> <span data-i18n="student.sidebar.payments">Paiements & factures</span></a>
+        <a class="sidebar-item" data-href="level-tests.html"><span class="sidebar-item-icon">📝</span> <span data-i18n="student.sidebar.level_tests">Tests de niveau</span></a>
+        <div class="sidebar-section" data-i18n="student.sidebar.settings">Paramètres</div>
+        <a class="sidebar-item" data-href="profile.html"><span class="sidebar-item-icon">⚙</span> <span data-i18n="student.sidebar.profile">Profil</span></a>
+        <a class="sidebar-item active" data-href="support.html"><span class="sidebar-item-icon">🛠</span> <span data-i18n="student.sidebar.support">Support</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span> <span data-i18n="student.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="student.support.title">Support</h1></div>
+        <div class="topbar-right"><div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" placeholder="Rechercher..." data-i18n-placeholder="student.common.search"></div><button class="topbar-notification">🔔<span class="notification-dot"></span></button><div class="avatar avatar-sm" id="topbarAvatar">—</div></div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-grid-sidebar">
+          <div>
+            <div class="card mb-lg">
+              <div class="card-header"><h3 class="card-title" data-i18n="student.support.send_message">Envoyer un message</h3></div>
+              <div class="card-body">
+                <form id="ticketForm">
+                  <div class="form-group"><label class="form-label" data-i18n="student.support.subject">Sujet</label><input type="text" class="form-input" id="ticketSubject" placeholder="Résumé de votre demande" required></div>
+                  <div class="form-group"><label class="form-label" data-i18n="student.support.category">Catégorie</label><select class="form-select" id="ticketCategory"><option value="general">Général</option><option value="administrative">Question administrative</option><option value="technical">Problème technique</option><option value="program">Programme & cours</option><option value="payment">Paiement & facturation</option></select></div>
+                  <div class="form-group"><label class="form-label" data-i18n="student.support.message">Message</label><textarea class="form-textarea" id="ticketMessage" required placeholder="Décrivez votre demande..." data-i18n-placeholder="student.support.message_placeholder"></textarea></div>
+                  <button type="submit" class="btn btn-primary" data-i18n="student.support.send">Envoyer</button>
+                  <span id="ticketMsg" class="text-muted" style="margin-left: var(--space-sm); font-size: 0.8125rem;"></span>
+                </form>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h3 class="card-title" data-i18n="student.support.recent_messages">Mes demandes</h3></div>
+              <div id="ticketsList" style="display: flex; flex-direction: column; gap: var(--space-md);">
+                <div class="text-center text-muted" style="padding: var(--space-lg) 0;">Chargement…</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 class="card-title mb-md" data-i18n="student.support.faq_title">FAQ rapide</h3>
+            <details style="margin-bottom: var(--space-md);">
+              <summary style="font-weight: 600; cursor: pointer;" data-i18n="student.support.faq1_q">Comment modifier mon mot de passe ?</summary>
+              <p style="font-size: 0.875rem; margin-top: var(--space-sm);" data-i18n="student.support.faq1_a">Rendez-vous dans votre Profil, puis dans la section Sécurité.</p>
+            </details>
+            <details style="margin-bottom: var(--space-md);">
+              <summary style="font-weight: 600; cursor: pointer;" data-i18n="student.support.faq2_q">Quand reçois-je mes factures ?</summary>
+              <p style="font-size: 0.875rem; margin-top: var(--space-sm);" data-i18n="student.support.faq2_a">Les factures sont générées le 1er de chaque mois.</p>
+            </details>
+            <details style="margin-bottom: var(--space-md);">
+              <summary style="font-weight: 600; cursor: pointer;" data-i18n="student.support.faq3_q">Puis-je annuler un programme ?</summary>
+              <p style="font-size: 0.875rem; margin-top: var(--space-sm);" data-i18n="student.support.faq3_a">Oui, sous 14 jours après le début du programme.</p>
+            </details>
+            <details>
+              <summary style="font-weight: 600; cursor: pointer;" data-i18n="student.support.faq4_q">Comment contacter mon professeur ?</summary>
+              <p style="font-size: 0.875rem; margin-top: var(--space-sm);" data-i18n="student.support.faq4_a">Vous pouvez lui envoyer un message depuis la messagerie intégrée.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var STATUS_LABELS = { open: 'Ouverte', replied: 'Répondu', closed: 'Fermée' };
+      var STATUS_CLASS = { open: 'badge-gold', replied: 'badge-blue', closed: 'badge-emerald' };
+
+      function requireStudent() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = '../pages/login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') { window.location.href = '../teacher/dashboard.html'; return false; }
+        if (role === 'admin') { window.location.href = '../admin/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        try { var d = new Date(val); if (isNaN(d.getTime())) return val; return d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return val; }
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || 'Étudiant·e';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('sidebarUserRole', user.current_level ? 'Étudiante à ' + user.current_level : 'Étudiante');
+        setText('topbarAvatar', initials);
+      }
+
+      function loadTickets() {
+        if (!requireStudent()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        var list = document.getElementById('ticketsList');
+        CultulanguesAPI.get('/student/tickets').then(function (resp) {
+          var tickets = resp.data || [];
+          renderUser(CultulanguesAPI.getUser());
+          if (!tickets.length) {
+            list.innerHTML = '<div class="text-center text-muted" style="padding: var(--space-lg) 0;">Aucune demande envoyée.</div>';
+            return;
+          }
+          list.innerHTML = tickets.map(function (t) {
+            var messages = (t.messages || []).map(function (m) {
+              var isYou = m.sender_id === (CultulanguesAPI.getUser() || {}).id;
+              return '<div style="padding: var(--space-md); background: var(--color-bg-alt); border-radius: var(--radius-md);">' +
+                '<div class="flex justify-between mb-sm"><strong>' + (isYou ? 'Vous' : 'Support') + '</strong><small class="text-muted">' + escapeHtml(formatDate(m.created_at)) + '</small></div>' +
+                '<p style="font-size: 0.875rem; margin: 0;">' + escapeHtml(m.body || '') + '</p>' +
+              '</div>';
+            }).join('');
+            return '<div style="border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-md);">' +
+              '<div class="flex justify-between mb-sm">' +
+                '<strong>' + escapeHtml(t.subject || 'Demande') + '</strong>' +
+                '<span class="badge ' + (STATUS_CLASS[t.status] || '') + '">' + escapeHtml(STATUS_LABELS[t.status] || t.status) + '</span>' +
+              '</div>' +
+              '<div style="display: flex; flex-direction: column; gap: var(--space-sm);">' + messages + '</div>' +
+            '</div>';
+          }).join('');
+        }).catch(function (err) {
+          list.innerHTML = '<div class="text-center text-muted" style="padding: var(--space-lg) 0;">Erreur : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</div>';
+        });
+      }
+
+      function bindTicketForm() {
+        var form = document.getElementById('ticketForm');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var msg = document.getElementById('ticketMsg');
+          var subject = document.getElementById('ticketSubject').value.trim();
+          var category = document.getElementById('ticketCategory').value;
+          var message = document.getElementById('ticketMessage').value.trim();
+          if (!subject || !message) { msg.textContent = 'Sujet et message requis.'; return; }
+          CultulanguesAPI.post('/student/tickets', { subject: subject, category: category, message: message })
+            .then(function () {
+              msg.textContent = 'Demande envoyée ✓';
+              form.reset();
+              setTimeout(function () { msg.textContent = ''; }, 3000);
+              loadTickets();
+            }).catch(function (err) {
+              msg.textContent = (err && err.message) || 'Erreur lors de l\'envoi';
+            });
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../pages/login.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      bindLogout();
+      loadTickets();
+      bindTicketForm();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

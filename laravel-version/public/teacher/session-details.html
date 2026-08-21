@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="teacher.sessions.title">Suivi des séances — Enseignant</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">—</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Enseignant·e</div><div class="sidebar-user-role" id="sidebarUserRole">Enseignant</div></div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="teacher.sidebar.navigation">Navigation</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span> <span data-i18n="teacher.sidebar.dashboard">Tableau de bord</span></a>
+        <a class="sidebar-item" data-href="schedule.html"><span class="sidebar-item-icon">📅</span> <span data-i18n="teacher.sidebar.schedule">Mon emploi du temps</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span> <span data-i18n="teacher.sidebar.students">Mes étudiants</span></a>
+        <a class="sidebar-item active" data-href="session-details.html"><span class="sidebar-item-icon">📋</span> <span data-i18n="teacher.sidebar.sessions">Suivi des séances</span></a>
+        <div class="sidebar-section" data-i18n="teacher.sidebar.settings">Paramètres</div>
+        <a class="sidebar-item" data-href="profile.html"><span class="sidebar-item-icon">⚙</span> <span data-i18n="teacher.sidebar.profile">Profil</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span> <span data-i18n="teacher.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="teacher.sessions.page_title">Suivi des séances</h1></div>
+        <div class="topbar-right">
+          <div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" placeholder="Rechercher..." data-i18n-placeholder="teacher.common.search"></div>
+          <button class="topbar-notification">🔔<span class="notification-dot"></span></button>
+          <div class="avatar avatar-sm" id="topbarAvatar">—</div>
+        </div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-content-header">
+          <h2 id="sessionHeading">Suivi des séances</h2>
+          <select class="form-select" id="lessonSelect" style="width: auto; padding: 8px 32px 8px 12px;">
+            <option value="">Chargement…</option>
+          </select>
+        </div>
+
+        <div id="sessionPanel">
+          <div class="card">
+            <div class="text-center text-muted" style="padding: var(--space-lg) 0;" id="sessionPlaceholder">Sélectionnez une séance pour afficher le suivi.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var lessons = [];
+      var currentLesson = null;
+
+      function requireTeacher() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = '../pages/login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'admin') { window.location.href = '../admin/dashboard.html'; return false; }
+        if (role === 'student') { window.location.href = '../student/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        try { var d = new Date(val); if (isNaN(d.getTime())) return val; return d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return val; }
+      }
+
+      function formatTime(val) {
+        if (!val) return '—';
+        var m = String(val).match(/^(\d{1,2}):(\d{2})/);
+        return m ? m[1] + 'h' + m[2] : val;
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || user.first_name || 'Enseignant·e';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('sidebarUserRole', 'Enseignant');
+        setText('topbarAvatar', initials);
+      }
+
+      function loadLessons() {
+        if (!requireTeacher()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        CultulanguesAPI.get('/teacher/lessons', { per_page: 200 }).then(function (resp) {
+          lessons = resp.data || [];
+          var select = document.getElementById('lessonSelect');
+          if (!lessons.length) {
+            select.innerHTML = '<option value="">Aucune séance</option>';
+            return;
+          }
+          select.innerHTML = '<option value="">— Choisir une séance —</option>' + lessons.map(function (l) {
+            return '<option value="' + l.id + '">' + escapeHtml(formatDate(l.date)) + ' · ' + escapeHtml(l.title || 'Séance') + '</option>';
+          }).join('');
+
+          var params = new URLSearchParams(window.location.search);
+          var wanted = params.get('lesson');
+          if (wanted) {
+            select.value = wanted;
+            if (select.value === wanted) loadLesson(wanted);
+          }
+        }).catch(function (err) {
+          var select = document.getElementById('lessonSelect');
+          select.innerHTML = '<option value="">Erreur : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</option>';
+          var unauthorized = err && (err.status === 401 || (err.response && err.response.status === 401));
+          if (unauthorized) window.location.href = '../pages/login.html';
+        });
+      }
+
+      function loadLesson(id) {
+        var panel = document.getElementById('sessionPanel');
+        panel.innerHTML = '<div class="card"><div class="text-center text-muted" style="padding: var(--space-lg) 0;">Chargement…</div></div>';
+        CultulanguesAPI.get('/teacher/lessons/' + id).then(function (resp) {
+          currentLesson = resp.data;
+          renderLesson(currentLesson);
+        }).catch(function (err) {
+          panel.innerHTML = '<div class="card"><div class="text-center text-muted" style="padding: var(--space-lg) 0;">Erreur : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</div></div>';
+        });
+      }
+
+      function renderLesson(lesson) {
+        var serviceName = (lesson.service && (lesson.service.name_fr || lesson.service.slug)) || 'Séance';
+        var records = lesson.attendance_records || [];
+        var present = records.filter(function (r) { return r.status === 'present' || r.status === 'late'; });
+        var studentsHtml = records.map(function (r) {
+          var s = r.student || {};
+          var name = s.full_name || ((s.first_name || '') + ' ' + (s.last_name || '')).trim() || 'Étudiant';
+          var initials = s.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+          var level = (s.student_profile && s.student_profile.current_level) || '—';
+          var checked = r.status === 'present' || r.status === 'late';
+          var statusSel = '<select class="form-select" data-student-status="' + r.student_id + '" style="width: auto; padding: 4px 24px 4px 8px; font-size: 0.8125rem;">' +
+            '<option value="present"' + (r.status === 'present' ? ' selected' : '') + '>Présent</option>' +
+            '<option value="late"' + (r.status === 'late' ? ' selected' : '') + '>En retard</option>' +
+            '<option value="absent"' + (r.status === 'absent' ? ' selected' : '') + '>Absent</option>' +
+            '<option value="excused"' + (r.status === 'excused' ? ' selected' : '') + '>Excuse</option>' +
+          '</select>';
+          return '<label class="form-checkbox" style="align-items: center;">' +
+            '<input type="checkbox" class="attendance-check" data-student-id="' + r.student_id + '"' + (checked ? ' checked' : '') + '> ' +
+            '<span>' + escapeHtml(name) + '</span> ' + statusSel +
+          '</label>';
+        }).join('');
+
+        panel.innerHTML =
+          '<div class="dashboard-grid-sidebar">' +
+            '<div>' +
+              '<div class="card mb-lg">' +
+                '<div class="card-header"><h3 class="card-title">Informations de la séance</h3></div>' +
+                '<div class="grid-2" style="gap: var(--space-md);">' +
+                  '<div><small class="text-muted">Date</small><p style="font-weight: 600; margin: 0;">' + escapeHtml(formatDate(lesson.date)) + '</p></div>' +
+                  '<div><small class="text-muted">Horaire</small><p style="font-weight: 600; margin: 0;">' + escapeHtml(formatTime(lesson.start_time)) + ' – ' + escapeHtml(formatTime(lesson.end_time)) + '</p></div>' +
+                  '<div><small class="text-muted">Groupe</small><p style="font-weight: 600; margin: 0;">' + escapeHtml(serviceName) + '</p></div>' +
+                  '<div><small class="text-muted">Salle</small><p style="font-weight: 600; margin: 0;">' + escapeHtml(lesson.room || '—') + '</p></div>' +
+                  '<div><small class="text-muted">Type</small><p style="font-weight: 600; margin: 0;">' + escapeHtml(lesson.lesson_type || '—') + '</p></div>' +
+                  '<div><small class="text-muted">Présents</small><p style="font-weight: 600; margin: 0;"><span class="text-success">' + present.length + '</span> / <span>' + records.length + '</span></p></div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="card">' +
+                '<div class="card-header"><h3 class="card-title">Notes de séance</h3></div>' +
+                '<div class="form-group"><textarea class="form-textarea" id="lessonNotes" placeholder="Aucune note.">' + escapeHtml(lesson.notes || '') + '</textarea></div>' +
+                '<div class="form-group">' +
+                  '<label class="form-label">Présences</label>' +
+                  '<div style="display: flex; flex-direction: column; gap: var(--space-sm);" id="attendanceList">' +
+                    (studentsHtml || '<small class="text-muted">Aucun étudiant inscrit à cette séance.</small>') +
+                  '</div>' +
+                '</div>' +
+                '<div class="flex items-center" style="gap: var(--space-sm);">' +
+                  '<button class="btn btn-primary" id="saveAttendance">Enregistrer les présences</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div>' +
+              '<div class="card mb-lg">' +
+                '<div class="card-header"><h3 class="card-title">Étudiants présents</h3></div>' +
+                '<div style="display: flex; flex-direction: column; gap: var(--space-sm);">' +
+                  (records.length
+                    ? records.map(function (r) {
+                        var s = r.student || {};
+                        var name = s.full_name || ((s.first_name || '') + ' ' + (s.last_name || '')).trim() || 'Étudiant';
+                        var initials = s.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+                        var badge = r.status === 'present' ? 'badge-emerald' : (r.status === 'late' ? 'badge-gold' : (r.status === 'excused' ? 'badge-blue' : 'badge-red'));
+                        var label = { present: 'Présent', late: 'Retard', absent: 'Absent', excused: 'Excuse' }[r.status] || r.status;
+                        return '<div class="flex items-center gap-sm"><div class="avatar avatar-sm">' + escapeHtml(initials) + '</div><div><strong>' + escapeHtml(name) + '</strong><br><small class="text-muted">' + escapeHtml(levelOf(s)) + '</small></div><span class="badge ' + badge + '">' + escapeHtml(label) + '</span></div>';
+                      }).join('')
+                    : '<small class="text-muted">Aucune présence enregistrée.</small>') +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        document.getElementById('saveAttendance').addEventListener('click', saveAttendance);
+        setText('sessionHeading', lesson.title || 'Suivi des séances');
+      }
+
+      function levelOf(student) {
+        return (student.student_profile && student.student_profile.current_level) || '—';
+      }
+
+      function saveAttendance() {
+        var attendance = [];
+        var checkboxes = document.querySelectorAll('.attendance-check');
+        checkboxes.forEach(function (cb) {
+          var studentId = cb.getAttribute('data-student-id');
+          var sel = document.querySelector('[data-student-status="' + studentId + '"]');
+          var status = cb.checked ? (sel ? sel.value : 'present') : 'absent';
+          attendance.push({ student_id: parseInt(studentId, 10), status: status });
+        });
+
+        if (!attendance.length) {
+          showToast('Aucune présence à enregistrer', 'info');
+          return;
+        }
+
+        CultulanguesAPI.post('/teacher/lessons/' + currentLesson.id + '/attendance', { attendance: attendance })
+          .then(function () {
+            showToast('Présences enregistrées ✓', 'success');
+            loadLesson(currentLesson.id);
+          })
+          .catch(function (err) {
+            showToast('Erreur : ' + ((err && err.message) || 'Serveur indisponible'), 'error');
+          });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../pages/login.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      document.getElementById('lessonSelect').addEventListener('change', function (e) {
+        if (e.target.value) loadLesson(e.target.value);
+        else setText('sessionHeading', 'Suivi des séances');
+      });
+
+      bindLogout();
+      loadLessons();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace enseignant — Cultulangues</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>">
+</head>
+<body class="dashboard-body">
+  <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: var(--space-md); text-align: center; padding: 24px;">
+    <div class="avatar avatar-xl" style="font-size: 1.5rem;">🍎</div>
+    <p style="color: var(--color-text-secondary); margin: 0;">Chargement de votre espace…</p>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      var dest = '../index.html';
+      if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+        dest = '../pages/login.html';
+      } else {
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') dest = 'dashboard.html';
+        else if (role === 'admin') dest = '../admin/dashboard.html';
+        else if (role === 'student') dest = '../student/dashboard.html';
+        else dest = '../pages/login.html';
+      }
+      window.location.replace(dest);
+    })();
+  </script>
+</body>
+</html>

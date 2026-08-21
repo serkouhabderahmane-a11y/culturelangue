@@ -1,0 +1,252 @@
+/* ════════════════════════════════════════════════════════════════
+   MODEL 1 — Vague Déferlante
+   Reference: hero-concepts.html → Concept 01 "Vague Déferlante"
+   Homepage hero: image breaking in a diagonal orange wave, content
+   floating over the curve.
+   ════════════════════════════════════════════════════════════════ */
+
+:root {
+  --m1-orange: #FA4E30;
+  --m1-amber: #FC9705;
+  --m1-green: #73CE65;
+  --m1-blue: #264EBF;
+  --m1-ink: #111111;
+  --m1-muted: #888888;
+  --m1-line: #e5e5e5;
+}
+
+/* ── Hero shell ───────────────────────────────────────────────── */
+.m1-hero {
+  background: #fff;
+  padding: 64px 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+
+.m1-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  min-height: 520px;
+}
+
+/* ── Content column ───────────────────────────────────────────── */
+.m1-content { display: flex; flex-direction: column; justify-content: center; }
+
+.m1-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--m1-line);
+  padding: 6px 16px 6px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #555;
+  width: fit-content;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.m1-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--m1-green);
+  box-shadow: 0 0 8px rgba(115, 206, 101, 0.5);
+  animation: m1-pulse 2s infinite;
+}
+@keyframes m1-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.m1-h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--m1-ink);
+  line-height: 1.15;
+  margin-bottom: 14px;
+  max-width: 600px;
+  letter-spacing: -0.02em;
+}
+.m1-h1 .text-gradient,
+.m1-h1 .gradient {
+  background: linear-gradient(135deg, var(--m1-orange), var(--m1-amber));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.m1-sub {
+  color: var(--m1-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+/* Checklist */
+.m1-check { margin-bottom: 20px; }
+.m1-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.m1-check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.m1-check-icon svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 2.5; fill: none; }
+.m1-check-orange { background: var(--m1-orange); }
+.m1-check-green  { background: var(--m1-green); }
+.m1-check-blue   { background: var(--m1-blue); }
+
+/* CTAs */
+.m1-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.m1-btn-primary {
+  background: var(--m1-orange);
+  color: #fff;
+  padding: 13px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(250, 78, 48, 0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.m1-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(250, 78, 48, 0.35); }
+.m1-btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--m1-line);
+  color: var(--m1-muted);
+  padding: 13px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.m1-btn-ghost:hover { border-color: var(--m1-orange); color: var(--m1-orange); }
+
+/* Stats row */
+.m1-stats-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+.m1-stat { text-align: center; }
+.m1-stat-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.m1-stat-value.orange { color: var(--m1-orange); }
+.m1-stat-value.green  { color: var(--m1-green); }
+.m1-stat-value.blue   { color: var(--m1-blue); }
+.m1-stat-label {
+  font-size: 0.65rem;
+  color: #999;
+  font-weight: 500;
+}
+
+/* Search bar */
+.m1-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8f8f8;
+  border: 1px solid var(--m1-line);
+  border-radius: 10px;
+  padding: 10px 14px;
+  max-width: 480px;
+}
+.m1-search span { color: #999; font-size: 0.85rem; flex: 1; }
+.m1-search-btn {
+  background: var(--m1-ink);
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.m1-search-btn:hover { background: var(--m1-orange); }
+
+/* ── Visual column — Vague Déferlante ─────────────────────────── */
+.m1-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 440px;
+}
+.m1-wave {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(135deg, var(--m1-orange), var(--m1-amber));
+  border-radius: 0 0 0 60%;
+}
+.m1-visual img {
+  width: 90%;
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(250, 78, 48, 0.2);
+}
+.m1-float-card {
+  position: absolute;
+  bottom: 32px;
+  left: -8px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.m1-float-icon {
+  font-size: 1.3rem;
+}
+.m1-float-value { font-weight: 700; font-size: 0.8rem; color: #111; }
+.m1-float-label { font-size: 0.65rem; color: #999; }
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .m1-hero { padding: 40px 0 48px; }
+  .m1-hero-container { grid-template-columns: 1fr; gap: 32px; min-height: 0; }
+  .m1-h1 { font-size: 1.6rem; }
+  .m1-visual { min-height: 0; order: 2; }
+  .m1-wave { top: -40px; right: -40px; }
+  .m1-float-card { left: 0; }
+}
+
+@media (max-width: 600px) {
+  .m1-ctas { flex-direction: column; }
+  .m1-btn-primary, .m1-btn-ghost { justify-content: center; text-align: center; }
+  .m1-stats-row { gap: 16px; }
+}

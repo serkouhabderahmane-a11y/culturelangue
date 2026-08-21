@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiements — Admin</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">A</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Admin</div><div class="sidebar-user-role">Administrateur</div></div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.gestion">Gestion</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span><span data-i18n="admin.sidebar.overview">Vue d'ensemble</span></a>
+        <a class="sidebar-item" data-href="programs.html"><span class="sidebar-item-icon">📚</span><span data-i18n="admin.sidebar.programs">Programmes</span></a>
+        <a class="sidebar-item" data-href="teachers.html"><span class="sidebar-item-icon">👩</span><span data-i18n="admin.sidebar.teachers">Enseignants</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span><span data-i18n="admin.sidebar.students">Étudiants</span></a>
+        <a class="sidebar-item" data-href="bookings.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.bookings">Réservations</span></a>
+        <a class="sidebar-item" data-href="lessons.html"><span class="sidebar-item-icon">📘</span><span data-i18n="admin.sidebar.lessons">Leçons</span></a>
+        <a class="sidebar-item" data-href="sessions.html"><span class="sidebar-item-icon">🗓</span><span data-i18n="admin.sidebar.sessions">Séances</span></a>
+        <a class="sidebar-item active" data-href="payments.html"><span class="sidebar-item-icon">💳</span><span data-i18n="admin.sidebar.payments">Paiements</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.calendar">Calendrier</span></a>
+        <a class="sidebar-item" data-href="analytics.html"><span class="sidebar-item-icon">📈</span><span data-i18n="admin.sidebar.analytics">Analytiques</span></a>
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.system">Système</div>
+        <a class="sidebar-item" data-href="settings.html"><span class="sidebar-item-icon">⚙</span><span data-i18n="admin.sidebar.settings">Paramètres</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span><span data-i18n="admin.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="admin.payments.title">Paiements</h1></div>
+        <div class="topbar-right">
+          <div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" data-i18n-placeholder="admin.common.search" placeholder="Rechercher..."></div>
+          <button class="topbar-notification">🔔<span class="notification-dot"></span></button>
+          <div class="avatar avatar-sm" id="topbarAvatar">A</div>
+        </div>
+      </header>
+      <div class="dashboard-content">
+        <div class="card">
+          <div class="table-container">
+            <table class="table">
+              <thead><tr><th data-i18n="admin.table.transaction">Transaction</th><th data-i18n="admin.table.student">Étudiant</th><th data-i18n="admin.table.service">Programme</th><th data-i18n="admin.table.amount">Montant</th><th data-i18n="admin.table.date">Date</th><th data-i18n="admin.table.method">Méthode</th><th data-i18n="admin.table.status">Statut</th></tr></thead>
+              <tbody id="paymentsBody">
+                <tr><td colspan="7" class="text-muted text-center" style="padding: var(--space-lg) 0;">Chargement…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var PAYMENT_BADGE = {
+        completed: 'badge-emerald',
+        pending: 'badge-gold',
+        failed: 'badge-red',
+        refunded: 'badge-blue'
+      };
+      var PAYMENT_LABEL = {
+        completed: 'Réussi',
+        pending: 'En attente',
+        failed: 'Échoué',
+        refunded: 'Remboursé'
+      };
+
+      function requireAdmin() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = 'login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') { window.location.href = '../teacher/dashboard.html'; return false; }
+        if (role === 'student') { window.location.href = '../student/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        try { var d = new Date(val); if (isNaN(d.getTime())) return val; return d.toLocaleDateString('fr-CA', { year: 'numeric', month: 'short', day: 'numeric' }); } catch (e) { return val; }
+      }
+
+      function formatMoney(n) {
+        return Number(n || 0).toLocaleString('fr-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 2 });
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || 'Admin';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || 'A');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('topbarAvatar', initials);
+      }
+
+      function renderPayments(payments) {
+        var body = document.getElementById('paymentsBody');
+        if (!payments || !payments.length) {
+          body.innerHTML = '<tr><td colspan="7" class="text-muted text-center" style="padding: var(--space-lg) 0;">Aucun paiement.</td></tr>';
+          return;
+        }
+        body.innerHTML = payments.map(function (p) {
+          var student = p.student || p.user || {};
+          var name = student.full_name || ((student.first_name || '') + ' ' + (student.last_name || '')).trim() || '—';
+          var service = (p.service && (p.service.name_fr || p.service.slug)) || '—';
+          return '<tr>' +
+            '<td><strong>' + escapeHtml(p.transaction_id || '—') + '</strong></td>' +
+            '<td>' + escapeHtml(name) + '</td>' +
+            '<td>' + escapeHtml(service) + '</td>' +
+            '<td>' + escapeHtml(formatMoney(p.amount)) + '</td>' +
+            '<td>' + escapeHtml(formatDate(p.paid_at || p.created_at)) + '</td>' +
+            '<td>' + escapeHtml(p.payment_method || '—') + '</td>' +
+            '<td><span class="badge ' + (PAYMENT_BADGE[p.status] || 'badge-gold') + '">' + escapeHtml(PAYMENT_LABEL[p.status] || p.status) + '</span></td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      function loadPayments() {
+        if (!requireAdmin()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        CultulanguesAPI.get('/admin/payments', { per_page: 100 }).then(function (resp) {
+          renderPayments(resp.data);
+        }).catch(function (err) {
+          var unauthorized = err && (err.status === 401 || (err.response && err.response.status === 401));
+          document.getElementById('paymentsBody').innerHTML = '<tr><td colspan="7" class="text-muted text-center" style="padding: var(--space-lg) 0;">Erreur : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</td></tr>';
+          if (unauthorized) window.location.href = 'login.html';
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../index.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      bindLogout();
+      loadPayments();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

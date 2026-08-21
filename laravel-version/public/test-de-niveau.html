@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultulangues – Test de Niveau</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --pink:#FF6B9D;--orange:#FF8E53;--yellow:#FFD93D;--blue:#4A90D9;--green:#2ECC71;--red:#E74C3C;
+      --bg:#F4F6FA;--bg-card:#FFFFFF;--text:#2C3E50;--text-secondary:#7F8C8D;--text-tertiary:#BDC3C7;--border:#E8ECF1;
+      --shadow-sm:0 2px 8px rgba(0,0,0,0.04);--shadow-md:0 4px 20px rgba(0,0,0,0.08);--shadow-lg:0 12px 40px rgba(0,0,0,0.1);
+      --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:9999px;
+      --transition:300ms cubic-bezier(0.4,0,0.2,1);--font:'Plus Jakarta Sans',sans-serif;--accent:var(--pink);
+    }
+    html{font-size:15px;scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:var(--radius-full)}
+
+    .doc-wrap{max-width:820px;margin:0 auto;padding:24px 20px 64px}
+    .doc-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .doc-back{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:600;color:var(--text-secondary);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-full);padding:9px 18px;text-decoration:none;transition:all var(--transition)}
+    .doc-back:hover{border-color:var(--pink);color:var(--pink)}
+    .doc-step{margin-left:auto;font-size:0.75rem;font-weight:700;color:var(--text-tertiary);display:flex;align-items:center;gap:8px}
+    .doc-step .step-pips{display:flex;gap:5px}
+    .doc-step .pip{width:20px;height:6px;border-radius:var(--radius-full);background:var(--border)}
+    .doc-step .pip.active{background:var(--accent)}
+
+    .doc-header{text-align:center;margin-bottom:24px}
+    .doc-header .brand-icon{width:48px;height:48px;border-radius:var(--radius-md);background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:800;margin:0 auto 12px}
+    .doc-header h1{font-size:1.4rem;font-weight:800;background:var(--accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .doc-header p{font-size:0.85rem;color:var(--text-secondary);margin-top:4px}
+    .doc-header .doc-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:4px 16px;border-radius:var(--radius-full);background:rgba(74,144,217,0.08);border:1px solid rgba(74,144,217,0.15);color:var(--blue);font-size:0.68rem;font-weight:700;letter-spacing:0.02em}
+
+    .doc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm);padding:36px 40px;animation:fadeInUp 0.35s ease}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:640px){.doc-card{padding:24px 20px}}
+
+    .official-title{font-size:1.15rem;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+    .official-title .file-ico{width:34px;height:34px;border-radius:var(--radius-md);background:rgba(74,144,217,0.1);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0}
+
+    .intro-block{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin:18px 0 22px}
+    .intro-block h3{font-size:0.85rem;font-weight:800;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+    .intro-block h3 i{color:var(--accent)}
+    .intro-block p{font-size:0.85rem;line-height:1.6;color:var(--text-secondary);margin-bottom:6px}
+    .intro-block p:last-child{margin-bottom:0}
+
+    .test-count{display:flex;align-items:center;gap:10px;margin-bottom:22px;padding:14px 20px;border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(255,107,157,0.08),rgba(255,142,83,0.06));border:1px solid rgba(255,107,157,0.15)}
+    .test-count i{color:var(--pink);font-size:1.1rem}
+    .test-count span{font-size:0.85rem;font-weight:700;color:var(--text)}
+
+    .question{margin-bottom:26px;padding:20px 22px;border:1.5px solid var(--border);border-radius:var(--radius-lg);transition:all var(--transition)}
+    .question.answered{border-color:rgba(46,204,113,0.45);background:rgba(46,204,113,0.02)}
+    .question .q-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .question .q-num{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary)}
+    .question .q-text{font-size:1rem;font-weight:600;line-height:1.5;margin-bottom:14px}
+    .question .q-text.large{font-size:0.92rem;font-weight:500;color:var(--text-secondary);background:var(--bg);border-left:3px solid var(--pink);padding:14px 16px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;line-height:1.65}
+    .question .q-status{font-size:0.7rem;font-weight:700;color:var(--green);display:none;align-items:center;gap:5px;white-space:nowrap}
+    .question.answered .q-status{display:inline-flex}
+    .q-options{display:flex;flex-direction:column;gap:9px}
+    .q-option{display:flex;align-items:center;gap:12px;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius-md);cursor:pointer;transition:all var(--transition);font-size:0.88rem;user-select:none;background:var(--bg-card)}
+    .q-option:hover{border-color:var(--pink);background:rgba(255,107,157,0.02)}
+    .q-option.checked{border-color:var(--pink);background:rgba(255,107,157,0.05);font-weight:600}
+    .q-option .letter{width:26px;height:26px;border-radius:50%;background:var(--bg);color:var(--text-secondary);font-size:0.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--transition);border:1px solid var(--border)}
+    .q-option.checked .letter{background:var(--pink);color:white;border-color:var(--pink)}
+    .q-option input{display:none}
+    .q-open textarea{width:100%;min-height:76px;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-md);font-size:0.88rem;font-family:var(--font);outline:none;transition:all var(--transition);background:var(--bg);color:var(--text);resize:vertical}
+    .q-open textarea:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,107,157,0.06);background:white}
+
+    .doc-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:26px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap}
+    .doc-footer .info{font-size:0.72rem;color:var(--text-tertiary);display:flex;align-items:center;gap:6px}
+    .btn{padding:12px 28px;border-radius:var(--radius-md);font-size:0.85rem;font-weight:700;border:none;cursor:pointer;transition:all var(--transition);font-family:var(--font);display:inline-flex;align-items:center;gap:8px}
+    .btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-primary:not(:disabled):hover{box-shadow:0 6px 20px rgba(255,107,157,0.3);transform:translateY(-1px)}
+    .btn-success{background:var(--green);color:white}
+    .btn-success:hover{box-shadow:0 6px 20px rgba(46,204,113,0.3);transform:translateY(-1px)}
+    .btn-ghost{background:var(--bg-card);color:var(--text);border:1.5px solid var(--border)}
+    .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+    .success-page{text-align:center;padding:36px 20px;animation:fadeInUp 0.35s ease}
+    .success-icon{width:72px;height:72px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.8rem;color:white}
+    .success-page h2{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+    .success-page p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:28px}
+    .success-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .success-note{background:rgba(74,144,217,0.06);border:1px solid rgba(74,144,217,0.15);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:26px;font-size:0.8rem;color:var(--text);display:inline-flex;gap:10px;text-align:left;max-width:480px}
+    .hidden{display:none!important}
+  </style>
+</head>
+<body>
+<div class="doc-wrap">
+
+  <div class="doc-topbar">
+    <a href="booking.html" class="doc-back"><i class="fas fa-arrow-left"></i> Retour à l'inscription</a>
+    <div class="doc-step">
+      <span>Étape 2 / 4</span>
+      <div class="step-pips"><span class="pip active"></span><span class="pip active"></span><span class="pip"></span><span class="pip"></span></div>
+    </div>
+  </div>
+
+  <div class="doc-header">
+    <img src="img/image-Photoroom.png" alt="Cultulangues" style="width:200px;height:auto;object-fit:contain;margin:0 auto 14px;display:block">
+    <h1>Cultulangues – Test de Niveau</h1>
+    <p>Complétez le test de niveau pour évaluer votre niveau de français</p>
+    <span class="doc-badge"><i class="fas fa-file-alt"></i> Document officiel Cultulangues</span>
+  </div>
+
+  <div class="doc-card" id="testCard">
+    <div class="official-title"><span class="file-ico"><i class="fas fa-file-word"></i></span> Cultulangues – Test de Niveau</div>
+
+    <div class="intro-block">
+      <h3><i class="fas fa-bullseye"></i> Objectif du test</h3>
+      <p>Ce test permet d'obtenir une première évaluation fiable de votre niveau de français.</p>
+      <p>Vos réponses nous aideront à vous orienter vers le groupe le plus adapté, afin d'optimiser votre progression.</p>
+    </div>
+
+    <div class="intro-block">
+      <h3><i class="fas fa-list-ol"></i> Instructions</h3>
+      <p>Répondez à chaque question en choisissant une seule réponse.</p>
+      <p>Les questions deviennent progressivement plus complexes.</p>
+      <p>Une fois le test complété, vous serez invité(e) à prendre un court rendez‑vous d'évaluation orale avec un membre de notre équipe.</p>
+      <p>La combinaison test écrit + entretien oral nous permet de déterminer votre niveau réel selon les standards Cultulangues.</p>
+    </div>
+
+    <div class="test-count">
+      <i class="fas fa-tasks"></i>
+      <span>Test de niveau-20 questions</span>
+    </div>
+
+    <form id="testForm" novalidate>
+      <div id="questionsArea"></div>
+
+      <div class="doc-footer">
+        <div class="info" id="testInfo"><i class="fas fa-info-circle"></i> <span>Répondez aux 20 questions puis soumettez votre test</span></div>
+        <button type="submit" class="btn btn-primary" id="submitBtn"><i class="fas fa-paper-plane"></i> Soumettre mon test</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="doc-card hidden" id="successCard">
+    <div class="success-page">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <h2>Test complété avec succès !</h2>
+      <p>Merci, votre test de niveau a bien été enregistré.</p>
+      <div class="success-note">
+        <i class="fas fa-info-circle" style="color:var(--blue);margin-top:2px"></i>
+        <span>Votre niveau sera confirmé lors de l'évaluation orale. La combinaison test écrit + entretien oral nous permet de déterminer votre niveau réel selon les standards Cultulangues.</span>
+      </div>
+      <div class="success-actions">
+        <button class="btn btn-primary" id="goOralBtn">Réserver mon évaluation orale <i class="fas fa-arrow-right"></i></button>
+        <button class="btn btn-success" id="goPayBtn">Réserver ma place <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/api.js"></script>
+<script>
+  (function () {
+    'use strict';
+
+    var mcq = [
+      { q: '« Je m\u2019appelle Sofia et j\u2019habite à Montréal. »', opts: ['Elle travaille à Montréal', 'Elle habite à Montréal', 'Elle visite Montréal', 'Elle quitte Montréal'] },
+      { q: '« Le magasin ferme exceptionnellement à 16 h aujourd\u2019hui. »', opts: ['Il ferme plus tôt', 'Il ferme plus tard', 'Il est fermé toute la journée', 'Il ouvre à 16 h'] },
+      { q: '« Malgré les difficultés, elle a poursuivi son projet. »', opts: ['Grâce à', 'En raison de', 'Même si', 'Avant'] },
+      { q: '« L\u2019auteur nuance son propos afin d\u2019éviter toute interprétation réductrice. »', opts: ['Il simplifie son idée', 'Il précise et complexifie son idée', 'Il retire son opinion', 'Il contredit son idée'] },
+      { q: '« Les résultats seront communiqués d\u2019ici la fin de la semaine. »', opts: ['Aujourd\u2019hui', 'Demain', 'Avant la fin de la semaine', 'La semaine prochaine'] },
+      { q: '« Je prends un café avec ___ amie. »', opts: ['Mon', 'Ma', 'Mes', 'Moi'] },
+      { q: '« Il a finalement réussi à ___ son objectif. »', opts: ['Atteindre', 'Attendre', 'Entendre', 'Étendre'] },
+      { q: '« Cette décision aura des conséquences ___ sur l\u2019organisation. »', opts: ['Minimes', 'Négligeables', 'Substantielles', 'Superficielles'] },
+      { q: 'Trouvez le synonyme de « rapide ».', opts: ['Lent', 'Vif', 'Mou', 'Faible'] },
+      { q: 'Trouvez le contraire de « courageux ».', opts: ['Audacieux', 'Téméraire', 'Peureux', 'Assuré'] },
+      { q: '« Nous ______ au marché ce matin. »', opts: ['Allons', 'Va', 'Allez', 'Vont'] },
+      { q: 'Choisissez la bonne phrase.', opts: ['Je suis allé au cinéma', 'Je suis allée au cinéma', 'Les deux peuvent être correctes', 'Aucune n\u2019est correcte'] },
+      { q: '« Si j\u2019____ le temps, je viendrai. »', opts: ['Aurai', 'Avais', 'Ai', 'Aurais'] },
+      { q: '« Elles se sont ____ les mains. »', opts: ['Lavé', 'Lavées', 'Laver', 'Lavant'] },
+      { q: '« Il faut que vous ____ à l\u2019heure. »', opts: ['Êtes', 'Soyez', 'Seriez', 'Serez'] }
+    ];
+
+    var openQs = [
+      'Pourquoi Paul utilise-t-il le français ?',
+      'Quelle langue préfère-t-il pour les réunions ?',
+      'Quel est son objectif professionnel ?',
+      'Quel est son principal défi linguistique ?',
+      'Quel type de compétence veut-il développer ?'
+    ];
+
+    var passage = 'Paul travaille dans une entreprise internationale. Il utilise le français pour écrire des courriels, mais il préfère parler anglais lors des réunions. Il souhaite améliorer son aisance orale pour obtenir une promotion.';
+
+    var letters = ['A', 'B', 'C', 'D'];
+    var area = document.getElementById('questionsArea');
+    var html = '';
+
+    mcq.forEach(function (item, i) {
+      html += '<div class="question" data-q="' + (i + 1) + '">' +
+        '<div class="q-head"><div class="q-num">Question ' + (i + 1) + ' / 20</div><div class="q-status"><i class="fas fa-check-circle"></i> Répondu</div></div>' +
+        '<div class="q-text">' + item.q + '</div>' +
+        '<div class="q-options">';
+      item.opts.forEach(function (opt, oi) {
+        html += '<label class="q-option">' +
+          '<input type="radio" name="q' + (i + 1) + '" value="' + opt + '">' +
+          '<span class="letter">' + letters[oi] + '</span><span>' + opt + '</span>' +
+          '</label>';
+      });
+      html += '</div></div>';
+    });
+
+    html += '<div class="question" data-q="comprehension" style="background:var(--bg);border-style:dashed">' +
+      '<div class="q-head"><div class="q-num">Compréhension écrite</div></div>' +
+      '<div class="q-text large">' + passage + '</div></div>';
+
+    openQs.forEach(function (q, i) {
+      html += '<div class="question" data-q="' + (i + 16) + '">' +
+        '<div class="q-head"><div class="q-num">Question ' + (i + 16) + ' / 20</div><div class="q-status"><i class="fas fa-check-circle"></i> Répondu</div></div>' +
+        '<div class="q-text">' + q + '</div>' +
+        '<div class="q-open"><textarea placeholder="Votre réponse..." name="open' + (i + 1) + '"></textarea></div>' +
+        '</div>';
+    });
+
+    area.innerHTML = html;
+
+    function refreshState() {
+      var answered = 0;
+      document.querySelectorAll('.question').forEach(function (q) {
+        var id = q.getAttribute('data-q');
+        var done = false;
+        if (id === 'comprehension') { done = true; }
+        else if (id === '1') {
+          done = !!document.querySelector('input[name="q1"]:checked');
+        } else {
+          var idx = parseInt(id, 10);
+          if (idx <= 15) {
+            done = !!document.querySelector('input[name="q' + idx + '"]:checked');
+          } else {
+            var oi = idx - 15;
+            done = document.querySelector('textarea[name="open' + oi + '"]').value.trim().length > 0;
+          }
+        }
+        q.classList.toggle('answered', done);
+        if (done) answered++;
+      });
+      var total = mcq.length + openQs.length;
+      var info = document.getElementById('testInfo');
+      if (answered === total) {
+        info.innerHTML = '<i class="fas fa-check-circle" style="color:var(--green)"></i> Toutes les questions ont été répondues';
+      } else {
+        info.innerHTML = '<i class="fas fa-info-circle"></i> ' + answered + ' / ' + total + ' questions répondues';
+      }
+    }
+
+    document.querySelectorAll('.q-option input').forEach(function (input) {
+      input.addEventListener('change', function () {
+        document.querySelectorAll('input[name="' + input.name + '"]').forEach(function (other) {
+          other.closest('.q-option').classList.toggle('checked', other.checked);
+        });
+        refreshState();
+      });
+    });
+
+    document.querySelectorAll('.q-open textarea').forEach(function (ta) {
+      ta.addEventListener('input', refreshState);
+    });
+
+    refreshState();
+
+    function getParam(name) {
+      var m = location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+      return m ? decodeURIComponent(m[1]) : null;
+    }
+
+    var course = getParam('course') || 'private';
+    var program = getParam('program') || '';
+    var pkg = getParam('pkg') || '';
+    var name = getParam('name') || '';
+    var email = getParam('email') || '';
+    var phone = getParam('phone') || '';
+
+    var backHref = 'booking.html?course=' + encodeURIComponent(course);
+    if (program) backHref += '&program=' + encodeURIComponent(program);
+    if (pkg) backHref += '&pkg=' + encodeURIComponent(pkg);
+    var backLink = document.querySelector('.doc-back');
+    if (backLink) backLink.setAttribute('href', backHref);
+
+    document.getElementById('testForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var answers = [];
+      mcq.forEach(function (item, i) {
+        var sel = document.querySelector('input[name="q' + (i + 1) + '"]:checked');
+        answers.push(sel ? sel.value : '');
+      });
+      openQs.forEach(function (q, i) {
+        answers.push(document.querySelector('textarea[name="open' + (i + 1) + '"]').value.trim());
+      });
+
+      try {
+        var saved = JSON.parse(localStorage.getItem('cultulangues_placement_test') || 'null') || {};
+        saved[course] = { submitted_at: new Date().toISOString(), name: name, email: email, phone: phone, answers: answers };
+        localStorage.setItem('cultulangues_placement_test', JSON.stringify(saved));
+      } catch (err) {}
+
+      try {
+        var docs = JSON.parse(localStorage.getItem('cultulangues_documents') || 'null') || {};
+        docs.placement = 'done';
+        localStorage.setItem('cultulangues_documents', JSON.stringify(docs));
+      } catch (err) {}
+
+      document.getElementById('testCard').classList.add('hidden');
+      document.getElementById('successCard').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      var payHref = 'paiement.html?course=' + encodeURIComponent(course);
+      if (program) payHref += '&program=' + encodeURIComponent(program);
+      if (pkg) payHref += '&pkg=' + encodeURIComponent(pkg);
+      if (name) payHref += '&name=' + encodeURIComponent(name);
+      if (email) payHref += '&email=' + encodeURIComponent(email);
+      if (phone) payHref += '&phone=' + encodeURIComponent(phone);
+
+      document.getElementById('goOralBtn').onclick = function () {
+        window.open('https://calendly.com/cultulangues/evaluation-orale', '_blank');
+      };
+      document.getElementById('goPayBtn').onclick = function () {
+        window.location.href = payHref;
+      };
+    });
+  })();
+</script>
+</body>
+</html>

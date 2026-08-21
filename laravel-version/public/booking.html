@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="booking.page.title">Inscription — Cultulangues</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --pink:#FF6B9D;--orange:#FF8E53;--yellow:#FFD93D;--blue:#4A90D9;--green:#2ECC71;--amber:#FFB347;--red:#E74C3C;
+      --bg:#F4F6FA;--bg-card:#FFFFFF;--text:#2C3E50;--text-secondary:#7F8C8D;--text-tertiary:#BDC3C7;--border:#E8ECF1;
+      --shadow-sm:0 2px 8px rgba(0,0,0,0.04);--shadow-md:0 4px 20px rgba(0,0,0,0.08);--shadow-lg:0 12px 40px rgba(0,0,0,0.1);
+      --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:9999px;
+      --transition:300ms cubic-bezier(0.4,0,0.2,1);--font:'Plus Jakarta Sans',sans-serif;--accent:var(--orange);
+    }
+    html{font-size:15px;scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:var(--radius-full)}
+
+    .booking-wrap{max-width:860px;margin:0 auto;padding:24px 20px 48px}
+    .booking-header{text-align:center;margin-bottom:28px}
+    .booking-header h1{font-size:1.4rem;font-weight:800;background:var(--accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .booking-header p{font-size:0.85rem;color:var(--text-secondary);margin-top:4px}
+
+    .bk-summary{display:flex;align-items:center;gap:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow-sm);transition:all 300ms}
+    .bk-summary:hover{box-shadow:var(--shadow-md)}
+    .bk-summary-thumb{width:80px;height:80px;border-radius:14px;object-fit:cover;flex-shrink:0;background:var(--bg)}
+    .bk-summary-info{flex:1;min-width:0}
+    .bk-summary-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3}
+    .bk-summary-desc{font-size:0.8rem;color:var(--text-secondary);line-height:1.5;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .bk-summary-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 12px;border-radius:var(--radius-full);background:rgba(46,204,113,0.1);color:var(--green);font-size:0.68rem;font-weight:700}
+    .bk-summary-badge i{font-size:0.6rem}
+    .bk-summary-price{text-align:right;font-size:1.2rem;font-weight:800;color:var(--pink);flex-shrink:0;white-space:nowrap}
+
+    .progress-card{display:flex;align-items:center;gap:14px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 20px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+    .progress-card .progress-bar{flex:1;height:8px;background:var(--border);border-radius:var(--radius-full);overflow:hidden}
+    .progress-card .progress-fill{height:100%;border-radius:var(--radius-full);background:linear-gradient(90deg,var(--pink),var(--orange));transition:width 0.6s ease}
+    .progress-card .progress-label{font-size:0.75rem;font-weight:700;color:var(--text-secondary);white-space:nowrap;display:flex;align-items:center;gap:6px}
+    .progress-card .progress-label i{color:var(--pink)}
+
+    .booking-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+    .booking-step-card{display:flex;align-items:center;gap:16px;padding:20px 22px;background:var(--bg-card);border:2px solid var(--border);border-radius:var(--radius-lg);cursor:pointer;transition:all var(--transition)}
+    .booking-step-card:hover{border-color:var(--pink);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+    .booking-step-card.done{border-color:rgba(46,204,113,0.5);background:rgba(46,204,113,0.02)}
+    .booking-step-card:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+    .bsc-number{width:30px;height:30px;border-radius:50%;background:var(--border);color:white;font-size:0.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--transition)}
+    .booking-step-card:hover .bsc-number{background:var(--pink)}
+    .booking-step-card.done .bsc-number{background:var(--green)}
+    .bsc-content{flex:1;min-width:0}
+    .bsc-title-row{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+    .bsc-title{font-size:0.9rem;font-weight:700;color:var(--text);line-height:1.3}
+    .bsc-done-badge{display:inline-flex;align-items:center;gap:4px;font-size:0.62rem;font-weight:800;color:var(--green);background:rgba(46,204,113,0.1);padding:2px 10px;border-radius:var(--radius-full);text-transform:uppercase;letter-spacing:0.03em}
+    .bsc-desc{font-size:0.75rem;color:var(--text-secondary);line-height:1.45}
+    .bsc-cta{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius-md);background:var(--accent);color:white;font-size:0.78rem;font-weight:700;white-space:nowrap;flex-shrink:0;transition:all var(--transition);font-family:var(--font);border:none;cursor:pointer}
+    .bsc-cta:hover{box-shadow:0 6px 20px rgba(255,107,157,0.3)}
+    .booking-step-card.done .bsc-cta{background:var(--green)}
+    .booking-step-card.done .bsc-cta:hover{box-shadow:0 6px 20px rgba(46,204,113,0.3)}
+
+    .booking-help{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:24px;box-shadow:var(--shadow-sm);display:flex;align-items:flex-start;gap:12px}
+    .booking-help i{color:var(--blue);font-size:1.1rem;margin-top:2px;flex-shrink:0}
+    .booking-help .help-text{font-size:0.8rem;color:var(--text-secondary);line-height:1.6}
+    .booking-help .help-text strong{color:var(--text)}
+
+    .booking-footer{text-align:center;padding-top:8px}
+    .booking-footer a{color:var(--text-secondary);font-size:0.78rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all var(--transition)}
+    .booking-footer a:hover{color:var(--pink)}
+
+    @media(max-width:768px){
+      .booking-wrap{padding:16px 12px 32px}
+      .booking-step-card{padding:16px}
+      .bk-summary{flex-direction:column;text-align:center;padding:16px}
+      .bk-summary-price{text-align:center}
+      .bk-summary-thumb{width:64px;height:64px}
+    }
+    @media(max-width:600px){
+      .booking-step-card{flex-wrap:wrap}
+      .bsc-content{flex:1 0 100%;order:2}
+      .bsc-cta{order:3;width:100%;justify-content:center}
+    }
+  </style>
+</head>
+<body>
+<div class="booking-wrap">
+
+  <div class="booking-header">
+    <img src="img/image-Photoroom.png" alt="Cultulangues" style="width:200px;height:auto;object-fit:contain;margin:0 auto 16px;display:block">
+    <h1 data-i18n="booking.header.title">Inscription</h1>
+    <p data-i18n="booking.header.subtitle">Complétez les étapes ci-dessous pour finaliser votre inscription</p>
+  </div>
+
+  <div class="bk-summary" id="courseSummary">
+    <img class="bk-summary-thumb" id="bkSummaryThumb" src="assets/services/homepage-hero.webp" alt="">
+    <div class="bk-summary-info">
+      <h3 class="bk-summary-name" id="csName">—</h3>
+      <div class="bk-summary-desc" id="csDesc">—</div>
+      <span class="bk-summary-badge"><i class="fas fa-check-circle"></i> <span>Cours sélectionné</span></span>
+    </div>
+    <div class="bk-summary-price" id="csPrice">—</div>
+  </div>
+
+  <div class="progress-card" id="progressCard">
+    <span class="progress-label"><i class="fas fa-route"></i> <span id="progressText">0 / 4 étapes</span></span>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+
+  <div id="stepCardsContainer"></div>
+
+  <div class="booking-help">
+    <i class="fas fa-info-circle"></i>
+    <div class="help-text">
+      <strong>Déroulement de votre inscription :</strong> soumettez le formulaire d'inscription, complétez le test de niveau écrit, puis prenez rendez-vous pour une courte évaluation orale avec un membre de notre équipe. Une fois votre niveau confirmé, vous pourrez réserver votre place et effectuer votre paiement.
+    </div>
+  </div>
+
+  <div class="booking-footer">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Retour à l'accueil</a>
+  </div>
+
+</div>
+
+<script>
+  // ════════════════════════════════════════════════════════════
+  //  STATE
+  // ════════════════════════════════════════════════════════════
+  var state = {
+    courseId: null,
+    program: null,
+    courseData: null,
+    soloPackage: null
+  };
+
+  // ════════════════════════════════════════════════════════════
+  //  COURSE DATA
+  // ════════════════════════════════════════════════════════════
+  var courseDB = {
+    'private': {
+      name:'Cours particuliers',
+      type:'solo',
+      desc:'Cours 1-on-1 avec un enseignant certifié. Programme personnalisé selon vos objectifs.',
+      price:'1 200 $'
+    },
+    'solo': {
+      name:'Formation en solo',
+      type:'solo',
+      desc:'Accompagnement 100 % personnalisé. Programme adapté à vos objectifs et à votre rythme.',
+      price:'À partir de 225 $',
+      packages: [
+        {id:'5h', label:'Forfait Découverte', hours:5, sessions:5, rate:45, price:225, popular:false},
+        {id:'10h', label:'Forfait Standard', hours:10, sessions:10, rate:42, price:420, popular:false},
+        {id:'15h', label:'Forfait Avancé', hours:15, sessions:15, rate:40, price:600, popular:true},
+        {id:'20h', label:'Forfait Intensif', hours:20, sessions:20, rate:38, price:760, popular:false}
+      ]
+    },
+    'tcf-quebec': {
+      name:'Préparation TCF Québec',
+      type:'group',
+      desc:'Préparation complète au TCF Québec. Cours en groupe avec horaire fixe.',
+      price:'800 $'
+    },
+    'tcf-quebec-partiel': {
+      name:'Préparation TCF Québec — Temps partiel',
+      type:'group',
+      desc:'Préparation au TCF Québec en temps partiel. Dates à venir.',
+      price:'À venir'
+    },
+    'tcf-quebec-intensif': {
+      name:'Préparation TCF Québec — Intensif',
+      type:'group',
+      desc:'Préparation au TCF Québec en format intensif. Dates à venir.',
+      price:'À venir'
+    },
+    'tcf-canada': {
+      name:'Préparation TCF Canada',
+      type:'group',
+      desc:'Préparation complète au TCF Canada. Cours en groupe avec horaire fixe.',
+      price:'800 $'
+    },
+    'tcf-canada-partiel': {
+      name:'Préparation TCF Canada — Temps partiel',
+      type:'group',
+      desc:'Préparation au TCF Canada en temps partiel. Dates à venir.',
+      price:'À venir'
+    },
+    'tcf-canada-intensif': {
+      name:'Préparation TCF Canada — Intensif',
+      type:'group',
+      desc:'Préparation au TCF Canada en format intensif. Dates à venir.',
+      price:'À venir'
+    },
+    'tcf': {
+      name:'Préparation TCF',
+      type:'group',
+      desc:'Préparation au TCF Québec et TCF Canada. Cours en groupe adaptés à votre objectif.',
+      price:'800 $'
+    },
+    'oral-bc': {
+      name:'Préparation orale — British Columbia',
+      type:'group',
+      desc:'Préparation en petit groupe à l\'examen oral de la Colombie-Britannique. Maximum 4 élèves.',
+      price:'600 $'
+    },
+    'oral': {
+      name:'Cap sur l\'oral',
+      type:'group',
+      desc:'Développer une expression orale fluide et stratégique. Préparation en groupe.',
+      price:'600 $'
+    },
+    'oral-b': {
+      name:'Préparation Oral B',
+      type:'group',
+      desc:'Préparation à l\'examen Oral B (TCO). Cours en groupe. Temps partiel ou intensif.',
+      price:'600 $'
+    },
+    'oral-b-partiel': {
+      name:'Préparation Oral B — Temps partiel',
+      type:'group',
+      desc:'Préparation à l\'examen Oral B (TCO) en temps partiel. Dates à venir.',
+      price:'320 $'
+    },
+    'oral-b-intensif': {
+      name:'Préparation Oral B — Intensif',
+      type:'group',
+      desc:'Préparation à l\'examen Oral B (TCO) en format intensif. Dates à venir.',
+      price:'320 $'
+    },
+    'oral-c': {
+      name:'Préparation Oral C',
+      type:'group',
+      desc:'Préparation à l\'examen Oral C (TCO). Cours en groupe. Temps partiel ou intensif.',
+      price:'600 $'
+    },
+    'oral-c-partiel': {
+      name:'Préparation Oral C — Temps partiel',
+      type:'group',
+      desc:'Préparation à l\'examen Oral C (TCO) en temps partiel. Dates à venir.',
+      price:'320 $'
+    },
+    'oral-c-intensif': {
+      name:'Préparation Oral C — Intensif',
+      type:'group',
+      desc:'Préparation à l\'examen Oral C (TCO) en format intensif. Dates à venir.',
+      price:'320 $'
+    },
+    'intensif': {
+      name:'Programme intensif',
+      type:'group',
+      desc:'Cours intensif en groupe. 4 séances par semaine pour des progrès rapides.',
+      price:'900 $'
+    },
+    'groupe': {
+      name:'Cours en groupe',
+      type:'group',
+      desc:'Apprenez en groupe avec d\'autres apprenants. Ambiance conviviale et motivante.',
+      price:'500 $'
+    },
+    'samedi': {
+      name:'Programme du samedi',
+      type:'group',
+      desc:'Cours en groupe chaque samedi matin. Parfait pour les professionnels occupés.',
+      price:'400 $'
+    },
+    'workshop-conversation': {
+      name:'Atelier de conversation',
+      type:'group',
+      desc:'Atelier hebdomadaire de conversation. Thèmes variés pour pratiquer l\'oral.',
+      price:'100 $'
+    },
+    'workshop-culture': {
+      name:'Atelier culturel',
+      type:'group',
+      desc:'Atelier hebdomadaire sur la culture francophone. Cinéma, littérature, actualité.',
+      price:'200 $'
+    },
+    'workshop-maintenance': {
+      name:'Atelier de maintien',
+      type:'group',
+      desc:'Atelier hebdomadaire pour maintenir et pratiquer votre français.',
+      price:'100 $'
+    },
+    'workshop': {
+      name:'Ateliers de français',
+      type:'group',
+      desc:'Ateliers thématiques de français en petits groupes. Conversation, culture et maintien.',
+      price:'À partir de 100 $'
+    },
+    'francais-express': {
+      name:'Français Express',
+      type:'group',
+      desc:'Programme intensif de 60 h — 4 semaines, 3 h/jour, lun–ven, 17 h–20 h.',
+      price:'600 $'
+    },
+    'english-express': {
+      name:'English Express Pathway',
+      type:'group',
+      desc:'Intensive 60-hour program — 4 weeks, 3 h/day, Mon–Fri, 5 p.m.–8 p.m.',
+      price:'$600'
+    },
+    'english-linguistic-pathway': {
+      name:'English Linguistic Pathway',
+      type:'group',
+      desc:'Three English pathways for adult learners: Express, Evening and Saturdays.',
+      price:'From $300'
+    },
+    'soiree-linguo': {
+      name:'Parcours Soirée Linguo',
+      type:'group',
+      desc:'10 semaines, 1 cours de 3 h/sem (17 h–20 h). Pour professionnels.',
+      price:'300 $'
+    },
+    'evening-lingo': {
+      name:'Evening Lingo Pathway',
+      type:'group',
+      desc:'10 weeks, 1 class of 3 h/week (5 p.m.–8 p.m.). For busy professionals.',
+      price:'$300'
+    },
+    'samedis-francais': {
+      name:'Parcours Samedis en français',
+      type:'group',
+      desc:'5 samedis, 6 h/samedi (9 h–12 h / 13 h–16 h). Immersion hebdomadaire.',
+      price:'300 $'
+    },
+    'saturdays-english': {
+      name:'Saturdays in English Pathway',
+      type:'group',
+      desc:'5 Saturdays, 6 h/Saturday (9 a.m.–12 p.m. / 1 p.m.–4 p.m.). Weekly immersion.',
+      price:'$300'
+    }
+  };
+
+  // ════════════════════════════════════════════════════════════
+  //  STEP CONFIGS — document-access flow
+  // ════════════════════════════════════════════════════════════
+  var stepConfigs = {
+    'default': [
+      {
+        id: 'registration',
+        icon: 'fa-file-signature',
+        title: 'Complétez et soumettez le formulaire d\'inscription',
+        desc: 'Remplissez toutes les sections requises et envoyez le formulaire en ligne pour ouvrir votre dossier.',
+        cta: 'Commencer l\'inscription',
+        type: 'internal',
+        url: 'formulaire-inscription.html',
+        track: 'registration'
+      },
+      {
+        id: 'placement',
+        icon: 'fa-file-alt',
+        title: 'Complétez le test de niveau',
+        desc: 'Ce test permet d\'évaluer votre niveau de compréhension écrite et votre niveau d\'expression écrite. Il nous aide à déterminer le groupe le plus adapté à votre progression.',
+        cta: 'Commencer le test',
+        type: 'internal',
+        url: 'test-de-niveau.html',
+        track: 'placement'
+      },
+      {
+        id: 'oral',
+        icon: 'fa-video',
+        title: 'Prenez un rendez-vous pour votre évaluation orale',
+        desc: 'L\'évaluation orale permet de déterminer votre niveau d\'expression orale. Le rendez-vous se fait avec notre évaluateur, lors d\'un court entretien en visioconférence.',
+        cta: 'Prendre un rendez-vous',
+        type: 'external',
+        url: 'https://calendly.com/cultulangues/evaluation-orale'
+      },
+      {
+        id: 'payment',
+        icon: 'fa-credit-card',
+        title: 'Réservez votre place',
+        desc: 'Une fois votre niveau confirmé, vous pouvez réserver votre place en choisissant la session ainsi que le créneau horaire qui vous convient.',
+        cta: 'Réserver ma place',
+        type: 'redirect',
+        url: 'paiement.html',
+        track: 'payment'
+      }
+    ]
+  };
+  stepConfigs['workshop-conversation'] = [
+    {
+      id: 'registration',
+      icon: 'fa-file-signature',
+      title: 'Complétez et soumettez le formulaire d\'inscription',
+      desc: 'Remplissez toutes les sections requises et envoyez le formulaire en ligne pour ouvrir votre dossier.',
+      cta: 'Commencer l\'inscription',
+      type: 'internal',
+      url: 'formulaire-inscription.html',
+      track: 'registration'
+    },
+    {
+      id: 'payment',
+      icon: 'fa-credit-card',
+      title: 'Réservez votre place',
+      desc: 'Une fois votre inscription complétée, vous pouvez réserver votre place et effectuer votre paiement afin de confirmer votre participation à l\'atelier choisi.',
+      cta: 'Réserver ma place',
+      type: 'redirect',
+      url: 'paiement.html',
+      track: 'payment'
+    }
+  ];
+  stepConfigs['workshop-culture'] = stepConfigs['workshop-conversation'];
+  stepConfigs['workshop-maintenance'] = stepConfigs['workshop-conversation'];
+
+  function getStepConfig(courseId) {
+    return stepConfigs[courseId] || stepConfigs['default'];
+  }
+
+  var bannerMap = {
+    'private': 'assets/booking/formation-solo-booking.webp',
+    'solo': 'assets/booking/formation-solo-booking.webp',
+    'tcf-quebec': 'assets/booking/tcf-quebec-booking.webp',
+    'tcf-quebec-partiel': 'assets/booking/tcf-quebec-booking.webp',
+    'tcf-quebec-intensif': 'assets/booking/tcf-quebec-booking.webp',
+    'tcf-canada': 'assets/booking/tcf-canada-booking.webp',
+    'tcf-canada-partiel': 'assets/booking/tcf-canada-booking.webp',
+    'tcf-canada-intensif': 'assets/booking/tcf-canada-booking.webp',
+    'tcf': 'assets/booking/tcf-quebec-booking.webp',
+    'oral-bc': 'assets/booking/cap-sur-loral-booking.webp',
+    'oral': 'assets/booking/cap-sur-loral-booking.webp',
+    'oral-b': 'assets/booking/cap-sur-loral-booking.webp',
+    'oral-b-partiel': 'assets/booking/cap-sur-loral-booking.webp',
+    'oral-b-intensif': 'assets/booking/cap-sur-loral-booking.webp',
+    'oral-c': 'assets/booking/cap-sur-loral-booking.webp',
+    'oral-c-partiel': 'assets/booking/cap-sur-loral-booking.webp',
+    'oral-c-intensif': 'assets/booking/cap-sur-loral-booking.webp',
+    'intensif': 'assets/booking/parcours-linguistique-booking.webp',
+    'groupe': 'assets/booking/parcours-linguistique-booking.webp',
+    'samedi': 'assets/booking/parcours-linguistique-booking.webp',
+    'workshop-conversation': 'assets/booking/ateliers-booking.webp',
+    'workshop-culture': 'assets/booking/ateliers-booking.webp',
+    'workshop-maintenance': 'assets/booking/ateliers-booking.webp',
+    'workshop': 'assets/booking/ateliers-booking.webp',
+    'francais-express': 'assets/booking/parcours-linguistique-booking.webp',
+    'english-express': 'assets/booking/english-booking.webp',
+    'english-linguistic-pathway': 'assets/booking/english-booking.webp',
+    'soiree-linguo': 'assets/booking/parcours-linguistique-booking.webp',
+    'evening-lingo': 'assets/booking/english-booking.webp',
+    'samedis-francais': 'assets/booking/parcours-linguistique-booking.webp',
+    'saturdays-english': 'assets/booking/english-booking.webp'
+  };
+
+  var programData = {
+    'complete-french': 'Français complet',
+    'oral-communication': 'Communication orale',
+    'tcf-preparation': 'Préparation au TCF',
+    'french-refresher': 'Remise à niveau',
+    'public-service': 'Fonction publique',
+    'exam-simulations': 'Simulations d\'examen',
+    'french-maintenance': 'Maintien du français',
+    'intensif': 'Intensif',
+    'regulier': 'Régulier'
+  };
+
+  var descriptionOverrides = {
+    'private-complete-french': 'Programme complet de français en cours particuliers. Idéal pour une immersion totale.',
+    'private-oral-communication': 'Cours particuliers axés sur la communication orale. Améliorez votre expression et votre compréhension.',
+    'private-tcf-preparation': 'Préparation individuelle au TCF avec un enseignant dédié.',
+    'private-french-refresher': 'Remise à niveau en français. Parfait pour réactiver vos connaissances.',
+    'private-public-service': 'Français pour la fonction publique. Vocabulaire et situations administratives.',
+    'private-exam-simulations': 'Simulations d\'examen en conditions réelles. Préparez-vous en toute confiance.',
+    'private-french-maintenance': 'Cours de maintien pour garder votre niveau de français.'
+  };
+
+  function renderBookingCourseSummary() {
+    var lang = window.currentLang || localStorage.getItem('cultulangues_lang') || 'fr';
+    var cdb = window.courseContent && window.courseContent[lang]
+              && window.courseContent[lang].booking
+              && window.courseContent[lang].booking.courseDB;
+    var pd = window.courseContent && window.courseContent[lang]
+              && window.courseContent[lang].booking
+              && window.courseContent[lang].booking.programData;
+    var doverrides = window.courseContent && window.courseContent[lang]
+              && window.courseContent[lang].booking
+              && window.courseContent[lang].booking.descriptionOverrides;
+    var courseEntry = cdb ? cdb[state.courseId] : null;
+    var overrideKey = state.courseId + '-' + state.program;
+    var desc = doverrides && doverrides[overrideKey]
+               ? doverrides[overrideKey]
+               : (courseEntry ? courseEntry.desc
+                  : descriptionOverrides[overrideKey] || state.courseData.desc);
+    var name = courseEntry ? courseEntry.name : state.courseData.name;
+    var price = state.courseData.price;
+
+    if (state.courseData.type === 'solo' && state.soloPackage && state.courseData.packages) {
+      var pkgs = state.courseData.packages;
+      var pkg = null;
+      for (var i = 0; i < pkgs.length; i++) {
+        if (pkgs[i].id === state.soloPackage) { pkg = pkgs[i]; break; }
+      }
+      if (pkg) {
+        name += ' — ' + pkg.label + ' (' + pkg.hours + ' h)';
+        price = pkg.price + ' $';
+      }
+    }
+
+    document.getElementById('csName').textContent = name;
+    document.getElementById('csDesc').textContent = desc;
+    document.getElementById('csPrice').textContent = price;
+    var thumbImg = bannerMap[state.courseId] || 'assets/services/homepage-hero.webp';
+    document.getElementById('bkSummaryThumb').src = thumbImg;
+  }
+
+  // ════════════════════════════════════════════════════════════
+  //  DOCUMENT ACCESS CARDS
+  // ════════════════════════════════════════════════════════════
+  function getParam(name) {
+    var m = location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  function getDocState() {
+    try { return JSON.parse(localStorage.getItem('cultulangues_documents') || 'null') || {}; }
+    catch (e) { return {}; }
+  }
+
+  function getSavedRegistration() {
+    try {
+      var all = JSON.parse(localStorage.getItem('cultulangues_inscription') || 'null') || {};
+      return all[state.courseId] || null;
+    } catch (e) { return null; }
+  }
+
+  function buildParams() {
+    var p = {};
+    if (state.courseId) p.course = state.courseId;
+    if (state.program) p.program = state.program;
+    if (state.soloPackage) p.pkg = state.soloPackage;
+    var reg = getSavedRegistration();
+    if (reg && reg.nom_complet) p.name = reg.nom_complet;
+    if (reg && reg.courriel) p.email = reg.courriel;
+    if (reg && reg.telephone) p.phone = reg.telephone;
+    return p;
+  }
+
+  function renderBookingCards() {
+    var config = getStepConfig(state.courseId);
+    var docs = getDocState();
+    var html = '<div class="booking-cards">';
+
+    for (var i = 0; i < config.length; i++) {
+      var step = config[i];
+      var isDone = step.track ? docs[step.track] === 'done' : false;
+      var doneBadge = isDone ? '<span class="bsc-done-badge"><i class="fas fa-check-circle"></i> Terminé</span>' : '';
+      html += '<div class="booking-step-card' + (isDone ? ' done' : '') + '" data-index="' + i + '" data-step-id="' + step.id + '" tabindex="0" role="button">' +
+        '<div class="bsc-number">' + (i + 1) + '</div>' +
+        '<div class="bsc-content">' +
+          '<div class="bsc-title-row"><span class="bsc-title">' + step.title + '</span>' + doneBadge + '</div>' +
+          '<div class="bsc-desc">' + step.desc + '</div>' +
+        '</div>' +
+        '<button class="bsc-cta">' + step.cta + ' <i class="fas fa-arrow-right"></i></button>' +
+      '</div>';
+    }
+    html += '</div>';
+    document.getElementById('stepCardsContainer').innerHTML = html;
+
+    document.querySelectorAll('.booking-step-card').forEach(function (card, idx) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('.bsc-cta')) { openStep(idx); return; }
+        openStep(idx);
+      });
+    });
+
+    updateProgress(config);
+  }
+
+  function openStep(idx) {
+    var config = getStepConfig(state.courseId);
+    var step = config[idx];
+    var params = buildParams();
+    var qs = '';
+    for (var k in params) {
+      if (!params[k]) continue;
+      qs += (qs ? '&' : '?') + encodeURIComponent(k) + '=' + encodeURIComponent(params[k]);
+    }
+    if (step.type === 'external') {
+      window.open(step.url, '_blank');
+    } else {
+      window.location.href = step.url + qs;
+    }
+  }
+
+  function updateProgress(config) {
+    var docs = getDocState();
+    var total = config.length;
+    var done = 0;
+    config.forEach(function (step) {
+      if (step.track && docs[step.track] === 'done') done++;
+    });
+    var pct = total ? Math.round(done / total * 100) : 0;
+    document.getElementById('progressText').textContent = done + ' / ' + total + ' étapes';
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+
+  // ════════════════════════════════════════════════════════════
+  //  INIT — Parse URL params
+  // ════════════════════════════════════════════════════════════
+  function init() {
+    state.courseId = getParam('course') || 'private';
+    state.program = getParam('program') || null;
+    state.soloPackage = getParam('pkg') || null;
+    state.courseData = courseDB[state.courseId];
+
+    if (!state.courseData) {
+      state.courseId = 'private';
+      state.courseData = courseDB['private'];
+    }
+
+    renderBookingCourseSummary();
+    renderBookingCards();
+  }
+
+  init();
+</script>
+
+<script src="js/main.js"></script>
+<script>
+if (window.courseContent) renderBookingCourseSummary();
+var origSwitch = window.switchLanguage;
+if (origSwitch) {
+  window.switchLanguage = function(lang) {
+    origSwitch(lang);
+    if (typeof renderBookingCourseSummary === 'function') renderBookingCourseSummary();
+  };
+}
+</script>
+</body>
+</html>

@@ -2043,6 +2043,18 @@
   width: calc((100% - clamp(14px, 1.8vw, 22px) * 2) / 3 * 2 + clamp(14px, 1.8vw, 22px));
   margin: 0 auto;
 }
+.ph-journey-row--4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+}
+.ph-journey-row--3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+  width: calc((100% - clamp(14px, 1.8vw, 22px) * 2) / 4 * 3 + clamp(14px, 1.8vw, 22px));
+  margin: 0 auto;
+}
 
 
 /* ── Individual card — full-bleed image + dark overlay ── */
@@ -2065,7 +2077,7 @@
 }
 
 /* Staggered vertical offsets removed for uniform alignment */
-.ph-journey-card--1, .ph-journey-card--2, .ph-journey-card--3, .ph-journey-card--4, .ph-journey-card--5 {
+.ph-journey-card--1, .ph-journey-card--2, .ph-journey-card--3, .ph-journey-card--4, .ph-journey-card--5, .ph-journey-card--6, .ph-journey-card--7 {
   margin-top: 0;
 }
 
@@ -2316,13 +2328,13 @@
     grid-template-columns: repeat(2, 1fr);
     gap: clamp(14px, 1.8vw, 22px);
   }
-  .ph-journey-row, .ph-journey-row--center { display: contents; }
+  .ph-journey-row, .ph-journey-row--center, .ph-journey-row--4, .ph-journey-row--3 { display: contents; }
   .ph-journey-card { min-height: 320px; }
-  .ph-journey-card--2, .ph-journey-card--3, .ph-journey-card--4, .ph-journey-card--5 { margin-top: 0; }
-  .ph-journey-card--5 {
-    grid-column: 1 / -1;
-    width: calc(50% - clamp(7px, 0.9vw, 11px));
-    justify-self: center;
+  .ph-journey-card--2, .ph-journey-card--3, .ph-journey-card--4, .ph-journey-card--5, .ph-journey-card--6, .ph-journey-card--7 { margin-top: 0; }
+  .ph-journey-card--5, .ph-journey-card--6, .ph-journey-card--7 {
+    grid-column: auto;
+    width: auto;
+    justify-self: auto;
   }
   .ph-footer-top { grid-template-columns: 1fr 1fr; }
   .pathway-overview-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2352,7 +2364,7 @@
   .pathway-overview-grid { grid-template-columns: 1fr; }
   .subservices-grid { grid-template-columns: 1fr; }
   .ph-journey { grid-template-columns: 1fr; }
-  .ph-journey-card--5 { grid-column: auto; width: auto; justify-self: auto; }
+  .ph-journey-card--5, .ph-journey-card--6, .ph-journey-card--7 { grid-column: auto; width: auto; justify-self: auto; }
   .ph-journey-card { min-height: 300px; }
   .ph-footer-top { grid-template-columns: 1fr; }
   .ph-check-item { padding: 8px 12px; }

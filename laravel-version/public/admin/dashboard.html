@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration — Cultulangues</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user"><div class="avatar">A</div><div class="sidebar-user-info"><div class="sidebar-user-name">Admin</div><div class="sidebar-user-role">Administrateur</div></div></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.gestion">Gestion</div>
+        <a class="sidebar-item active" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span><span data-i18n="admin.sidebar.overview">Vue d'ensemble</span></a>
+        <a class="sidebar-item" data-href="programs.html"><span class="sidebar-item-icon">📚</span><span data-i18n="admin.sidebar.programs">Programmes</span></a>
+        <a class="sidebar-item" data-href="teachers.html"><span class="sidebar-item-icon">👩</span><span data-i18n="admin.sidebar.teachers">Enseignants</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span><span data-i18n="admin.sidebar.students">Étudiants</span></a>
+        <a class="sidebar-item" data-href="bookings.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.bookings">Réservations</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span><span data-i18n="admin.sidebar.payments">Paiements</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.calendar">Calendrier</span></a>
+        <a class="sidebar-item" data-href="analytics.html"><span class="sidebar-item-icon">📈</span><span data-i18n="admin.sidebar.analytics">Analytiques</span></a>
+        <a class="sidebar-item" data-href="placement-test-corrige.html"><span class="sidebar-item-icon">📝</span><span>Corrigé — Test de niveau</span></a>
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.system">Système</div>
+        <a class="sidebar-item" data-href="settings.html"><span class="sidebar-item-icon">⚙</span><span data-i18n="admin.sidebar.settings">Paramètres</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" data-href="../index.html"><span class="sidebar-item-icon">🚪</span><span data-i18n="admin.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="admin.dashboard.title">Vue d'ensemble</h1></div>
+        <div class="topbar-right"><button class="topbar-notification">🔔<span class="notification-dot"></span></button><div class="avatar avatar-sm">A</div></div>
+      </header>
+      <div class="dashboard-content">
+        <div class="stats-grid stagger-children" id="statsGrid">
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon emerald">👥</div></div><div class="stat-card-value">0</div><div class="stat-card-label" data-i18n="admin.dashboard.students">Étudiants</div><div class="stat-card-change">+0%</div></div>
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon blue">📅</div></div><div class="stat-card-value">0</div><div class="stat-card-label" data-i18n="admin.dashboard.totalBookings">Réservations</div><div class="stat-card-change">+0%</div></div>
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon gold">👩</div></div><div class="stat-card-value">0</div><div class="stat-card-label" data-i18n="admin.dashboard.teachers">Enseignants</div><div class="stat-card-change">+0%</div></div>
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon blue">💰</div></div><div class="stat-card-value">0</div><div class="stat-card-label" data-i18n="admin.dashboard.revenue">Revenus</div><div class="stat-card-change">+0%</div></div>
+        </div>
+
+        <div class="dashboard-grid-2 stagger-children">
+          <div class="card">
+            <div class="card-header"><h3 class="card-title" data-i18n="admin.dashboard.recentUsers">Derniers utilisateurs</h3><a href="students.html" class="btn btn-link btn-sm" data-i18n="admin.common.seeAll">Voir tout</a></div>
+            <div class="table-container">
+              <table class="table">
+                <thead><tr><th data-i18n="admin.table.student">Étudiant</th><th data-i18n="admin.table.email">Email</th><th data-i18n="admin.table.role">Rôle</th><th data-i18n="admin.table.date">Date</th></tr></thead>
+                <tbody id="recentUsersBody"><tr><td colspan="4" class="text-muted">Chargement...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3 class="card-title" data-i18n="admin.dashboard.recentBookings">Dernières réservations</h3><a href="bookings.html" class="btn btn-link btn-sm" data-i18n="admin.common.seeAll">Voir tout</a></div>
+            <div class="table-container">
+              <table class="table">
+                <thead><tr><th data-i18n="admin.table.booking">Réservation</th><th data-i18n="admin.table.student">Étudiant</th><th data-i18n="admin.table.service">Service</th><th data-i18n="admin.table.status">Statut</th></tr></thead>
+                <tbody id="recentBookingsBody"><tr><td colspan="4" class="text-muted">Chargement...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h3 class="card-title" data-i18n="admin.dashboard.monthlyRevenueChart">Revenus mensuels</h3></div>
+          <div class="chart-placeholder" id="revenueChart"></div>
+          <div class="flex justify-between mt-sm" id="revenueChartLabels"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    var STATUS_BADGE = {
+      pending: 'badge-gold',
+      confirmed: 'badge-emerald',
+      completed: 'badge-emerald',
+      cancelled: 'badge-red'
+    };
+    var STATUS_LABEL = {
+      pending: 'En attente',
+      confirmed: 'Confirmée',
+      completed: 'Terminée',
+      cancelled: 'Annulée'
+    };
+    var ROLE_LABEL = { admin: 'Admin', teacher: 'Enseignant', student: 'Étudiant' };
+
+    function requireAdmin() {
+      if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+        window.location.href = 'login.html';
+        return false;
+      }
+      return true;
+    }
+
+    function formatMoney(n) {
+      return Number(n || 0).toLocaleString('fr-CA', { style: 'currency', currency: 'CAD', maximumFractionDigits: 0 });
+    }
+
+    function formatDate(val) {
+      if (!val) return '—';
+      try {
+        var d = new Date(val);
+        if (isNaN(d.getTime())) return val;
+        return d.toLocaleDateString('fr-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch (e) { return val; }
+    }
+
+    function statusBadge(status) {
+      return '<span class="badge ' + (STATUS_BADGE[status] || 'badge-gold') + '">' + (STATUS_LABEL[status] || status) + '</span>';
+    }
+
+    function renderStats(stats) {
+      stats = stats || {};
+      var values = [
+        { n: stats.students_count || 0, sub: 'Étudiants inscrits' },
+        { n: stats.total_bookings || 0, sub: (stats.pending_bookings || 0) + ' en attente' },
+        { n: stats.teachers_count || 0, sub: 'Enseignants actifs' },
+        { n: formatMoney(stats.revenue), sub: (stats.pending_payments ? formatMoney(stats.pending_payments) + ' en attente' : '0 $ en attente') }
+      ];
+      var cards = document.querySelectorAll('#statsGrid .stat-card');
+      values.forEach(function (v, i) {
+        if (!cards[i]) return;
+        cards[i].querySelector('.stat-card-value').textContent = v.n;
+        cards[i].querySelector('.stat-card-change').textContent = v.sub;
+      });
+    }
+
+    function renderRecentUsers(users) {
+      var body = document.getElementById('recentUsersBody');
+      if (!users || !users.length) {
+        body.innerHTML = '<tr><td colspan="4" class="text-muted">Aucun utilisateur.</td></tr>';
+        return;
+      }
+      body.innerHTML = users.map(function (u) {
+        var role = (u.roles && u.roles.length) ? u.roles[0].name : '—';
+        var name = (u.first_name ? u.first_name + ' ' : '') + (u.last_name || '');
+        return '<tr>' +
+          '<td>' + (name.trim() || u.email) + '</td>' +
+          '<td>' + (u.email || '—') + '</td>' +
+          '<td>' + (ROLE_LABEL[role] || role) + '</td>' +
+          '<td>' + formatDate(u.created_at) + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function renderRecentBookings(bookings) {
+      var body = document.getElementById('recentBookingsBody');
+      if (!bookings || !bookings.length) {
+        body.innerHTML = '<tr><td colspan="4" class="text-muted">Aucune réservation.</td></tr>';
+        return;
+      }
+      body.innerHTML = bookings.map(function (b) {
+        var service = (b.service && (b.service.name_fr || b.service.slug)) ? (b.service.name_fr || b.service.slug) : '—';
+        return '<tr>' +
+          '<td><strong>' + (b.booking_ref || '—') + '</strong></td>' +
+          '<td>' + (b.first_name + ' ' + b.last_name).trim() + '</td>' +
+          '<td>' + service + '</td>' +
+          '<td>' + statusBadge(b.status) + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function renderRevenueChart(monthlyRevenue) {
+      var container = document.getElementById('revenueChart');
+      var labels = document.getElementById('revenueChartLabels');
+      if (!container) return;
+      monthlyRevenue = monthlyRevenue || {};
+      var shortMonths = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+
+      var months = [];
+      var now = new Date();
+      for (var i = 5; i >= 0; i--) {
+        var d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        months.push({ key: d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'), label: shortMonths[d.getMonth()] });
+      }
+
+      var values = months.map(function (m) { return Number(monthlyRevenue[m.key] || 0); });
+      var max = Math.max.apply(null, values.concat([1]));
+
+      container.innerHTML = values.map(function (v) {
+        var h = Math.max(4, Math.round(v / max * 100));
+        return '<div class="chart-bar" style="height:' + h + '%;" title="' + v + ' $"></div>';
+      }).join('');
+      labels.innerHTML = months.map(function (m) {
+        return '<small class="text-muted">' + m.label + '</small>';
+      }).join('');
+    }
+
+    function loadDashboard() {
+      if (!requireAdmin()) return;
+      CultulanguesAPI.get('/admin/dashboard').then(function (resp) {
+        var data = resp.data || {};
+        renderStats(data.stats);
+        renderRecentUsers(data.recent_users);
+        renderRecentBookings(data.recent_bookings);
+        renderRevenueChart(data.monthly_revenue);
+      }).catch(function (err) {
+        document.getElementById('recentBookingsBody').innerHTML = '<tr><td colspan="4" class="text-muted">Erreur de chargement : ' + ((err && err.message) || 'Serveur indisponible') + '</td></tr>';
+        document.getElementById('recentUsersBody').innerHTML = '<tr><td colspan="4" class="text-muted">Erreur de chargement.</td></tr>';
+      });
+    }
+
+    if (window.CultulanguesAPI) loadDashboard();
+  </script>
+  <script src="../js/api.js"></script>
+  <script>
+    if (window.CultulanguesAPI) loadDashboard();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="teacher.profile.page_title">Profil — Enseignant</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">—</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Enseignant·e</div><div class="sidebar-user-role" id="sidebarUserRole">Enseignant</div></div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="teacher.sidebar.navigation">Navigation</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span> <span data-i18n="teacher.sidebar.dashboard">Tableau de bord</span></a>
+        <a class="sidebar-item" data-href="schedule.html"><span class="sidebar-item-icon">📅</span> <span data-i18n="teacher.sidebar.schedule">Mon emploi du temps</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span> <span data-i18n="teacher.sidebar.students">Mes étudiants</span></a>
+        <a class="sidebar-item" data-href="session-details.html"><span class="sidebar-item-icon">📋</span> <span data-i18n="teacher.sidebar.sessions">Suivi des séances</span></a>
+        <div class="sidebar-section" data-i18n="teacher.sidebar.settings">Paramètres</div>
+        <a class="sidebar-item active" data-href="profile.html"><span class="sidebar-item-icon">⚙</span> <span data-i18n="teacher.sidebar.profile">Profil</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span> <span data-i18n="teacher.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="teacher.profile.title">Profil</h1></div>
+        <div class="topbar-right">
+          <div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" placeholder="Rechercher..." data-i18n-placeholder="teacher.common.search"></div>
+          <button class="topbar-notification">🔔<span class="notification-dot"></span></button>
+          <div class="avatar avatar-sm" id="topbarAvatar">—</div>
+        </div>
+      </header>
+      <div class="dashboard-content">
+        <div class="card mb-lg">
+          <div class="flex items-center" style="gap: var(--space-lg);">
+            <div class="avatar avatar-xl" id="profileAvatar">—</div>
+            <div>
+              <h2 id="profileName">Enseignant·e</h2>
+              <p id="profileEmail" style="color: var(--color-text-secondary);">—</p>
+              <div class="flex items-center gap-sm mt-sm" id="profileBadges"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header"><h3 class="card-title" data-i18n="teacher.profile.information">Informations</h3></div>
+            <div class="card-body">
+              <form id="infoForm">
+                <div class="form-row">
+                  <div class="form-group"><label class="form-label" data-i18n="teacher.profile.first_name">Prénom</label><input type="text" class="form-input" id="firstName" required></div>
+                  <div class="form-group"><label class="form-label" data-i18n="teacher.profile.last_name">Nom</label><input type="text" class="form-input" id="lastName" required></div>
+                </div>
+                <div class="form-group"><label class="form-label" data-i18n="teacher.profile.email">Email</label><input type="email" class="form-input" id="email" disabled></div>
+                <div class="form-group"><label class="form-label" data-i18n="teacher.profile.phone">Téléphone</label><input type="tel" class="form-input" id="phone"></div>
+                <button class="btn btn-primary" data-i18n="teacher.profile.save">Enregistrer</button>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3 class="card-title" data-i18n="teacher.profile.skills_availability">Compétences & disponibilités</h3></div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label" data-i18n="teacher.profile.specialties">Spécialités</label>
+                <div id="specialtiesList" style="display: flex; flex-wrap: wrap; gap: var(--space-xs);">
+                  <span class="text-muted">Chargement…</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="teacher.profile.availability">Disponibilités</label>
+                <div id="availabilityList" style="display: flex; flex-direction: column; gap: var(--space-xs);">
+                  <span class="text-muted">Chargement…</span>
+                </div>
+                <button class="btn btn-ghost btn-sm mt-sm" type="button" id="addSlot">+ Ajouter un créneau</button>
+                <div class="mt-md">
+                  <button class="btn btn-primary" type="button" id="saveAvailability" data-i18n="teacher.profile.update">Mettre à jour</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+
+      function requireTeacher() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = '../pages/login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'admin') { window.location.href = '../admin/dashboard.html'; return false; }
+        if (role === 'student') { window.location.href = '../student/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+      function setVal(id, val) { var el = document.getElementById(id); if (el) el.value = val == null ? '' : val; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatTime(val) {
+        if (!val) return '—';
+        var m = String(val).match(/^(\d{1,2}):(\d{2})/);
+        return m ? m[1] + 'h' + m[2] : val;
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || 'Enseignant·e';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('sidebarUserRole', 'Enseignant');
+        setText('topbarAvatar', initials);
+        setText('profileAvatar', initials);
+        setText('profileName', name);
+        setText('profileEmail', user.email || '—');
+        setVal('firstName', user.first_name);
+        setVal('lastName', user.last_name);
+        setVal('email', user.email);
+        setVal('phone', user.phone);
+
+        var tp = user.teacher_profile || {};
+        var badges = [];
+        if (tp.specialization) badges.push('<span class="badge badge-emerald">' + escapeHtml(tp.specialization) + '</span>');
+        if (tp.rating) badges.push('<span class="badge badge-blue">' + escapeHtml(tp.rating) + '/5</span>');
+        if (tp.department) badges.push('<span class="badge badge-gold">' + escapeHtml(tp.department) + '</span>');
+        document.getElementById('profileBadges').innerHTML = badges.join(' ') || '';
+      }
+
+      function renderSpecialties(specialties) {
+        var container = document.getElementById('specialtiesList');
+        if (!specialties || !specialties.length) {
+          container.innerHTML = '<span class="text-muted">Aucune spécialité enregistrée.</span>';
+          return;
+        }
+        container.innerHTML = specialties.map(function (s) {
+          return '<span class="badge badge-emerald">' + escapeHtml(s.specialty) + '</span>';
+        }).join(' ');
+      }
+
+      function slotRow(slot) {
+        var div = document.createElement('div');
+        div.className = 'flex items-center';
+        div.style.gap = 'var(--space-xs)';
+        div.innerHTML =
+          '<select class="form-select slot-day" style="width: auto; padding: 4px 24px 4px 8px; font-size: 0.8125rem;">' +
+            DAYS.map(function (d, i) { return '<option value="' + i + '"' + (Number(slot.day_of_week) === i ? ' selected' : '') + '>' + d + '</option>'; }).join('') +
+          '</select>' +
+          '<input type="time" class="form-input slot-start" style="width: 90px; padding: 4px 8px;" value="' + escapeHtml(slot.start_time || '') + '">' +
+          '<span class="text-muted">→</span>' +
+          '<input type="time" class="form-input slot-end" style="width: 90px; padding: 4px 8px;" value="' + escapeHtml(slot.end_time || '') + '">' +
+          '<button type="button" class="btn btn-ghost btn-sm slot-remove">✕</button>';
+        div.querySelector('.slot-remove').addEventListener('click', function () { div.remove(); });
+        return div;
+      }
+
+      function renderAvailability(slots) {
+        var container = document.getElementById('availabilityList');
+        container.innerHTML = '';
+        if (!slots || !slots.length) {
+          var empty = document.createElement('span');
+          empty.className = 'text-muted';
+          empty.textContent = 'Aucun créneau.';
+          container.appendChild(empty);
+          return;
+        }
+        slots.forEach(function (slot) { container.appendChild(slotRow(slot)); });
+      }
+
+      function collectSlots() {
+        var rows = document.querySelectorAll('#availabilityList .flex');
+        var slots = [];
+        rows.forEach(function (row) {
+          var day = row.querySelector('.slot-day');
+          var start = row.querySelector('.slot-start');
+          var end = row.querySelector('.slot-end');
+          if (day && start && end && start.value && end.value) {
+            slots.push({ day_of_week: parseInt(day.value, 10), start_time: start.value, end_time: end.value });
+          }
+        });
+        return slots;
+      }
+
+      function loadProfile() {
+        if (!requireTeacher()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        Promise.all([
+          CultulanguesAPI.get('/me'),
+          CultulanguesAPI.get('/teacher/availability'),
+          CultulanguesAPI.get('/teacher/specialties')
+        ]).then(function (results) {
+          renderUser((results[0].data || {}).user || cached);
+          renderAvailability(results[1].data);
+          renderSpecialties(results[2].data);
+        }).catch(function (err) {
+          var unauthorized = err && (err.status === 401 || (err.response && err.response.status === 401));
+          if (unauthorized) window.location.href = '../pages/login.html';
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../pages/login.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      document.getElementById('infoForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        CultulanguesAPI.put('/me', {
+          first_name: document.getElementById('firstName').value,
+          last_name: document.getElementById('lastName').value,
+          phone: document.getElementById('phone').value
+        }).then(function (resp) {
+          var user = (resp.data || {}).user;
+          if (user) {
+            CultulanguesAPI.setUser(user);
+            renderUser(user);
+          }
+          showToast('Profil mis à jour ✓', 'success');
+        }).catch(function (err) {
+          showToast('Erreur : ' + ((err && err.message) || 'Serveur indisponible'), 'error');
+        });
+      });
+
+      document.getElementById('addSlot').addEventListener('click', function () {
+        var container = document.getElementById('availabilityList');
+        var empty = container.querySelector('.text-muted');
+        if (empty) empty.remove();
+        container.appendChild(slotRow({ day_of_week: 1, start_time: '10:00', end_time: '18:00' }));
+      });
+
+      document.getElementById('saveAvailability').addEventListener('click', function () {
+        CultulanguesAPI.put('/teacher/availability', { slots: collectSlots() }).then(function () {
+          showToast('Disponibilités mises à jour ✓', 'success');
+          loadProfile();
+        }).catch(function (err) {
+          showToast('Erreur : ' + ((err && err.message) || 'Serveur indisponible'), 'error');
+        });
+      });
+
+      bindLogout();
+      loadProfile();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

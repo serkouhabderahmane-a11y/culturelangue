@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leçons — Admin</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+<style>
+    .status-select{border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 10px;font-size:.78rem;background:var(--bg);color:var(--text);font-family:var(--font);outline:none;cursor:pointer}
+    .status-select:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,142,83,.1)}
+    .modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px}
+    .modal-backdrop.open{display:flex}
+    .modal{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:640px;max-height:92vh;overflow:auto;padding:24px;box-shadow:0 24px 60px -20px rgba(0,0,0,.4)}
+    .modal h3{margin:0 0 18px;color:var(--text)}
+    .modal-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:22px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-grid .full{grid-column:1 / -1}
+    @media (max-width: 560px){.form-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user"><div class="avatar" id="sidebarAvatar">A</div><div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Admin</div><div class="sidebar-user-role">Administrateur</div></div></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.gestion">Gestion</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span><span data-i18n="admin.sidebar.overview">Vue d'ensemble</span></a>
+        <a class="sidebar-item" data-href="programs.html"><span class="sidebar-item-icon">📚</span><span data-i18n="admin.sidebar.programs">Programmes</span></a>
+        <a class="sidebar-item" data-href="teachers.html"><span class="sidebar-item-icon">👩</span><span data-i18n="admin.sidebar.teachers">Enseignants</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span><span data-i18n="admin.sidebar.students">Étudiants</span></a>
+        <a class="sidebar-item" data-href="bookings.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.bookings">Réservations</span></a>
+        <a class="sidebar-item" data-href="lessons.html"><span class="sidebar-item-icon">📘</span><span data-i18n="admin.sidebar.lessons">Leçons</span></a>
+        <a class="sidebar-item" data-href="sessions.html"><span class="sidebar-item-icon">🗓</span><span data-i18n="admin.sidebar.sessions">Séances</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span><span data-i18n="admin.sidebar.payments">Paiements</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.calendar">Calendrier</span></a>
+        <a class="sidebar-item" data-href="analytics.html"><span class="sidebar-item-icon">📈</span><span data-i18n="admin.sidebar.analytics">Analytiques</span></a>
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.system">Système</div>
+        <a class="sidebar-item" data-href="settings.html"><span class="sidebar-item-icon">⚙</span><span data-i18n="admin.sidebar.settings">Paramètres</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span><span data-i18n="admin.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="admin.lessons.title">Leçons</h1></div>
+        <div class="topbar-right"><div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" id="lessonSearch" placeholder="Rechercher (titre, service, professeur)"></div><button class="topbar-notification">🔔<span class="notification-dot"></span></button><div class="avatar avatar-sm" id="topbarAvatar">A</div></div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-content-header">
+          <h2 data-i18n="admin.lessons.management">Gestion des leçons</h2>
+          <div class="flex items-center gap-sm">
+            <button class="btn btn-primary" id="openLessonModalBtn">+ Nouvelle leçon</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="table-container">
+            <table class="table">
+              <thead><tr><th data-i18n="admin.table.date">Date</th><th data-i18n="admin.table.time">Heure</th><th data-i18n="admin.table.service">Service</th><th data-i18n="admin.table.title">Titre</th><th data-i18n="admin.table.teacher">Professeur</th><th data-i18n="admin.table.room">Salle</th><th data-i18n="admin.table.status">Statut</th><th></th></tr></thead>
+              <tbody id="lessonsBody">
+                <tr><td colspan="8" class="text-muted" style="text-align:center;padding:24px">Chargement des leçons...</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pagination" id="lessonsPagination" style="padding:12px 16px"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="lessonModal">
+    <div class="modal">
+      <h3 id="lessonModalTitle">Nouvelle leçon</h3>
+      <form id="lessonForm">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label class="form-label">Service *</label>
+            <select class="form-select" id="f_service_id" required></select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Titre *</label>
+            <input class="form-control" id="f_title" type="text" required maxlength="255" placeholder="Ex : Français Express — Séance 1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date *</label>
+            <input class="form-control" id="f_date" type="date" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Professeur</label>
+            <select class="form-select" id="f_teacher_id"><option value="">— Aucun —</option></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Début (HH:MM) *</label>
+            <input class="form-control" id="f_start_time" type="time" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Fin (HH:MM) *</label>
+            <input class="form-control" id="f_end_time" type="time" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Salle</label>
+            <input class="form-control" id="f_room" type="text" maxlength="100" placeholder="Ex : A-101">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Type</label>
+            <select class="form-select" id="f_lesson_type">
+              <option value="class">Cours</option>
+              <option value="practice">Pratique</option>
+              <option value="exam-prep">Préparation examen</option>
+              <option value="workshop">Atelier</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Statut</label>
+            <select class="form-select" id="f_status">
+              <option value="scheduled">Planifiée</option>
+              <option value="in-progress">En cours</option>
+              <option value="completed">Terminée</option>
+              <option value="cancelled">Annulée</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Notes</label>
+            <textarea class="form-control" id="f_notes" rows="2" maxlength="2000"></textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="cancelLessonBtn">Annuler</button>
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var STATUS_BADGE = { scheduled: 'badge-blue', 'in-progress': 'badge-gold', completed: 'badge-emerald', cancelled: 'badge-red' };
+      var STATUS_LABEL = { scheduled: 'Planifiée', 'in-progress': 'En cours', completed: 'Terminée', cancelled: 'Annulée' };
+      var TYPE_LABEL = { class: 'Cours', practice: 'Pratique', 'exam-prep': 'Préparation examen', workshop: 'Atelier' };
+
+      var currentPage = 1;
+      var totalPages = 1;
+      var editingId = null;
+      var services = [];
+      var teachers = [];
+
+      function requireAdmin() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = 'login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') { window.location.href = '../teacher/dashboard.html'; return false; }
+        if (role === 'student') { window.location.href = '../student/dashboard.html'; return false; }
+        return true;
+      }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || user.first_name + ' ' + (user.last_name || '');
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || 'A');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name || 'Admin');
+        setText('topbarAvatar', initials);
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        var parts = String(val).slice(0, 10).split('-');
+        if (parts.length === 3) return parts[2] + '/' + parts[1] + '/' + parts[0];
+        return val;
+      }
+
+      function statusBadge(status) {
+        return '<span class="badge ' + (STATUS_BADGE[status] || 'badge-blue') + '">' + (STATUS_LABEL[status] || status) + '</span>';
+      }
+
+      function serviceName(s) {
+        if (!s) return '—';
+        return s.name_fr || s.name_en || s.slug || 'Service #' + s.id;
+      }
+
+      function teacherName(t) {
+        if (!t) return '—';
+        return [t.first_name, t.last_name].filter(Boolean).join(' ') || '—';
+      }
+
+      function renderLessons(lessons) {
+        var body = document.getElementById('lessonsBody');
+        if (!lessons || !lessons.length) {
+          body.innerHTML = '<tr><td colspan="8" class="text-muted" style="text-align:center;padding:24px">Aucune leçon trouvée.</td></tr>';
+          return;
+        }
+        body.innerHTML = lessons.map(function (l) {
+          var typeLabel = TYPE_LABEL[l.lesson_type] || l.lesson_type;
+          return '<tr>' +
+            '<td>' + formatDate(l.date) + '</td>' +
+            '<td>' + String(l.start_time || '').slice(0, 5) + '–' + String(l.end_time || '').slice(0, 5) + '</td>' +
+            '<td><strong>' + escapeHtml(serviceName(l.service)) + '</strong></td>' +
+            '<td>' + escapeHtml(l.title || '—') + '<br><small class="text-muted">' + escapeHtml(typeLabel) + '</small></td>' +
+            '<td>' + escapeHtml(teacherName(l.teacher)) + '</td>' +
+            '<td>' + escapeHtml(l.room || '—') + '</td>' +
+            '<td>' + statusBadge(l.status) + '</td>' +
+            '<td class="table-actions">' +
+              '<button class="btn btn-link btn-sm" data-action="edit" data-id="' + l.id + '">Modifier</button>' +
+              '<button class="btn btn-link btn-sm" data-action="delete" data-id="' + l.id + '" style="color:var(--danger,#e11d48)">Supprimer</button>' +
+            '</td>' +
+          '</tr>';
+        }).join('');
+
+        body.querySelectorAll('[data-action]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var id = parseInt(btn.getAttribute('data-id'), 10);
+            if (btn.getAttribute('data-action') === 'edit') openEdit(id);
+            else deleteLesson(id);
+          });
+        });
+      }
+
+      function renderPagination(meta) {
+        var container = document.getElementById('lessonsPagination');
+        if (!meta) { container.innerHTML = ''; return; }
+        totalPages = meta.last_page || 1;
+        currentPage = meta.current_page || 1;
+        var html = '<span class="text-muted" style="font-size:.8rem">' + meta.total + ' leçon(s) à page ' + currentPage + ' / ' + totalPages + '</span> ';
+        html += '<button class="btn btn-link btn-sm" id="prevPageBtn" ' + (currentPage <= 1 ? 'disabled' : '') + '>‹ Précédent</button> ';
+        html += '<button class="btn btn-link btn-sm" id="nextPageBtn" ' + (currentPage >= totalPages ? 'disabled' : '') + '>Suivant ›</button>';
+        container.innerHTML = html;
+        var prev = document.getElementById('prevPageBtn');
+        var next = document.getElementById('nextPageBtn');
+        if (prev) prev.addEventListener('click', function () { if (currentPage > 1) { currentPage--; loadLessons(); } });
+        if (next) next.addEventListener('click', function () { if (currentPage < totalPages) { currentPage++; loadLessons(); } });
+      }
+
+      function loadLessons() {
+        if (!requireAdmin()) return;
+        var params = { per_page: 20, page: currentPage };
+        var search = document.getElementById('lessonSearch').value.trim();
+        if (search) params.search = search;
+
+        document.getElementById('lessonsBody').innerHTML = '<tr><td colspan="8" class="text-muted" style="text-align:center;padding:24px">Chargement des leçons...</td></tr>';
+
+        CultulanguesAPI.get('/admin/lessons', params).then(function (resp) {
+          renderLessons(resp.data);
+          renderPagination(resp.meta);
+        }).catch(function (err) {
+          if (window.CultulanguesAPI && !CultulanguesAPI.getToken()) { window.location.href = 'login.html'; return; }
+          document.getElementById('lessonsBody').innerHTML = '<tr><td colspan="8" class="text-muted" style="text-align:center;padding:24px">Erreur de chargement : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</td></tr>';
+        });
+      }
+
+      function populateSelect(selectId, items, valueKey, labelFn, emptyLabel) {
+        var sel = document.getElementById(selectId);
+        var html = emptyLabel ? '<option value="">' + emptyLabel + '</option>' : '';
+        html += items.map(function (item) {
+          var v = item[valueKey];
+          return '<option value="' + v + '">' + escapeHtml(labelFn(item)) + '</option>';
+        }).join('');
+        sel.innerHTML = html;
+      }
+
+      function loadOptions() {
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        CultulanguesAPI.get('/admin/services', { per_page: 100, is_active: true }).then(function (resp) {
+          services = resp.data || [];
+          populateSelect('f_service_id', services, 'id', function (s) { return s.name_fr || s.name_en || s.slug; }, '');
+        }).catch(function () { services = []; });
+
+        CultulanguesAPI.get('/admin/users', { per_page: 100, role: 'teacher' }).then(function (resp) {
+          teachers = resp.data || [];
+          populateSelect('f_teacher_id', teachers, 'id', function (u) { return (u.first_name + ' ' + (u.last_name || '')).trim(); }, '— Aucun —');
+        }).catch(function () { teachers = []; });
+      }
+
+      function openCreate() {
+        editingId = null;
+        document.getElementById('lessonModalTitle').textContent = 'Nouvelle leçon';
+        document.getElementById('lessonForm').reset();
+        document.getElementById('f_status').value = 'scheduled';
+        document.getElementById('f_lesson_type').value = 'class';
+        var today = new Date();
+        today.setDate(today.getDate() + 1);
+        var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+        if (!document.getElementById('f_date').value) document.getElementById('f_date').value = today.getFullYear() + '-' + pad(today.getMonth() + 1) + '-' + pad(today.getDate());
+        document.getElementById('lessonModal').classList.add('open');
+      }
+
+      function openEdit(id) {
+        CultulanguesAPI.get('/admin/lessons', { per_page: 100 }).then(function (resp) {
+          var lesson = (resp.data || []).filter(function (l) { return l.id === id; })[0];
+          if (!lesson) { if (window.showToast) showToast('Leçon introuvable', 'error'); return; }
+          editingId = id;
+          document.getElementById('lessonModalTitle').textContent = 'Modifier la leçon';
+          document.getElementById('f_service_id').value = lesson.service_id || '';
+          document.getElementById('f_title').value = lesson.title || '';
+          document.getElementById('f_date').value = String(lesson.date || '').slice(0, 10);
+          document.getElementById('f_teacher_id').value = lesson.teacher_id || '';
+          document.getElementById('f_start_time').value = String(lesson.start_time || '').slice(0, 5);
+          document.getElementById('f_end_time').value = String(lesson.end_time || '').slice(0, 5);
+          document.getElementById('f_room').value = lesson.room || '';
+          document.getElementById('f_lesson_type').value = lesson.lesson_type || 'class';
+          document.getElementById('f_status').value = lesson.status || 'scheduled';
+          document.getElementById('f_notes').value = lesson.notes || '';
+          document.getElementById('lessonModal').classList.add('open');
+        }).catch(function () {});
+      }
+
+      function closeModal() {
+        document.getElementById('lessonModal').classList.remove('open');
+      }
+
+      function saveLesson(e) {
+        e.preventDefault();
+        var payload = {
+          service_id: parseInt(document.getElementById('f_service_id').value, 10),
+          teacher_id: document.getElementById('f_teacher_id').value ? parseInt(document.getElementById('f_teacher_id').value, 10) : null,
+          title: document.getElementById('f_title').value.trim(),
+          date: document.getElementById('f_date').value,
+          start_time: document.getElementById('f_start_time').value,
+          end_time: document.getElementById('f_end_time').value,
+          room: document.getElementById('f_room').value.trim() || null,
+          lesson_type: document.getElementById('f_lesson_type').value,
+          status: document.getElementById('f_status').value,
+          notes: document.getElementById('f_notes').value.trim() || null,
+        };
+
+        if (!payload.service_id || !payload.title || !payload.date || !payload.start_time || !payload.end_time) {
+          if (window.showToast) showToast('Veuillez remplir les champs obligatoires.', 'error');
+          return;
+        }
+
+        var request = editingId
+          ? CultulanguesAPI.put('/admin/lessons/' + editingId, payload)
+          : CultulanguesAPI.post('/admin/lessons', payload);
+
+        request.then(function () {
+          if (window.showToast) showToast(editingId ? 'Leçon mise à jour' : 'Leçon créée', 'success');
+          closeModal();
+          currentPage = 1;
+          loadLessons();
+        }).catch(function (err) {
+          var msg = (err && err.message) ? err.message : 'Impossible d\'enregistrer la leçon.';
+          if (window.showToast) showToast(msg, 'error'); else alert(msg);
+        });
+      }
+
+      function deleteLesson(id) {
+        if (!window.confirm('Supprimer définitivement cette leçon ?')) return;
+        CultulanguesAPI.del('/admin/lessons/' + id).then(function () {
+          if (window.showToast) showToast('Leçon supprimée', 'success');
+          loadLessons();
+        }).catch(function (err) {
+          var msg = (err && err.message) ? err.message : 'Impossible de supprimer la leçon.';
+          if (window.showToast) showToast(msg, 'error'); else alert(msg);
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../index.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      document.getElementById('openLessonModalBtn').addEventListener('click', openCreate);
+      document.getElementById('cancelLessonBtn').addEventListener('click', closeModal);
+      document.getElementById('lessonForm').addEventListener('submit', saveLesson);
+      document.getElementById('lessonModal').addEventListener('click', function (e) { if (e.target === this) closeModal(); });
+
+      var searchTimer = null;
+      document.getElementById('lessonSearch').addEventListener('input', function () {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function () { currentPage = 1; loadLessons(); }, 400);
+      });
+
+      bindLogout();
+      loadOptions();
+      loadLessons();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

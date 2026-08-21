@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="student.programs.page_title">Mes Programmes — Cultulangues</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body class="dashboard-body">
+
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a>
+      </div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">—</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebarUserName">Étudiant·e</div>
+          <div class="sidebar-user-role" id="sidebarUserRole">Étudiante</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="student.sidebar.navigation">Navigation</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span> <span data-i18n="student.sidebar.dashboard">Tableau de bord</span></a>
+        <a class="sidebar-item active" data-href="my-programs.html"><span class="sidebar-item-icon">📚</span> <span data-i18n="student.sidebar.my_programs">Mes programmes</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span> <span data-i18n="student.sidebar.calendar">Mon calendrier</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span> <span data-i18n="student.sidebar.payments">Paiements & factures</span></a>
+        <a class="sidebar-item" data-href="level-tests.html"><span class="sidebar-item-icon">📝</span> <span data-i18n="student.sidebar.level_tests">Tests de niveau</span></a>
+        <div class="sidebar-section" data-i18n="student.sidebar.settings">Paramètres</div>
+        <a class="sidebar-item" data-href="profile.html"><span class="sidebar-item-icon">⚙</span> <span data-i18n="student.sidebar.profile">Profil</span></a>
+        <a class="sidebar-item" data-href="support.html"><span class="sidebar-item-icon">🛠</span> <span data-i18n="student.sidebar.support">Support</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span> <span data-i18n="student.sidebar.logout">Déconnexion</span></a>
+      </div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle">☰</button>
+          <h1 class="topbar-title" data-i18n="student.programs.title">Mes programmes</h1>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-search">
+            <span class="topbar-search-icon">🔍</span>
+            <input type="text" placeholder="Rechercher..." data-i18n-placeholder="student.common.search">
+          </div>
+          <button class="topbar-notification">🔔<span class="notification-dot"></span></button>
+          <div class="avatar avatar-sm" id="topbarAvatar">—</div>
+        </div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-content-header">
+          <h2 data-i18n="student.programs.title">Mes programmes</h2>
+          <a href="../booking.html" class="btn btn-primary" data-i18n="student.programs.new_registration">+ Nouvelle inscription</a>
+        </div>
+
+        <div id="enrollmentsContainer" style="display: flex; flex-direction: column; gap: var(--space-lg);">
+          <div class="text-center text-muted" style="padding: var(--space-xl) 0;">Chargement de vos programmes…</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="program-detail-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 data-i18n="student.programs.details_title">Détails du programme</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="programDetailBody"></div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeModal('program-detail-modal')" data-i18n="student.common.close">Fermer</button>
+        <a class="btn btn-primary" href="calendar.html" data-i18n="student.common.view_calendar">Voir le calendrier</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var STATUS_LABELS = { active: 'En cours', completed: 'Terminé', cancelled: 'Annulé', pending: 'En attente' };
+      var STATUS_COLORS = { active: 'var(--color-emerald)', completed: 'var(--color-text-secondary)', cancelled: 'var(--danger, #e74c3c)', pending: 'var(--gold)' };
+
+      function requireStudent() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = '../pages/login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') { window.location.href = '../teacher/dashboard.html'; return false; }
+        if (role === 'admin') { window.location.href = '../admin/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        try { var d = new Date(val); if (isNaN(d.getTime())) return val; return d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return val; }
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || 'Étudiant·e';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('sidebarUserRole', user.current_level ? 'Étudiante à ' + user.current_level : 'Étudiante');
+        setText('topbarAvatar', initials);
+      }
+
+      function statusBadge(status) {
+        var label = STATUS_LABELS[status] || status || '—';
+        var color = STATUS_COLORS[status] || 'var(--color-text-secondary)';
+        return '<span class="badge" style="background: ' + color + ';">' + escapeHtml(label) + '</span>';
+      }
+
+      function programCard(enrollment, index) {
+        var service = enrollment.service || {};
+        var name = service.name_fr || service.slug || 'Programme';
+        var progress = Math.round(Number(enrollment.progress) || 0);
+        var startDate = enrollment.start_date ? 'Début : ' + formatDate(enrollment.start_date) : '';
+        var endDate = enrollment.end_date ? 'Fin : ' + formatDate(enrollment.end_date) : '';
+        return '<div class="card mb-lg">' +
+          '<div class="card-body">' +
+            '<div class="flex justify-between items-center" style="flex-wrap: wrap; gap: var(--space-md);">' +
+              '<div class="flex items-center" style="gap: var(--space-md);">' +
+                '<div style="width: 48px; height: 48px; background: var(--color-bg-cream); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">📚</div>' +
+                '<div>' +
+                  '<h4 style="margin-bottom: 2px;">' + escapeHtml(name) + '</h4>' +
+                  '<p style="font-size: 0.8125rem; color: var(--color-text-tertiary); margin: 0;">' + escapeHtml([startDate, endDate].filter(Boolean).join(' · ')) + '</p>' +
+                '</div>' +
+              '</div>' +
+              '<div class="flex items-center" style="gap: var(--space-md);">' +
+                statusBadge(enrollment.status) +
+                '<span style="font-size: 0.9375rem; font-weight: 700; color: ' + (progress > 0 ? 'var(--color-emerald)' : 'var(--color-text-secondary)') + ';">' + progress + '%</span>' +
+                '<div class="progress" style="width: 100px;"><div class="progress-bar" style="width: ' + progress + '%;"></div></div>' +
+                '<button class="btn btn-outline btn-sm" data-index="' + index + '" onclick="openProgramDetail(' + index + ')">Détails</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }
+
+      function emptyState() {
+        return '<div class="empty-state">' +
+          '<div class="empty-state-icon">🎓</div>' +
+          '<h3>Aucun programme en cours</h3>' +
+          '<p>Vous n\'êtes inscrit·e à aucun programme pour le moment. Explorez nos formations pour commencer.</p>' +
+          '<a href="../pages/programs.html" class="btn btn-primary">Découvrir les programmes</a>' +
+        '</div>';
+      }
+
+      function loadEnrollments() {
+        if (!requireStudent()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        var container = document.getElementById('enrollmentsContainer');
+        CultulanguesAPI.get('/student/enrollments').then(function (resp) {
+          var data = resp.data || [];
+          renderUser(CultulanguesAPI.getUser());
+          if (!data.length) { container.innerHTML = emptyState(); return; }
+          window.__programs = data;
+          container.innerHTML = data.map(programCard).join('');
+        }).catch(function (err) {
+          container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><h3>Erreur de chargement</h3><p>' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</p></div>';
+        });
+      }
+
+      window.openProgramDetail = function (index) {
+        var enrollment = (window.__programs || [])[index];
+        if (!enrollment) return;
+        var service = enrollment.service || {};
+        var body = document.getElementById('programDetailBody');
+        body.innerHTML =
+          '<div class="flex items-center gap-md mb-md">' +
+            '<div style="font-size: 2rem;">📚</div>' +
+            '<div><h4>' + escapeHtml(service.name_fr || service.slug || 'Programme') + '</h4></div>' +
+          '</div>' +
+          '<div style="display: flex; flex-direction: column; gap: var(--space-sm);">' +
+            '<div class="flex justify-between"><span class="text-muted">Début</span><span>' + escapeHtml(formatDate(enrollment.start_date)) + '</span></div>' +
+            '<div class="flex justify-between"><span class="text-muted">Fin</span><span>' + escapeHtml(formatDate(enrollment.end_date)) + '</span></div>' +
+            '<div class="flex justify-between"><span class="text-muted">Progression</span><span>' + Math.round(Number(enrollment.progress) || 0) + '%</span></div>' +
+            '<div class="flex justify-between"><span class="text-muted">Statut</span><span>' + escapeHtml(STATUS_LABELS[enrollment.status] || enrollment.status) + '</span></div>' +
+          '</div>';
+        openModal('program-detail-modal');
+      };
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../pages/login.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      bindLogout();
+      loadEnrollments();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

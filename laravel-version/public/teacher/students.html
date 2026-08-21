@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="teacher.students.page_title">Mes étudiants — Enseignant</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">—</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Enseignant·e</div><div class="sidebar-user-role" id="sidebarUserRole">Enseignant</div></div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="teacher.sidebar.navigation">Navigation</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span> <span data-i18n="teacher.sidebar.dashboard">Tableau de bord</span></a>
+        <a class="sidebar-item" data-href="schedule.html"><span class="sidebar-item-icon">📅</span> <span data-i18n="teacher.sidebar.schedule">Mon emploi du temps</span></a>
+        <a class="sidebar-item active" data-href="students.html"><span class="sidebar-item-icon">👥</span> <span data-i18n="teacher.sidebar.students">Mes étudiants</span></a>
+        <a class="sidebar-item" data-href="session-details.html"><span class="sidebar-item-icon">📋</span> <span data-i18n="teacher.sidebar.sessions">Suivi des séances</span></a>
+        <div class="sidebar-section" data-i18n="teacher.sidebar.settings">Paramètres</div>
+        <a class="sidebar-item" data-href="profile.html"><span class="sidebar-item-icon">⚙</span> <span data-i18n="teacher.sidebar.profile">Profil</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span> <span data-i18n="teacher.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="teacher.students.title">Mes étudiants</h1></div>
+        <div class="topbar-right">
+          <div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" placeholder="Rechercher..." data-i18n-placeholder="teacher.common.search"></div>
+          <button class="topbar-notification">🔔<span class="notification-dot"></span></button>
+          <div class="avatar avatar-sm" id="topbarAvatar">—</div>
+        </div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-content-header">
+          <h2 data-i18n="teacher.students.heading">Mes étudiants</h2>
+        </div>
+        <div class="card">
+          <div class="table-container">
+            <table class="table">
+              <thead><tr><th data-i18n="teacher.students.th_student">Étudiant</th><th data-i18n="teacher.students.th_level">Niveau</th><th data-i18n="teacher.students.th_group">Programme</th><th data-i18n="teacher.students.th_progress">Progression</th><th data-i18n="teacher.students.th_status">Statut</th></tr></thead>
+              <tbody id="studentsBody">
+                <tr><td colspan="5" class="text-muted text-center" style="padding: var(--space-lg) 0;">Chargement…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      function requireTeacher() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = '../pages/login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'admin') { window.location.href = '../admin/dashboard.html'; return false; }
+        if (role === 'student') { window.location.href = '../student/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || user.first_name || 'Enseignant·e';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('sidebarUserRole', 'Enseignant');
+        setText('topbarAvatar', initials);
+      }
+
+      function statusBadge(status) {
+        var map = {
+          active: ['badge-emerald', 'Actif'],
+          pending: ['badge-gold', 'En attente'],
+          cancelled: ['badge-red', 'Annulé'],
+          completed: ['badge-blue', 'Terminé']
+        };
+        var entry = map[status] || ['badge-gray', status || '—'];
+        return '<span class="badge ' + entry[0] + '">' + escapeHtml(entry[1]) + '</span>';
+      }
+
+      function renderStudents(students) {
+        var body = document.getElementById('studentsBody');
+        if (!students || !students.length) {
+          body.innerHTML = '<tr><td colspan="5" class="text-muted text-center" style="padding: var(--space-lg) 0;">Aucun étudiant inscrit pour le moment.</td></tr>';
+          return;
+        }
+        body.innerHTML = students.map(function (s) {
+          var name = s.full_name || ((s.first_name || '') + ' ' + (s.last_name || '')).trim() || 'Étudiant';
+          var initials = s.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+          var profile = s.student_profile || {};
+          var level = profile.current_level || '—';
+          var enrollment = (s.enrollments && s.enrollments.length) ? s.enrollments[0] : null;
+          var serviceName = (enrollment && enrollment.service && (enrollment.service.name_fr || enrollment.service.slug)) || '—';
+          var progress = enrollment ? Math.round(Number(enrollment.progress) || 0) : 0;
+          return '<tr>' +
+            '<td><div class="flex items-center gap-sm"><div class="avatar avatar-sm">' + escapeHtml(initials) + '</div><span>' + escapeHtml(name) + '</span></div></td>' +
+            '<td><span class="badge badge-blue">' + escapeHtml(level) + '</span></td>' +
+            '<td>' + escapeHtml(serviceName) + '</td>' +
+            '<td><div class="flex items-center gap-sm"><div class="progress" style="width: 80px;"><div class="progress-bar" style="width: ' + progress + '%;"></div></div><small class="text-muted">' + progress + '%</small></div></td>' +
+            '<td>' + statusBadge(enrollment ? enrollment.status : null) + '</td>' +
+          '</tr>';
+        }).join('');
+      }
+
+      function loadStudents() {
+        if (!requireTeacher()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        CultulanguesAPI.get('/teacher/students').then(function (resp) {
+          renderStudents(resp.data);
+        }).catch(function (err) {
+          var unauthorized = err && (err.status === 401 || (err.response && err.response.status === 401));
+          document.getElementById('studentsBody').innerHTML = '<tr><td colspan="5" class="text-muted text-center" style="padding: var(--space-lg) 0;">Erreur : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</td></tr>';
+          if (unauthorized) window.location.href = '../pages/login.html';
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../pages/login.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      bindLogout();
+      loadStudents();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

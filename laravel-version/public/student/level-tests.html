@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="student.tests.page_title">Tests de niveau — Cultulangues</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+<link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user"><div class="avatar" id="sidebarAvatar">—</div><div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Étudiant·e</div><div class="sidebar-user-role" id="sidebarUserRole">Étudiante</div></div></div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="student.sidebar.navigation">Navigation</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span> <span data-i18n="student.sidebar.dashboard">Tableau de bord</span></a>
+        <a class="sidebar-item" data-href="my-programs.html"><span class="sidebar-item-icon">📚</span> <span data-i18n="student.sidebar.my_programs">Mes programmes</span></a>
+        <a class="sidebar-item" data-href="calendar.html"><span class="sidebar-item-icon">📅</span> <span data-i18n="student.sidebar.calendar">Mon calendrier</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span> <span data-i18n="student.sidebar.payments">Paiements & factures</span></a>
+        <a class="sidebar-item active" data-href="level-tests.html"><span class="sidebar-item-icon">📝</span> <span data-i18n="student.sidebar.level_tests">Tests de niveau</span></a>
+        <div class="sidebar-section" data-i18n="student.sidebar.settings">Paramètres</div>
+        <a class="sidebar-item" data-href="profile.html"><span class="sidebar-item-icon">⚙</span> <span data-i18n="student.sidebar.profile">Profil</span></a>
+        <a class="sidebar-item" data-href="support.html"><span class="sidebar-item-icon">🛠</span> <span data-i18n="student.sidebar.support">Support</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span> <span data-i18n="student.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="student.tests.title">Tests de niveau</h1></div>
+        <div class="topbar-right"><div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" placeholder="Rechercher..." data-i18n-placeholder="student.common.search"></div><button class="topbar-notification">🔔<span class="notification-dot"></span></button><div class="avatar avatar-sm" id="topbarAvatar">—</div></div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-content-header"><h2 data-i18n="student.tests.evaluate_level">Mes résultats de tests</h2></div>
+        <div class="card">
+          <div class="card-header"><h3 class="card-title" data-i18n="student.tests.test_history">Historique des tests</h3></div>
+          <div class="table-container">
+            <table class="table">
+              <thead><tr><th data-i18n="student.tests.th_date">Date</th><th data-i18n="student.tests.th_test">Test</th><th data-i18n="student.tests.th_score">Score</th><th data-i18n="student.tests.th_level">Niveau</th><th data-i18n="student.tests.th_status">Statut</th></tr></thead>
+              <tbody id="testsBody">
+                <tr><td colspan="5" class="text-muted text-center" style="padding: var(--space-lg) 0;">Chargement…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var STATUS_LABELS = { passed: 'Réussi', failed: 'Échoué', pending: 'En attente' };
+      var STATUS_CLASS = { passed: 'badge-emerald', failed: 'badge-red', pending: 'badge-gold' };
+
+      function requireStudent() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = '../pages/login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') { window.location.href = '../teacher/dashboard.html'; return false; }
+        if (role === 'admin') { window.location.href = '../admin/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        try { var d = new Date(val); if (isNaN(d.getTime())) return val; return d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return val; }
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || 'Étudiant·e';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || '—');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('sidebarUserRole', user.current_level ? 'Étudiante à ' + user.current_level : 'Étudiante');
+        setText('topbarAvatar', initials);
+      }
+
+      function loadTests() {
+        if (!requireStudent()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        var body = document.getElementById('testsBody');
+        CultulanguesAPI.get('/student/tests').then(function (resp) {
+          var results = resp.data || [];
+          renderUser(CultulanguesAPI.getUser());
+          if (!results.length) {
+            body.innerHTML = '<tr><td colspan="5" class="text-muted text-center" style="padding: var(--space-lg) 0;">Aucun test passé pour le moment.</td></tr>';
+            return;
+          }
+          body.innerHTML = results.map(function (r) {
+            var test = r.test || {};
+            var name = test.name || 'Test de niveau';
+            var score = Number(r.score);
+            var statusLabel = STATUS_LABELS[r.status] || r.status || '—';
+            var statusClass = STATUS_CLASS[r.status] || '';
+            return '<tr>' +
+              '<td>' + escapeHtml(formatDate(r.taken_at || r.created_at)) + '</td>' +
+              '<td>' + escapeHtml(name) + '</td>' +
+              '<td><strong>' + (isNaN(score) ? '—' : Math.round(score) + '%') + '</strong></td>' +
+              '<td>' + (r.level ? '<span class="badge badge-blue">' + escapeHtml(r.level) + '</span>' : '—') + '</td>' +
+              '<td><span class="badge ' + statusClass + '">' + escapeHtml(statusLabel) + '</span></td>' +
+            '</tr>';
+          }).join('');
+        }).catch(function (err) {
+          body.innerHTML = '<tr><td colspan="5" class="text-muted text-center" style="padding: var(--space-lg) 0;">Erreur : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</td></tr>';
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../pages/login.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      bindLogout();
+      loadTests();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="auth.register.page.title">Inscription — Cultulangues</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+<body>
+
+  <!-- ═══ AUTH PAGE ═══ -->
+  <div class="auth-page">
+  <div style="position:absolute;inset:0;z-index:0;opacity:0.04;pointer-events:none"><img src="../img/hero-maitrisez-langues.png" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+    <div class="auth-card" style="max-width: 540px;">
+      <a href="../index.html" class="logo">
+        <img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img">
+      </a>
+      <h2 data-i18n="auth.register.title">Créer votre compte</h2>
+      <p class="auth-subtitle" data-i18n="auth.register.subtitle">Rejoignez Cultulangues et commencez votre parcours linguistique</p>
+
+      <form class="needs-validation">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="auth.register.firstname">Prénom <span class="required">*</span></label>
+            <input type="text" class="form-input" required data-i18n-placeholder="auth.register.firstname.placeholder" placeholder="Votre prénom">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="auth.register.lastname">Nom <span class="required">*</span></label>
+            <input type="text" class="form-input" required data-i18n-placeholder="auth.register.lastname.placeholder" placeholder="Votre nom">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.register.email">Email <span class="required">*</span></label>
+          <input type="email" class="form-input" required data-i18n-placeholder="auth.register.email.placeholder" placeholder="votre@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.register.password">Mot de passe <span class="required">*</span></label>
+          <div style="position: relative;">
+            <input type="password" class="form-input" required data-i18n-placeholder="auth.register.password.placeholder" placeholder="Minimum 8 caractères">
+            <button type="button" class="password-toggle" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 1rem;">🔒</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="auth.register.level">Niveau de langue</label>
+            <select class="form-select" name="level">
+              <option value="A1" data-i18n="auth.register.level.a1">Débutant (A1)</option>
+              <option value="A2" data-i18n="auth.register.level.a2">Élémentaire (A2)</option>
+              <option value="B1" data-i18n="auth.register.level.b1">Intermédiaire (B1)</option>
+              <option value="B2" selected data-i18n="auth.register.level.b2">Intermédiaire+ (B2)</option>
+              <option value="C1" data-i18n="auth.register.level.c1">Avancé (C1)</option>
+              <option value="C2" data-i18n="auth.register.level.c2">Expert (C2)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="auth.register.goal">Objectif principal</label>
+            <select class="form-select" name="goal">
+              <option value="tcf_qc" data-i18n="auth.register.goal.tcf_qc">TCF Québec</option>
+              <option value="tcf_ca" data-i18n="auth.register.goal.tcf_ca">TCF Canada</option>
+              <option value="oral_bc" data-i18n="auth.register.goal.oral_bc">Oral B ou C</option>
+              <option value="general" data-i18n="auth.register.goal.general">Perfectionnement général</option>
+              <option value="immersion" data-i18n="auth.register.goal.immersion">Immersion culturelle</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="auth.register.bubbles_label">Choisissez votre parcours</label>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+            <button type="button" class="reg-bubble selected" data-value="tcf_qc" data-i18n="auth.register.goal.tcf_qc" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;border:2px solid rgba(250,78,48,0.15);background:rgba(250,78,48,0.08);color:#C04520;cursor:pointer;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);font-family:var(--font);box-shadow:0 2px 8px rgba(0,0,0,0.03)">TCF Québec</button>
+            <button type="button" class="reg-bubble" data-value="tcf_ca" data-i18n="auth.register.goal.tcf_ca" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;border:2px solid rgba(35,103,208,0.15);background:rgba(35,103,208,0.08);color:#1A4D94;cursor:pointer;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);font-family:var(--font);box-shadow:0 2px 8px rgba(0,0,0,0.03)">TCF Canada</button>
+            <button type="button" class="reg-bubble" data-value="oral_bc" data-i18n="auth.register.goal.oral_bc" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;border:2px solid rgba(115,206,101,0.15);background:rgba(115,206,101,0.08);color:#2E7D24;cursor:pointer;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);font-family:var(--font);box-shadow:0 2px 8px rgba(0,0,0,0.03)">Oral B ou C</button>
+            <button type="button" class="reg-bubble" data-value="general" data-i18n="auth.register.goal.general" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-size:0.875rem;font-weight:600;border:2px solid rgba(155,89,182,0.15);background:rgba(155,89,182,0.08);color:#6B3A8A;cursor:pointer;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);font-family:var(--font);box-shadow:0 2px 8px rgba(0,0,0,0.03)">Perfectionnement général</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-checkbox">
+            <input type="checkbox" required> <span data-i18n="auth.register.accept">J'accepte les</span> <a href="#" data-i18n="auth.register.tos" style="color: var(--color-emerald); font-weight: 600;">conditions d'utilisation</a>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary w-full btn-lg" data-i18n="auth.register.submit">Créer mon compte</button>
+      </form>
+
+      <div class="auth-footer mt-lg">
+        <span data-i18n="auth.register.has_account">Déjà un compte ?</span> <a href="login.html" data-i18n="auth.register.login">Se connecter</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/content-loader.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+  (function(){
+    var colors = {
+      tcf_qc:  {bg:'#FA4E30',shadow:'0 4px 20px rgba(250,78,48,0.3)',border:'rgba(250,78,48,0.6)',text:'#fff'},
+      tcf_ca:  {bg:'#2367D0',shadow:'0 4px 20px rgba(35,103,208,0.3)',border:'rgba(35,103,208,0.6)',text:'#fff'},
+      oral_bc: {bg:'#73CE65',shadow:'0 4px 20px rgba(115,206,101,0.3)',border:'rgba(115,206,101,0.6)',text:'#fff'},
+      general: {bg:'#9B59B6',shadow:'0 4px 20px rgba(155,89,182,0.3)',border:'rgba(155,89,182,0.6)',text:'#fff'}
+    };
+    var defaults = {
+      tcf_qc:  {bg:'rgba(250,78,48,0.08)',border:'rgba(250,78,48,0.15)',text:'#C04520',shadow:'0 2px 8px rgba(0,0,0,0.03)'},
+      tcf_ca:  {bg:'rgba(35,103,208,0.08)',border:'rgba(35,103,208,0.15)',text:'#1A4D94',shadow:'0 2px 8px rgba(0,0,0,0.03)'},
+      oral_bc: {bg:'rgba(115,206,101,0.08)',border:'rgba(115,206,101,0.15)',text:'#2E7D24',shadow:'0 2px 8px rgba(0,0,0,0.03)'},
+      general: {bg:'rgba(155,89,182,0.08)',border:'rgba(155,89,182,0.15)',text:'#6B3A8A',shadow:'0 2px 8px rgba(0,0,0,0.03)'}
+    };
+    var bubbles = document.querySelectorAll('.reg-bubble');
+    var select = document.querySelector('select[name="goal"]');
+    function applyStyle(b, style) {
+      b.style.background = style.bg;
+      b.style.borderColor = style.border;
+      b.style.color = style.text;
+      b.style.boxShadow = style.shadow;
+      b.style.transform = 'translateY(-2px) scale(1.03)';
+    }
+    function resetStyle(b, val) {
+      var d = defaults[val] || defaults.tcf_qc;
+      b.style.background = d.bg;
+      b.style.borderColor = d.border;
+      b.style.color = d.text;
+      b.style.boxShadow = d.shadow;
+      b.style.transform = '';
+    }
+    bubbles.forEach(function(b){
+      var val = b.getAttribute('data-value');
+      if(b.classList.contains('selected')) applyStyle(b, colors[val] || colors.tcf_qc);
+      b.addEventListener('click', function(){
+        bubbles.forEach(function(x){ x.classList.remove('selected'); resetStyle(x, x.getAttribute('data-value')); });
+        b.classList.add('selected');
+        applyStyle(b, colors[val] || colors.tcf_qc);
+        if(select) select.value = val;
+      });
+      b.addEventListener('mouseenter', function(){ if(!b.classList.contains('selected')) b.style.transform = 'translateY(-2px)'; });
+      b.addEventListener('mouseleave', function(){ if(!b.classList.contains('selected')) b.style.transform = ''; });
+    });
+
+    var form = document.querySelector('.auth-card form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var inputs = form.querySelectorAll('input, select');
+      var values = {};
+      var labels = ['first_name', 'last_name', 'email', 'password', 'level', 'goal'];
+      var i = 0;
+      inputs.forEach(function (input) {
+        if (input.type === 'checkbox') return;
+        values[labels[i]] = input.value.trim();
+        i++;
+      });
+      if (!values.first_name || !values.last_name || !values.email || !values.password) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+      var btnText = btn.innerHTML;
+      btn.innerHTML = 'Création en cours...';
+      btn.disabled = true;
+      window.CultulanguesAPI.register({
+        first_name: values.first_name,
+        last_name: values.last_name,
+        email: values.email,
+        password: values.password,
+        password_confirmation: values.password,
+        current_level: (values.level || 'B2').toUpperCase(),
+        goal: values.goal || 'Perfectionnement général'
+      }).then(function () {
+        window.location.href = '../student/dashboard.html';
+      }).catch(function (err) {
+        var msg = err.errors ? Object.keys(err.errors).map(function(k){ return k + ': ' + err.errors[k].join(', '); }).join('<br>') : (err.message || 'Une erreur est survenue.');
+        alert(msg);
+        btn.innerHTML = btnText;
+        btn.disabled = false;
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendrier — Admin</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/premium.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="logo"><img src="../img/image-Photoroom.png" alt="Cultulangues" class="logo-img"></a></div>
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebarAvatar">A</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name" id="sidebarUserName">Admin</div><div class="sidebar-user-role">Administrateur</div></div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.gestion">Gestion</div>
+        <a class="sidebar-item" data-href="dashboard.html"><span class="sidebar-item-icon">📊</span><span data-i18n="admin.sidebar.overview">Vue d'ensemble</span></a>
+        <a class="sidebar-item" data-href="programs.html"><span class="sidebar-item-icon">📚</span><span data-i18n="admin.sidebar.programs">Programmes</span></a>
+        <a class="sidebar-item" data-href="teachers.html"><span class="sidebar-item-icon">👩</span><span data-i18n="admin.sidebar.teachers">Enseignants</span></a>
+        <a class="sidebar-item" data-href="students.html"><span class="sidebar-item-icon">👥</span><span data-i18n="admin.sidebar.students">Étudiants</span></a>
+        <a class="sidebar-item" data-href="bookings.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.bookings">Réservations</span></a>
+        <a class="sidebar-item" data-href="lessons.html"><span class="sidebar-item-icon">📘</span><span data-i18n="admin.sidebar.lessons">Leçons</span></a>
+        <a class="sidebar-item" data-href="sessions.html"><span class="sidebar-item-icon">🗓</span><span data-i18n="admin.sidebar.sessions">Séances</span></a>
+        <a class="sidebar-item" data-href="payments.html"><span class="sidebar-item-icon">💳</span><span data-i18n="admin.sidebar.payments">Paiements</span></a>
+        <a class="sidebar-item active" data-href="calendar.html"><span class="sidebar-item-icon">📅</span><span data-i18n="admin.sidebar.calendar">Calendrier</span></a>
+        <a class="sidebar-item" data-href="analytics.html"><span class="sidebar-item-icon">📈</span><span data-i18n="admin.sidebar.analytics">Analytiques</span></a>
+        <div class="sidebar-section" data-i18n="admin.sidebar.section.system">Système</div>
+        <a class="sidebar-item" data-href="settings.html"><span class="sidebar-item-icon">⚙</span><span data-i18n="admin.sidebar.settings">Paramètres</span></a>
+      </nav>
+      <div class="sidebar-footer"><a class="sidebar-item" href="#" id="logoutLink"><span class="sidebar-item-icon">🚪</span><span data-i18n="admin.sidebar.logout">Déconnexion</span></a></div>
+    </aside>
+    <div class="mobile-nav-overlay sidebar-overlay"></div>
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left"><button class="sidebar-toggle">☰</button><h1 class="topbar-title" data-i18n="admin.calendar.title">Calendrier</h1></div>
+        <div class="topbar-right">
+          <div class="topbar-search"><span class="topbar-search-icon">🔍</span><input type="text" data-i18n-placeholder="admin.common.search" placeholder="Rechercher..."></div>
+          <button class="topbar-notification">🔔<span class="notification-dot"></span></button>
+          <div class="avatar avatar-sm" id="topbarAvatar">A</div>
+        </div>
+      </header>
+      <div class="dashboard-content">
+        <div class="dashboard-content-header">
+          <h2 data-i18n="admin.calendar.general">Calendrier général</h2>
+          <button class="btn btn-outline btn-sm" id="todayBtn">Aujourd'hui</button>
+        </div>
+
+        <div class="card">
+          <div class="calendar-header">
+            <div class="calendar-nav">
+              <button class="btn btn-ghost btn-sm" id="prevMonth">‹</button>
+              <h3 id="monthTitle">—</h3>
+              <button class="btn btn-ghost btn-sm" id="nextMonth">›</button>
+            </div>
+          </div>
+          <div class="calendar-grid" id="calendarGrid">
+            <div class="calendar-day-header">Lun</div>
+            <div class="calendar-day-header">Mar</div>
+            <div class="calendar-day-header">Mer</div>
+            <div class="calendar-day-header">Jeu</div>
+            <div class="calendar-day-header">Ven</div>
+            <div class="calendar-day-header">Sam</div>
+            <div class="calendar-day-header">Dim</div>
+          </div>
+          <div id="calendarEmpty" class="text-center text-muted" style="padding: var(--space-lg) 0; display: none;">Aucune séance prévue ce mois-ci.</div>
+        </div>
+
+        <div class="card mt-lg">
+          <h3 class="card-title mb-md">Prochaines séances</h3>
+          <div class="table-container">
+            <table class="table">
+              <thead><tr><th>Date</th><th>Séance</th><th>Programme</th><th>Enseignant</th><th>Horaire</th><th>Salle</th></tr></thead>
+              <tbody id="lessonsBody">
+                <tr><td colspan="6" class="text-muted text-center" style="padding: var(--space-lg) 0;">Chargement…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/api.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      var currentMonth = new Date();
+      var eventsByDate = {};
+      var DAY_HEADERS = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+      function requireAdmin() {
+        if (!window.CultulanguesAPI || !CultulanguesAPI.getToken()) {
+          window.location.href = 'login.html';
+          return false;
+        }
+        var role = CultulanguesAPI.getRole();
+        if (role === 'teacher') { window.location.href = '../teacher/dashboard.html'; return false; }
+        if (role === 'student') { window.location.href = '../student/dashboard.html'; return false; }
+        return true;
+      }
+
+      function setText(id, text) { var el = document.getElementById(id); if (el) el.textContent = text; }
+
+      function escapeHtml(value) {
+        return String(value == null ? '' : value)
+          .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function formatDate(val) {
+        if (!val) return '—';
+        try { var d = new Date(val); if (isNaN(d.getTime())) return val; return d.toLocaleDateString('fr-CA', { year: 'numeric', month: 'short', day: 'numeric' }); } catch (e) { return val; }
+      }
+
+      function formatTime(val) {
+        if (!val) return '—';
+        var m = String(val).match(/^(\d{1,2}):(\d{2})/);
+        return m ? m[1] + 'h' + m[2] : val;
+      }
+
+      function renderUser(user) {
+        if (!user) return;
+        var name = user.full_name || 'Admin';
+        var initials = user.initials || (name.split(/\s+/).map(function (p) { return p.charAt(0); }).join('').slice(0, 2).toUpperCase() || 'A');
+        setText('sidebarAvatar', initials);
+        setText('sidebarUserName', name);
+        setText('topbarAvatar', initials);
+      }
+
+      function dateKey(date) {
+        return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
+      }
+
+      function renderGrid() {
+        var grid = document.getElementById('calendarGrid');
+        var header = DAY_HEADERS.map(function (d) { return '<div class="calendar-day-header">' + d + '</div>'; }).join('');
+        var year = currentMonth.getFullYear();
+        var month = currentMonth.getMonth();
+
+        var firstDay = new Date(year, month, 1);
+        var startOffset = (firstDay.getDay() + 6) % 7;
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
+        var cells = [];
+
+        for (var i = 0; i < startOffset; i++) {
+          var dPrev = new Date(year, month, i - startOffset + 1);
+          cells.push('<div class="calendar-day other-month"><div class="day-number">' + dPrev.getDate() + '</div></div>');
+        }
+
+        var hasEvents = false;
+        for (var day = 1; day <= daysInMonth; day++) {
+          var date = new Date(year, month, day);
+          var key = dateKey(date);
+          var today = (new Date()).toDateString() === date.toDateString();
+          var events = eventsByDate[key] || [];
+          if (events.length) hasEvents = true;
+          var cls = 'calendar-day' + (today ? ' today' : '');
+          var evHtml = events.slice(0, 3).map(function (e) {
+            return '<div class="calendar-event ' + e.cls + '">' + escapeHtml(e.label) + '</div>';
+          }).join('');
+          if (events.length > 3) evHtml += '<div class="calendar-event-more">+' + (events.length - 3) + ' autres</div>';
+          cells.push('<div class="' + cls + '"><div class="day-number">' + day + '</div>' + evHtml + '</div>');
+        }
+
+        var totalCells = cells.length + startOffset;
+        var trailing = (7 - (totalCells % 7)) % 7;
+        for (var j = 1; j <= trailing; j++) {
+          cells.push('<div class="calendar-day other-month"><div class="day-number">' + j + '</div></div>');
+        }
+
+        grid.innerHTML = header + cells.join('');
+        setText('monthTitle', firstDay.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' }));
+        document.getElementById('calendarEmpty').style.display = hasEvents ? 'none' : '';
+      }
+
+      function loadCalendar() {
+        if (!requireAdmin()) return;
+        var cached = CultulanguesAPI.getUser();
+        if (cached) renderUser(cached);
+
+        eventsByDate = {};
+        CultulanguesAPI.get('/admin/calendar').then(function (resp) {
+          var lessons = resp.data || [];
+          lessons.forEach(function (l) {
+            var label = formatTime(l.start_time) + ' · ' + (l.title || 'Séance');
+            if (!eventsByDate[l.date]) eventsByDate[l.date] = [];
+            eventsByDate[l.date].push({ label: label, cls: 'class' });
+          });
+          renderGrid();
+        }).catch(function (err) {
+          setText('monthTitle', 'Erreur de chargement');
+          document.getElementById('calendarEmpty').textContent = (err && err.message) || 'Serveur indisponible';
+          document.getElementById('calendarEmpty').style.display = '';
+        });
+      }
+
+      function renderLessons() {
+        if (!requireAdmin()) return;
+        var body = document.getElementById('lessonsBody');
+        CultulanguesAPI.get('/admin/lessons', { per_page: 50 }).then(function (resp) {
+          var lessons = resp.data || [];
+          if (!lessons.length) {
+            body.innerHTML = '<tr><td colspan="6" class="text-muted text-center" style="padding: var(--space-lg) 0;">Aucune séance prévue.</td></tr>';
+            return;
+          }
+          body.innerHTML = lessons.map(function (l) {
+            var teacher = (l.teacher && (l.teacher.full_name || l.teacher.first_name)) || '—';
+            var service = (l.service && (l.service.name_fr || l.service.slug)) || '—';
+            return '<tr>' +
+              '<td>' + escapeHtml(formatDate(l.date)) + '</td>' +
+              '<td><strong>' + escapeHtml(l.title || 'Séance') + '</strong></td>' +
+              '<td>' + escapeHtml(service) + '</td>' +
+              '<td>' + escapeHtml(teacher) + '</td>' +
+              '<td>' + escapeHtml(formatTime(l.start_time)) + ' – ' + escapeHtml(formatTime(l.end_time)) + '</td>' +
+              '<td>' + escapeHtml(l.room || '—') + '</td>' +
+            '</tr>';
+          }).join('');
+        }).catch(function (err) {
+          body.innerHTML = '<tr><td colspan="6" class="text-muted text-center" style="padding: var(--space-lg) 0;">Erreur : ' + escapeHtml((err && err.message) || 'Serveur indisponible') + '</td></tr>';
+        });
+      }
+
+      function bindLogout() {
+        var link = document.getElementById('logoutLink');
+        if (!link) return;
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var goHome = function () { window.location.href = '../index.html'; };
+          if (window.CultulanguesAPI) CultulanguesAPI.logout().then(goHome).catch(goHome);
+          else goHome();
+        });
+      }
+
+      document.getElementById('prevMonth').addEventListener('click', function () {
+        currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
+        renderGrid();
+      });
+      document.getElementById('nextMonth').addEventListener('click', function () {
+        currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
+        renderGrid();
+      });
+      document.getElementById('todayBtn').addEventListener('click', function () {
+        currentMonth = new Date();
+        renderGrid();
+      });
+
+      bindLogout();
+      loadCalendar();
+      renderLessons();
+    })();
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

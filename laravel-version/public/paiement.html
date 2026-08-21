@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement — Réservation et confirmation | Cultulangues</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --pink:#FF6B9D;--orange:#FF8E53;--yellow:#FFD93D;--blue:#4A90D9;--green:#2ECC71;--amber:#FFB347;--red:#E74C3C;
+      --purple:#9B59B6;--teal:#1ABC9C;
+      --bg:#F4F6FA;--bg-card:#FFFFFF;--text:#1A2332;--text-secondary:#6B7A8F;--text-tertiary:#BDC3C7;--border:#E8ECF1;
+      --shadow-sm:0 2px 8px rgba(0,0,0,0.04);--shadow-md:0 4px 20px rgba(0,0,0,0.08);--shadow-lg:0 12px 40px rgba(0,0,0,0.12);
+      --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--radius-full:9999px;
+      --transition:300ms cubic-bezier(0.4,0,0.2,1);--font:'Plus Jakarta Sans',sans-serif;
+      --accent:var(--pink);
+    }
+    html{font-size:15px;scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+    .payment-wrap{max-width:920px;margin:0 auto;padding:24px 20px 48px}
+    .payment-header{text-align:center;margin-bottom:32px}
+    .payment-header img{width:160px;height:auto;margin-bottom:12px}
+    .payment-header h1{font-size:1.5rem;font-weight:800;color:var(--text)}
+    .payment-header p{font-size:0.85rem;color:var(--text-secondary);margin-top:4px}
+
+    .ps-steps{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:36px;padding:0 4px}
+    .ps-step{display:flex;align-items:center;gap:0;font-size:0.7rem;font-weight:600;color:var(--text-tertiary);white-space:nowrap}
+    .ps-step .ps-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;border:2px solid var(--border);background:var(--bg-card);color:var(--text-tertiary);flex-shrink:0;transition:all var(--transition)}
+    .ps-step .ps-label{display:none;margin-left:8px}
+    .ps-step.active .ps-dot{background:var(--accent);border-color:var(--accent);color:white}
+    .ps-step.active .ps-label{display:inline;color:var(--text);font-weight:700}
+    .ps-step.done .ps-dot{background:var(--green);border-color:var(--green);color:white}
+    .ps-step.done .ps-label{display:inline;color:var(--green)}
+    .ps-line{flex:1;height:2px;background:var(--border);margin:0 8px;min-width:12px;transition:background var(--transition)}
+    .ps-line.done{background:var(--green)}
+
+    .payment-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
+    .payment-main{display:flex;flex-direction:column;gap:20px}
+    .payment-sidebar{display:flex;flex-direction:column;gap:20px}
+
+    .pay-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-sm)}
+    .pay-card h2{font-size:1rem;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+    .pay-card h2 i{color:var(--accent);font-size:0.9rem}
+
+    .os-table{width:100%}
+    .os-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:0.85rem}
+    .os-row:last-of-type{border-bottom:none}
+    .os-row .os-lbl{color:var(--text-secondary)}
+    .os-row .os-val{font-weight:600;text-align:right;max-width:60%}
+    .os-row.os-total{font-size:1.1rem;font-weight:800;color:var(--text);padding:14px 0 0;border-top:2px solid var(--text);margin-top:4px}
+    .os-row.os-total .os-val{color:var(--accent)}
+
+    .si-grid{display:grid;gap:10px}
+    .si-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.85rem}
+    .si-item:last-child{border-bottom:none}
+    .si-item .si-lbl{color:var(--text-secondary)}
+    .si-item .si-val{font-weight:600;text-align:right}
+
+    .pm-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+    .pm-tab{padding:12px 18px;border:2px solid var(--border);border-radius:var(--radius-md);background:var(--bg-card);cursor:pointer;font-family:var(--font);font-size:0.82rem;font-weight:600;color:var(--text-secondary);transition:all var(--transition);display:flex;align-items:center;gap:8px}
+    .pm-tab:hover{border-color:var(--accent);color:var(--accent)}
+    .pm-tab.active{border-color:var(--accent);background:rgba(255,107,157,0.05);color:var(--accent)}
+    .pm-tab i{font-size:1rem}
+
+    .pm-form{animation:fadeInUp 0.3s ease}
+    .pm-form.hidden{display:none}
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;font-size:0.78rem;font-weight:600;margin-bottom:6px;color:var(--text)}
+    .form-group input,.form-group select{padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.85rem;outline:none;transition:all var(--transition);font-family:var(--font);background:var(--bg);color:var(--text);width:100%}
+    .form-group input:focus,.form-group select:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,107,157,0.06);background:white}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .card-icons{display:flex;gap:8px;margin-bottom:14px}
+    .card-icons span{padding:6px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.7rem;font-weight:700;color:var(--text-tertiary);background:var(--bg)}
+    .card-icons span i{margin-right:4px}
+
+    .interac-info{text-align:center;padding:20px}
+    .interac-info .ii-icon{font-size:2.5rem;color:var(--green);margin-bottom:12px}
+    .interac-info h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+    .interac-info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:6px}
+    .interac-info .ii-email{font-size:1.1rem;font-weight:800;color:var(--text);padding:10px 20px;background:var(--bg);border-radius:var(--radius-md);display:inline-block;margin:8px 0}
+
+    .paypal-info{text-align:center;padding:20px}
+    .paypal-info .pi-icon{font-size:2.5rem;color:#0070BA;margin-bottom:12px}
+    .paypal-info h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+    .paypal-info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+
+    .other-info{text-align:center;padding:20px}
+    .other-info .oi-icon{font-size:2rem;color:var(--text-tertiary);margin-bottom:12px}
+    .other-info h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+    .other-info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+
+    .btn-confirm{width:100%;padding:16px 28px;border-radius:var(--radius-md);font-size:1rem;font-weight:700;border:none;cursor:pointer;font-family:var(--font);display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:white;transition:all var(--transition)}
+    .btn-confirm:hover{box-shadow:0 8px 24px rgba(255,107,157,0.35);transform:translateY(-2px)}
+    .btn-confirm:disabled{opacity:0.5;cursor:not-allowed;transform:none!important}
+    .btn-confirm i{font-size:0.9rem}
+
+    .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:4px}
+    .trust-row span{font-size:0.75rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px}
+    .trust-row span i{color:var(--green)}
+
+    .notes-card h3{font-size:0.9rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .notes-card h3 i{color:var(--blue);font-size:0.85rem}
+    .notes-card ul{list-style:none;padding:0}
+    .notes-card ul li{font-size:0.8rem;color:var(--text-secondary);padding:6px 0;padding-left:20px;position:relative;line-height:1.5}
+    .notes-card ul li::before{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;left:0;color:var(--green);font-size:0.65rem;top:8px}
+
+    .faq-card h3{font-size:0.9rem;font-weight:700;margin-bottom:12px}
+    .faq-item{border-bottom:1px solid var(--border);padding:10px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:0.82rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none}
+    .faq-q i{font-size:0.7rem;color:var(--text-tertiary);transition:transform var(--transition)}
+    .faq-q.open i{transform:rotate(180deg)}
+    .faq-a{font-size:0.78rem;color:var(--text-secondary);line-height:1.6;padding-top:8px;display:none}
+    .faq-a.open{display:block}
+
+    .payment-footer{text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--border)}
+    .payment-footer p{font-size:0.75rem;color:var(--text-tertiary)}
+
+    .success-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
+    .success-overlay.show{display:flex}
+    .success-modal{background:var(--bg-card);border-radius:var(--radius-xl);padding:40px;max-width:440px;width:100%;text-align:center;box-shadow:var(--shadow-lg);animation:fadeInUp 0.4s ease}
+    .success-modal .sm-icon{width:64px;height:64px;border-radius:50%;background:rgba(46,204,113,0.12);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.6rem}
+    .success-modal h2{font-size:1.3rem;font-weight:800;margin-bottom:8px}
+    .success-modal p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}
+    .success-modal .sm-email{font-size:0.8rem;color:var(--text-secondary);background:var(--bg);border-radius:var(--radius-md);padding:10px 16px;margin:12px 0}
+    .success-modal .sm-btn{padding:12px 28px;border-radius:var(--radius-md);font-size:0.85rem;font-weight:700;border:none;cursor:pointer;font-family:var(--font);background:var(--text);color:white;margin-top:16px;transition:all var(--transition)}
+    .success-modal .sm-btn:hover{background:var(--accent)}
+
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+    @media(max-width:768px){
+      .payment-layout{grid-template-columns:1fr}
+      .payment-header h1{font-size:1.2rem}
+      .pay-card{padding:20px}
+      .ps-step .ps-label{display:none!important}
+      .ps-step.active .ps-label,.ps-step.done .ps-label{display:inline!important}
+      .form-row{grid-template-columns:1fr}
+      .pm-tabs{gap:6px}
+      .pm-tab{padding:10px 14px;font-size:0.78rem}
+      .trust-row{gap:12px}
+    }
+    @media(max-width:480px){
+      .payment-wrap{padding:16px 12px 32px}
+      .pm-tabs{flex-direction:column}
+      .pm-tab{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+<div class="payment-wrap">
+
+  <!-- HEADER -->
+  <div class="payment-header">
+    <img src="img/image-Photoroom.png" alt="Cultulangues">
+    <h1>Réservation et paiement</h1>
+    <p>Finalisez votre inscription en toute sécurité</p>
+  </div>
+
+  <!-- STEP INDICATOR -->
+  <div class="ps-steps" id="psSteps">
+    <div class="ps-step done"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Inscription</span></div>
+    <div class="ps-line done"></div>
+    <div class="ps-step done" id="psStep2"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Test</span></div>
+    <div class="ps-line done"></div>
+    <div class="ps-step done" id="psStep3"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Oral</span></div>
+    <div class="ps-line done"></div>
+    <div class="ps-step active"><div class="ps-dot">4</div><span class="ps-label">Paiement</span></div>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="payment-layout">
+
+    <!-- MAIN COLUMN -->
+    <div class="payment-main">
+
+      <!-- ORDER SUMMARY -->
+      <div class="pay-card">
+        <h2><i class="fas fa-receipt"></i> Récapitulatif de votre commande</h2>
+        <div class="os-table">
+          <div class="os-row"><span class="os-lbl">Programme</span><span class="os-val" id="osProgram">—</span></div>
+          <div class="os-row"><span class="os-lbl">Forfait</span><span class="os-val" id="osPackage">—</span></div>
+          <div class="os-row"><span class="os-lbl">Date et créneau</span><span class="os-val" id="osDate">—</span></div>
+          <div class="os-row"><span class="os-lbl">Horaire</span><span class="os-val" id="osSchedule">—</span></div>
+          <div class="os-row"><span class="os-lbl">Référence de réservation</span><span class="os-val" id="osRef">—</span></div>
+          <div class="os-row os-total"><span>Total</span><span class="os-val" id="osPrice">—</span></div>
+        </div>
+      </div>
+
+      <!-- STUDENT INFO -->
+      <div class="pay-card">
+        <h2><i class="fas fa-user"></i> Informations du participant</h2>
+        <div class="si-grid">
+          <div class="si-item"><span class="si-lbl">Nom complet</span><span class="si-val" id="siName">—</span></div>
+          <div class="si-item"><span class="si-lbl">Courriel</span><span class="si-val" id="siEmail">—</span></div>
+          <div class="si-item"><span class="si-lbl">Téléphone</span><span class="si-val" id="siPhone">—</span></div>
+        </div>
+      </div>
+
+      <!-- PAYMENT METHOD -->
+      <div class="pay-card">
+        <h2><i class="fas fa-credit-card"></i> Méthode de paiement</h2>
+
+        <div class="pm-tabs" id="pmTabs">
+          <button class="pm-tab active" data-method="card"><i class="fas fa-credit-card"></i> Carte bancaire</button>
+          <button class="pm-tab" data-method="interac"><i class="fas fa-exchange-alt"></i> Interac</button>
+          <button class="pm-tab" data-method="paypal"><i class="fab fa-paypal"></i> PayPal</button>
+          <button class="pm-tab" data-method="other"><i class="fas fa-plus"></i> Autre moyen</button>
+        </div>
+
+        <!-- Card form -->
+        <div class="pm-form" id="pmCard">
+          <div class="card-icons">
+            <span><i class="fab fa-cc-visa"></i> Visa</span>
+            <span><i class="fab fa-cc-mastercard"></i> Mastercard</span>
+            <span><i class="fab fa-cc-amex"></i> Amex</span>
+            <span><i class="fab fa-cc-discover"></i> Discover</span>
+          </div>
+          <div class="form-group">
+            <label>Numéro de carte</label>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Date d'expiration</label>
+              <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+            </div>
+            <div class="form-group">
+              <label>Code de sécurité</label>
+              <input type="text" id="cardCvc" placeholder="CVC" maxlength="4">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Titulaire de la carte</label>
+            <input type="text" id="cardName" placeholder="Prénom et nom">
+          </div>
+        </div>
+
+        <!-- Interac -->
+        <div class="pm-form hidden" id="pmInterac">
+          <div class="interac-info">
+            <div class="ii-icon"><i class="fas fa-exchange-alt"></i></div>
+            <h3>Paiement par Interac</h3>
+            <p>Effectuez un virement Interac à l'adresse suivante :</p>
+            <div class="ii-email">paiement@cultulangues.com</div>
+            <p style="margin-top:12px">Utilisez la question de sécurité et la réponse que vous avez reçues par courriel après votre inscription. Une fois le virement effectué, votre place sera réservée automatiquement.</p>
+          </div>
+        </div>
+
+        <!-- PayPal -->
+        <div class="pm-form hidden" id="pmPaypal">
+          <div class="paypal-info">
+            <div class="pi-icon"><i class="fab fa-paypal"></i></div>
+            <h3>Paiement par PayPal</h3>
+            <p>Vous serez redirigé vers PayPal pour effectuer votre paiement de manière sécurisée.</p>
+            <p style="margin-top:8px">Aucune information bancaire n'est échangée avec notre site.</p>
+          </div>
+        </div>
+
+        <!-- Other -->
+        <div class="pm-form hidden" id="pmOther">
+          <div class="other-info">
+            <div class="oi-icon"><i class="fas fa-building-columns"></i></div>
+            <h3>Autre méthode de paiement</h3>
+            <p>Contactez-nous pour convenir d'un moyen de paiement alternatif.</p>
+            <p style="margin-top:8px"><a href="mailto:info@cultulangues.com" style="color:var(--accent);font-weight:600;text-decoration:none">info@cultulangues.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONFIRM BUTTON -->
+      <button class="btn-confirm" id="confirmPayment"><i class="fas fa-lock"></i> Confirmer et payer</button>
+
+      <!-- TRUST BADGES -->
+      <div class="trust-row">
+        <span><i class="fas fa-lock"></i> Paiement sécurisé</span>
+        <span><i class="fas fa-shield-alt"></i> Données chiffrées</span>
+        <span><i class="fas fa-check-circle"></i> Certificat inclus</span>
+        <span><i class="fas fa-undo"></i> Politique d'annulation</span>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="payment-sidebar">
+
+      <!-- IMPORTANT NOTES -->
+      <div class="pay-card notes-card">
+        <h3><i class="fas fa-info-circle"></i> Notes importantes</h3>
+        <ul>
+          <li>Votre place est confirmée immédiatement après le paiement.</li>
+          <li>Un courriel de confirmation vous sera envoyé dans les minutes qui suivent.</li>
+          <li>Le certificat de fin de session vous sera remis après évaluation finale.</li>
+          <li>Annulation possible jusqu'à 7 jours avant le début de la session.</li>
+          <li>Pour toute question, contactez-nous à <strong>info@cultulangues.com</strong></li>
+        </ul>
+      </div>
+
+      <!-- FAQ -->
+      <div class="pay-card faq-card">
+        <h3>Questions fréquentes</h3>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Puis-je annuler ma réservation ? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Oui, vous pouvez annuler jusqu'à 7 jours avant le début de la session. Un remboursement intégral vous sera effectué. Passé ce délai, des frais d'annulation peuvent s'appliquer.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Quels moyens de paiement acceptez-vous ? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Nous acceptons les cartes de crédit (Visa, Mastercard, Amex), les virements Interac, PayPal et d'autres méthodes sur demande. Tous les paiements sont traités de manière sécurisée.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Le certificat est-il inclus ? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Oui, un certificat de fin de session vous est remis après avoir complété le programme avec succès. Un rapport de progression détaillé est également fourni.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Puis-je modifier ma session après paiement ? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-a">Oui, sous réserve de disponibilité. Contactez-nous par courriel pour effectuer un changement de session. Aucuns frais ne seront appliqués si la demande est faite 7 jours avant le début.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="payment-footer">
+    <p>&copy; 2026 Cultulangues. Tous droits réservés.</p>
+  </div>
+
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-modal">
+    <div class="sm-icon"><i class="fas fa-check"></i></div>
+    <h2>Inscription confirmée !</h2>
+    <p>Merci pour votre confiance. Votre demande de réservation a bien été enregistrée.</p>
+    <p style="font-size:0.82rem">Référence de réservation :</p>
+    <div class="sm-email" id="smRef" style="font-weight:800">—</div>
+    <p>Un courriel de confirmation contenant tous les détails vous sera envoyé à l'adresse suivante :</p>
+    <div class="sm-email" id="smEmail">—</div>
+    <p style="font-size:0.78rem;color:var(--text-tertiary)">Vous allez être redirigé vers votre tableau de bord dans quelques instants.</p>
+    <button class="sm-btn" onclick="goToDashboard()">Accéder au tableau de bord</button>
+  </div>
+</div>
+
+<script>
+  var courseDB = {
+    'private': { name:'Cours particuliers', type:'solo', price:'1 200 $' },
+    'solo': { name:'Formation en solo', type:'solo', price:'À partir de 225 $', packages:[
+      {id:'5h',label:'Forfait Découverte',hours:5,price:225,popular:false},
+      {id:'10h',label:'Forfait Standard',hours:10,price:420,popular:false},
+      {id:'15h',label:'Forfait Avancé',hours:15,price:600,popular:true},
+      {id:'20h',label:'Forfait Intensif',hours:20,price:760,popular:false}
+    ]},
+    'tcf-quebec': { name:'Préparation TCF Québec', type:'group', price:'800 $' },
+    'tcf-quebec-partiel': { name:'Préparation TCF Québec — Temps partiel', type:'group', price:'À venir' },
+    'tcf-quebec-intensif': { name:'Préparation TCF Québec — Intensif', type:'group', price:'À venir' },
+    'tcf-canada': { name:'Préparation TCF Canada', type:'group', price:'800 $' },
+    'tcf-canada-partiel': { name:'Préparation TCF Canada — Temps partiel', type:'group', price:'À venir' },
+    'tcf-canada-intensif': { name:'Préparation TCF Canada — Intensif', type:'group', price:'À venir' },
+    'tcf': { name:'Préparation TCF', type:'group', price:'800 $' },
+    'oral-bc': { name:'Préparation orale — British Columbia', type:'group', price:'600 $' },
+    'oral': { name:'Cap sur l\'oral', type:'group', price:'600 $' },
+    'oral-b': { name:'Préparation Oral B', type:'group', price:'600 $' },
+    'oral-b-partiel': { name:'Préparation Oral B — Temps partiel', type:'group', price:'320 $' },
+    'oral-b-intensif': { name:'Préparation Oral B — Intensif', type:'group', price:'320 $' },
+    'oral-c': { name:'Préparation Oral C', type:'group', price:'600 $' },
+    'oral-c-partiel': { name:'Préparation Oral C — Temps partiel', type:'group', price:'320 $' },
+    'oral-c-intensif': { name:'Préparation Oral C — Intensif', type:'group', price:'320 $' },
+    'intensif': { name:'Programme intensif', type:'group', price:'900 $' },
+    'groupe': { name:'Cours en groupe', type:'group', price:'500 $' },
+    'samedi': { name:'Programme du samedi', type:'group', price:'400 $' },
+    'workshop-conversation': { name:'Atelier de conversation', type:'group', price:'100 $' },
+    'workshop-culture': { name:'Atelier culturel', type:'group', price:'200 $' },
+    'workshop-maintenance': { name:'Atelier de maintien', type:'group', price:'100 $' },
+    'workshop': { name:'Ateliers de français', type:'group', price:'À partir de 100 $' },
+    'francais-express': { name:'Français Express', type:'group', price:'600 $' },
+    'english-express': { name:'English Express Pathway', type:'group', price:'$600' },
+    'english-linguistic-pathway': { name:'English Linguistic Pathway', type:'group', price:'From $300' },
+    'soiree-linguo': { name:'Parcours Soirée Linguo', type:'group', price:'300 $' },
+    'evening-lingo': { name:'Evening Lingo Pathway', type:'group', price:'$300' },
+    'samedis-francais': { name:'Parcours Samedis en français', type:'group', price:'300 $' },
+    'saturdays-english': { name:'Saturdays in English Pathway', type:'group', price:'$300' }
+  };
+
+  function getParam(name) {
+    var match = location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  function initPayment() {
+    var courseId = getParam('course') || 'private';
+    var program = getParam('program');
+    var pkgId = getParam('pkg');
+    var date = getParam('date');
+    var slot = getParam('slot');
+    var name = getParam('name') || getParam('fullname');
+    var email = getParam('email');
+    var phone = getParam('phone');
+    var ref = getParam('ref');
+
+    var course = courseDB[courseId] || courseDB['private'];
+    var price = course.price || '—';
+
+    document.getElementById('osProgram').textContent = course.name || '—';
+
+    // Booking reference (real, created on the booking page)
+    var refEl = document.getElementById('osRef');
+    if (refEl) refEl.textContent = ref || 'À confirmer';
+
+    // Package info
+    var pkgLabel = '—';
+    if (pkgId && course.packages) {
+      for (var i = 0; i < course.packages.length; i++) {
+        if (course.packages[i].id === pkgId) {
+          pkgLabel = course.packages[i].label + ' (' + course.packages[i].hours + ' h)';
+          price = course.packages[i].price + ' $';
+          break;
+        }
+      }
+    } else if (course.packages) {
+      for (var i = 0; i < course.packages.length; i++) {
+        if (course.packages[i].popular) {
+          pkgLabel = course.packages[i].label + ' (' + course.packages[i].hours + ' h)';
+          price = course.packages[i].price + ' $';
+          break;
+        }
+      }
+    }
+
+    document.getElementById('osPackage').textContent = pkgLabel;
+
+    // Date & slot
+    if (date && slot) {
+      document.getElementById('osDate').textContent = date + ' à ' + slot;
+    } else if (date) {
+      document.getElementById('osDate').textContent = date;
+    } else {
+      document.getElementById('osDate').textContent = 'À déterminer';
+    }
+
+    // Schedule
+    document.getElementById('osSchedule').textContent = 'Lun–Ven 17h–20h';
+    document.getElementById('osPrice').textContent = price;
+
+    // Student info
+    document.getElementById('siName').textContent = name || '—';
+    document.getElementById('siEmail').textContent = email || '—';
+    document.getElementById('siPhone').textContent = phone || '—';
+
+    // Store for success overlay
+    window._paymentEmail = email || 'votre courriel';
+  }
+
+  // Payment method tabs
+  document.querySelectorAll('.pm-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.pm-tab').forEach(function(t) { t.classList.remove('active'); });
+      this.classList.add('active');
+      var method = this.getAttribute('data-method');
+      document.querySelectorAll('.pm-form').forEach(function(f) { f.classList.add('hidden'); });
+      var formEl = document.getElementById('pm' + method.charAt(0).toUpperCase() + method.slice(1));
+      if (formEl) formEl.classList.remove('hidden');
+    });
+  });
+
+  // Confirm payment
+  document.getElementById('confirmPayment').addEventListener('click', function() {
+    this.disabled = true;
+    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Traitement en cours...';
+
+    setTimeout(function() {
+      var ref = getParam('ref');
+      var smRef = document.getElementById('smRef');
+      if (smRef) smRef.textContent = ref || 'À confirmer';
+      document.getElementById('smEmail').textContent = window._paymentEmail || 'votre courriel';
+      document.getElementById('successOverlay').classList.add('show');
+    }, 1500);
+  });
+
+  function goToDashboard() {
+    window.location.href = 'student/dashboard.html';
+  }
+
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+    var answer = el.nextElementSibling;
+    if (answer) answer.classList.toggle('open');
+  }
+
+  initPayment();
+</script>
+</body>
+</html>
