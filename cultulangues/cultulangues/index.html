@@ -11,12 +11,27 @@
   <link rel="stylesheet" href="css/service-themes.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <style>
-    /* Hero caption above the picture */
-    .m1-visual{flex-direction:column;gap:24px}
+    /* ── Hero layout fixes ────────────────────────────────────────
+       1) Hero starts BELOW the fixed navbar (--header-height: 80px)
+       2) Orange block contained inside the right column (m1-figure)
+       3) Compact vertical rhythm — next section visible sooner    */
+    .m1-hero{padding-top:calc(var(--header-height) + 28px);padding-bottom:48px}
+    .m1-hero-container{min-height:0}
+
+    .m1-visual{flex-direction:column;align-items:center;justify-content:flex-start;gap:20px;min-height:0}
     .m1-caption{position:relative;z-index:2;text-align:center}
-    .m1-caption .hm-h1{font-size:clamp(2.2rem,4vw,3.2rem);margin-top:14px}
-    .m1-caption .hm-h2{margin-top:10px;font-size:clamp(1.2rem,2.2vw,1.6rem)}
-    @media (max-width:768px){.m1-caption{order:-1}}
+    .m1-caption .hm-h1{font-size:clamp(2rem,3.4vw,2.9rem);margin-top:12px}
+    .m1-caption .hm-h2{margin-top:8px;font-size:clamp(1.15rem,2vw,1.5rem)}
+
+    .m1-figure{position:relative;width:min(94%,520px);margin:0}
+    .m1-figure .m1-wave{top:-18px;right:-18px;left:auto;bottom:auto;width:100%;height:100%}
+    .m1-figure img{display:block}
+
+    @media (max-width:768px){
+      .m1-hero{padding-top:calc(var(--header-height) + 16px)}
+      .m1-figure{width:min(96%,460px)}
+      .m1-figure .m1-wave{top:-12px;right:-10px}
+    }
   </style>
 </head>
 <body class="home-page">
@@ -121,8 +136,10 @@
           <p class="hm-h1" data-i18n="hero.client.line1">Maîtrisez les langues !</p>
           <p class="hm-h2" data-i18n="hero.client.line2">Transformez votre avenir !</p>
         </div>
-        <div class="m1-wave" aria-hidden="true"></div>
-        <img src="img/home/hero-client.png" alt="Cultulangues — Apprendre une langue" loading="eager">
+        <figure class="m1-figure">
+          <span class="m1-wave" aria-hidden="true"></span>
+          <img src="img/home/hero-client.png" alt="Cultulangues — Apprendre une langue" loading="eager">
+        </figure>
       </div>
     </div>
   </section>
