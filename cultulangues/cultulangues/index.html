@@ -10,6 +10,14 @@
   <link rel="stylesheet" href="css/read-more.css">
   <link rel="stylesheet" href="css/service-themes.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    /* Hero caption above the picture */
+    .m1-visual{flex-direction:column;gap:24px}
+    .m1-caption{position:relative;z-index:2;text-align:center}
+    .m1-caption .hm-h1{font-size:clamp(2.2rem,4vw,3.2rem);margin-top:14px}
+    .m1-caption .hm-h2{margin-top:10px;font-size:clamp(1.2rem,2.2vw,1.6rem)}
+    @media (max-width:768px){.m1-caption{order:-1}}
+  </style>
 </head>
 <body class="home-page">
 
@@ -113,6 +121,11 @@
       </div>
 
       <div class="m1-visual">
+        <div class="m1-caption">
+          <span class="hm-eyebrow" data-i18n="hero.client.brand">Cultulangues</span>
+          <p class="hm-h1" data-i18n="hero.client.line1">Maîtrisez les langues !</p>
+          <p class="hm-h2" data-i18n="hero.client.line2">Transformez votre avenir !</p>
+        </div>
         <div class="m1-wave" aria-hidden="true"></div>
         <img src="img/home/hero-client.png" alt="Cultulangues — Apprendre une langue" loading="eager">
       </div>
