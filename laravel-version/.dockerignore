@@ -1,6 +1,6 @@
 .git
 .env
-.env.*
+.env.backup
 node_modules
 storage/logs/*
 storage/framework/cache/*
