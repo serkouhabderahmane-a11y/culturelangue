@@ -13,9 +13,9 @@ WORKDIR /var/www/html
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
-
-RUN php artisan key:generate --force
+RUN cp .env.example .env \
+    && composer install --no-dev --optimize-autoloader --no-interaction --no-progress \
+    && php artisan key:generate --force
 
 RUN mkdir -p storage bootstrap/cache \
     && chown -R www-data:www-data storage bootstrap/cache
