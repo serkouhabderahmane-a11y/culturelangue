@@ -26,10 +26,7 @@ RUN echo "APP_NAME=Cultulangues" > .env \
     && echo "SESSION_LIFETIME=120" >> .env
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress \
-    && php artisan key:generate --force \
-    && php artisan config:clear \
-    && php artisan route:clear \
-    && php artisan view:clear
+    && php artisan key:generate --force
 
 RUN mkdir -p storage/logs storage/framework/sessions storage/framework/views storage/framework/cache \
     && chmod -R 777 storage bootstrap/cache
