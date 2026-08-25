@@ -292,7 +292,7 @@ class ServiceSeeder extends Seeder
         ];
 
         foreach ($services as $data) {
-            Service::create($data);
+            Service::updateOrCreate(['slug' => $data['slug']], $data);
         }
     }
 }

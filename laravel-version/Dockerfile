@@ -38,4 +38,4 @@ RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "-c", "php artisan migrate --force && php artisan db:seed --force && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/bin/sh", "-c", "php artisan migrate --force; php artisan db:seed --force || true; /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
