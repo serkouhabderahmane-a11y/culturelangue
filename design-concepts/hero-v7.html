@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultulangues — Concept 7 · Branded Frame</title>
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/styles.css">
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/premium-home.css">
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/model-1.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    :root {
+      --cv-orange: #FA4E30;
+      --cv-amber: #FC9705;
+      --cv-green: #73CE65;
+      --cv-blue: #264EBF;
+      --cv-ink: #111111;
+      --cv-muted: #6B7280;
+      --cv-line: #E5E7EB;
+    }
+
+    .cv-hero { background: #fff; }
+
+    .v7-hero { padding: calc(80px + 56px) 0 72px; text-align: center; }
+
+    /* Large logo on a white rounded card with a soft shadow */
+    .v7-logo-card {
+      display: inline-flex;
+      background: #fff;
+      border: 1px solid #EFEFEF;
+      border-radius: 20px;
+      padding: 20px 28px;
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.09);
+      margin-bottom: 30px;
+    }
+    .v7-logo-card img {
+      width: 280px;
+      height: auto;
+      display: block;
+    }
+
+    .v7-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid var(--cv-line);
+      padding: 7px 18px 7px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    .v7-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cv-green);
+      box-shadow: 0 0 8px rgba(115, 206, 101, 0.5);
+      animation: cvPulse 2s infinite;
+    }
+    @keyframes cvPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .v7-h1 {
+      font-size: clamp(2.1rem, 4.6vw, 3.3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--cv-ink);
+      max-width: 800px;
+      margin: 0 auto 16px;
+    }
+    .v7-h1 .cv-gradient {
+      background: linear-gradient(135deg, var(--cv-orange), var(--cv-amber));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .v7-sub {
+      color: var(--cv-muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .v7-ctas { justify-content: center; }
+
+    /* Brochure-style framed image using the brand colors */
+    .v7-visual {
+      position: relative;
+      max-width: 1060px;
+      margin: 52px auto 0;
+      padding: 0 24px;
+    }
+    /* Offset gradient block creates the branded frame */
+    .v7-frame-bg {
+      position: absolute;
+      left: 34px;
+      right: -26px;
+      top: -26px;
+      bottom: 34px;
+      background: linear-gradient(135deg, #FA4E30, #FC9705);
+      border-radius: 28px;
+      z-index: 0;
+    }
+    .v7-visual img {
+      position: relative;
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 26px 64px rgba(0, 0, 0, 0.16);
+      z-index: 1;
+    }
+    /* Premium gold ring inset on the image */
+    .v7-gold {
+      position: absolute;
+      inset: 14px;
+      border-radius: 12px;
+      z-index: 2;
+      pointer-events: none;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, rgba(246, 208, 111, 0.9), rgba(200, 150, 60, 0.55)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    .v7-cap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 28px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #9CA3AF;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .v7-cap-line {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--cv-orange), var(--cv-amber));
+    }
+
+    .cv-footer {
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9CA3AF;
+      border-top: 1px solid var(--cv-line);
+    }
+
+    .cv-pill {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2000;
+      background: #111;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 9px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      font-family: var(--font);
+    }
+    .cv-pill:hover { background: var(--cv-orange); }
+
+    @media (max-width: 900px) {
+      .v7-hero { padding: calc(80px + 32px) 0 48px; }
+      .v7-logo-card img { width: 240px; }
+      .v7-h1 { font-size: 1.9rem; }
+      .v7-frame-bg { left: 16px; right: -14px; top: -14px; bottom: 16px; }
+      .v7-gold { inset: 10px; }
+    }
+    @media (max-width: 600px) {
+      .v7-ctas { flex-direction: column; }
+      .v7-ctas a { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAVIGATION (small logo, unchanged) ══════════ -->
+  <header class="ph-nav" id="header">
+    <div class="ph-nav-inner">
+      <a href="#" class="ph-nav-logo">
+        <img src="../cultulangues/cultulangues/img/image-Photoroom.png" alt="Cultulangues">
+      </a>
+      <nav class="ph-nav-links">
+        <a href="#" class="active">Accueil</a>
+        <a href="#">Programmes</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="ph-nav-actions">
+        <a href="#" class="ph-nav-login">Connexion</a>
+        <a href="#" class="ph-nav-cta">S'inscrire</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ CONCEPT 7 — BRANDED FRAME ══════════ -->
+  <section class="cv-hero v7-hero" id="hero">
+    <div class="v7-logo-card">
+      <img src="../cultulangues/cultulangues/img/image-Photoroom.png" alt="Cultulangues — logo" loading="eager">
+    </div>
+
+    <div class="v7-eyebrow">
+      <span class="v7-dot"></span>
+      <span>École certifiée — +950 étudiants</span>
+    </div>
+
+    <h1 class="v7-h1">Chez CultuLangues, nous construisons votre réussite et donnons un nouvel élan à vos <span class="cv-gradient">projets</span>.</h1>
+
+    <p class="v7-sub">Des parcours linguistiques, la préparation au TCF Québec et TCF Canada, la formation en solo et des ateliers — dans un cadre bienveillant, en petits groupes de 5 personnes maximum.</p>
+
+    <div class="m1-ctas v7-ctas">
+      <a href="#" class="ph-btn ph-btn-primary">
+        <span>Découvrez nos parcours d'apprentissage</span>
+        <svg class="ph-btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#" class="ph-btn ph-btn-ghost">
+        <span>Choisissez le format qui vous ressemble</span>
+      </a>
+    </div>
+
+    <div class="v7-visual">
+      <div class="v7-frame-bg" aria-hidden="true"></div>
+      <img src="../cultulangues/cultulangues/img/hero-maitrisez-langues.png" alt="Cultulangues — Apprendre une langue" loading="eager">
+      <div class="v7-gold" aria-hidden="true"></div>
+    </div>
+
+    <div class="v7-cap">
+      <span class="v7-cap-line"></span>
+      <span>Votre réussite linguistique, notre engagement</span>
+      <span class="v7-cap-line"></span>
+    </div>
+  </section>
+
+  <footer class="cv-footer">© 2026 Cultulangues — Hero Concept 7 · Branded Frame</footer>
+
+  <a class="cv-pill" href="#hero">Concept 7 · Branded Frame</a>
+
+</body>
+</html>

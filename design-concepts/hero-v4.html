@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultulangues — Concept 4 · Circular Badge</title>
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/styles.css">
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/premium-home.css">
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/model-1.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    :root {
+      --cv-orange: #FA4E30;
+      --cv-amber: #FC9705;
+      --cv-green: #73CE65;
+      --cv-blue: #264EBF;
+      --cv-ink: #111111;
+      --cv-muted: #6B7280;
+      --cv-line: #E5E7EB;
+    }
+
+    .cv-hero { background: #fff; }
+
+    .v4-hero { padding: calc(80px + 56px) 0 72px; }
+
+    .v4-inner {
+      position: relative;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      min-height: 560px;
+    }
+
+    /* Left content keeps breathing room so the badge overlaps it gracefully */
+    .v4-content { padding-right: 120px; }
+
+    .v4-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid var(--cv-line);
+      padding: 7px 18px 7px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    .v4-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cv-green);
+      box-shadow: 0 0 8px rgba(115, 206, 101, 0.5);
+      animation: cvPulse 2s infinite;
+    }
+    @keyframes cvPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .v4-h1 {
+      font-size: clamp(1.9rem, 3.9vw, 2.9rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--cv-ink);
+      max-width: 460px;
+      margin-bottom: 16px;
+    }
+    .v4-h1 .cv-gradient {
+      background: linear-gradient(135deg, var(--cv-orange), var(--cv-amber));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .v4-sub {
+      color: var(--cv-muted);
+      font-size: 0.98rem;
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .v4-ctas { margin-bottom: 24px; }
+
+    .v4-visual { min-height: 480px; display: flex; align-items: center; }
+    .v4-visual img {
+      width: 100%;
+      display: block;
+      border-radius: 26px;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.12);
+    }
+
+    /* The premium circular badge — overlaps BOTH the text area and the image */
+    .v4-badge {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: #fff;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 30px 80px rgba(250, 78, 48, 0.28);
+      border: 2px solid transparent;
+      background: #ffffff padding-box, linear-gradient(135deg, #FA4E30, #FC9705, #F6C453) border-box;
+      animation: cvBadgeFloat 6s ease-in-out infinite;
+    }
+    .v4-badge img {
+      width: 236px;
+      height: auto;
+      display: block;
+    }
+    .v4-badge-tag {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9CA3AF;
+    }
+    @keyframes cvBadgeFloat { 0%, 100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-12px); } }
+
+    .cv-footer {
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9CA3AF;
+      border-top: 1px solid var(--cv-line);
+    }
+
+    .cv-pill {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2000;
+      background: #111;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 9px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      font-family: var(--font);
+    }
+    .cv-pill:hover { background: var(--cv-orange); }
+
+    @media (max-width: 900px) {
+      .v4-hero { padding: calc(80px + 32px) 0 72px; }
+      .v4-inner { grid-template-columns: 1fr; gap: 40px; min-height: 0; }
+      .v4-content { padding-right: 0; }
+      .v4-h1 { font-size: 1.7rem; }
+      .v4-visual { min-height: 0; }
+      /* Badge slides between text and image, still overlapping both */
+      .v4-badge {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin: -52px auto -52px;
+        order: 2;
+        animation: cvBadgeFloatMobile 6s ease-in-out infinite;
+      }
+      @keyframes cvBadgeFloatMobile { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    }
+    @media (max-width: 600px) {
+      .v4-ctas { flex-direction: column; }
+      .v4-ctas a { justify-content: center; text-align: center; }
+      .v4-badge { width: 280px; height: 280px; }
+      .v4-badge img { width: 196px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAVIGATION (small logo, unchanged) ══════════ -->
+  <header class="ph-nav" id="header">
+    <div class="ph-nav-inner">
+      <a href="#" class="ph-nav-logo">
+        <img src="../cultulangues/cultulangues/img/image-Photoroom.png" alt="Cultulangues">
+      </a>
+      <nav class="ph-nav-links">
+        <a href="#" class="active">Accueil</a>
+        <a href="#">Programmes</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="ph-nav-actions">
+        <a href="#" class="ph-nav-login">Connexion</a>
+        <a href="#" class="ph-nav-cta">S'inscrire</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ CONCEPT 4 — CIRCULAR BADGE ══════════ -->
+  <section class="cv-hero v4-hero" id="hero">
+    <div class="v4-inner">
+      <div class="v4-content">
+        <div class="v4-eyebrow">
+          <span class="v4-dot"></span>
+          <span>École certifiée — +950 étudiants</span>
+        </div>
+
+        <h1 class="v4-h1">Chez CultuLangues, nous construisons<br>votre réussite et donnons un nouvel<br>élan à vos <span class="cv-gradient">projets</span>.</h1>
+
+        <p class="v4-sub">Vous souhaitez apprendre l'une des langues officielles du Canada pour :</p>
+
+        <div class="m1-check v4-check">
+          <div class="m1-check-item">
+            <div class="m1-check-icon m1-check-orange">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span>Faire évoluer votre carrière</span>
+          </div>
+          <div class="m1-check-item">
+            <div class="m1-check-icon m1-check-green">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span>Réussir votre projet d'immigration</span>
+          </div>
+          <div class="m1-check-item">
+            <div class="m1-check-icon m1-check-blue">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <span>Gagner confiance et autonomie dans la vie quotidienne</span>
+          </div>
+        </div>
+
+        <div class="m1-ctas v4-ctas">
+          <a href="#" class="ph-btn ph-btn-primary">
+            <span>Découvrez nos parcours</span>
+            <svg class="ph-btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#" class="ph-btn ph-btn-ghost">
+            <span>Choisissez votre format</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="v4-visual">
+        <img src="../cultulangues/cultulangues/img/hero-maitrisez-langues.png" alt="Cultulangues — Apprendre une langue" loading="eager">
+      </div>
+
+      <div class="v4-badge">
+        <img src="../cultulangues/cultulangues/img/image-Photoroom.png" alt="Cultulangues — logo">
+        <span class="v4-badge-tag">Depuis 2014</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="cv-footer">© 2026 Cultulangues — Hero Concept 4 · Circular Badge</footer>
+
+  <a class="cv-pill" href="#hero">Concept 4 · Circular Badge</a>
+
+</body>
+</html>

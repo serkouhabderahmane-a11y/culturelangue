@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultulangues — Concept 8 · Editorial Minimal</title>
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/styles.css">
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/premium-home.css">
+  <link rel="stylesheet" href="../cultulangues/cultulangues/css/model-1.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <style>
+    :root {
+      --cv-orange: #FA4E30;
+      --cv-amber: #FC9705;
+      --cv-green: #73CE65;
+      --cv-blue: #264EBF;
+      --cv-ink: #111111;
+      --cv-muted: #6B7280;
+      --cv-line: #E5E7EB;
+    }
+
+    .cv-hero { background: #fff; }
+
+    .v8-hero {
+      padding: calc(80px + 96px) 0 72px;
+      text-align: center;
+    }
+
+    /* Very large logo — the editorial signature */
+    .v8-logo img {
+      width: 320px;
+      height: auto;
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.10));
+    }
+
+    .v8-eyebrow {
+      margin-top: 40px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #9CA3AF;
+    }
+
+    .v8-rule {
+      width: 76px;
+      height: 1px;
+      margin: 28px auto;
+      background: linear-gradient(90deg, var(--cv-orange), var(--cv-amber));
+      border: none;
+    }
+
+    .v8-h1 {
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--cv-ink);
+      max-width: 780px;
+      margin: 0 auto 18px;
+    }
+    .v8-h1 .cv-gradient {
+      background: linear-gradient(135deg, var(--cv-orange), var(--cv-amber));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .v8-sub {
+      color: var(--cv-muted);
+      font-size: 1.06rem;
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.75;
+    }
+
+    .v8-ctas { justify-content: center; }
+
+    .v8-note {
+      margin-top: 22px;
+      font-size: 0.8rem;
+      color: #9CA3AF;
+    }
+    .v8-note a {
+      color: var(--cv-orange);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .v8-note a:hover { text-decoration: underline; }
+
+    /* Large hero image beneath everything — centered, quiet, luxurious */
+    .v8-visual {
+      max-width: 980px;
+      margin: 60px auto 0;
+      padding: 0 24px;
+    }
+    .v8-visual img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    .cv-footer {
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9CA3AF;
+      border-top: 1px solid var(--cv-line);
+      margin-top: 40px;
+    }
+
+    .cv-pill {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2000;
+      background: #111;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 9px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      font-family: var(--font);
+    }
+    .cv-pill:hover { background: var(--cv-orange); }
+
+    @media (max-width: 900px) {
+      .v8-hero { padding: calc(80px + 56px) 0 48px; }
+      .v8-logo img { width: 260px; }
+      .v8-h1 { font-size: 2.1rem; }
+    }
+    @media (max-width: 600px) {
+      .v8-ctas { flex-direction: column; }
+      .v8-ctas a { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ NAVIGATION (small logo, unchanged) ══════════ -->
+  <header class="ph-nav" id="header">
+    <div class="ph-nav-inner">
+      <a href="#" class="ph-nav-logo">
+        <img src="../cultulangues/cultulangues/img/image-Photoroom.png" alt="Cultulangues">
+      </a>
+      <nav class="ph-nav-links">
+        <a href="#" class="active">Accueil</a>
+        <a href="#">Programmes</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="ph-nav-actions">
+        <a href="#" class="ph-nav-login">Connexion</a>
+        <a href="#" class="ph-nav-cta">S'inscrire</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ CONCEPT 8 — EDITORIAL MINIMAL ══════════ -->
+  <section class="cv-hero v8-hero" id="hero">
+    <div class="v8-logo">
+      <img src="../cultulangues/cultulangues/img/image-Photoroom.png" alt="Cultulangues — logo" loading="eager">
+    </div>
+
+    <div class="v8-eyebrow">École certifiée · +950 étudiants · 12 ans d'expérience</div>
+
+    <hr class="v8-rule">
+
+    <h1 class="v8-h1">Chez CultuLangues, nous construisons votre réussite et donnons un nouvel élan à vos <span class="cv-gradient">projets</span>.</h1>
+
+    <p class="v8-sub">Apprenez l'une des langues officielles du Canada en petits groupes de 5 personnes maximum, dans un cadre bienveillant pensé pour vous faire progresser.</p>
+
+    <div class="m1-ctas v8-ctas">
+      <a href="#" class="ph-btn ph-btn-primary">
+        <span>Découvrez nos parcours d'apprentissage</span>
+        <svg class="ph-btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#" class="ph-btn ph-btn-ghost">
+        <span>Choisissez le format qui vous ressemble</span>
+      </a>
+    </div>
+
+    <div class="v8-note">Parcours linguistique · Cap sur l'oral · TCF Québec &amp; TCF Canada · Formation en solo · Ateliers — <a href="#">tout explorer</a></div>
+
+    <div class="v8-visual">
+      <img src="../cultulangues/cultulangues/img/hero-maitrisez-langues.png" alt="Cultulangues — Apprendre une langue" loading="eager">
+    </div>
+  </section>
+
+  <footer class="cv-footer">© 2026 Cultulangues — Hero Concept 8 · Editorial Minimal</footer>
+
+  <a class="cv-pill" href="#hero">Concept 8 · Editorial Minimal</a>
+
+</body>
+</html>
