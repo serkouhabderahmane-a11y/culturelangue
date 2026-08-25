@@ -1,8 +1,8 @@
-FROM php:8.3-cli
+FROM php:8.3-fpm-alpine
 
 RUN apk add --no-cache \
     git curl libpng-dev libjpeg-turbo-dev freetype-dev oniguruma-dev \
-    libxml2-dev zip unzip libpq-dev icu-dev
+    libxml2-dev zip unzip libpq-dev icu-dev nginx supervisor
 
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_pgsql mbstring exif pcntl bcmath gd intl opcache
@@ -26,12 +26,17 @@ RUN echo "APP_NAME=Cultulangues" > .env \
     && echo "SESSION_LIFETIME=120" >> .env
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress \
-    && php artisan key:generate --force
+    && php artisan key:generate --force \
+    && php artisan config:clear \
+    && php artisan route:clear \
+    && php artisan view:clear
 
 RUN mkdir -p storage/logs storage/framework/sessions storage/framework/views storage/framework/cache \
-    && chmod -R 775 storage bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache
+    && chmod -R 777 storage bootstrap/cache
 
-EXPOSE 10000
+COPY docker/nginx.conf /etc/nginx/http.d/default.conf
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-CMD ["/bin/sh", "-c", "php artisan migrate --force; php artisan db:seed --force || true; php artisan serve --host=0.0.0.0 --port=10000"]
+EXPOSE 8080
+
+CMD ["/bin/sh", "-c", "php artisan migrate --force; php artisan db:seed --force || true; /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
