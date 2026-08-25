@@ -12,10 +12,15 @@ class ServiceController extends Controller
     {
         $category = ServiceCategory::where('slug', $slug)
             ->where('is_active', true)
-            ->with(['activeServices'])
             ->firstOrFail();
 
-        return view('pages.service-category', compact('category'));
+        $services = $category->activeServices()->get();
+
+        if ($category->description_html || $category->benefits || $category->hero_chips) {
+            return view('pages.service-landing', compact('category', 'services'));
+        }
+
+        return view('pages.service-category', compact('category', 'services'));
     }
 
     public function show(string $slug)

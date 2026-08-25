@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.inner')
 
 @section('title', $category->name_fr)
 @section('meta_description', $category->description_fr)

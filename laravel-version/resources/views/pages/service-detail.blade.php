@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.inner')
 
 @section('title', $service->name_fr)
 @section('meta_description', $service->short_description_fr)

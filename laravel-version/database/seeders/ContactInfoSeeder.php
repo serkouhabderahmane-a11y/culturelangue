@@ -22,7 +22,7 @@ class ContactInfoSeeder extends Seeder
                 'type' => 'phone',
                 'label_fr' => 'Téléphone',
                 'label_en' => 'Phone',
-                'value' => 'à venir',
+                'value' => '+1 (819) 271-9783',
                 'icon' => 'phone',
                 'order' => 2,
             ],

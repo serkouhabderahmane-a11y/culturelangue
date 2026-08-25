@@ -17,8 +17,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        View::composer('layouts.public', function ($view) {
+        View::composer(['layouts.public', 'layouts.inner'], function ($view) {
             $view->with('navigationItems', NavigationItem::where('is_active', true)
+                ->with('children')
                 ->orderBy('order')
                 ->get());
             $view->with('settings', Setting::pluck('value', 'key')->toArray());

@@ -1,60 +1,74 @@
-@extends('layouts.public')
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription — Cultulangues</title>
+  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/premium.css') }}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+<body>
 
-@section('title', 'Inscription')
+  <!-- ═══ AUTH PAGE ═══ -->
+  <div class="auth-page">
+    <div style="position:absolute;inset:0;z-index:0;opacity:0.04;pointer-events:none"><img src="{{ asset('img/hero-maitrisez-langues.png') }}" alt="" style="width:100%;height:100%;object-fit:cover"></div>
+    <div class="auth-card" style="max-width: 540px;">
+      <a href="{{ url('/') }}" class="logo">
+        <img src="{{ asset('img/image-Photoroom.png') }}" alt="Cultulangues" class="logo-img">
+      </a>
+      <h2>Créer votre compte</h2>
+      <p class="auth-subtitle">Rejoignez Cultulangues et commencez votre parcours linguistique</p>
 
-@section('content')
-<section class="page-header">
-  <div class="page-deco page-deco-circle"></div>
-  <div class="page-deco page-deco-circle-2"></div>
-  <div class="container">
-    <div class="hero-content">
-      <h1>Créer un compte</h1>
-      <p class="hero-subtitle">Rejoignez Cultulangues et commencez votre parcours linguistique.</p>
-    </div>
-  </div>
-</section>
+      @if($errors->any())
+      <div style="background:#fee;border:1px solid #fcc;border-radius:8px;padding:12px;margin-bottom:20px;font-size:0.85rem;color:#c33;">
+        @foreach($errors->all() as $error)
+          <div>{{ $error }}</div>
+        @endforeach
+      </div>
+      @endif
 
-<section class="auth-section">
-  <div class="container">
-    <div class="auth-form-wrap">
-      <form method="POST" action="{{ route('register') }}" class="auth-form">
+      <form method="POST" action="{{ route('register') }}">
         @csrf
         <div class="form-row">
           <div class="form-group">
-            <label for="first_name">Prénom *</label>
-            <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" required class="form-control @error('first_name') is-invalid @enderror">
-            @error('first_name') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            <label class="form-label">Prénom <span class="required">*</span></label>
+            <input type="text" name="first_name" class="form-input" required placeholder="Votre prénom" value="{{ old('first_name') }}">
           </div>
           <div class="form-group">
-            <label for="last_name">Nom *</label>
-            <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" required class="form-control @error('last_name') is-invalid @enderror">
-            @error('last_name') <span class="invalid-feedback">{{ $message }}</span> @enderror
+            <label class="form-label">Nom <span class="required">*</span></label>
+            <input type="text" name="last_name" class="form-input" required placeholder="Votre nom" value="{{ old('last_name') }}">
           </div>
         </div>
         <div class="form-group">
-          <label for="email">Email *</label>
-          <input type="email" name="email" id="email" value="{{ old('email') }}" required class="form-control @error('email') is-invalid @enderror">
-          @error('email') <span class="invalid-feedback">{{ $message }}</span> @enderror
+          <label class="form-label">Email <span class="required">*</span></label>
+          <input type="email" name="email" class="form-input" required placeholder="votre@email.com" value="{{ old('email') }}">
         </div>
         <div class="form-group">
-          <label for="phone">Téléphone</label>
-          <input type="tel" name="phone" id="phone" value="{{ old('phone') }}" class="form-control">
+          <label class="form-label">Mot de passe <span class="required">*</span></label>
+          <div style="position: relative;">
+            <input type="password" name="password" class="form-input" required placeholder="Minimum 8 caractères">
+          </div>
         </div>
         <div class="form-group">
-          <label for="password">Mot de passe *</label>
-          <input type="password" name="password" id="password" required class="form-control @error('password') is-invalid @enderror">
-          @error('password') <span class="invalid-feedback">{{ $message }}</span> @enderror
+          <label class="form-label">Confirmer le mot de passe <span class="required">*</span></label>
+          <div style="position: relative;">
+            <input type="password" name="password_confirmation" class="form-input" required placeholder="Répétez le mot de passe">
+          </div>
         </div>
         <div class="form-group">
-          <label for="password_confirmation">Confirmer le mot de passe *</label>
-          <input type="password" name="password_confirmation" id="password_confirmation" required class="form-control">
+          <label class="form-checkbox">
+            <input type="checkbox" required> J'accepte les <a href="#" style="color: var(--color-emerald); font-weight: 600;">conditions d'utilisation</a>
+          </label>
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Créer mon compte</button>
-        <div class="auth-links">
-          <a href="{{ route('login') }}">Déjà un compte ? Connectez-vous</a>
-        </div>
+        <button type="submit" class="btn btn-primary w-full btn-lg">Créer mon compte</button>
       </form>
+
+      <div class="auth-footer mt-lg">
+        <span>Déjà un compte ?</span> <a href="{{ route('login') }}">Se connecter</a>
+      </div>
     </div>
   </div>
-</section>
-@endsection
+
+</body>
+</html>

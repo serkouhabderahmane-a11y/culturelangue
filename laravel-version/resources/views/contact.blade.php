@@ -1,75 +1,280 @@
-@extends('layouts.public')
+@extends('layouts.inner')
 
 @section('title', 'Contact')
 
-@section('content')
-<section class="page-header">
-  <div class="page-deco page-deco-circle"></div>
-  <div class="page-deco page-deco-circle-2"></div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="breadcrumb"><a href="{{ url('/') }}">Accueil</a> / <span>Contact</span></div>
-      <h1>Contactez-nous</h1>
-      <p class="hero-subtitle">Une question ? Un projet ? Nous sommes là pour vous accompagner.</p>
-    </div>
-  </div>
-</section>
+@section('head')
+<link rel="stylesheet" href="{{ asset('css/page-photos.css') }}">
+<style>
+  .dmp-wrap{background:var(--color-bg-warm);border:1px solid var(--color-border-light);border-radius:var(--radius-2xl);padding:clamp(32px,5vw,64px)}
+  .dmp-head{text-align:center;max-width:620px;margin:0 auto var(--space-2xl)}
+  .dmp-title{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin:var(--space-md) 0 var(--space-sm)}
+  .dmp-sub{color:var(--color-text-secondary);font-size:1rem;margin:0}
+  .dmp-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg)}
+  .dmp-step{position:relative;background:var(--color-white);border:1px solid var(--color-border-light);border-radius:var(--radius-xl);padding:var(--space-xl);box-shadow:var(--shadow-sm);transition:all var(--transition-base)}
+  .dmp-step:hover{transform:translateY(-4px);box-shadow:var(--shadow-card-hover);border-color:var(--color-border)}
+  .dmp-step-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-md)}
+  .dmp-num{width:56px;height:56px;border-radius:var(--radius-full);display:inline-flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:var(--color-white);letter-spacing:-0.02em}
+  .dmp-ico{width:44px;height:44px;border-radius:var(--radius-md);display:inline-flex;align-items:center;justify-content:center;font-size:1.25rem}
+  .dmp-step--blue .dmp-num{background:var(--color-blue)}
+  .dmp-step--green .dmp-num{background:var(--color-green)}
+  .dmp-step--pink .dmp-num{background:var(--color-pink)}
+  .dmp-step--blue .dmp-ico{background:var(--ph-blue-bg)}
+  .dmp-step--green .dmp-ico{background:var(--ph-green-bg)}
+  .dmp-step--pink .dmp-ico{background:var(--ph-orange-bg)}
+  .dmp-step-title{font-size:1.0625rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:var(--space-sm)}
+  .dmp-step-desc{font-size:0.875rem;color:var(--color-text-secondary);line-height:1.65;margin:0}
+  @media (min-width:901px){
+    .dmp-step:not(:last-child)::after{content:'';position:absolute;top:calc(var(--space-xl) + 28px);right:calc(-1 * var(--space-lg) - 2px);width:calc(var(--space-lg) + 4px);height:2px;background:var(--color-border)}
+  }
+  @media (max-width:900px){
+    .dmp-steps{grid-template-columns:1fr;gap:var(--space-md)}
+    .dmp-step:not(:last-child)::after{content:'';position:absolute;left:60px;bottom:calc(-1 * var(--space-md) - 2px);width:2px;height:calc(var(--space-md) + 4px);background:var(--color-border)}
+  }
+</style>
+@endsection
 
-<section class="contact-section">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h2>Nos coordonnées</h2>
-        @foreach($contactInfos as $info)
-        <div class="contact-info-item">
-          <div class="contact-info-icon">
-            @if($info->type === 'email')
-            <i class="fas fa-envelope"></i>
-            @elseif($info->type === 'phone')
-            <i class="fas fa-phone"></i>
-            @elseif($info->type === 'address')
-            <i class="fas fa-map-marker-alt"></i>
-            @else
-            <i class="fas fa-info-circle"></i>
-            @endif
-          </div>
-          <div>
-            <h4>{{ $info->label_fr }}</h4>
-            <p>{{ $info->value }}</p>
+@section('content')
+  <!-- ═══ HERO ═══ -->
+  <section class="contact-hero">
+    <div class="contact-hero-bg">
+      <div class="contact-hero-blob"></div>
+      <div class="contact-hero-blob contact-hero-blob-2"></div>
+    </div>
+    <div class="container">
+      <div class="contact-hero-inner">
+        <span class="contact-hero-badge">✦ Nous sommes là pour vous</span>
+        <h1>Parlons de <span class="text-gradient">votre projet</span></h1>
+        <p class="contact-hero-desc read-more">Que vous cherchiez un programme adapté, des informations sur nos formations, ou simplement un conseil personnalisé, notre équipe est prête à vous guider.</p>
+        <div class="contact-hero-features">
+          <span><i class="ch-icon">✦</i> Réponse sous 24 h</span>
+          <span><i class="ch-icon">✦</i> Conseils personnalisés</span>
+          <span><i class="ch-icon">✦</i> Accompagnement gratuit</span>
+        </div>
+        <a href="#contact-form" class="btn btn-primary btn-lg">Envoyer un message <span style="font-size:0.8em;margin-left:4px">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MAIN CONTACT AREA ═══ -->
+  <section class="contact-main section" id="contact-form">
+    <div class="page-deco page-deco-ring" style="top:-60px;right:-80px" aria-hidden="true"></div>
+    <div class="container">
+      @if(session('success'))
+      <div style="background:#d4edda;border:1px solid #c3e6cb;border-radius:8px;padding:16px;margin-bottom:24px;color:#155724;">
+        {{ session('success') }}
+      </div>
+      @endif
+      <div class="contact-layout">
+        <!-- LEFT: FORM -->
+        <div class="contact-form-col">
+          <div class="contact-form-card">
+            <div class="contact-form-header">
+              <h2>Parlez-nous de votre projet</h2>
+              <p>Nous vous répondons rapidement pour vous aider à choisir la meilleure solution.</p>
+            </div>
+            <form class="contact-form" method="POST" action="{{ route('contact.send') }}">
+              @csrf
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Prénom <span class="required">*</span></label>
+                  <input type="text" name="first_name" class="form-input" required placeholder="Votre prénom" value="{{ old('first_name') }}">
+                  @error('first_name')<span style="color:red;font-size:0.85rem">{{ $message }}</span>@enderror
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Nom <span class="required">*</span></label>
+                  <input type="text" name="last_name" class="form-input" required placeholder="Votre nom" value="{{ old('last_name') }}">
+                  @error('last_name')<span style="color:red;font-size:0.85rem">{{ $message }}</span>@enderror
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email <span class="required">*</span></label>
+                <input type="email" name="email" class="form-input" required placeholder="votre@email.com" value="{{ old('email') }}">
+                @error('email')<span style="color:red;font-size:0.85rem">{{ $message }}</span>@enderror
+              </div>
+              <div class="form-group">
+                <label class="form-label">Téléphone <span class="form-label-note">(optionnel)</span></label>
+                <input type="tel" name="phone" class="form-input" placeholder="+33 6 12 34 56 78" value="{{ old('phone') }}">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Sujet <span class="required">*</span></label>
+                <select name="subject" class="form-select" required>
+                  <option value="">Sélectionnez un sujet</option>
+                  <option {{ old('subject') === 'Information sur les programmes' ? 'selected' : '' }}>Information sur les programmes</option>
+                  <option {{ old('subject') === 'Inscription' ? 'selected' : '' }}>Inscription</option>
+                  <option {{ old('subject') === 'Question TCF / Examens' ? 'selected' : '' }}>Question TCF / Examens</option>
+                  <option {{ old('subject') === 'Test de niveau / Évaluation orale' ? 'selected' : '' }}>Test de niveau / Évaluation orale</option>
+                  <option {{ old('subject') === 'Ateliers' ? 'selected' : '' }}>Ateliers</option>
+                  <option {{ old('subject') === 'Autre' ? 'selected' : '' }}>Autre</option>
+                </select>
+                @error('subject')<span style="color:red;font-size:0.85rem">{{ $message }}</span>@enderror
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message <span class="required">*</span></label>
+                <textarea name="message" class="form-textarea" required rows="5" placeholder="Bonjour, je souhaiterais obtenir plus d'informations sur...">{{ old('message') }}</textarea>
+                @error('message')<span style="color:red;font-size:0.85rem">{{ $message }}</span>@enderror
+              </div>
+              <div class="form-group form-group-consent">
+                <label class="form-checkbox">
+                  <input type="checkbox" name="consent" checked>
+                  <span class="checkbox-mark"></span>
+                  <span class="checkbox-label">J'accepte d'être recontacté(e) dans le cadre de ma demande</span>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg w-full contact-submit">
+                <span>Envoyer ma demande</span>
+                <span class="contact-submit-arrow">→</span>
+              </button>
+            </form>
           </div>
         </div>
-        @endforeach
-      </div>
-      <div class="contact-form-wrap">
-        <h2>Envoyez-nous un message</h2>
-        @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-        <form method="POST" action="{{ route('contact.send') }}" class="contact-form">
-          @csrf
-          <div class="form-group">
-            <label for="name">Nom complet</label>
-            <input type="text" name="name" id="name" value="{{ old('name') }}" required class="form-control @error('name') is-invalid @enderror">
-            @error('name') <span class="invalid-feedback">{{ $message }}</span> @enderror
+
+        <!-- RIGHT: INFO PANELS -->
+        <div class="contact-info-col">
+          <!-- Photo -->
+          <div class="contact-photo">
+            <img src="{{ asset('img/client-photo-1.png') }}" alt="" loading="lazy">
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="{{ old('email') }}" required class="form-control @error('email') is-invalid @enderror">
-            @error('email') <span class="invalid-feedback">{{ $message }}</span> @enderror
+
+          <!-- Nous joindre -->
+          <div class="contact-panel">
+            <div class="contact-panel-accent"></div>
+            <h3>Nous joindre</h3>
+            <div class="contact-panel-items">
+              <div class="contact-panel-item">
+                <div class="cpi-icon">✉</div>
+                <div>
+                  <div class="cpi-label">Email</div>
+                  <div class="cpi-value">{{ $settings['email'] ?? 'admin@cultulangues.ca' }}</div>
+                </div>
+              </div>
+              <div class="contact-panel-item">
+                <div class="cpi-icon">📞</div>
+                <div>
+                  <div class="cpi-label">Téléphone</div>
+                  <div class="cpi-value">{{ $settings['phone'] ?? '+1 (819) 271-9783' }}</div>
+                </div>
+              </div>
+              <div class="contact-panel-item">
+                <div class="cpi-icon">🕐</div>
+                <div>
+                  <div class="cpi-label">Horaires</div>
+                  <div class="cpi-value">Lun–Ven : 9 h – 19 h<br>Sam : 10 h – 16 h</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="subject">Sujet</label>
-            <input type="text" name="subject" id="subject" value="{{ old('subject') }}" class="form-control">
+
+          <!-- Besoin d'aide -->
+          <div class="contact-panel contact-panel-help">
+            <div class="contact-panel-accent"></div>
+            <h3>Besoin d'aide pour choisir ?</h3>
+            <p class="read-more">Vous ne savez pas quel programme correspond le mieux à votre niveau, vos objectifs ou votre emploi du temps ? Nous vous aidons à y voir plus clair, sans engagement.</p>
+            <ul class="contact-help-list">
+              <li>✦ Évaluation de votre niveau</li>
+              <li>✦ Recommandation personnalisée</li>
+              <li>✦ Réponse à vos questions</li>
+              <li>✦ Aide à l'inscription</li>
+            </ul>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea name="message" id="message" rows="5" required class="form-control @error('message') is-invalid @enderror">{{ old('message') }}</textarea>
-            @error('message') <span class="invalid-feedback">{{ $message }}</span> @enderror
+
+          <!-- Prêt à commencer -->
+          <div class="contact-panel contact-panel-cta">
+            <div class="contact-panel-accent"></div>
+            <h3>Déjà prêt à commencer ?</h3>
+            <p>Passez directement à l'action :</p>
+            <div class="contact-cta-links">
+              <a href="{{ url('/') }}" class="btn btn-primary w-full"><i class="ch-icon">✦</i> Découvrir nos programmes</a>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary">Envoyer le message</button>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ═══ TRUST / REASSURANCE ═══ -->
+  <section class="section section-alt reveal">
+    <div class="page-deco page-deco-dots" style="bottom:20px;left:40px" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-header">
+        <h2>Pourquoi nous <span class="text-gradient">contacter</span> ?</h2>
+        <p>Nous sommes là pour vous accompagner à chaque étape de votre projet linguistique.</p>
+      </div>
+      <div class="contact-trust-grid">
+        <div class="contact-trust-card">
+          <div class="ct-icon"><span>✦</span></div>
+          <h4>Choix du programme</h4>
+          <p>Vous hésitez entre un parcours en groupe ou un accompagnement solo ? On vous guide.</p>
+        </div>
+        <div class="contact-trust-card">
+          <div class="ct-icon"><span>✦</span></div>
+          <h4>Préparation TCF</h4>
+          <p>Des questions sur les examens officiels ? Nos équipes vous renseignent précisément.</p>
+        </div>
+        <div class="contact-trust-card">
+          <div class="ct-icon"><span>✦</span></div>
+          <h4>Inscription & suivi</h4>
+          <p>Un problème d'inscription ou besoin d'un suivi personnalisé ? Nous sommes à votre écoute.</p>
+        </div>
+        <div class="contact-trust-card">
+          <div class="ct-icon"><span>✦</span></div>
+          <h4>Réponse rapide</h4>
+          <p>Nous répondons à toutes les demandes sous 24 heures ouvrables, souvent bien plus tôt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DÉMARCHE ══ -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="dmp-wrap">
+        <div class="dmp-head">
+          <span class="section-badge section-badge--blue">Démarche</span>
+          <h2 class="dmp-title">Comment <span class="text-gradient">ça marche</span> ?</h2>
+          <p class="dmp-sub">Pour commencer votre inscription, suivez ces trois étapes simples :</p>
+        </div>
+        <div class="dmp-steps">
+          <div class="dmp-step dmp-step--blue">
+            <div class="dmp-step-top">
+              <span class="dmp-num">1</span>
+              <span class="dmp-ico">📝</span>
+            </div>
+            <h3 class="dmp-step-title">Remplissez le formulaire de contact</h3>
+            <p class="dmp-step-desc">Indiquez vos informations de base afin que nous puissions ouvrir votre dossier.</p>
+          </div>
+          <div class="dmp-step dmp-step--green">
+            <div class="dmp-step-top">
+              <span class="dmp-num">2</span>
+              <span class="dmp-ico">📊</span>
+            </div>
+            <h3 class="dmp-step-title">Complétez le test de niveau</h3>
+            <p class="dmp-step-desc">Il nous permet d'évaluer votre compréhension écrite et votre expression écrite.</p>
+          </div>
+          <div class="dmp-step dmp-step--pink">
+            <div class="dmp-step-top">
+              <span class="dmp-num">3</span>
+              <span class="dmp-ico">🗣️</span>
+            </div>
+            <h3 class="dmp-step-title">Prenez rendez-vous pour votre évaluation orale</h3>
+            <p class="dmp-step-desc">Vous rencontrerez notre évaluateur afin de déterminer votre niveau d'expression orale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ═══ -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="cta-banner contact-cta-banner">
+        <h2>Encore une question ?</h2>
+        <p>Nous sommes à votre disposition pour discuter de votre projet. Chaque parcours est unique, et nous serons ravis de vous aider à construire le vôtre.</p>
+        <div class="contact-cta-banner-actions">
+          <a href="tel:+18192719783" class="btn btn-white btn-lg"><span>📞</span> +1 (819) 271-9783</a>
+          <a href="mailto:admin@cultulangues.ca" class="btn btn-outline-white btn-lg"><span>✉</span> admin@cultulangues.ca</a>
+        </div>
+        <p class="contact-cta-banner-note">Ou appelez-nous directement — nous sommes joignables du lundi au vendredi, de 9 h à 19 h.</p>
+      </div>
+    </div>
+  </section>
 @endsection
