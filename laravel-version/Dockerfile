@@ -13,8 +13,19 @@ WORKDIR /var/www/html
 
 COPY . .
 
-RUN cp .env.example .env \
-    && composer install --no-dev --optimize-autoloader --no-interaction --no-progress \
+RUN echo "APP_NAME=Cultulangues" > .env \
+    && echo "APP_ENV=production" >> .env \
+    && echo "APP_DEBUG=true" >> .env \
+    && echo "APP_URL=" >> .env \
+    && echo "DB_CONNECTION=pgsql" >> .env \
+    && echo "LOG_CHANNEL=stack" >> .env \
+    && echo "CACHE_DRIVER=file" >> .env \
+    && echo "FILESYSTEM_DISK=local" >> .env \
+    && echo "QUEUE_CONNECTION=sync" >> .env \
+    && echo "SESSION_DRIVER=file" >> .env \
+    && echo "SESSION_LIFETIME=120" >> .env
+
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress \
     && php artisan key:generate --force
 
 RUN mkdir -p storage bootstrap/cache \
