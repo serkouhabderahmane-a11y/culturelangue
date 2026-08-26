@@ -12,7 +12,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   @stack('head')
 </head>
-<body class="@yield('body_class')">
+<body class="{{ $body_class ?? '' }}">
 
   <!-- ═══════════════════════════════════════════
        NAVIGATION
@@ -32,13 +32,9 @@
                 @foreach($parent->children as $child)
                 <a href="{{ $child->url ?? url('/') }}" class="ph-dropdown-item">
                   <span class="ph-dd-title">{{ $child->label_fr }}</span>
-                  <span class="ph-dd-desc">{{ $child->label_fr }}</span>
+                  <span class="ph-dd-desc">{{ $child->label_en }}</span>
                 </a>
                 @endforeach
-              @else
-              <a href="{{ $parent->url ?? url('/') }}" class="ph-dropdown-item">
-                <span class="ph-dd-title">{{ $parent->label_fr }}</span>
-              </a>
               @endif
             @endforeach
           </div>

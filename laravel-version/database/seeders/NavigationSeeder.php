@@ -25,7 +25,7 @@ class NavigationSeeder extends Seeder
                 'label_fr' => 'Parcours linguistique',
                 'label_en' => 'Linguistic Pathway',
                 'route' => 'services.category',
-                'url' => '/services/parcours-linguistique',
+                'url' => '/services/category/parcours-linguistique',
                 'parent_id' => 2,
                 'order' => 1,
             ],
@@ -33,7 +33,7 @@ class NavigationSeeder extends Seeder
                 'label_fr' => 'English Linguistic Pathway',
                 'label_en' => 'English Linguistic Pathway',
                 'route' => 'services.category',
-                'url' => '/services/english-linguistic-pathway',
+                'url' => '/services/category/english-linguistic-pathway',
                 'parent_id' => 2,
                 'order' => 2,
             ],
@@ -41,7 +41,7 @@ class NavigationSeeder extends Seeder
                 'label_fr' => 'Cap sur l\'oral',
                 'label_en' => 'Oral Focus',
                 'route' => 'services.category',
-                'url' => '/services/cap-sur-l-oral',
+                'url' => '/services/category/cap-sur-l-oral',
                 'parent_id' => 2,
                 'order' => 3,
             ],
@@ -49,7 +49,7 @@ class NavigationSeeder extends Seeder
                 'label_fr' => 'TCF Québec',
                 'label_en' => 'TCF Québec',
                 'route' => 'services.category',
-                'url' => '/services/tcf-quebec',
+                'url' => '/services/category/tcf-quebec',
                 'parent_id' => 2,
                 'order' => 4,
             ],
@@ -57,7 +57,7 @@ class NavigationSeeder extends Seeder
                 'label_fr' => 'TCF Canada',
                 'label_en' => 'TCF Canada',
                 'route' => 'services.category',
-                'url' => '/services/tcf-canada',
+                'url' => '/services/category/tcf-canada',
                 'parent_id' => 2,
                 'order' => 5,
             ],
@@ -65,7 +65,7 @@ class NavigationSeeder extends Seeder
                 'label_fr' => 'Formation en solo',
                 'label_en' => 'Private Lessons',
                 'route' => 'services.category',
-                'url' => '/services/formation-en-solo',
+                'url' => '/services/category/formation-en-solo',
                 'parent_id' => 2,
                 'order' => 6,
             ],
@@ -73,7 +73,7 @@ class NavigationSeeder extends Seeder
                 'label_fr' => 'Ateliers',
                 'label_en' => 'Workshops',
                 'route' => 'services.category',
-                'url' => '/services/ateliers',
+                'url' => '/services/category/ateliers',
                 'parent_id' => 2,
                 'order' => 7,
             ],
@@ -94,7 +94,7 @@ class NavigationSeeder extends Seeder
         ];
 
         foreach ($items as $data) {
-            NavigationItem::create($data);
+            NavigationItem::updateOrCreate(['label_fr' => $data['label_fr']], $data);
         }
     }
 }

@@ -85,10 +85,10 @@
         <div class="ph-journey-row ph-journey-row--4">
           @php
             $journeyCards = [
-              ['slug' => 'parcours-linguistique', 'id' => 'parcours-linguistique', 'class' => 'ph-journey-card--1', 'img' => 'img/home/parcours-linguistiques-new.png', 'count' => '6 parcours disponibles', 'title' => 'Parcours linguistique', 'desc' => 'Cours de groupe en petit groupe pour progresser avec confiance', 'href' => 'pages/parcours-linguistique.html', 'modal' => 'ph-modal-parcours'],
-              ['slug' => 'cap-sur-l-oral', 'id' => 'cap-sur-l-oral', 'class' => 'ph-journey-card--2', 'img' => 'img/home/cap-sur-l-oral-new.png', 'count' => '4 parcours disponibles', 'title' => "Cap sur l'oral", 'desc' => "Maîtrisez l'expression orale avec des parcours collaboratifs en petit groupe", 'href' => 'pages/cap-sur-l-oral.html', 'modal' => 'ph-modal-lingo-test'],
-              ['slug' => 'tcf-quebec', 'id' => 'tcf-quebec', 'class' => 'ph-journey-card--3', 'img' => 'img/home/tcf-quebec-new.png', 'count' => '2 parcours disponibles', 'title' => 'TCF Québec', 'desc' => "Préparation au TCF Québec pour l'immigration", 'href' => 'pages/tcf-quebec.html', 'modal' => 'ph-modal-lingo-test'],
-              ['slug' => 'english-linguistic-pathway', 'id' => 'english-linguistic-pathway', 'class' => 'ph-journey-card--4', 'img' => 'img/home/english-linguistic-pathway-new.png', 'count' => '3 parcours disponibles', 'title' => 'English Linguistic Pathway', 'desc' => 'English courses designed to help you make real progress in a motivating environment', 'href' => 'pages/english-linguistic-pathway.html', 'modal' => 'ph-modal-english'],
+              ['slug' => 'parcours-linguistique', 'id' => 'parcours-linguistique', 'class' => 'ph-journey-card--1', 'img' => 'img/home/parcours-linguistiques-new.png', 'count' => '6 parcours disponibles', 'title' => 'Parcours linguistique', 'desc' => 'Cours de groupe en petit groupe pour progresser avec confiance', 'href' => 'services/category/parcours-linguistique', 'modal' => 'ph-modal-parcours'],
+              ['slug' => 'cap-sur-l-oral', 'id' => 'cap-sur-l-oral', 'class' => 'ph-journey-card--2', 'img' => 'img/home/cap-sur-l-oral-new.png', 'count' => '4 parcours disponibles', 'title' => "Cap sur l'oral", 'desc' => "Maîtrisez l'expression orale avec des parcours collaboratifs en petit groupe", 'href' => 'services/category/cap-sur-l-oral', 'modal' => 'ph-modal-lingo-test'],
+              ['slug' => 'tcf-quebec', 'id' => 'tcf-quebec', 'class' => 'ph-journey-card--3', 'img' => 'img/home/tcf-quebec-new.png', 'count' => '2 parcours disponibles', 'title' => 'TCF Québec', 'desc' => "Préparation au TCF Québec pour l'immigration", 'href' => 'services/category/tcf-quebec', 'modal' => 'ph-modal-lingo-test'],
+              ['slug' => 'english-linguistic-pathway', 'id' => 'english-linguistic-pathway', 'class' => 'ph-journey-card--4', 'img' => 'img/home/english-linguistic-pathway-new.png', 'count' => '3 parcours disponibles', 'title' => 'English Linguistic Pathway', 'desc' => 'English courses designed to help you make real progress in a motivating environment', 'href' => 'services/category/english-linguistic-pathway', 'modal' => 'ph-modal-english'],
             ];
           @endphp
           @foreach($journeyCards as $index => $card)
@@ -114,9 +114,9 @@
         <div class="ph-journey-row ph-journey-row--3">
           @php
             $journeyCards2 = [
-              ['slug' => 'tcf-canada', 'id' => 'tcf-canada', 'class' => 'ph-journey-card--5', 'img' => 'img/home/tcf-canada-new.png', 'count' => '2 parcours disponibles', 'title' => 'TCF Canada', 'desc' => "Préparation au TCF Canada pour l'immigration IRCC", 'href' => 'pages/tcf-canada.html', 'modal' => 'ph-modal-lingo-test'],
-              ['slug' => 'formation-en-solo', 'id' => 'formation-solo', 'class' => 'ph-journey-card--6', 'img' => 'img/home/formation-solo-new.png', 'count' => '4 parcours disponibles', 'title' => 'Formation en solo', 'desc' => 'Accompagnement 1-to-1 flexible et 100 % personnalisé', 'href' => 'pages/formation-en-solo.html', 'modal' => 'ph-modal-solo'],
-              ['slug' => 'ateliers', 'id' => 'ateliers', 'class' => 'ph-journey-card--7', 'img' => 'img/home/ateliers-new.png', 'count' => '3 parcours disponibles', 'title' => 'Ateliers', 'desc' => 'Ateliers thématiques pour pratiquer et échanger en groupe', 'href' => 'pages/workshops.html', 'modal' => 'ph-modal-ateliers'],
+              ['slug' => 'tcf-canada', 'id' => 'tcf-canada', 'class' => 'ph-journey-card--5', 'img' => 'img/home/tcf-canada-new.png', 'count' => '2 parcours disponibles', 'title' => 'TCF Canada', 'desc' => "Préparation au TCF Canada pour l'immigration IRCC", 'href' => 'services/category/tcf-canada', 'modal' => 'ph-modal-lingo-test'],
+              ['slug' => 'formation-en-solo', 'id' => 'formation-solo', 'class' => 'ph-journey-card--6', 'img' => 'img/home/formation-solo-new.png', 'count' => '4 parcours disponibles', 'title' => 'Formation en solo', 'desc' => 'Accompagnement 1-to-1 flexible et 100 % personnalisé', 'href' => 'services/category/formation-en-solo', 'modal' => 'ph-modal-solo'],
+              ['slug' => 'ateliers', 'id' => 'ateliers', 'class' => 'ph-journey-card--7', 'img' => 'img/home/ateliers-new.png', 'count' => '3 parcours disponibles', 'title' => 'Ateliers', 'desc' => 'Ateliers thématiques pour pratiquer et échanger en groupe', 'href' => 'services/category/ateliers', 'modal' => 'ph-modal-ateliers'],
             ];
           @endphp
           @foreach($journeyCards2 as $index => $card)

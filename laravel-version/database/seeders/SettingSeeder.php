@@ -13,7 +13,7 @@ class SettingSeeder extends Seeder
             ['key' => 'site_name', 'value' => 'Cultulangues', 'type' => 'text', 'group' => 'general'],
             ['key' => 'site_description', 'value' => 'Formation linguistique & Préparation aux examens', 'type' => 'text', 'group' => 'general'],
             ['key' => 'hero_badge', 'value' => 'École certifiée — +950 étudiants', 'type' => 'text', 'group' => 'home'],
-            ['key' => 'hero_title', 'value' => 'Chez CultuLangues, nous construisons votre réussite et donnons un nouvel élan à vos projets.', 'type' => 'text', 'group' => 'home'],
+            ['key' => 'hero_title', 'value' => 'Chez CultuLangues, nous construisons<br>votre réussite et donnons un nouvel<br>élan à vos <span class="text-gradient">projets</span>.', 'type' => 'text', 'group' => 'home'],
             ['key' => 'hero_subtitle', 'value' => "Vous souhaitez apprendre l'une des langues officielles du Canada pour :", 'type' => 'text', 'group' => 'home'],
             ['key' => 'hero_cta_primary', 'value' => "Découvrez nos parcours d'apprentissage", 'type' => 'text', 'group' => 'home'],
             ['key' => 'hero_cta_secondary', 'value' => 'Choisissez le format qui vous ressemble', 'type' => 'text', 'group' => 'home'],
@@ -27,7 +27,7 @@ class SettingSeeder extends Seeder
         ];
 
         foreach ($settings as $data) {
-            Setting::create($data);
+            Setting::updateOrCreate(['key' => $data['key']], $data);
         }
     }
 }
