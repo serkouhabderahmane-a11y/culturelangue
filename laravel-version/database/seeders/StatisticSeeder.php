@@ -41,7 +41,7 @@ class StatisticSeeder extends Seeder
         ];
 
         foreach ($statistics as $data) {
-            Statistic::create($data);
+            Statistic::updateOrCreate(['label_fr' => $data['label_fr']], $data);
         }
     }
 }

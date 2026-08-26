@@ -43,7 +43,7 @@ class FaqSeeder extends Seeder
         ];
 
         foreach ($faqs as $data) {
-            Faq::create($data);
+            Faq::updateOrCreate(['question_fr' => $data['question_fr']], $data);
         }
     }
 }

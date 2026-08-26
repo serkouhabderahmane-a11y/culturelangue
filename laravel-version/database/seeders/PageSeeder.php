@@ -53,7 +53,7 @@ class PageSeeder extends Seeder
         ];
 
         foreach ($pages as $data) {
-            Page::create($data);
+            Page::updateOrCreate(['slug' => $data['slug']], $data);
         }
     }
 }

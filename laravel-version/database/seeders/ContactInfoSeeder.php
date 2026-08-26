@@ -37,7 +37,7 @@ class ContactInfoSeeder extends Seeder
         ];
 
         foreach ($contacts as $data) {
-            ContactInfo::create($data);
+            ContactInfo::updateOrCreate(['type' => $data['type']], $data);
         }
     }
 }

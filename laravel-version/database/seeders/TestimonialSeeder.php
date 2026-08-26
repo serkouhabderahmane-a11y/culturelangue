@@ -42,8 +42,10 @@ class TestimonialSeeder extends Seeder
             ],
         ];
 
+        Testimonial::query()->delete();
+
         foreach ($testimonials as $data) {
-            Testimonial::updateOrCreate(['name_fr' => $data['name_fr']], $data);
+            Testimonial::create($data);
         }
     }
 }
