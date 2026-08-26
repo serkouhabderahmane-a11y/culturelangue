@@ -2,7 +2,7 @@
 
 @section('title', 'Contact')
 
-@section('head')
+@push('head')
 <link rel="stylesheet" href="{{ asset('css/page-photos.css') }}">
 <style>
   .dmp-wrap{background:var(--color-bg-warm);border:1px solid var(--color-border-light);border-radius:var(--radius-2xl);padding:clamp(32px,5vw,64px)}
@@ -31,7 +31,7 @@
     .dmp-step:not(:last-child)::after{content:'';position:absolute;left:60px;bottom:calc(-1 * var(--space-md) - 2px);width:2px;height:calc(var(--space-md) + 4px);background:var(--color-border)}
   }
 </style>
-@endsection
+@endpush
 
 @section('content')
   <!-- ═══ HERO ═══ -->

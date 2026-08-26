@@ -2,7 +2,7 @@
 
 @section('title', $settings['site_name'] ?? 'Cultulangues')
 
-@section('head')
+@push('head')
 <link rel="stylesheet" href="{{ asset('css/model-1.css') }}">
 <style>
   .m1-hero{padding-top:calc(var(--header-height) + 28px);padding-bottom:48px}
@@ -20,7 +20,7 @@
     .m1-figure .m1-wave{top:-12px;right:-10px}
   }
 </style>
-@endsection
+@endpush
 
 @section('content')
   <!-- ═══════════════════════════════════════════

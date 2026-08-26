@@ -3,11 +3,11 @@
 @section('title', $category->name_fr)
 @section('meta_description', $category->description_fr)
 
-@section('styles')
+@push('head')
 <link rel="stylesheet" href="{{ asset('css/service-landing.css') }}">
 <link rel="stylesheet" href="{{ asset('css/model-4.css') }}">
 <link rel="stylesheet" href="{{ asset('css/read-more.css') }}">
-@endsection
+@endpush
 
 @section('content')
 <section class="page-header">

@@ -2,9 +2,9 @@
 
 @section('title', 'À propos')
 
-@section('head')
+@push('head')
 <link rel="stylesheet" href="{{ asset('css/page-photos.css') }}">
-@endsection
+@endpush
 
 @section('content')
   <!-- ═══ MISSION ═══ -->

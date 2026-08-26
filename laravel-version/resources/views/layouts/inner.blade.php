@@ -7,7 +7,10 @@
   <meta name="description" content="@yield('meta_description', $settings['site_description'] ?? '')">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/premium.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/service-landing.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('css/read-more.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/model-4.css') }}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   @stack('head')
 </head>
