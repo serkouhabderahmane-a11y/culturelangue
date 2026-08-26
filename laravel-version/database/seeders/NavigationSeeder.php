@@ -24,6 +24,7 @@ class NavigationSeeder extends Seeder
             [
                 'label_fr' => 'Parcours linguistique',
                 'label_en' => 'Linguistic Pathway',
+                'description_fr' => 'Apprendre et progresser en petit groupe',
                 'route' => 'services.category',
                 'url' => '/services/category/parcours-linguistique',
                 'parent_id' => 2,
@@ -32,6 +33,7 @@ class NavigationSeeder extends Seeder
             [
                 'label_fr' => 'English Linguistic Pathway',
                 'label_en' => 'English Linguistic Pathway',
+                'description_fr' => 'English courses designed to help you make real progress',
                 'route' => 'services.category',
                 'url' => '/services/category/english-linguistic-pathway',
                 'parent_id' => 2,
@@ -40,6 +42,7 @@ class NavigationSeeder extends Seeder
             [
                 'label_fr' => 'Cap sur l\'oral',
                 'label_en' => 'Oral Focus',
+                'description_fr' => 'Développer une expression orale fluide et stratégique',
                 'route' => 'services.category',
                 'url' => '/services/category/cap-sur-l-oral',
                 'parent_id' => 2,
@@ -48,6 +51,7 @@ class NavigationSeeder extends Seeder
             [
                 'label_fr' => 'TCF Québec',
                 'label_en' => 'TCF Québec',
+                'description_fr' => 'Préparation au TCF Québec pour l\'immigration',
                 'route' => 'services.category',
                 'url' => '/services/category/tcf-quebec',
                 'parent_id' => 2,
@@ -56,6 +60,7 @@ class NavigationSeeder extends Seeder
             [
                 'label_fr' => 'TCF Canada',
                 'label_en' => 'TCF Canada',
+                'description_fr' => 'Préparation au TCF Canada pour l\'immigration IRCC',
                 'route' => 'services.category',
                 'url' => '/services/category/tcf-canada',
                 'parent_id' => 2,
@@ -64,6 +69,7 @@ class NavigationSeeder extends Seeder
             [
                 'label_fr' => 'Formation en solo',
                 'label_en' => 'Private Lessons',
+                'description_fr' => 'Un accompagnement 100 % personnalisé',
                 'route' => 'services.category',
                 'url' => '/services/category/formation-en-solo',
                 'parent_id' => 2,
@@ -72,6 +78,7 @@ class NavigationSeeder extends Seeder
             [
                 'label_fr' => 'Ateliers',
                 'label_en' => 'Workshops',
+                'description_fr' => 'Pratiquer, échanger et perfectionner votre français',
                 'route' => 'services.category',
                 'url' => '/services/category/ateliers',
                 'parent_id' => 2,

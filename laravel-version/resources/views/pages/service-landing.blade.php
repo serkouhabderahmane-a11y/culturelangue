@@ -140,16 +140,4 @@
 
   </div>
 </div>
-
-<section class="ph-cta">
-  <div class="ph-cta-deco" aria-hidden="true"></div>
-  <div class="ph-cta-inner">
-    <h2>Prêt à commencer ?</h2>
-    <p>Rejoignez nos étudiants et commencez votre parcours linguistique dès aujourd'hui.</p>
-    <a href="{{ route('booking') }}" class="ph-btn ph-btn-white ph-btn-xl">
-      <span>Réserver maintenant</span>
-      <svg class="ph-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
 @endsection

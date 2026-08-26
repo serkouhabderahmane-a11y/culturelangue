@@ -32,7 +32,7 @@
                 @foreach($parent->children as $child)
                 <a href="{{ $child->url ?? url('/') }}" class="ph-dropdown-item">
                   <span class="ph-dd-title">{{ $child->label_fr }}</span>
-                  <span class="ph-dd-desc">{{ $child->label_en }}</span>
+                  <span class="ph-dd-desc">{{ $child->description_fr }}</span>
                 </a>
                 @endforeach
               @endif
@@ -95,13 +95,13 @@
         </div>
         <div class="ph-footer-col">
           <h4 data-i18n="footer.courses">Cours</h4>
-          <a href="{{ url('/pages/parcours-linguistique') }}" data-i18n="nav.parcours">Parcours linguistique</a>
-          <a href="{{ url('/pages/english-linguistic-pathway') }}">English Linguistic Pathway</a>
-          <a href="{{ url('/pages/cap-sur-l-oral') }}" data-i18n="nav.oral">Cap sur l'oral</a>
-          <a href="{{ url('/pages/tcf-quebec') }}">TCF Québec</a>
-          <a href="{{ url('/pages/tcf-canada') }}">TCF Canada</a>
-          <a href="{{ url('/pages/formation-en-solo') }}" data-i18n="nav.solo">Formation en solo</a>
-          <a href="{{ url('/pages/workshops') }}" data-i18n="nav.ateliers">Ateliers</a>
+          <a href="{{ url('/services/category/parcours-linguistique') }}" data-i18n="nav.parcours">Parcours linguistique</a>
+          <a href="{{ url('/services/category/english-linguistic-pathway') }}">English Linguistic Pathway</a>
+          <a href="{{ url('/services/category/cap-sur-l-oral') }}" data-i18n="nav.oral">Cap sur l'oral</a>
+          <a href="{{ url('/services/category/tcf-quebec') }}">TCF Québec</a>
+          <a href="{{ url('/services/category/tcf-canada') }}">TCF Canada</a>
+          <a href="{{ url('/services/category/formation-en-solo') }}" data-i18n="nav.solo">Formation en solo</a>
+          <a href="{{ url('/services/category/ateliers') }}" data-i18n="nav.ateliers">Ateliers</a>
           <a href="{{ route('contact') }}" data-i18n="nav.contact">Contact</a>
         </div>
         <div class="ph-footer-col">
@@ -120,6 +120,10 @@
           <div class="ph-footer-contact">
             <span>📞</span>
             <span data-i18n="footer.contact.phone">{{ $settings['phone'] ?? '+1 (819) 271-9783' }}</span>
+          </div>
+          <div class="ph-footer-contact">
+            <span>📍</span>
+            <span>{{ $settings['address'] ?? '468 rue Plouffe suite 3, Gatineau J8P 4B7 (QC)' }}</span>
           </div>
         </div>
       </div>

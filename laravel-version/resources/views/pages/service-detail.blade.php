@@ -5,10 +5,8 @@
 
 @section('content')
 <section class="page-header">
-  <div class="page-header-bg"><img src="{{ asset($service->image ?: $service->category->image) }}" alt="" loading="lazy"></div>
-  <div class="page-deco page-deco-circle"></div>
-  <div class="page-deco page-deco-circle-2"></div>
-  <div class="container">
+  <div class="page-header-bg"><img src="{{ asset($service->banner_image ?: $service->image ?: $service->category->banner_image ?: $service->category->image) }}" alt="" loading="lazy"></div>
+  <div class="container" style="grid-template-columns: 1fr;">
     <div class="hero-content">
       <div class="breadcrumb">
         <a href="{{ url('/') }}">Accueil</a> /
@@ -22,95 +20,135 @@
         <span class="hero-chip"><i class="fas fa-clock"></i> {{ $service->duration }}</span>
         @endif
         @if($service->price)
-        <span class="hero-chip"><i class="fas fa-tag"></i> {{ $service->price }}</span>
+        <span class="hero-chip m4-chip-green"><i class="fas fa-tag"></i> {{ $service->price }}</span>
         @endif
       </div>
       <div class="hero-ctas">
-        <a href="{{ route('booking') }}?service={{ $service->slug }}" class="btn btn-primary btn-lg">Réserver maintenant &rarr;</a>
-        <a href="{{ route('contact') }}" class="btn btn-outline btn-lg">Nous contacter</a>
-      </div>
-    </div>
-    <div class="hero-booking-card">
-      <div class="hero-booking-header">
-        <h3>{{ $service->name_fr }}</h3>
-        <div class="hbh-price">{{ $service->price }} <small>Tout compris</small></div>
-      </div>
-      <div class="hero-booking-body">
-        @if($service->duration)
-        <div class="hero-booking-fact">
-          <i class="fas fa-calendar-alt"></i>
-          <span>Durée : {{ $service->duration }}</span>
-        </div>
-        @endif
-        <div class="hero-booking-fact">
-          <i class="fas fa-users"></i>
-          <span>Groupes de 5 max</span>
-        </div>
-        <a href="{{ route('booking') }}?service={{ $service->slug }}" class="btn btn-primary btn-full">Réserver cette formation</a>
+        <a href="#programs" class="btn btn-primary">Voir les programmes &darr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="service-content">
-  <div class="container">
-    <div class="service-description">
-      <h2>À propos de cette formation</h2>
-      <div class="read-more">{!! nl2br(e($service->description_fr)) !!}</div>
+<div class="sl-trust-strip">
+  <div class="sl-trust-item"><i class="fas fa-check-circle"></i> Petits groupes (max 5)</div>
+  <div class="sl-trust-item"><i class="fas fa-check-circle"></i> Certificat de fin de session</div>
+  <div class="sl-trust-item"><i class="fas fa-check-circle"></i> Rapport de progression</div>
+  <div class="sl-trust-item"><i class="fas fa-check-circle"></i> Nouvelle session chaque mois</div>
+</div>
+
+<div class="detail-layout" style="margin-top: 48px;">
+  <div class="detail-main">
+
+    @if($service->duration || $service->price)
+    <div class="summary-pills">
+      @if($service->duration)
+      <span class="summary-pill"><i class="fas fa-clock"></i> {{ $service->duration }}</span>
+      @endif
+      @if($service->price)
+      <span class="summary-pill"><i class="fas fa-tag"></i> {{ $service->price }}</span>
+      @endif
     </div>
+    @endif
 
     @if($service->benefits_fr)
-    <div class="service-benefits">
-      <h2>Pourquoi choisir ce programme ?</h2>
-      <ul class="benefits-list">
+    <div class="m4-section-card reveal">
+      <span class="section-badge section-badge--blue">Ce que vous obtenez</span>
+      <div class="feature-cards">
         @foreach($service->benefits_fr as $benefit)
-        <li><i class="fas fa-check-circle"></i> {{ $benefit }}</li>
+        <div class="feature-card">
+          <div class="feature-card-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="feature-card-text"><p>{{ is_array($benefit) ? ($benefit['text'] ?? $benefit['title'] ?? '') : $benefit }}</p></div>
+        </div>
         @endforeach
-      </ul>
+      </div>
     </div>
     @endif
 
     @if($service->learning_objectives_fr)
-    <div class="service-objectives">
-      <h2>Objectifs d'apprentissage</h2>
-      <ul class="objectives-list">
+    <div class="m4-section-card reveal">
+      <span class="section-badge section-badge--orange">Pourquoi ça fonctionne</span>
+      <div class="feature-cards">
         @foreach($service->learning_objectives_fr as $objective)
-        <li><i class="fas fa-bullseye"></i> {{ $objective }}</li>
+        <div class="feature-card">
+          <div class="feature-card-icon"><i class="fas fa-bullseye"></i></div>
+          <div class="feature-card-text"><p>{{ is_array($objective) ? ($objective['text'] ?? $objective['title'] ?? '') : $objective }}</p></div>
+        </div>
         @endforeach
-      </ul>
+      </div>
     </div>
     @endif
-  </div>
-</section>
 
-@if($relatedServices->count() > 0)
-<section class="related-services">
-  <div class="container">
-    <h2>Autres programmes dans cette catégorie</h2>
-    <div class="services-grid">
-      @foreach($relatedServices as $related)
-      <a href="{{ route('service.show', $related->slug) }}" class="service-card">
-        <div class="service-card-body">
-          <h3>{{ $related->name_fr }}</h3>
-          <p>{{ $related->short_description_fr }}</p>
-          <span class="service-card-link">En savoir plus &rarr;</span>
+    @if($service->price)
+    <div class="m4-section-card reveal">
+      <span class="section-badge section-badge--green">Tarif</span>
+      <p class="tarif-text">{{ $service->price }} – Évaluation de placement, {{ $service->duration ?? '' }} d'enseignement qualifié et rapport final inclus</p>
+    </div>
+    @endif
+
+    @if($service->description_fr)
+    <div class="m4-section-card reveal">
+      <span class="section-badge section-badge--green"><i class="fas fa-info-circle"></i> Description</span>
+      <h2 class="m4-h2">Description <span class="text-gradient">complète</span></h2>
+      <div class="sl-description read-more">
+        {!! nl2br(e($service->description_fr)) !!}
+      </div>
+    </div>
+    @endif
+
+    <div class="m4-cta reveal">
+      <h3>Prêt à progresser ?</h3>
+      <p>Rejoignez la prochaine session de {{ $service->name_fr }} et gagnez en confiance.</p>
+      <a href="{{ route('booking') }}?service={{ $service->slug }}" class="btn btn-primary btn-lg">Réservez votre place &rarr;</a>
+    </div>
+
+  </div>
+
+  <div class="detail-sidebar">
+    <div class="booking-card">
+      <div class="booking-card-header">
+        <h3>{{ $service->name_fr }}</h3>
+        <div class="bch-price">{{ $service->price }} <small>Tout compris</small></div>
+      </div>
+      <div class="booking-card-body">
+        <div class="booking-facts">
+          @if($service->duration)
+          <div class="booking-fact"><span class="bf-icon"><i class="fas fa-clock"></i></span><span class="bf-value">{{ $service->duration }}</span><span class="bf-label">Durée</span></div>
+          @endif
+          <div class="booking-fact"><span class="bf-icon"><i class="fas fa-users"></i></span><span class="bf-value">5 max</span><span class="bf-label">Groupe</span></div>
         </div>
-      </a>
-      @endforeach
+        <div class="trust-badges">
+          <span class="trust-badge"><i class="fas fa-shield-alt"></i> Paiement sécurisé</span>
+          <span class="trust-badge"><i class="fas fa-award"></i> Certificat inclus</span>
+        </div>
+        <div class="booking-cta">
+          <a href="{{ route('booking') }}?service={{ $service->slug }}" class="btn btn-primary">Réservez maintenant &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="m4-section-card reveal">
+      <span class="section-badge section-badge--blue"><i class="fas fa-route"></i> Démarche</span>
+      <h2 class="m4-h2">Comment <span class="text-gradient">ça marche</span> ?</h2>
+      <p class="m4-sub">Pour commencer votre inscription, suivez ces trois étapes simples :</p>
+      <div class="sl-process">
+        <div class="sl-process-step">
+          <div class="sl-process-num">1</div>
+          <h3 class="sl-process-title">Remplissez le formulaire de contact</h3>
+          <p class="sl-process-desc">Indiquez vos informations de base afin que nous puissions ouvrir votre dossier.</p>
+        </div>
+        <div class="sl-process-step">
+          <div class="sl-process-num">2</div>
+          <h3 class="sl-process-title">Complétez le test de niveau</h3>
+          <p class="sl-process-desc">Il nous permet d'évaluer votre compréhension écrite et votre expression écrite.</p>
+        </div>
+        <div class="sl-process-step">
+          <div class="sl-process-num">3</div>
+          <h3 class="sl-process-title">Prenez rendez-vous pour votre évaluation orale</h3>
+          <p class="sl-process-desc">Vous rencontrerez notre évaluateur afin de déterminer votre niveau d'expression orale.</p>
+        </div>
+      </div>
     </div>
   </div>
-</section>
-@endif
-
-<section class="ph-cta">
-  <div class="ph-cta-deco" aria-hidden="true"></div>
-  <div class="ph-cta-inner">
-    <h2>Prêt à commencer {{ $service->name_fr }} ?</h2>
-    <p>Réservez votre place dès maintenant et commencez votre parcours linguistique.</p>
-    <a href="{{ route('booking') }}?service={{ $service->slug }}" class="ph-btn ph-btn-white ph-btn-xl">
-      <span>Réserver maintenant</span>
-      <svg class="ph-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-</section>
+</div>
 @endsection

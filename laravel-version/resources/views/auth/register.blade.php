@@ -48,6 +48,7 @@
           <label class="form-label">Mot de passe <span class="required">*</span></label>
           <div style="position: relative;">
             <input type="password" name="password" class="form-input" required placeholder="Minimum 8 caractères">
+            <button type="button" class="password-toggle" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 1rem; background: none; border: none; cursor: pointer;">🔒</button>
           </div>
         </div>
         <div class="form-group">
@@ -70,5 +71,6 @@
     </div>
   </div>
 
+  <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

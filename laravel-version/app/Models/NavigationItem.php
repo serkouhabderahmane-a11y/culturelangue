@@ -11,6 +11,7 @@ class NavigationItem extends Model
     protected $fillable = [
         'label_fr',
         'label_en',
+        'description_fr',
         'url',
         'route',
         'icon',
