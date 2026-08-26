@@ -29,7 +29,7 @@
   <section class="m1-hero" id="hero">
     <div class="m1-hero-container">
       <div class="m1-content">
-        <h1 class="m1-h1" data-i18n="hero.h1">{!! $settings['hero_title'] ?? "Chez CultuLangues, nous construisons<br>votre réussite et donnons un nouvel<br>élan à vos <span class=\"text-gradient\">projets</span>." !!}</h1>
+        <h1 class="m1-h1" data-i18n="hero.h1">Chez CultuLangues, nous construisons<br>votre réussite et donnons un nouvel<br>élan à vos <span class="text-gradient">projets</span>.</h1>
 
         <p class="m1-sub" data-i18n="hero.intro">{{ $settings['hero_subtitle'] ?? "Vous souhaitez apprendre l'une des langues officielles du Canada pour :" }}</p>
 
