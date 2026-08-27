@@ -566,3 +566,66 @@
 [data-service="atelier-maintien"] .subservice-card-image::after { background: linear-gradient(to top, rgba(115,185,24,0.4), transparent); }
 [data-service="atelier-maintien"] .flagship-highlights .bubble { background: rgba(115,185,24,0.08); color: #73B918; border-color: rgba(115,185,24,0.2); }
 [data-service="atelier-maintien"] .flagship-highlights .bubble:hover { background: #73B918; color: #fff; border-color: #73B918; }
+
+/* cap-sur-l-oral */
+[data-service="cap-sur-l-oral"] { --accent: #B7100B; --accent-rgb: 183,16,11; }
+[data-service="cap-sur-l-oral"] .poc-badge { background: rgba(183,16,11,0.12); color: #B7100B; border-color: rgba(183,16,11,0.25); }
+[data-service="cap-sur-l-oral"] .poc-price { color: #B7100B; }
+[data-service="cap-sur-l-oral"] .poc-cta { color: #B7100B; }
+[data-service="cap-sur-l-oral"] .poc-cta:hover { color: #fff; background: #B7100B; }
+[data-service="cap-sur-l-oral"] .poc-image::after { background: linear-gradient(to top, rgba(183,16,11,0.4), transparent); }
+[data-service="cap-sur-l-oral"] .poc-tags span { border-color: rgba(183,16,11,0.2); color: #B7100B; }
+[data-service="cap-sur-l-oral"] .poc-footer { border-top-color: rgba(183,16,11,0.15); }
+[data-service="cap-sur-l-oral"] .bubble { background: rgba(183,16,11,0.08); color: #B7100B; border-color: rgba(183,16,11,0.2); }
+[data-service="cap-sur-l-oral"] .bubble:hover { background: #B7100B; color: #fff; border-color: #B7100B; }
+[data-service="cap-sur-l-oral"] .ph-btn:not(.ph-btn-primary) { background: #B7100B; border-color: #B7100B; }
+[data-service="cap-sur-l-oral"] .ph-btn:not(.ph-btn-primary):hover { background: rgba(183,16,11,0.85); }
+[data-service="cap-sur-l-oral"] .subservice-card-price { color: #B7100B; font-weight: 700; }
+[data-service="cap-sur-l-oral"] .subservice-card-cta { color: #B7100B; }
+[data-service="cap-sur-l-oral"] .subservice-card-cta:hover { color: #fff; background: #B7100B; }
+[data-service="cap-sur-l-oral"] .badge { background: rgba(183,16,11,0.12); color: #B7100B; }
+[data-service="cap-sur-l-oral"] .subservice-card-image::after { background: linear-gradient(to top, rgba(183,16,11,0.4), transparent); }
+[data-service="cap-sur-l-oral"] .flagship-highlights .bubble { background: rgba(183,16,11,0.08); color: #B7100B; border-color: rgba(183,16,11,0.2); }
+[data-service="cap-sur-l-oral"] .flagship-highlights .bubble:hover { background: #B7100B; color: #fff; border-color: #B7100B; }
+
+/* tcf-quebec */
+[data-service="tcf-quebec"] { --accent: #002B85; --accent-rgb: 0,43,133; }
+[data-service="tcf-quebec"] .poc-badge { background: rgba(0,43,133,0.12); color: #002B85; border-color: rgba(0,43,133,0.25); }
+[data-service="tcf-quebec"] .poc-price { color: #002B85; }
+[data-service="tcf-quebec"] .poc-cta { color: #002B85; }
+[data-service="tcf-quebec"] .poc-cta:hover { color: #fff; background: #002B85; }
+[data-service="tcf-quebec"] .poc-image::after { background: linear-gradient(to top, rgba(0,43,133,0.4), transparent); }
+[data-service="tcf-quebec"] .poc-tags span { border-color: rgba(0,43,133,0.2); color: #002B85; }
+[data-service="tcf-quebec"] .poc-footer { border-top-color: rgba(0,43,133,0.15); }
+[data-service="tcf-quebec"] .bubble { background: rgba(0,43,133,0.08); color: #002B85; border-color: rgba(0,43,133,0.2); }
+[data-service="tcf-quebec"] .bubble:hover { background: #002B85; color: #fff; border-color: #002B85; }
+[data-service="tcf-quebec"] .ph-btn:not(.ph-btn-primary) { background: #002B85; border-color: #002B85; }
+[data-service="tcf-quebec"] .ph-btn:not(.ph-btn-primary):hover { background: rgba(0,43,133,0.85); }
+[data-service="tcf-quebec"] .subservice-card-price { color: #002B85; font-weight: 700; }
+[data-service="tcf-quebec"] .subservice-card-cta { color: #002B85; }
+[data-service="tcf-quebec"] .subservice-card-cta:hover { color: #fff; background: #002B85; }
+[data-service="tcf-quebec"] .badge { background: rgba(0,43,133,0.12); color: #002B85; }
+[data-service="tcf-quebec"] .subservice-card-image::after { background: linear-gradient(to top, rgba(0,43,133,0.4), transparent); }
+[data-service="tcf-quebec"] .flagship-highlights .bubble { background: rgba(0,43,133,0.08); color: #002B85; border-color: rgba(0,43,133,0.2); }
+[data-service="tcf-quebec"] .flagship-highlights .bubble:hover { background: #002B85; color: #fff; border-color: #002B85; }
+
+/* tcf-canada */
+[data-service="tcf-canada"] { --accent: #AA140D; --accent-rgb: 170,20,13; }
+[data-service="tcf-canada"] .poc-badge { background: rgba(170,20,13,0.12); color: #AA140D; border-color: rgba(170,20,13,0.25); }
+[data-service="tcf-canada"] .poc-price { color: #AA140D; }
+[data-service="tcf-canada"] .poc-cta { color: #AA140D; }
+[data-service="tcf-canada"] .poc-cta:hover { color: #fff; background: #AA140D; }
+[data-service="tcf-canada"] .poc-image::after { background: linear-gradient(to top, rgba(170,20,13,0.4), transparent); }
+[data-service="tcf-canada"] .poc-tags span { border-color: rgba(170,20,13,0.2); color: #AA140D; }
+[data-service="tcf-canada"] .poc-footer { border-top-color: rgba(170,20,13,0.15); }
+[data-service="tcf-canada"] .bubble { background: rgba(170,20,13,0.08); color: #AA140D; border-color: rgba(170,20,13,0.2); }
+[data-service="tcf-canada"] .bubble:hover { background: #AA140D; color: #fff; border-color: #AA140D; }
+[data-service="tcf-canada"] .ph-btn:not(.ph-btn-primary) { background: #AA140D; border-color: #AA140D; }
+[data-service="tcf-canada"] .ph-btn:not(.ph-btn-primary):hover { background: rgba(170,20,13,0.85); }
+[data-service="tcf-canada"] .subservice-card-price { color: #AA140D; font-weight: 700; }
+[data-service="tcf-canada"] .subservice-card-cta { color: #AA140D; }
+[data-service="tcf-canada"] .subservice-card-cta:hover { color: #fff; background: #AA140D; }
+[data-service="tcf-canada"] .badge { background: rgba(170,20,13,0.12); color: #AA140D; }
+[data-service="tcf-canada"] .subservice-card-image::after { background: linear-gradient(to top, rgba(170,20,13,0.4), transparent); }
+[data-service="tcf-canada"] .flagship-highlights .bubble { background: rgba(170,20,13,0.08); color: #AA140D; border-color: rgba(170,20,13,0.2); }
+[data-service="tcf-canada"] .flagship-highlights .bubble:hover { background: #AA140D; color: #fff; border-color: #AA140D; }

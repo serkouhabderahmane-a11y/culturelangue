@@ -695,6 +695,7 @@ h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); letter-spacing: -0.025em; font-wei
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 16px;
+  padding: 10px;
 }
 .solo-price-card-img img {
   width: 100%;
