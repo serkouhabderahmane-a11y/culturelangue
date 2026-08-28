@@ -1188,59 +1188,68 @@
   });
 
   // Send the completed registration to the Laravel backend so it persists to the DB.
+  // Resolves with { redirect } on success, rejects with a friendly error message on failure.
   function persistBooking(scheduleStr, correct, level) {
-    try {
-      var fullName = (document.getElementById('infoName').value || '').trim();
-      var nameParts = fullName.split(/\s+/);
-      var lastName = nameParts.length > 1 ? nameParts.pop() : '';
-      var firstName = nameParts.join(' ');
+    var fullName = (document.getElementById('infoName').value || '').trim();
+    var nameParts = fullName.split(/\s+/);
+    var lastName = nameParts.length > 1 ? nameParts.pop() : '';
+    var firstName = nameParts.join(' ');
 
-      var soloDateStr = '';
-      if (state.courseData.type === 'solo' && state.soloDate) {
-        soloDateStr = state.soloDate.getFullYear() + '-' +
-          ('0' + (state.soloDate.getMonth() + 1)).slice(-2) + '-' +
-          ('0' + state.soloDate.getDate()).slice(-2);
+    var soloDateStr = '';
+    if (state.courseData.type === 'solo' && state.soloDate) {
+      soloDateStr = state.soloDate.getFullYear() + '-' +
+        ('0' + (state.soloDate.getMonth() + 1)).slice(-2) + '-' +
+        ('0' + state.soloDate.getDate()).slice(-2);
+    }
+
+    var payload = {
+      first_name: firstName,
+      last_name: lastName,
+      full_name: fullName,
+      email: (document.getElementById('infoEmail').value || '').trim(),
+      phone: (document.getElementById('infoPhone').value || '').trim(),
+      contact_method: (document.getElementById('infoContact').value || '').trim(),
+      notes: (document.getElementById('infoNotes').value || '').trim(),
+      course: state.courseId,
+      program: state.program || null,
+      package: state.soloPackage || null,
+      group: state.group ? state.group.id : null,
+      preferred_date: soloDateStr,
+      preferred_slot: state.soloSlot || null,
+      placement_score: correct,
+      placement_level: level,
+      oral_test_date: state.selectedDate
+        ? state.selectedDate.getFullYear() + '-' +
+          ('0' + (state.selectedDate.getMonth() + 1)).slice(-2) + '-' +
+          ('0' + state.selectedDate.getDate()).slice(-2)
+        : null,
+      oral_test_slot: state.selectedSlot || null,
+      oral_test_status: 'planifie'
+    };
+
+    var url = (window.bookingRoutes && window.bookingRoutes.store) || '/booking';
+    var csrf = document.querySelector('meta[name="csrf-token"]') &&
+               document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-CSRF-TOKEN': csrf || ''
+      },
+      body: JSON.stringify(payload)
+    }).then(function(res) {
+      if (!res.ok) {
+        return res.json().then(function(data) {
+          var msg = (data && data.message) || 'Votre réservation n\'a pas pu être enregistrée. Veuillez réessayer.';
+          throw new Error(msg);
+        }).catch(function(err) {
+          throw new Error(err && err.message ? err.message : 'Votre réservation n\'a pas pu être enregistrée. Veuillez réessayer.');
+        });
       }
-
-      var payload = {
-        first_name: firstName,
-        last_name: lastName,
-        full_name: fullName,
-        email: (document.getElementById('infoEmail').value || '').trim(),
-        phone: (document.getElementById('infoPhone').value || '').trim(),
-        contact_method: (document.getElementById('infoContact').value || '').trim(),
-        notes: (document.getElementById('infoNotes').value || '').trim(),
-        course: state.courseId,
-        program: state.program || null,
-        package: state.soloPackage || null,
-        group: state.group ? state.group.id : null,
-        preferred_date: soloDateStr,
-        preferred_slot: state.soloSlot || null,
-        placement_score: correct,
-        placement_level: level,
-        oral_test_date: state.selectedDate
-          ? state.selectedDate.getFullYear() + '-' +
-            ('0' + (state.selectedDate.getMonth() + 1)).slice(-2) + '-' +
-            ('0' + state.selectedDate.getDate()).slice(-2)
-          : null,
-        oral_test_slot: state.selectedSlot || null,
-        oral_test_status: 'planifie'
-      };
-
-      var url = (window.bookingRoutes && window.bookingRoutes.store) || '/booking';
-      var csrf = document.querySelector('meta[name="csrf-token"]') &&
-                 document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-CSRF-TOKEN': csrf || ''
-        },
-        body: JSON.stringify(payload)
-      }).catch(function(e) {});
-    } catch (e) {}
+      return res.json();
+    });
   }
 
   // ════════════════════════════════════════════════════════════
@@ -1285,10 +1294,9 @@
     };
     try { localStorage.setItem('cultulangues_oral_test', JSON.stringify(oralData)); } catch(e) {}
 
-    // Persist to server so the registration reaches the backend/DB
-    persistBooking(scheduleStr, correct, level);
-
-    setTimeout(function() {
+    // Persist to server so the registration reaches the backend/DB.
+    // The success overlay + redirect are only shown once the DB write has truly succeeded.
+    persistBooking(scheduleStr, correct, level).then(function(data) {
       document.getElementById('successDetails').innerHTML =
         '<div style="display:grid;gap:8px">' +
         '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-secondary)">Cours</span><span style="font-weight:600">' + courseNameStr + '</span></div>' +
@@ -1304,7 +1312,8 @@
       document.getElementById('stepSuccess').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Auto-redirect to student dashboard
+      // Auto-redirect to the student dashboard -> My Courses (real web routes).
+      var dest = (data && (data.redirect || data.redirect_url)) || '/student/programs';
       var seconds = 3;
       var progress = document.getElementById('redirectProgress');
       var countdown = document.getElementById('redirectCountdown');
@@ -1314,10 +1323,16 @@
         if (countdown) countdown.textContent = seconds;
         if (seconds <= 0) {
           clearInterval(iv);
-          window.location.href = 'student/index.html';
+          window.location.href = dest;
         }
       }, 1000);
-    }, 800);
+    }).catch(function(err) {
+      var message = (err && err.message) || 'Votre réservation n\'a pas pu être enregistrée. Veuillez réessayer.';
+      document.getElementById('oralConfirmBtn').disabled = false;
+      document.getElementById('oralConfirmBtn').innerHTML = '<i class="fas fa-check"></i> Confirmer le test oral';
+      document.getElementById('step4Info').innerHTML =
+        '<i class="fas fa-exclamation-triangle" style="color:var(--red)"></i> ' + message;
+    });
   }
 
   // ════════════════════════════════════════════════════════════

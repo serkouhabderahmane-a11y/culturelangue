@@ -245,7 +245,7 @@ class AdminController extends Controller
                 'message' => 'Votre réservation ' . ($booking->booking_ref ?? $booking->id) . ' a été confirmée. Une session a été planifiée pour vous.',
                 'type' => 'booking',
                 'is_read' => false,
-                'link' => '/student/dashboard.html',
+                'link' => '/student/dashboard',
             ]);
 
             Invoice::firstOrCreate(

@@ -174,7 +174,7 @@ class StudentController extends Controller
     public function bookings()
     {
         $user = auth()->user();
-        $bookings = Booking::where(fn ($q) => $q->where('user_id', $user->id)->orWhere('email', $user->email))
+        $bookings = Booking::where('user_id', $user->id)
             ->with(['service', 'program'])
             ->latest()
             ->get();

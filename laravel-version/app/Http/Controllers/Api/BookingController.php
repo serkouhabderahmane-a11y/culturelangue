@@ -22,7 +22,7 @@ class BookingController extends Controller
         $query = Booking::query();
 
         if ($request->user()) {
-            $query->where(fn ($q) => $q->where('user_id', $request->user()->id)->orWhere('email', $request->user()->email));
+            $query->where('user_id', $request->user()->id);
         }
 
         $bookings = $query->with(['service', 'program'])->latest()->paginate($request->integer('per_page', 10));
@@ -101,7 +101,7 @@ class BookingController extends Controller
             'message' => 'Votre demande de réservation ' . $booking->booking_ref . ' a bien été enregistrée. Nous vous contacterons sous 24 h pour la confirmation.',
             'type' => 'booking',
             'is_read' => false,
-            'link' => '/student/dashboard.html',
+            'link' => '/student/dashboard',
         ]);
 
         return $this->success($data, 'Booking created successfully.', 201);
