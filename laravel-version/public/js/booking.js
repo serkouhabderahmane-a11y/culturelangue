@@ -1172,6 +1172,7 @@
         document.getElementById('oralConfirmBtn').disabled = false;
         document.getElementById('step4Info').innerHTML = '<i class="fas fa-check-circle" style="color:var(--green)"></i> ' +
           document.getElementById('selectedDateDisplay').textContent + ' à ' + state.selectedSlot;
+        setupStripePayment().catch(function() { /* non-blocking */ });
       });
     });
   }
@@ -1189,7 +1190,7 @@
 
   // Send the completed registration to the Laravel backend so it persists to the DB.
   // Resolves with { redirect } on success, rejects with a friendly error message on failure.
-  function persistBooking(scheduleStr, correct, level) {
+  function persistBooking(scheduleStr, correct, level, paymentIntentId) {
     var fullName = (document.getElementById('infoName').value || '').trim();
     var nameParts = fullName.split(/\s+/);
     var lastName = nameParts.length > 1 ? nameParts.pop() : '';
@@ -1224,7 +1225,8 @@
           ('0' + state.selectedDate.getDate()).slice(-2)
         : null,
       oral_test_slot: state.selectedSlot || null,
-      oral_test_status: 'planifie'
+      oral_test_status: 'planifie',
+      payment_intent_id: paymentIntentId || null
     };
 
     var url = (window.bookingRoutes && window.bookingRoutes.store) || '/booking';
@@ -1249,6 +1251,106 @@
         });
       }
       return res.json();
+    });
+  }
+
+  // ════════════════════════════════════════════════════════════
+  //  STRIPE — Payment Element integration
+  // ════════════════════════════════════════════════════════════
+  var stripe = null;
+  var stripeElements = null;
+  var stripePaymentElement = null;
+  var stripeIntentId = null;
+  var stripeRequiresPayment = true;
+
+  function formatCurrency(amount, currency) {
+    try {
+      return new Intl.NumberFormat('fr-CA', { style: 'currency', currency: (currency || 'cad').toUpperCase() }).format(amount);
+    } catch (e) {
+      return amount + ' $';
+    }
+  }
+
+  function csrfToken() {
+    var m = document.querySelector('meta[name="csrf-token"]');
+    return m ? m.getAttribute('content') : '';
+  }
+
+  // Create a server-computed PaymentIntent for the selected program.
+  function createPaymentIntent() {
+    var payload = {
+      email: (document.getElementById('infoEmail').value || '').trim(),
+      course: state.courseId,
+      package: state.soloPackage || null,
+      program: state.program || null,
+      group: state.group ? state.group.id : null
+    };
+    var url = (window.bookingRoutes && window.bookingRoutes.paymentIntent) || '/booking/payment-intent';
+
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': csrfToken() },
+      body: JSON.stringify(payload)
+    }).then(function(res) { return res.json(); }).then(function(data) {
+      if (!data || data.success === false) {
+        stripeRequiresPayment = !!(data && data.requires_payment);
+        throw new Error((data && data.message) || 'Impossible de préparer le paiement. Veuillez réessayer.');
+      }
+      stripeRequiresPayment = !!data.requires_payment;
+      stripeIntentId = data.payment_intent_id || null;
+
+      var section = document.getElementById('paymentSection');
+      var amtEl = document.getElementById('paymentAmountDisplay');
+      var errEl = document.getElementById('stripePaymentError');
+      if (data.requires_payment && data.amount > 0) {
+        if (section) section.classList.remove('hidden');
+        if (amtEl) amtEl.textContent = formatCurrency(data.amount, data.currency || 'CAD');
+        if (errEl) errEl.classList.add('hidden');
+      } else {
+        if (section) section.classList.add('hidden');
+        if (amtEl) amtEl.textContent = '—';
+        if (errEl) errEl.classList.add('hidden');
+      }
+      return data;
+    });
+  }
+
+  // Ensure a PaymentIntent exists and the Payment Element is mounted.
+  function setupStripePayment() {
+    if (stripe && stripePaymentElement) return Promise.resolve();
+    return createPaymentIntent().then(function(data) {
+      if (!data.requires_payment || !window.stripeKey) return;
+      if (stripe && stripePaymentElement) return;
+      try {
+        stripe = window.Stripe(window.stripeKey);
+        stripeElements = stripe.elements();
+        stripePaymentElement = stripeElements.create('payment');
+        var container = document.getElementById('stripePaymentElement');
+        if (container) stripePaymentElement.mount(container);
+      } catch (err) {
+        throw new Error('Impossible de charger le paiement sécurisé. Veuillez réessayer.');
+      }
+    });
+  }
+
+  // Confirm the Stripe PaymentIntent. Resolves { id, status } on success.
+  function confirmStripePayment() {
+    if (!stripeRequiresPayment) return Promise.resolve({ id: null, status: 'noop' });
+    var doConfirm = function() {
+      if (!stripe || !stripeElements || !stripePaymentElement) throw new Error('Le formulaire de paiement n\'est pas prêt. Veuillez réessayer.');
+      return stripe.confirmPayment({
+        elements: stripeElements,
+        confirmParams: { return_url: window.location.href.split('#')[0] },
+        redirect: 'if_required'
+      }).then(function(result) {
+        if (result.error) throw new Error(result.error.message || 'Le paiement a échoué. Veuillez vérifier vos informations et réessayer.');
+        return { id: stripeIntentId, status: 'ok' };
+      });
+    };
+    if (stripe && stripePaymentElement) return doConfirm();
+    return setupStripePayment().then(function() {
+      if (!stripeRequiresPayment) return { id: null, status: 'noop' };
+      return doConfirm();
     });
   }
 
@@ -1294,9 +1396,11 @@
     };
     try { localStorage.setItem('cultulangues_oral_test', JSON.stringify(oralData)); } catch(e) {}
 
-    // Persist to server so the registration reaches the backend/DB.
+    // Confirm the Stripe payment first (when required), then persist to the server.
     // The success overlay + redirect are only shown once the DB write has truly succeeded.
-    persistBooking(scheduleStr, correct, level).then(function(data) {
+    confirmStripePayment().then(function(paymentResult) {
+      return persistBooking(scheduleStr, correct, level, paymentResult.id);
+    }).then(function(data) {
       document.getElementById('successDetails').innerHTML =
         '<div style="display:grid;gap:8px">' +
         '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text-secondary)">Cours</span><span style="font-weight:600">' + courseNameStr + '</span></div>' +
@@ -1329,7 +1433,7 @@
     }).catch(function(err) {
       var message = (err && err.message) || 'Votre réservation n\'a pas pu être enregistrée. Veuillez réessayer.';
       document.getElementById('oralConfirmBtn').disabled = false;
-      document.getElementById('oralConfirmBtn').innerHTML = '<i class="fas fa-check"></i> Confirmer le test oral';
+      document.getElementById('oralConfirmBtn').innerHTML = '<i class="fas fa-check"></i> Payer et confirmer';
       document.getElementById('step4Info').innerHTML =
         '<i class="fas fa-exclamation-triangle" style="color:var(--red)"></i> ' + message;
     });

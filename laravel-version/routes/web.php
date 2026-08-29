@@ -19,6 +19,7 @@ Route::post('/contact', [\App\Http\Controllers\Frontend\ContactController::class
 
 Route::get('/booking', [\App\Http\Controllers\Frontend\BookingController::class, 'index'])->name('booking');
 Route::post('/booking', [\App\Http\Controllers\Frontend\BookingController::class, 'store'])->name('booking.store');
+Route::post('/booking/payment-intent', [\App\Http\Controllers\Frontend\BookingController::class, 'paymentIntent'])->name('booking.payment-intent');
 
 Route::get('/pages/{slug}', [\App\Http\Controllers\Frontend\PageController::class, 'show'])->name('pages.show');
 

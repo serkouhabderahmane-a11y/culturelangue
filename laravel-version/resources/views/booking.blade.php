@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/booking.css') }}">
+  <script src="https://js.stripe.com/v3/"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -239,11 +240,24 @@
       </div>
     </div>
 
+    <div class="payment-section hidden" id="paymentSection">
+      <div class="payment-header">
+        <h3>Paiement en ligne</h3>
+        <span class="payment-note"><i class="fas fa-lock"></i> Paiement sécurisé par Stripe</span>
+      </div>
+      <div class="payment-summary">
+        <span>Montant à payer</span>
+        <strong id="paymentAmountDisplay">—</strong>
+      </div>
+      <div id="stripePaymentElement" class="stripe-element-wrap"></div>
+      <div id="stripePaymentError" class="stripe-error hidden"></div>
+    </div>
+
     <div class="step-footer">
       <div class="info" id="step4Info"><i class="fas fa-info-circle"></i> <span>Choisissez une date et un créneau</span></div>
       <div class="actions">
         <button class="btn btn-ghost" onclick="goToStep(3)"><i class="fas fa-arrow-left"></i> Retour</button>
-        <button class="btn btn-success" id="oralConfirmBtn" disabled onclick="confirmOralTest()"><i class="fas fa-check"></i> Confirmer le test oral</button>
+        <button class="btn btn-success" id="oralConfirmBtn" disabled onclick="confirmOralTest()"><i class="fas fa-check"></i> Payer et confirmer</button>
       </div>
     </div>
   </div>
@@ -263,8 +277,12 @@
 </div>
 
 <script>
-  window.bookingRoutes = { store: '{{ route('booking.store') }}' };
+  window.bookingRoutes = {
+    store: '{{ route('booking.store') }}',
+    paymentIntent: '{{ route('booking.payment-intent') }}'
+  };
   window.bookingServiceMap = @json($serviceMap ?? []);
+  window.stripeKey = '{{ config('services.stripe.key') }}';
 </script>
 <script src="{{ asset('js/booking.js') }}"></script>
 </body>

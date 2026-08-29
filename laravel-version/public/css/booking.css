@@ -268,3 +268,31 @@
       .slot-grid{grid-template-columns:1fr}
       .bk-timeline-step{flex:0 0 100%}
     }
+
+  .payment-section{
+    margin-top:24px;
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    background:var(--surface);
+  }
+  .payment-header{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .payment-header h3{font-size:1.02rem;margin:0;color:var(--text-primary)}
+  .payment-note{
+    font-size:0.75rem;color:var(--text-tertiary);display:inline-flex;align-items:center;gap:6px;
+  }
+  .payment-summary{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:12px 14px;border-radius:var(--radius-md);background:var(--surface-alt, #f7f7f5);
+    margin-bottom:16px;font-size:0.9rem;
+  }
+  .payment-summary span{color:var(--text-secondary)}
+  .payment-summary strong{font-size:1.25rem;color:var(--text-primary)}
+  .stripe-element-wrap{border:1px solid var(--border);border-radius:var(--radius-md);padding:14px}
+  .stripe-error{
+    margin-top:12px;padding:10px 12px;border-radius:var(--radius-md);
+    background:rgba(217,48,37,.08);color:#c0392b;font-size:0.82rem;
+  }
