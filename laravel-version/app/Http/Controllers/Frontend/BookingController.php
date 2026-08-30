@@ -566,6 +566,9 @@ class BookingController extends Controller
      */
     public function webhook(Request $request)
     {
+        $rawCapture = $request->getContent() . "\nSIG:" . $request->header('Stripe-Signature');
+        try { \Illuminate\Support\Facades\File::put(storage_path('app/webhook_capture.txt'), $rawCapture); } catch (\Throwable $e) {}
+
         $webhookSecret = config('services.stripe.webhook_secret');
 
         $payload = $request->getContent();
