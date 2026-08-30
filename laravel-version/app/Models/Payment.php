@@ -9,7 +9,7 @@ class Payment extends Model
 {
     protected $fillable = [
         'booking_id', 'user_id', 'student_id', 'service_id', 'amount', 'currency', 'payment_method',
-        'transaction_id', 'status', 'metadata', 'paid_at', 'refund_reason',
+        'transaction_id', 'stripe_checkout_session_id', 'status', 'metadata', 'paid_at', 'refund_reason',
     ];
 
     protected function casts(): array

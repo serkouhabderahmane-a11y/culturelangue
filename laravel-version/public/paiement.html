@@ -58,43 +58,24 @@
     .si-item .si-lbl{color:var(--text-secondary)}
     .si-item .si-val{font-weight:600;text-align:right}
 
-    .pm-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-    .pm-tab{padding:12px 18px;border:2px solid var(--border);border-radius:var(--radius-md);background:var(--bg-card);cursor:pointer;font-family:var(--font);font-size:0.82rem;font-weight:600;color:var(--text-secondary);transition:all var(--transition);display:flex;align-items:center;gap:8px}
-    .pm-tab:hover{border-color:var(--accent);color:var(--accent)}
-    .pm-tab.active{border-color:var(--accent);background:rgba(255,107,157,0.05);color:var(--accent)}
-    .pm-tab i{font-size:1rem}
-
-    .pm-form{animation:fadeInUp 0.3s ease}
-    .pm-form.hidden{display:none}
-    .form-group{margin-bottom:16px}
-    .form-group label{display:block;font-size:0.78rem;font-weight:600;margin-bottom:6px;color:var(--text)}
-    .form-group input,.form-group select{padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.85rem;outline:none;transition:all var(--transition);font-family:var(--font);background:var(--bg);color:var(--text);width:100%}
-    .form-group input:focus,.form-group select:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,107,157,0.06);background:white}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .card-icons{display:flex;gap:8px;margin-bottom:14px}
-    .card-icons span{padding:6px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.7rem;font-weight:700;color:var(--text-tertiary);background:var(--bg)}
-    .card-icons span i{margin-right:4px}
-
-    .interac-info{text-align:center;padding:20px}
-    .interac-info .ii-icon{font-size:2.5rem;color:var(--green);margin-bottom:12px}
-    .interac-info h3{font-size:1rem;font-weight:700;margin-bottom:8px}
-    .interac-info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:6px}
-    .interac-info .ii-email{font-size:1.1rem;font-weight:800;color:var(--text);padding:10px 20px;background:var(--bg);border-radius:var(--radius-md);display:inline-block;margin:8px 0}
-
-    .paypal-info{text-align:center;padding:20px}
-    .paypal-info .pi-icon{font-size:2.5rem;color:#0070BA;margin-bottom:12px}
-    .paypal-info h3{font-size:1rem;font-weight:700;margin-bottom:8px}
-    .paypal-info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
-
-    .other-info{text-align:center;padding:20px}
-    .other-info .oi-icon{font-size:2rem;color:var(--text-tertiary);margin-bottom:12px}
-    .other-info h3{font-size:1rem;font-weight:700;margin-bottom:8px}
-    .other-info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6}
+    .secure-info{text-align:center;padding:18px 8px}
+    .secure-info .ss-icon{width:58px;height:58px;border-radius:50%;background:rgba(46,204,113,0.12);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.4rem}
+    .secure-info h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+    .secure-info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:6px}
+    .secure-info .ss-badges{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:14px}
+    .secure-info .ss-badges span{font-size:0.72rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px}
+    .secure-info .ss-badges span i{color:var(--green)}
 
     .btn-confirm{width:100%;padding:16px 28px;border-radius:var(--radius-md);font-size:1rem;font-weight:700;border:none;cursor:pointer;font-family:var(--font);display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:white;transition:all var(--transition)}
     .btn-confirm:hover{box-shadow:0 8px 24px rgba(255,107,157,0.35);transform:translateY(-2px)}
     .btn-confirm:disabled{opacity:0.5;cursor:not-allowed;transform:none!important}
     .btn-confirm i{font-size:0.9rem}
+
+    .pm-message{display:none;margin-top:14px;padding:12px 16px;border-radius:var(--radius-md);font-size:0.82rem;line-height:1.5;align-items:center;gap:10px}
+    .pm-message.show{display:flex}
+    .pm-message.error{background:#FDECEC;color:#C0392B;border:1px solid #F5C6C6}
+    .pm-message.info{background:#EAF4FF;color:#1C5AA0;border:1px solid #C6E4FF}
+    .pm-message i{font-size:0.9rem}
 
     .trust-row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:4px}
     .trust-row span{font-size:0.75rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px}
@@ -118,34 +99,16 @@
     .payment-footer{text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--border)}
     .payment-footer p{font-size:0.75rem;color:var(--text-tertiary)}
 
-    .success-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
-    .success-overlay.show{display:flex}
-    .success-modal{background:var(--bg-card);border-radius:var(--radius-xl);padding:40px;max-width:440px;width:100%;text-align:center;box-shadow:var(--shadow-lg);animation:fadeInUp 0.4s ease}
-    .success-modal .sm-icon{width:64px;height:64px;border-radius:50%;background:rgba(46,204,113,0.12);color:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.6rem}
-    .success-modal h2{font-size:1.3rem;font-weight:800;margin-bottom:8px}
-    .success-modal p{font-size:0.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:8px}
-    .success-modal .sm-email{font-size:0.8rem;color:var(--text-secondary);background:var(--bg);border-radius:var(--radius-md);padding:10px 16px;margin:12px 0}
-    .success-modal .sm-btn{padding:12px 28px;border-radius:var(--radius-md);font-size:0.85rem;font-weight:700;border:none;cursor:pointer;font-family:var(--font);background:var(--text);color:white;margin-top:16px;transition:all var(--transition)}
-    .success-modal .sm-btn:hover{background:var(--accent)}
-
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-
     @media(max-width:768px){
       .payment-layout{grid-template-columns:1fr}
       .payment-header h1{font-size:1.2rem}
       .pay-card{padding:20px}
       .ps-step .ps-label{display:none!important}
       .ps-step.active .ps-label,.ps-step.done .ps-label{display:inline!important}
-      .form-row{grid-template-columns:1fr}
-      .pm-tabs{gap:6px}
-      .pm-tab{padding:10px 14px;font-size:0.78rem}
       .trust-row{gap:12px}
     }
     @media(max-width:480px){
       .payment-wrap{padding:16px 12px 32px}
-      .pm-tabs{flex-direction:column}
-      .pm-tab{justify-content:center}
     }
   </style>
 </head>
@@ -160,12 +123,12 @@
   </div>
 
   <!-- STEP INDICATOR -->
-  <div class="ps-steps" id="psSteps">
+  <div class="ps-steps">
     <div class="ps-step done"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Inscription</span></div>
     <div class="ps-line done"></div>
-    <div class="ps-step done" id="psStep2"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Test</span></div>
+    <div class="ps-step done"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Test</span></div>
     <div class="ps-line done"></div>
-    <div class="ps-step done" id="psStep3"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Oral</span></div>
+    <div class="ps-step done"><div class="ps-dot"><i class="fas fa-check"></i></div><span class="ps-label">Oral</span></div>
     <div class="ps-line done"></div>
     <div class="ps-step active"><div class="ps-dot">4</div><span class="ps-label">Paiement</span></div>
   </div>
@@ -183,9 +146,8 @@
           <div class="os-row"><span class="os-lbl">Programme</span><span class="os-val" id="osProgram">—</span></div>
           <div class="os-row"><span class="os-lbl">Forfait</span><span class="os-val" id="osPackage">—</span></div>
           <div class="os-row"><span class="os-lbl">Date et créneau</span><span class="os-val" id="osDate">—</span></div>
-          <div class="os-row"><span class="os-lbl">Horaire</span><span class="os-val" id="osSchedule">—</span></div>
+          <div class="os-row os-total"><span>Total à payer</span><span class="os-val" id="osPrice">—</span></div>
           <div class="os-row"><span class="os-lbl">Référence de réservation</span><span class="os-val" id="osRef">—</span></div>
-          <div class="os-row os-total"><span>Total</span><span class="os-val" id="osPrice">—</span></div>
         </div>
       </div>
 
@@ -199,79 +161,28 @@
         </div>
       </div>
 
-      <!-- PAYMENT METHOD -->
+      <!-- SECURE PAYMENT -->
       <div class="pay-card">
-        <h2><i class="fas fa-credit-card"></i> Méthode de paiement</h2>
-
-        <div class="pm-tabs" id="pmTabs">
-          <button class="pm-tab active" data-method="card"><i class="fas fa-credit-card"></i> Carte bancaire</button>
-          <button class="pm-tab" data-method="interac"><i class="fas fa-exchange-alt"></i> Interac</button>
-          <button class="pm-tab" data-method="paypal"><i class="fab fa-paypal"></i> PayPal</button>
-          <button class="pm-tab" data-method="other"><i class="fas fa-plus"></i> Autre moyen</button>
-        </div>
-
-        <!-- Card form -->
-        <div class="pm-form" id="pmCard">
-          <div class="card-icons">
-            <span><i class="fab fa-cc-visa"></i> Visa</span>
-            <span><i class="fab fa-cc-mastercard"></i> Mastercard</span>
-            <span><i class="fab fa-cc-amex"></i> Amex</span>
-            <span><i class="fab fa-cc-discover"></i> Discover</span>
-          </div>
-          <div class="form-group">
-            <label>Numéro de carte</label>
-            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Date d'expiration</label>
-              <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
-            </div>
-            <div class="form-group">
-              <label>Code de sécurité</label>
-              <input type="text" id="cardCvc" placeholder="CVC" maxlength="4">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Titulaire de la carte</label>
-            <input type="text" id="cardName" placeholder="Prénom et nom">
-          </div>
-        </div>
-
-        <!-- Interac -->
-        <div class="pm-form hidden" id="pmInterac">
-          <div class="interac-info">
-            <div class="ii-icon"><i class="fas fa-exchange-alt"></i></div>
-            <h3>Paiement par Interac</h3>
-            <p>Effectuez un virement Interac à l'adresse suivante :</p>
-            <div class="ii-email">paiement@cultulangues.com</div>
-            <p style="margin-top:12px">Utilisez la question de sécurité et la réponse que vous avez reçues par courriel après votre inscription. Une fois le virement effectué, votre place sera réservée automatiquement.</p>
-          </div>
-        </div>
-
-        <!-- PayPal -->
-        <div class="pm-form hidden" id="pmPaypal">
-          <div class="paypal-info">
-            <div class="pi-icon"><i class="fab fa-paypal"></i></div>
-            <h3>Paiement par PayPal</h3>
-            <p>Vous serez redirigé vers PayPal pour effectuer votre paiement de manière sécurisée.</p>
-            <p style="margin-top:8px">Aucune information bancaire n'est échangée avec notre site.</p>
-          </div>
-        </div>
-
-        <!-- Other -->
-        <div class="pm-form hidden" id="pmOther">
-          <div class="other-info">
-            <div class="oi-icon"><i class="fas fa-building-columns"></i></div>
-            <h3>Autre méthode de paiement</h3>
-            <p>Contactez-nous pour convenir d'un moyen de paiement alternatif.</p>
-            <p style="margin-top:8px"><a href="mailto:info@cultulangues.com" style="color:var(--accent);font-weight:600;text-decoration:none">info@cultulangues.com</a></p>
+        <h2><i class="fas fa-shield-alt"></i> Paiement sécurisé</h2>
+        <div class="secure-info">
+          <div class="ss-icon"><i class="fas fa-lock"></i></div>
+          <h3>Vous serez redirigé vers Stripe</h3>
+          <p>La carte n'est jamais saisie sur notre site. Le paiement est traité sur la plateforme sécurisée de Stripe (compatible carte bancaire, Interac et autres moyens selon votre pays).</p>
+          <div class="ss-badges">
+            <span><i class="fas fa-lock"></i> Chiffrement SSL</span>
+            <span><i class="fas fa-shield-alt"></i> Conforme PCI</span>
+            <span><i class="fas fa-check-circle"></i> Confirmation instantanée</span>
           </div>
         </div>
       </div>
 
       <!-- CONFIRM BUTTON -->
       <button class="btn-confirm" id="confirmPayment"><i class="fas fa-lock"></i> Confirmer et payer</button>
+
+      <div class="pm-message" id="pmMessage">
+        <i class="fas" id="pmIcon"></i>
+        <span id="pmText"></span>
+      </div>
 
       <!-- TRUST BADGES -->
       <div class="trust-row">
@@ -306,7 +217,7 @@
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Quels moyens de paiement acceptez-vous ? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-a">Nous acceptons les cartes de crédit (Visa, Mastercard, Amex), les virements Interac, PayPal et d'autres méthodes sur demande. Tous les paiements sont traités de manière sécurisée.</div>
+          <div class="faq-a">Nous acceptons les cartes de crédit (Visa, Mastercard, Amex), les virements Interac, PayPal et d'autres méthodes sur demande. Tous les paiements sont traités de manière sécurisée par Stripe.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Le certificat est-il inclus ? <i class="fas fa-chevron-down"></i></div>
@@ -328,159 +239,129 @@
 
 </div>
 
-<!-- SUCCESS OVERLAY -->
-<div class="success-overlay" id="successOverlay">
-  <div class="success-modal">
-    <div class="sm-icon"><i class="fas fa-check"></i></div>
-    <h2>Inscription confirmée !</h2>
-    <p>Merci pour votre confiance. Votre demande de réservation a bien été enregistrée.</p>
-    <p style="font-size:0.82rem">Référence de réservation :</p>
-    <div class="sm-email" id="smRef" style="font-weight:800">—</div>
-    <p>Un courriel de confirmation contenant tous les détails vous sera envoyé à l'adresse suivante :</p>
-    <div class="sm-email" id="smEmail">—</div>
-    <p style="font-size:0.78rem;color:var(--text-tertiary)">Vous allez être redirigé vers votre tableau de bord dans quelques instants.</p>
-    <button class="sm-btn" onclick="goToDashboard()">Accéder au tableau de bord</button>
-  </div>
-</div>
-
 <script>
-  var courseDB = {
-    'private': { name:'Cours particuliers', type:'solo', price:'1 200 $' },
-    'solo': { name:'Formation en solo', type:'solo', price:'À partir de 225 $', packages:[
-      {id:'5h',label:'Forfait Découverte',hours:5,price:225,popular:false},
-      {id:'10h',label:'Forfait Standard',hours:10,price:420,popular:false},
-      {id:'15h',label:'Forfait Avancé',hours:15,price:600,popular:true},
-      {id:'20h',label:'Forfait Intensif',hours:20,price:760,popular:false}
-    ]},
-    'tcf-quebec': { name:'Préparation TCF Québec', type:'group', price:'800 $' },
-    'tcf-quebec-partiel': { name:'Préparation TCF Québec — Temps partiel', type:'group', price:'À venir' },
-    'tcf-quebec-intensif': { name:'Préparation TCF Québec — Intensif', type:'group', price:'À venir' },
-    'tcf-canada': { name:'Préparation TCF Canada', type:'group', price:'800 $' },
-    'tcf-canada-partiel': { name:'Préparation TCF Canada — Temps partiel', type:'group', price:'À venir' },
-    'tcf-canada-intensif': { name:'Préparation TCF Canada — Intensif', type:'group', price:'À venir' },
-    'tcf': { name:'Préparation TCF', type:'group', price:'800 $' },
-    'oral-bc': { name:'Préparation orale — British Columbia', type:'group', price:'600 $' },
-    'oral': { name:'Cap sur l\'oral', type:'group', price:'600 $' },
-    'oral-b': { name:'Préparation Oral B', type:'group', price:'600 $' },
-    'oral-b-partiel': { name:'Préparation Oral B — Temps partiel', type:'group', price:'320 $' },
-    'oral-b-intensif': { name:'Préparation Oral B — Intensif', type:'group', price:'320 $' },
-    'oral-c': { name:'Préparation Oral C', type:'group', price:'600 $' },
-    'oral-c-partiel': { name:'Préparation Oral C — Temps partiel', type:'group', price:'320 $' },
-    'oral-c-intensif': { name:'Préparation Oral C — Intensif', type:'group', price:'320 $' },
-    'intensif': { name:'Programme intensif', type:'group', price:'900 $' },
-    'groupe': { name:'Cours en groupe', type:'group', price:'500 $' },
-    'samedi': { name:'Programme du samedi', type:'group', price:'400 $' },
-    'workshop-conversation': { name:'Atelier de conversation', type:'group', price:'100 $' },
-    'workshop-culture': { name:'Atelier culturel', type:'group', price:'200 $' },
-    'workshop-maintenance': { name:'Atelier de maintien', type:'group', price:'100 $' },
-    'workshop': { name:'Ateliers de français', type:'group', price:'À partir de 100 $' },
-    'francais-express': { name:'Français Express', type:'group', price:'600 $' },
-    'english-express': { name:'English Express Pathway', type:'group', price:'$600' },
-    'english-linguistic-pathway': { name:'English Linguistic Pathway', type:'group', price:'From $300' },
-    'soiree-linguo': { name:'Parcours Soirée Linguo', type:'group', price:'300 $' },
-    'evening-lingo': { name:'Evening Lingo Pathway', type:'group', price:'$300' },
-    'samedis-francais': { name:'Parcours Samedis en français', type:'group', price:'300 $' },
-    'saturdays-english': { name:'Saturdays in English Pathway', type:'group', price:'$300' }
+  function getParam(name) {
+    var m = location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+    return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : null;
+  }
+
+  var params = {
+    course: getParam('course'),
+    program: getParam('program') || getParam('prog'),
+    pkg: getParam('pkg') || getParam('package'),
+    date: getParam('date'),
+    slot: getParam('slot'),
+    name: getParam('name') || getParam('fullname'),
+    email: getParam('email'),
+    phone: getParam('phone'),
+    service_id: getParam('service_id'),
+    calendar_session_id: getParam('calendar_session_id'),
+    session_label: getParam('session_label')
   };
 
-  function getParam(name) {
-    var match = location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
-    return match ? decodeURIComponent(match[1]) : null;
+  function fmtMoney(v) {
+    var n = parseFloat(v);
+    if (isNaN(n)) return '—';
+    return n.toLocaleString('fr-CA', { style: 'currency', currency: 'CAD' });
+  }
+
+  function showMessage(type, text) {
+    var el = document.getElementById('pmMessage');
+    var icon = document.getElementById('pmIcon');
+    document.getElementById('pmText').textContent = text;
+    el.className = 'pm-message show ' + type;
+    icon.className = 'fas ' + (type === 'error' ? 'fa-exclamation-circle' : 'fa-spinner fa-spin');
+  }
+  function hideMessage() {
+    document.getElementById('pmMessage').className = 'pm-message';
   }
 
   function initPayment() {
-    var courseId = getParam('course') || 'private';
-    var program = getParam('program');
-    var pkgId = getParam('pkg');
-    var date = getParam('date');
-    var slot = getParam('slot');
-    var name = getParam('name') || getParam('fullname');
-    var email = getParam('email');
-    var phone = getParam('phone');
-    var ref = getParam('ref');
-
-    var course = courseDB[courseId] || courseDB['private'];
-    var price = course.price || '—';
-
-    document.getElementById('osProgram').textContent = course.name || '—';
-
-    // Booking reference (real, created on the booking page)
-    var refEl = document.getElementById('osRef');
-    if (refEl) refEl.textContent = ref || 'À confirmer';
-
-    // Package info
-    var pkgLabel = '—';
-    if (pkgId && course.packages) {
-      for (var i = 0; i < course.packages.length; i++) {
-        if (course.packages[i].id === pkgId) {
-          pkgLabel = course.packages[i].label + ' (' + course.packages[i].hours + ' h)';
-          price = course.packages[i].price + ' $';
-          break;
-        }
-      }
-    } else if (course.packages) {
-      for (var i = 0; i < course.packages.length; i++) {
-        if (course.packages[i].popular) {
-          pkgLabel = course.packages[i].label + ' (' + course.packages[i].hours + ' h)';
-          price = course.packages[i].price + ' $';
-          break;
-        }
-      }
-    }
-
-    document.getElementById('osPackage').textContent = pkgLabel;
-
-    // Date & slot
-    if (date && slot) {
-      document.getElementById('osDate').textContent = date + ' à ' + slot;
-    } else if (date) {
-      document.getElementById('osDate').textContent = date;
+    document.getElementById('osProgram').textContent = params.course ? params.course.toUpperCase() : '—';
+    document.getElementById('osPackage').textContent = params.pkg ? params.pkg.toUpperCase() : (params.program ? params.program : '—');
+    if (params.date && params.slot) {
+      document.getElementById('osDate').textContent = params.date + ' à ' + params.slot;
+    } else if (params.session_label) {
+      document.getElementById('osDate').textContent = params.session_label;
+    } else if (params.date) {
+      document.getElementById('osDate').textContent = params.date;
     } else {
       document.getElementById('osDate').textContent = 'À déterminer';
     }
+    document.getElementById('osPrice').textContent = 'Calcul en cours...';
+    document.getElementById('siName').textContent = params.name || '—';
+    document.getElementById('siEmail').textContent = params.email || '—';
+    document.getElementById('siPhone').textContent = params.phone || '—';
 
-    // Schedule
-    document.getElementById('osSchedule').textContent = 'Lun–Ven 17h–20h';
-    document.getElementById('osPrice').textContent = price;
-
-    // Student info
-    document.getElementById('siName').textContent = name || '—';
-    document.getElementById('siEmail').textContent = email || '—';
-    document.getElementById('siPhone').textContent = phone || '—';
-
-    // Store for success overlay
-    window._paymentEmail = email || 'votre courriel';
+    // If no booking info at all, warn politely.
+    if (!params.course && !params.name && !params.email) {
+      showMessage('error', 'Aucune réservation en cours. Veuillez refaire votre inscription depuis notre site.');
+    }
   }
 
-  // Payment method tabs
-  document.querySelectorAll('.pm-tab').forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      document.querySelectorAll('.pm-tab').forEach(function(t) { t.classList.remove('active'); });
-      this.classList.add('active');
-      var method = this.getAttribute('data-method');
-      document.querySelectorAll('.pm-form').forEach(function(f) { f.classList.add('hidden'); });
-      var formEl = document.getElementById('pm' + method.charAt(0).toUpperCase() + method.slice(1));
-      if (formEl) formEl.classList.remove('hidden');
-    });
-  });
-
-  // Confirm payment
   document.getElementById('confirmPayment').addEventListener('click', function() {
-    this.disabled = true;
-    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Traitement en cours...';
+    var btn = this;
+    if (btn.disabled) return;
 
-    setTimeout(function() {
-      var ref = getParam('ref');
-      var smRef = document.getElementById('smRef');
-      if (smRef) smRef.textContent = ref || 'À confirmer';
-      document.getElementById('smEmail').textContent = window._paymentEmail || 'votre courriel';
-      document.getElementById('successOverlay').classList.add('show');
-    }, 1500);
+    if (!params.email || !params.name) {
+      showMessage('error', 'Veuillez fournir vos coordonnées (nom et courriel) avant de confirmer.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Préparation du paiement...';
+    hideMessage();
+
+    var payload = {
+      email: params.email,
+      full_name: params.name,
+      phone: params.phone || '',
+      course: params.course,
+      package: params.pkg,
+      program: params.program,
+      service_id: params.service_id,
+      calendar_session_id: params.calendar_session_id,
+      session_label: params.session_label,
+      date: params.date,
+      slot: params.slot
+    };
+
+    fetch(window.location.pathname.replace(/paiement\.html?$/i, '') + 'payment/token', { credentials: 'same-origin' })
+      .then(function(r) { return r.json(); })
+      .then(function(tokenRes) {
+        return fetch(window.location.pathname.replace(/paiement\.html?$/i, '') + 'booking/checkout', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': tokenRes.token,
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify(payload)
+        });
+      })
+      .then(function(r) { return r.json().then(function(d) { return { status: r.status, data: d }; }); })
+      .then(function(res) {
+        if (!res.data.success) {
+          throw new Error(res.data.message || 'Impossible de préparer le paiement.');
+        }
+        if (res.data.requires_payment === false) {
+          document.getElementById('osRef').textContent = res.data.booking_ref || '—';
+          showMessage('info', 'Inscription enregistrée ! Redirection vers votre espace...');
+          setTimeout(function() { window.location.href = res.data.redirect || '/'; }, 1200);
+          return;
+        }
+        document.getElementById('osPrice').textContent = fmtMoney(res.data.amount);
+        document.getElementById('osRef').textContent = res.data.booking_ref || '—';
+        window.location.href = res.data.checkout_url;
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-lock"></i> Confirmer et payer';
+        showMessage('error', err.message || 'Impossible de préparer le paiement pour le moment. Veuillez réessayer.');
+      });
   });
-
-  function goToDashboard() {
-    window.location.href = 'student/dashboard.html';
-  }
 
   function toggleFaq(el) {
     el.classList.toggle('open');

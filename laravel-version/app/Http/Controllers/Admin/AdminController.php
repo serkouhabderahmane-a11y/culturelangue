@@ -30,11 +30,6 @@ class AdminController extends Controller
         return view('admin.analytics');
     }
 
-    public function calendar()
-    {
-        return view('admin.calendar');
-    }
-
     public function payments()
     {
         return view('admin.payments');

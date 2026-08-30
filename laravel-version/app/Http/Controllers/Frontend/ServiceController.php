@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use Illuminate\Support\Carbon;
 
 class ServiceController extends Controller
 {
@@ -25,9 +26,19 @@ class ServiceController extends Controller
 
     public function show(string $slug)
     {
+        Carbon::setLocale('fr');
+
         $service = Service::where('slug', $slug)
             ->where('is_active', true)
             ->with('category')
+            ->with(['calendarPrograms' => fn ($q) => $q
+                ->where('is_active', true)
+                ->with(['sessions' => fn ($sq) => $sq
+                    ->where('is_active', true)
+                    ->orderBy('sort_order')
+                    ->with(['meetings' => fn ($mq) => $mq->where('is_active', true)->orderBy('event_date')->orderBy('start_time')]),
+                ])
+            ])
             ->firstOrFail();
 
         $relatedServices = Service::where('service_category_id', $service->service_category_id)

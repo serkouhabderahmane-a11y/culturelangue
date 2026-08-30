@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ContactInfoSeeder::class,
             AdminUserSeeder::class,
             LessonSeeder::class,
+            CalendarSeeder::class,
         ]);
     }
 }

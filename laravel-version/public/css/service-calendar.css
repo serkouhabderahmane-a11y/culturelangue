@@ -1,0 +1,183 @@
+/* Service calendar section — embedded in program/service detail pages.
+   Styled to match the model-4 / premium design system (reuses m4 tokens). */
+
+.sc-card {
+  background: var(--m4-surface);
+  border: 1px solid var(--m4-border);
+  border-radius: var(--m4-radius);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--m4-shadow-card);
+}
+
+.sc-program-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--m4-blue);
+  margin: 26px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--m4-border-soft);
+}
+
+.sc-session {
+  border: 1px solid var(--m4-border);
+  background: #F8FAFC;
+  border-radius: var(--m4-radius-sm);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+
+.sc-session--workshop {
+  background: #FFFFFF;
+}
+
+.sc-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--m4-ink);
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sc-dur-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0E9F6E;
+  background: #ECFDF5;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.sc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+.sc-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #FFFFFF;
+  border: 1px solid var(--m4-border-soft);
+  border-radius: var(--m4-radius-sm);
+  padding: 10px 12px;
+}
+
+.sc-cell-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--m4-slate);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sc-cell-label i {
+  color: var(--m4-blue);
+  font-size: 0.8rem;
+}
+
+.sc-cell-value {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--m4-ink-2);
+}
+
+.sc-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sc-actions .btn {
+  margin-left: auto;
+}
+
+/* Workshop list */
+.sc-workshop-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sc-workshop-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 12px;
+  border-radius: var(--m4-radius-sm);
+}
+
+.sc-workshop-item:nth-child(odd) {
+  background: #F8FAFC;
+}
+
+.sc-wk-num {
+  font-weight: 600;
+  color: var(--m4-blue);
+  min-width: 96px;
+}
+
+.sc-wk-date {
+  font-weight: 600;
+  color: var(--m4-ink);
+  flex: 1;
+}
+
+.sc-wk-time {
+  font-weight: 500;
+  color: var(--m4-slate);
+  white-space: nowrap;
+}
+
+.sc-wk-time i {
+  color: var(--m4-blue);
+  margin-right: 4px;
+}
+
+/* Responsive */
+@media (max-width: 620px) {
+  .sc-card {
+    padding: 20px;
+  }
+
+  .sc-session {
+    padding: 14px 14px 16px;
+  }
+
+  .sc-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .sc-actions {
+    justify-content: stretch;
+  }
+
+  .sc-actions .btn {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .sc-workshop-item {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
+
+  .sc-wk-num {
+    min-width: 0;
+  }
+
+  .sc-wk-date {
+    flex: 1;
+  }
+}

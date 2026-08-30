@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\BookingConfirmation;
 use App\Models\Booking;
+use App\Models\CalendarProgram;
+use App\Models\CalendarSession;
 use App\Models\Notification;
 use App\Models\Payment;
 use App\Models\Program;
@@ -14,10 +17,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Stripe\Checkout\Session as CheckoutSession;
 use Stripe\Stripe;
 use Stripe\StripeClient;
+use Stripe\Webhook;
 
 class BookingController extends Controller
 {
@@ -275,6 +282,478 @@ class BookingController extends Controller
                 'message' => 'Impossible de préparer le paiement pour le moment. Veuillez réessayer.',
             ], 422);
         }
+    }
+
+    /**
+     * Create a Stripe Checkout Session (hosted, redirect-based) for the selected
+     * booking. The amount is resolved server-side and never trusted from the client.
+     *
+     * A Booking row is created as "pending/unpaid" BEFORE redirecting to Stripe so
+     * the payment can be reconciled server-side via the webhook. If the same
+     * student + service + session already has an open (unpaid) booking, it is reused
+     * instead of creating a duplicate.
+     */
+    public function checkout(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email|max:255',
+            'full_name' => 'nullable|string|max:255',
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'course' => 'nullable|string|max:255',
+            'package' => 'nullable|string|max:50',
+            'program' => 'nullable|string|max:255',
+            'service_id' => 'nullable|exists:services,id',
+            'calendar_session_id' => 'nullable|integer',
+            'calendar_program_id' => 'nullable|integer',
+            'session_label' => 'nullable|string|max:255',
+            'date' => 'nullable|date',
+            'slot' => 'nullable|string|max:50',
+        ]);
+
+        try {
+            // 1. Resolve the concrete service + authoritative amount (server-side).
+            [$service, $chargeAmount] = $this->resolveServiceAndAmount(
+                $validated['service_id'] ?? null,
+                $validated['course'] ?? null,
+                $validated['package'] ?? null
+            );
+
+            // Derive full name.
+            $firstName = $validated['first_name'] ?? '';
+            $lastName = $validated['last_name'] ?? null;
+            if (!$lastName && !empty($validated['full_name'])) {
+                $parts = preg_split('/\s+/', trim($validated['full_name']));
+                if (count($parts) > 1) {
+                    $lastName = array_pop($parts);
+                    $firstName = implode(' ', $parts);
+                } else {
+                    $lastName = trim($validated['full_name']);
+                    $firstName = $lastName;
+                }
+            }
+            $lastName = $lastName ? $lastName : $firstName;
+
+            // 2. Resolve (or auto-provision + login) the student.
+            $user = $this->resolveOrCreateStudent(
+                $request,
+                $firstName,
+                $lastName,
+                $validated['email'],
+                $validated['phone'] ?? null
+            );
+
+            $sessionId = isset($validated['calendar_session_id']) ? (int) $validated['calendar_session_id'] : null;
+            $calendarSession = null;
+            $sessionLabel = $validated['session_label'] ?? null;
+            $sessionDate = null;
+
+            if ($sessionId) {
+                $calendarSession = CalendarSession::where('id', $sessionId)
+                    ->where('is_active', true)
+                    ->first();
+                if ($calendarSession) {
+                    $sessionLabel = $sessionLabel ?: $this->sessionLabel($calendarSession);
+                    $sessionDate = $calendarSession->start_date;
+                }
+            }
+
+            // 3. Deduplicate: reuse an existing open (unpaid) booking for the same
+            //    student + service + session instead of creating a duplicate.
+            $existing = Booking::where('user_id', $user->id)
+                ->where('service_id', $service->id)
+                ->whereIn('status', ['pending'])
+                ->where('payment_status', 'unpaid')
+                ->when($sessionId, fn ($q) => $q->where('calendar_session_id', $sessionId))
+                ->when(!$sessionId, fn ($q) => $q->whereNull('calendar_session_id'))
+                ->latest()
+                ->first();
+
+            if ($existing) {
+                $booking = $existing;
+            } else {
+                $currency = strtoupper(config('services.stripe.currency', 'cad'));
+                $booking = new Booking([
+                    'service_id' => $service->id,
+                    'program_id' => ($validated['program'] ?? null) ? (Program::where('service_id', $service->id)->where('slug', $validated['program'])->value('id') ?? null) : null,
+                    'calendar_program_id' => $validated['calendar_program_id'] ?? null,
+                    'calendar_session_id' => $sessionId,
+                    'session_label' => $sessionLabel,
+                    'session_date' => $sessionDate ?: ($validated['date'] ?? null),
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
+                    'email' => $validated['email'],
+                    'phone' => $validated['phone'] ?? null,
+                    'preferred_slot' => $validated['slot'] ?? null,
+                    'status' => 'pending',
+                    'payment_status' => 'unpaid',
+                    'total_amount' => $chargeAmount !== null ? $chargeAmount : $this->priceToNumber($service->price),
+                    'currency' => $currency,
+                    'source' => 'website',
+                    'ip_address' => $request->ip(),
+                    'booking_ref' => 'BK-' . strtoupper(substr(uniqid(), -6)),
+                ]);
+                $booking->user_id = $user->id;
+                $booking->save();
+            }
+
+            // 4. Not payable online -> booking recorded directly, no payment needed.
+            if ($chargeAmount === null || $chargeAmount <= 0) {
+                $this->markBookingPaid($booking, null, 0.0, strtoupper(config('services.stripe.currency', 'cad')));
+                return response()->json([
+                    'success' => true,
+                    'requires_payment' => false,
+                    'message' => 'Votre inscription a bien été enregistrée.',
+                    'booking_id' => $booking->id,
+                    'booking_ref' => $booking->booking_ref,
+                    'redirect' => route('student.programs'),
+                ], 200);
+            }
+
+            if (!$this->stripeConfigured()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Le paiement en ligne n\'est pas configuré pour le moment. Veuillez réessayer plus tard.',
+                ], 422);
+            }
+
+            // 5. Build the hosted Checkout Session.
+            $currency = strtolower(config('services.stripe.currency', 'cad'));
+            $cents = (int) round($chargeAmount * 100);
+
+            $successBase = config('services.stripe.success_url') ?: $this->appUrl() . '/paiement/succes';
+            $cancelBase = config('services.stripe.cancel_url') ?: $this->appUrl() . '/paiement/annule';
+
+            $stripe = $this->stripe();
+            $session = $stripe->checkout->sessions->create([
+                'mode' => 'payment',
+                'customer_email' => $validated['email'],
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => $currency,
+                        'unit_amount' => $cents,
+                        'product_data' => [
+                            'name' => $service->name_fr ?? $service->name ?? 'Programme',
+                            'description' => $sessionLabel ?: ($service->slug ?? 'Cours de langues'),
+                        ],
+                    ],
+                    'quantity' => 1,
+                ]],
+                'metadata' => [
+                    'booking_id' => (string) $booking->id,
+                    'booking_ref' => (string) $booking->booking_ref,
+                    'service_id' => (string) $service->id,
+                    'program_id' => $validated['program'] ?? '',
+                    'session_id' => (string) ($sessionId ?: ''),
+                    'student_id' => (string) $user->id,
+                ],
+                'client_reference_id' => (string) $booking->id,
+                'success_url' => $successBase . '?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url' => $cancelBase . '?booking_ref=' . $booking->booking_ref,
+            ]);
+
+            // Persist the checkout session id so it can be reconciled by the webhook.
+            $booking->update(['preferred_date' => $booking->preferred_date]);
+
+            return response()->json([
+                'success' => true,
+                'requires_payment' => true,
+                'checkout_url' => $session->url,
+                'session_id' => $session->id,
+                'booking_id' => $booking->id,
+                'booking_ref' => $booking->booking_ref,
+                'amount' => $chargeAmount,
+                'currency' => strtolower($currency),
+            ], 200);
+        } catch (ValidationException $e) {
+            throw $e;
+        } catch (\Throwable $e) {
+            Log::error('Booking checkout failed', ['error' => $e->getMessage()]);
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Impossible de préparer le paiement pour le moment. Veuillez réessayer.',
+            ], 422);
+        }
+    }
+
+    /**
+     * Landing page after Stripe Checkout. The session is verified server-side with
+     * Stripe; the booking/payment are confirmed (best-effort, in case the webhook
+     * has not fired yet) and a confirmation screen with a dashboard link is shown.
+     */
+    public function success(Request $request)
+    {
+        $sessionId = $request->query('session_id');
+        $booking = null;
+        $payment = null;
+        $error = null;
+
+        try {
+            if ($sessionId && $this->stripeConfigured()) {
+                $session = $this->stripe()->checkout->sessions->retrieve($sessionId);
+
+                $bookingId = $session->client_reference_id
+                    ? (int) $session->client_reference_id
+                    : (int) ($session->metadata['booking_id'] ?? 0);
+
+                if ($bookingId) {
+                    $booking = Booking::find($bookingId);
+
+                    $isPaid = in_array($session->payment_status, ['paid', 'no_payment_required'], true);
+                    if ($isPaid && $booking && $booking->payment_status !== 'paid') {
+                        [$payment, $rawAmount] = $this->confirmBookingFromSession($session, $booking);
+                        $this->sendConfirmation($booking, $payment);
+                    } elseif ($booking) {
+                        $payment = $booking->payments()->where('status', 'paid')->latest()->first();
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            Log::error('Booking success page error', ['error' => $e->getMessage()]);
+            $error = 'Merci de vérifier votre paiement. Votre confirmation vous sera également envoyée par courriel.';
+        }
+
+        if (!$booking) {
+            return view('booking.payment-result', [
+                'paid' => false,
+                'booking' => null,
+                'payment' => null,
+                'message' => 'La session de paiement est introuvable ou déjà consommée.',
+            ]);
+        }
+
+        return view('booking.payment-result', [
+            'paid' => $booking->payment_status === 'paid',
+            'booking' => $booking,
+            'payment' => $payment,
+            'message' => $error,
+        ]);
+    }
+
+    /**
+     * Landing page when the user abandons Checkout. The booking stays unpaid so the
+     * user can retry (a new Checkout session reuses the same open booking).
+     */
+    public function cancel(Request $request)
+    {
+        $ref = $request->query('booking_ref');
+
+        return view('booking.payment-result', [
+            'paid' => false,
+            'cancel' => true,
+            'booking' => $ref ? Booking::where('booking_ref', $ref)->first() : null,
+            'payment' => null,
+            'message' => 'Votre paiement a été annulé. Aucun montant n\'a été débité.',
+        ]);
+    }
+
+    /**
+     * Provide a CSRF token + session cookie so the static payment page can safely
+     * POST to the protected booking/checkout endpoint.
+     */
+    public function token(Request $request)
+    {
+        return response()->json([
+            'token' => csrf_token(),
+        ]);
+    }
+
+    /**
+     * Stripe webhook. Verifies the signature with STRIPE_WEBHOOK_SECRET, then
+     * confirms the booking + payment on checkout.session.completed.
+     */
+    public function webhook(Request $request)
+    {
+        $webhookSecret = config('services.stripe.webhook_secret');
+
+        $payload = $request->getContent();
+        $sigHeader = $request->header('Stripe-Signature');
+
+        if (!$webhookSecret) {
+            Log::warning('Stripe webhook secret is not configured.');
+
+            return response()->json(['error' => 'Webhook secret not configured.'], 500);
+        }
+
+        try {
+            $event = Webhook::constructEvent($payload, $sigHeader, $webhookSecret);
+        } catch (\UnexpectedValueException $e) {
+            return response()->json(['error' => 'Invalid payload.'], 400);
+        } catch (\Stripe\Exception\SignatureVerificationException $e) {
+            return response()->json(['error' => 'Invalid signature.'], 400);
+        }
+
+        switch ($event->type) {
+            case 'checkout.session.completed':
+                /** @var CheckoutSession $session */
+                $session = $event->data->object;
+                $this->handleCheckoutCompleted($session);
+                break;
+
+            case 'checkout.session.expired':
+                $session = $event->data->object;
+                $bookingId = $session->client_reference_id
+                    ? (int) $session->client_reference_id
+                    : (int) ($session->metadata['booking_id'] ?? 0);
+                if ($bookingId) {
+                    Booking::where('id', $bookingId)
+                        ->where('payment_status', 'unpaid')
+                        ->where('status', 'pending')
+                        ->update(['status' => 'cancelled']);
+                }
+                break;
+
+            default:
+                // Ignore unhandled event types.
+                break;
+        }
+
+        return response()->json(['received' => true], 200);
+    }
+
+    protected function handleCheckoutCompleted(CheckoutSession $session): void
+    {
+        $bookingId = $session->client_reference_id
+            ? (int) $session->client_reference_id
+            : (int) ($session->metadata['booking_id'] ?? 0);
+
+        $booking = $bookingId ? Booking::find($bookingId) : null;
+        if (!$booking) {
+            Log::warning('Stripe webhook: booking not found', ['session' => $session->id]);
+
+            return;
+        }
+
+        if (!in_array($session->payment_status, ['paid', 'no_payment_required'], true)) {
+            return;
+        }
+
+        [$payment] = $this->confirmBookingFromSession($session, $booking);
+        $this->sendConfirmation($booking, $payment);
+    }
+
+    /**
+     * Mark a booking as paid and upsert its Payment record from a Stripe Checkout
+     * session. Returns [Payment, rawCents].
+     */
+    protected function confirmBookingFromSession(CheckoutSession $session, Booking $booking): array
+    {
+        $rawCents = $session->amount_total ?? 0;
+        $actualCents = (int) $booking->total_amount * 100;
+        $snapshotAmount = $rawCents > 0 ? $rawCents / 100 : $actualCents / 100;
+
+        $paymentIntentId = $session->payment_intent ?? null;
+
+        $payment = Payment::updateOrCreate(
+            ['booking_id' => $booking->id, 'stripe_checkout_session_id' => $session->id],
+            [
+                'user_id' => $booking->user_id,
+                'student_id' => $booking->user_id,
+                'service_id' => $booking->service_id,
+                'amount' => $snapshotAmount,
+                'currency' => strtoupper($session->currency ?: config('services.stripe.currency', 'cad')),
+                'payment_method' => 'stripe_checkout',
+                'transaction_id' => $paymentIntentId,
+                'status' => 'paid',
+                'paid_at' => now(),
+                'metadata' => json_encode([
+                    'source' => 'stripe_checkout',
+                    'checkout_session_id' => $session->id,
+                    'amount_total' => $session->amount_total,
+                    'currency' => $session->currency,
+                    'booking_ref' => $booking->booking_ref,
+                ]),
+            ]
+        );
+
+        $booking->update([
+            'status' => 'confirmed',
+            'payment_status' => 'paid',
+        ]);
+
+        return [$payment, $rawCents];
+    }
+
+    /**
+     * Create the in-app notification + best-effort confirmation email for a paid
+     * booking. Email failures never break the confirmation flow.
+     */
+    protected function sendConfirmation(Booking $booking, ?Payment $payment = null): void
+    {
+        Notification::updateOrCreate(
+            [
+                'user_id' => $booking->user_id,
+                'link' => '/student/dashboard',
+                'title' => 'Réservation confirmée — ' . $booking->booking_ref,
+            ],
+            [
+                'message' => 'Votre réservation ' . $booking->booking_ref . ' a bien été confirmée et votre paiement reçu. Nous vous contacterons sous 24 h pour la planification de votre test oral.',
+                'type' => 'booking',
+                'is_read' => false,
+            ]
+        );
+
+        if ($booking->email && config('mail.default')) {
+            try {
+                Mail::to($booking->email)->send(new BookingConfirmation($booking, $payment));
+            } catch (\Throwable $e) {
+                Log::warning('Confirmation email could not be sent', [
+                    'booking_ref' => $booking->booking_ref,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
+    }
+
+    protected function markBookingPaid(Booking $booking, ?string $checkoutSessionId, float $amount, string $currency): ?Payment
+    {
+        $payment = Payment::updateOrCreate(
+            ['booking_id' => $booking->id],
+            [
+                'user_id' => $booking->user_id,
+                'student_id' => $booking->user_id,
+                'service_id' => $booking->service_id,
+                'amount' => $amount ?: $booking->total_amount,
+                'currency' => $currency,
+                'payment_method' => 'free',
+                'transaction_id' => null,
+                'status' => 'paid',
+                'paid_at' => now(),
+                'metadata' => json_encode(['source' => 'no_payment_required']),
+            ]
+        );
+
+        $booking->update([
+            'status' => 'confirmed',
+            'payment_status' => 'paid',
+        ]);
+
+        $this->sendConfirmation($booking, $payment);
+
+        return $payment;
+    }
+
+    protected function sessionLabel(CalendarSession $session): string
+    {
+        if ($session->title) {
+            return $session->title;
+        }
+
+        $program = $session->calendarProgram;
+        $label = $program ? ($program->title ?: $program->name ?? '') : '';
+        $days = trim((string) $session->days_text);
+
+        return trim(implode(' — ', array_filter([$label, $days])) ?: 'Session');
+    }
+
+    protected function appUrl(): string
+    {
+        $url = config('app.url', url('/'));
+        $url = rtrim($url, '/');
+
+        return $url;
     }
 
     /**

@@ -96,6 +96,8 @@
     </div>
     @endif
 
+    @include('partials.service-calendar')
+
     <div class="m4-cta reveal">
       <h3>Prêt à progresser ?</h3>
       <p>Rejoignez la prochaine session de {{ $service->name_fr }} et gagnez en confiance.</p>

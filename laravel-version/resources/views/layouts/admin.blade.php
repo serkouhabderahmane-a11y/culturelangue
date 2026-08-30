@@ -6,6 +6,7 @@
   <title>@yield('title', 'Admin') — Cultulangues</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
   @stack('head')
 </head>
 <body>
@@ -51,7 +52,7 @@
         <a href="{{ route('admin.analytics') }}" class="admin-nav-item {{ request()->routeIs('admin.analytics') ? 'active' : '' }}">
           <i class="fas fa-chart-line"></i> Analytics
         </a>
-        <a href="{{ route('admin.calendar') }}" class="admin-nav-item {{ request()->routeIs('admin.calendar') ? 'active' : '' }}">
+        <a href="{{ route('admin.calendar') }}" class="admin-nav-item {{ request()->routeIs('admin.calendar*') ? 'active' : '' }}">
           <i class="fas fa-calendar"></i> Calendrier
         </a>
         <a href="{{ route('admin.payments') }}" class="admin-nav-item {{ request()->routeIs('admin.payments') ? 'active' : '' }}">

@@ -20,6 +20,12 @@ Route::post('/contact', [\App\Http\Controllers\Frontend\ContactController::class
 Route::get('/booking', [\App\Http\Controllers\Frontend\BookingController::class, 'index'])->name('booking');
 Route::post('/booking', [\App\Http\Controllers\Frontend\BookingController::class, 'store'])->name('booking.store');
 Route::post('/booking/payment-intent', [\App\Http\Controllers\Frontend\BookingController::class, 'paymentIntent'])->name('booking.payment-intent');
+Route::post('/booking/checkout', [\App\Http\Controllers\Frontend\BookingController::class, 'checkout'])->name('booking.checkout');
+Route::get('/payment/token', [\App\Http\Controllers\Frontend\BookingController::class, 'token'])->name('booking.token');
+
+Route::get('/paiement/succes', [\App\Http\Controllers\Frontend\BookingController::class, 'success'])->name('booking.success');
+Route::get('/paiement/annule', [\App\Http\Controllers\Frontend\BookingController::class, 'cancel'])->name('booking.cancel');
+Route::post('/webhook/stripe', [\App\Http\Controllers\Frontend\BookingController::class, 'webhook'])->name('booking.webhook');
 
 Route::get('/pages/{slug}', [\App\Http\Controllers\Frontend\PageController::class, 'show'])->name('pages.show');
 
@@ -144,8 +150,23 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     // Analytics
     Route::get('/analytics', [\App\Http\Controllers\Admin\AdminController::class, 'analytics'])->name('analytics');
 
-    // Calendar
-    Route::get('/calendar', [\App\Http\Controllers\Admin\AdminController::class, 'calendar'])->name('calendar');
+    // Calendar (programmes & ateliers)
+    Route::get('/calendar', [\App\Http\Controllers\Admin\CalendarController::class, 'index'])->name('calendar');
+    Route::get('/calendar/create', [\App\Http\Controllers\Admin\CalendarController::class, 'create'])->name('calendar.create');
+    Route::post('/calendar', [\App\Http\Controllers\Admin\CalendarController::class, 'store'])->name('calendar.store');
+    Route::get('/calendar/{calendarProgram}/edit', [\App\Http\Controllers\Admin\CalendarController::class, 'edit'])->name('calendar.edit');
+    Route::put('/calendar/{calendarProgram}', [\App\Http\Controllers\Admin\CalendarController::class, 'update'])->name('calendar.update');
+    Route::delete('/calendar/{calendarProgram}', [\App\Http\Controllers\Admin\CalendarController::class, 'destroy'])->name('calendar.destroy');
+    Route::post('/calendar/{calendarProgram}/refresh', [\App\Http\Controllers\Admin\CalendarController::class, 'refresh'])->name('calendar.refresh');
+    Route::get('/calendar/{calendarProgram}/sessions', [\App\Http\Controllers\Admin\CalendarController::class, 'sessions'])->name('calendar.sessions');
+    Route::post('/calendar/{calendarProgram}/sessions', [\App\Http\Controllers\Admin\CalendarController::class, 'sessionsStore'])->name('calendar.sessions.store');
+    Route::get('/calendar/{calendarProgram}/sessions/{calendarSession}/edit', [\App\Http\Controllers\Admin\CalendarController::class, 'sessionsEdit'])->name('calendar.sessions.edit');
+    Route::put('/calendar/{calendarProgram}/sessions/{calendarSession}', [\App\Http\Controllers\Admin\CalendarController::class, 'sessionsUpdate'])->name('calendar.sessions.update');
+    Route::delete('/calendar/{calendarProgram}/sessions/{calendarSession}', [\App\Http\Controllers\Admin\CalendarController::class, 'sessionsDestroy'])->name('calendar.sessions.destroy');
+    Route::post('/calendar/{calendarProgram}/sessions/{calendarSession}/meetings', [\App\Http\Controllers\Admin\CalendarController::class, 'meetingsStore'])->name('calendar.meetings.store');
+    Route::put('/calendar/{calendarProgram}/sessions/{calendarSession}/meetings/{calendarMeeting}', [\App\Http\Controllers\Admin\CalendarController::class, 'meetingsUpdate'])->name('calendar.meetings.update');
+    Route::delete('/calendar/{calendarProgram}/sessions/{calendarSession}/meetings/{calendarMeeting}', [\App\Http\Controllers\Admin\CalendarController::class, 'meetingsDestroy'])->name('calendar.meetings.destroy');
+    Route::post('/calendar/import', [\App\Http\Controllers\Admin\CalendarController::class, 'import'])->name('calendar.import');
 
     // Payments
     Route::get('/payments', [\App\Http\Controllers\Admin\AdminController::class, 'payments'])->name('payments');

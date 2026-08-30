@@ -93,6 +93,11 @@ class Service extends Model
         return $this->hasMany(CalendarEvent::class);
     }
 
+    public function calendarPrograms(): HasMany
+    {
+        return $this->hasMany(CalendarProgram::class)->orderBy('sort_order');
+    }
+
     public function type(): string
     {
         $slug = $this->slug;
