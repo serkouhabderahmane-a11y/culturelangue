@@ -26,10 +26,6 @@ Route::get('/payment/token', [\App\Http\Controllers\Frontend\BookingController::
 Route::get('/paiement/succes', [\App\Http\Controllers\Frontend\BookingController::class, 'success'])->name('booking.success');
 Route::get('/paiement/annule', [\App\Http\Controllers\Frontend\BookingController::class, 'cancel'])->name('booking.cancel');
 Route::post('/webhook/stripe', [\App\Http\Controllers\Frontend\BookingController::class, 'webhook'])->name('booking.webhook');
-Route::get('/webhook/debug', function () {
-    $f = storage_path('app/webhook_capture.txt');
-    return response(\Illuminate\Support\Facades\File::exists($f) ? \Illuminate\Support\Facades\File::get($f) : 'NO_CAPTURE');
-});
 
 Route::get('/pages/{slug}', [\App\Http\Controllers\Frontend\PageController::class, 'show'])->name('pages.show');
 
