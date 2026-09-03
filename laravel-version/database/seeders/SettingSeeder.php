@@ -22,7 +22,7 @@ class SettingSeeder extends Seeder
             ['key' => 'phone', 'value' => '873-973-0513', 'type' => 'text', 'group' => 'contact'],
             ['key' => 'google_rating', 'value' => '4.9', 'type' => 'text', 'group' => 'home'],
             ['key' => 'cta_title', 'value' => 'PrÃªt Ã  commencer votre parcours ?', 'type' => 'text', 'group' => 'home'],
-            ['key' => 'cta_description', 'value' => "Rejoignez plus de 950 Ã©tudiants qui nous font confiance pour leur prÃ©paration linguistique.", 'type' => 'text', 'group' => 'home'],
+            ['key' => 'cta_description', 'value' => "Rejoignez ceux qui choisissent l\u2019excellence pour leur progression linguistique.", 'type' => 'text', 'group' => 'home'],
             ['key' => 'cta_button_text', 'value' => 'CrÃ©er mon compte gratuit', 'type' => 'text', 'group' => 'home'],
         ];
 
