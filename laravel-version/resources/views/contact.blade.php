@@ -34,7 +34,7 @@
 @endpush
 
 @section('content')
-  <!-- ═══ HERO ═══ -->
+  <!-- â•â•â• HERO â•â•â• -->
   <section class="contact-hero">
     <div class="contact-hero-bg">
       <div class="contact-hero-blob"></div>
@@ -42,20 +42,20 @@
     </div>
     <div class="container">
       <div class="contact-hero-inner">
-        <span class="contact-hero-badge">✦ Nous sommes là pour vous</span>
+        <span class="contact-hero-badge">âœ¦ Nous sommes lÃ  pour vous</span>
         <h1>Parlons de <span class="text-gradient">votre projet</span></h1>
-        <p class="contact-hero-desc read-more">Que vous cherchiez un programme adapté, des informations sur nos formations, ou simplement un conseil personnalisé, notre équipe est prête à vous guider.</p>
+        <p class="contact-hero-desc read-more">Que vous cherchiez un programme adaptÃ©, des informations sur nos formations, ou simplement un conseil personnalisÃ©, notre Ã©quipe est prÃªte Ã  vous guider.</p>
         <div class="contact-hero-features">
-          <span><i class="ch-icon">✦</i> Réponse sous 24 h</span>
-          <span><i class="ch-icon">✦</i> Conseils personnalisés</span>
-          <span><i class="ch-icon">✦</i> Accompagnement gratuit</span>
+          <span><i class="ch-icon">âœ¦</i> RÃ©ponse sous 24 h</span>
+          <span><i class="ch-icon">âœ¦</i> Conseils personnalisÃ©s</span>
+          <span><i class="ch-icon">âœ¦</i> Accompagnement gratuit</span>
         </div>
-        <a href="#contact-form" class="btn btn-primary btn-lg">Envoyer un message <span style="font-size:0.8em;margin-left:4px">→</span></a>
+        <a href="#contact-form" class="btn btn-primary btn-lg">Envoyer un message <span style="font-size:0.8em;margin-left:4px">â†’</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ MAIN CONTACT AREA ═══ -->
+  <!-- â•â•â• MAIN CONTACT AREA â•â•â• -->
   <section class="contact-main section" id="contact-form">
     <div class="page-deco page-deco-ring" style="top:-60px;right:-80px" aria-hidden="true"></div>
     <div class="container">
@@ -70,14 +70,14 @@
           <div class="contact-form-card">
             <div class="contact-form-header">
               <h2>Parlez-nous de votre projet</h2>
-              <p>Nous vous répondons rapidement pour vous aider à choisir la meilleure solution.</p>
+              <p>Nous vous rÃ©pondons rapidement pour vous aider Ã  choisir la meilleure solution.</p>
             </div>
             <form class="contact-form" method="POST" action="{{ route('contact.send') }}">
               @csrf
               <div class="form-row-2">
                 <div class="form-group">
-                  <label class="form-label">Prénom <span class="required">*</span></label>
-                  <input type="text" name="first_name" class="form-input" required placeholder="Votre prénom" value="{{ old('first_name') }}">
+                  <label class="form-label">PrÃ©nom <span class="required">*</span></label>
+                  <input type="text" name="first_name" class="form-input" required placeholder="Votre prÃ©nom" value="{{ old('first_name') }}">
                   @error('first_name')<span style="color:red;font-size:0.85rem">{{ $message }}</span>@enderror
                 </div>
                 <div class="form-group">
@@ -92,17 +92,17 @@
                 @error('email')<span style="color:red;font-size:0.85rem">{{ $message }}</span>@enderror
               </div>
               <div class="form-group">
-                <label class="form-label">Téléphone <span class="form-label-note">(optionnel)</span></label>
+                <label class="form-label">TÃ©lÃ©phone <span class="form-label-note">(optionnel)</span></label>
                 <input type="tel" name="phone" class="form-input" placeholder="+33 6 12 34 56 78" value="{{ old('phone') }}">
               </div>
               <div class="form-group">
                 <label class="form-label">Sujet <span class="required">*</span></label>
                 <select name="subject" class="form-select" required>
-                  <option value="">Sélectionnez un sujet</option>
+                  <option value="">SÃ©lectionnez un sujet</option>
                   <option {{ old('subject') === 'Information sur les programmes' ? 'selected' : '' }}>Information sur les programmes</option>
                   <option {{ old('subject') === 'Inscription' ? 'selected' : '' }}>Inscription</option>
                   <option {{ old('subject') === 'Question TCF / Examens' ? 'selected' : '' }}>Question TCF / Examens</option>
-                  <option {{ old('subject') === 'Test de niveau / Évaluation orale' ? 'selected' : '' }}>Test de niveau / Évaluation orale</option>
+                  <option {{ old('subject') === 'Test de niveau / Ã‰valuation orale' ? 'selected' : '' }}>Test de niveau / Ã‰valuation orale</option>
                   <option {{ old('subject') === 'Ateliers' ? 'selected' : '' }}>Ateliers</option>
                   <option {{ old('subject') === 'Autre' ? 'selected' : '' }}>Autre</option>
                 </select>
@@ -117,12 +117,12 @@
                 <label class="form-checkbox">
                   <input type="checkbox" name="consent" checked>
                   <span class="checkbox-mark"></span>
-                  <span class="checkbox-label">J'accepte d'être recontacté(e) dans le cadre de ma demande</span>
+                  <span class="checkbox-label">J'accepte d'Ãªtre recontactÃ©(e) dans le cadre de ma demande</span>
                 </label>
               </div>
               <button type="submit" class="btn btn-primary btn-lg w-full contact-submit">
                 <span>Envoyer ma demande</span>
-                <span class="contact-submit-arrow">→</span>
+                <span class="contact-submit-arrow">â†’</span>
               </button>
             </form>
           </div>
@@ -141,24 +141,24 @@
             <h3>Nous joindre</h3>
             <div class="contact-panel-items">
               <div class="contact-panel-item">
-                <div class="cpi-icon">✉</div>
+                <div class="cpi-icon">âœ‰</div>
                 <div>
                   <div class="cpi-label">Email</div>
                   <div class="cpi-value">{{ $settings['email'] ?? 'admin@cultulangues.ca' }}</div>
                 </div>
               </div>
               <div class="contact-panel-item">
-                <div class="cpi-icon">📞</div>
+                <div class="cpi-icon">ðŸ“ž</div>
                 <div>
-                  <div class="cpi-label">Téléphone</div>
-                  <div class="cpi-value">{{ $settings['phone'] ?? '+1 (819) 271-9783' }}</div>
+                  <div class="cpi-label">TÃ©lÃ©phone</div>
+                  <div class="cpi-value">{{ $settings['phone'] ?? '873-973-0513' }}</div>
                 </div>
               </div>
               <div class="contact-panel-item">
-                <div class="cpi-icon">🕐</div>
+                <div class="cpi-icon">ðŸ•</div>
                 <div>
                   <div class="cpi-label">Horaires</div>
-                  <div class="cpi-value">Lun–Ven : 9 h – 19 h<br>Sam : 10 h – 16 h</div>
+                  <div class="cpi-value">Lunâ€“Ven : 9 h â€“ 19 h<br>Sam : 10 h â€“ 16 h</div>
                 </div>
               </div>
             </div>
@@ -168,22 +168,22 @@
           <div class="contact-panel contact-panel-help">
             <div class="contact-panel-accent"></div>
             <h3>Besoin d'aide pour choisir ?</h3>
-            <p class="read-more">Vous ne savez pas quel programme correspond le mieux à votre niveau, vos objectifs ou votre emploi du temps ? Nous vous aidons à y voir plus clair, sans engagement.</p>
+            <p class="read-more">Vous ne savez pas quel programme correspond le mieux Ã  votre niveau, vos objectifs ou votre emploi du temps ? Nous vous aidons Ã  y voir plus clair, sans engagement.</p>
             <ul class="contact-help-list">
-              <li>✦ Évaluation de votre niveau</li>
-              <li>✦ Recommandation personnalisée</li>
-              <li>✦ Réponse à vos questions</li>
-              <li>✦ Aide à l'inscription</li>
+              <li>âœ¦ Ã‰valuation de votre niveau</li>
+              <li>âœ¦ Recommandation personnalisÃ©e</li>
+              <li>âœ¦ RÃ©ponse Ã  vos questions</li>
+              <li>âœ¦ Aide Ã  l'inscription</li>
             </ul>
           </div>
 
-          <!-- Prêt à commencer -->
+          <!-- PrÃªt Ã  commencer -->
           <div class="contact-panel contact-panel-cta">
             <div class="contact-panel-accent"></div>
-            <h3>Déjà prêt à commencer ?</h3>
-            <p>Passez directement à l'action :</p>
+            <h3>DÃ©jÃ  prÃªt Ã  commencer ?</h3>
+            <p>Passez directement Ã  l'action :</p>
             <div class="contact-cta-links">
-              <a href="{{ url('/') }}" class="btn btn-primary w-full"><i class="ch-icon">✦</i> Découvrir nos programmes</a>
+              <a href="{{ url('/') }}" class="btn btn-primary w-full"><i class="ch-icon">âœ¦</i> DÃ©couvrir nos programmes</a>
             </div>
           </div>
         </div>
@@ -191,53 +191,53 @@
     </div>
   </section>
 
-  <!-- ═══ TRUST / REASSURANCE ═══ -->
+  <!-- â•â•â• TRUST / REASSURANCE â•â•â• -->
   <section class="section section-alt reveal">
     <div class="page-deco page-deco-dots" style="bottom:20px;left:40px" aria-hidden="true"></div>
     <div class="container">
       <div class="section-header">
         <h2>Pourquoi nous <span class="text-gradient">contacter</span> ?</h2>
-        <p>Nous sommes là pour vous accompagner à chaque étape de votre projet linguistique.</p>
+        <p>Nous sommes lÃ  pour vous accompagner Ã  chaque Ã©tape de votre projet linguistique.</p>
       </div>
       <div class="contact-trust-grid">
         <div class="contact-trust-card">
-          <div class="ct-icon"><span>✦</span></div>
+          <div class="ct-icon"><span>âœ¦</span></div>
           <h4>Choix du programme</h4>
-          <p>Vous hésitez entre un parcours en groupe ou un accompagnement solo ? On vous guide.</p>
+          <p>Vous hÃ©sitez entre un parcours en groupe ou un accompagnement solo ? On vous guide.</p>
         </div>
         <div class="contact-trust-card">
-          <div class="ct-icon"><span>✦</span></div>
-          <h4>Préparation TCF</h4>
-          <p>Des questions sur les examens officiels ? Nos équipes vous renseignent précisément.</p>
+          <div class="ct-icon"><span>âœ¦</span></div>
+          <h4>PrÃ©paration TCF</h4>
+          <p>Des questions sur les examens officiels ? Nos Ã©quipes vous renseignent prÃ©cisÃ©ment.</p>
         </div>
         <div class="contact-trust-card">
-          <div class="ct-icon"><span>✦</span></div>
+          <div class="ct-icon"><span>âœ¦</span></div>
           <h4>Inscription & suivi</h4>
-          <p>Un problème d'inscription ou besoin d'un suivi personnalisé ? Nous sommes à votre écoute.</p>
+          <p>Un problÃ¨me d'inscription ou besoin d'un suivi personnalisÃ© ? Nous sommes Ã  votre Ã©coute.</p>
         </div>
         <div class="contact-trust-card">
-          <div class="ct-icon"><span>✦</span></div>
-          <h4>Réponse rapide</h4>
-          <p>Nous répondons à toutes les demandes sous 24 heures ouvrables, souvent bien plus tôt.</p>
+          <div class="ct-icon"><span>âœ¦</span></div>
+          <h4>RÃ©ponse rapide</h4>
+          <p>Nous rÃ©pondons Ã  toutes les demandes sous 24 heures ouvrables, souvent bien plus tÃ´t.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ DÉMARCHE ══ -->
+  <!-- â•â• DÃ‰MARCHE â•â• -->
   <section class="section reveal">
     <div class="container">
       <div class="dmp-wrap">
         <div class="dmp-head">
-          <span class="section-badge section-badge--blue">Démarche</span>
-          <h2 class="dmp-title">Comment <span class="text-gradient">ça marche</span> ?</h2>
-          <p class="dmp-sub">Pour commencer votre inscription, suivez ces trois étapes simples :</p>
+          <span class="section-badge section-badge--blue">DÃ©marche</span>
+          <h2 class="dmp-title">Comment <span class="text-gradient">Ã§a marche</span> ?</h2>
+          <p class="dmp-sub">Pour commencer votre inscription, suivez ces trois Ã©tapes simples :</p>
         </div>
         <div class="dmp-steps">
           <div class="dmp-step dmp-step--blue">
             <div class="dmp-step-top">
               <span class="dmp-num">1</span>
-              <span class="dmp-ico">📝</span>
+              <span class="dmp-ico">ðŸ“</span>
             </div>
             <h3 class="dmp-step-title">Remplissez le formulaire de contact</h3>
             <p class="dmp-step-desc">Indiquez vos informations de base afin que nous puissions ouvrir votre dossier.</p>
@@ -245,35 +245,35 @@
           <div class="dmp-step dmp-step--green">
             <div class="dmp-step-top">
               <span class="dmp-num">2</span>
-              <span class="dmp-ico">📊</span>
+              <span class="dmp-ico">ðŸ“Š</span>
             </div>
-            <h3 class="dmp-step-title">Complétez le test de niveau</h3>
-            <p class="dmp-step-desc">Il nous permet d'évaluer votre compréhension écrite et votre expression écrite.</p>
+            <h3 class="dmp-step-title">ComplÃ©tez le test de niveau</h3>
+            <p class="dmp-step-desc">Il nous permet d'Ã©valuer votre comprÃ©hension Ã©crite et votre expression Ã©crite.</p>
           </div>
           <div class="dmp-step dmp-step--pink">
             <div class="dmp-step-top">
               <span class="dmp-num">3</span>
-              <span class="dmp-ico">🗣️</span>
+              <span class="dmp-ico">ðŸ—£ï¸</span>
             </div>
-            <h3 class="dmp-step-title">Prenez rendez-vous pour votre évaluation orale</h3>
-            <p class="dmp-step-desc">Vous rencontrerez notre évaluateur afin de déterminer votre niveau d'expression orale.</p>
+            <h3 class="dmp-step-title">Prenez rendez-vous pour votre Ã©valuation orale</h3>
+            <p class="dmp-step-desc">Vous rencontrerez notre Ã©valuateur afin de dÃ©terminer votre niveau d'expression orale.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ CTA BANNER ═══ -->
+  <!-- â•â•â• CTA BANNER â•â•â• -->
   <section class="section reveal">
     <div class="container">
       <div class="cta-banner contact-cta-banner">
         <h2>Encore une question ?</h2>
-        <p>Nous sommes à votre disposition pour discuter de votre projet. Chaque parcours est unique, et nous serons ravis de vous aider à construire le vôtre.</p>
+        <p>Nous sommes Ã  votre disposition pour discuter de votre projet. Chaque parcours est unique, et nous serons ravis de vous aider Ã  construire le vÃ´tre.</p>
         <div class="contact-cta-banner-actions">
-          <a href="tel:+18192719783" class="btn btn-white btn-lg"><span>📞</span> +1 (819) 271-9783</a>
-          <a href="mailto:admin@cultulangues.ca" class="btn btn-outline-white btn-lg"><span>✉</span> admin@cultulangues.ca</a>
+          <a href="tel:+18739730513" class="btn btn-white btn-lg"><span>ðŸ“ž</span> 873-973-0513</a>
+          <a href="mailto:admin@cultulangues.ca" class="btn btn-outline-white btn-lg"><span>âœ‰</span> admin@cultulangues.ca</a>
         </div>
-        <p class="contact-cta-banner-note">Ou appelez-nous directement — nous sommes joignables du lundi au vendredi, de 9 h à 19 h.</p>
+        <p class="contact-cta-banner-note">Ou appelez-nous directement â€” nous sommes joignables du lundi au vendredi, de 9 h Ã  19 h.</p>
       </div>
     </div>
   </section>

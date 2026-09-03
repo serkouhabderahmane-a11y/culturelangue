@@ -20,9 +20,9 @@ class ContactInfoSeeder extends Seeder
             ],
             [
                 'type' => 'phone',
-                'label_fr' => 'Téléphone',
+                'label_fr' => 'TÃ©lÃ©phone',
                 'label_en' => 'Phone',
-                'value' => '+1 (819) 271-9783',
+                'value' => '873-973-0513',
                 'icon' => 'phone',
                 'order' => 2,
             ],

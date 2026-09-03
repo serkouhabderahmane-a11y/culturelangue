@@ -25,8 +25,7 @@ RUN echo "APP_NAME=Cultulangues" > .env \
     && echo "SESSION_DRIVER=file" >> .env \
     && echo "SESSION_LIFETIME=120" >> .env
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress \
-    && php artisan key:generate --force
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
 RUN mkdir -p storage/logs storage/framework/sessions storage/framework/views storage/framework/cache \
     && chmod -R 777 storage bootstrap/cache
@@ -36,4 +35,4 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "-c", "php artisan migrate --force; php artisan view:cache; /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/bin/sh", "-c", "php artisan migrate --force; php artisan db:seed --force --class=RoleSeeder; php artisan view:cache; /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]

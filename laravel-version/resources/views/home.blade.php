@@ -250,7 +250,7 @@
     <div class="ph-why-header ph-reveal">
       <span class="ph-eyebrow">Pourquoi nous</span>
       <h2 class="ph-section-title">Pourquoi <span class="ph-text-gradient">Cultulangues</span> ?</h2>
-      <p class="ph-section-subtitle" data-i18n="why.subtitle">Nous croyons en une approche humaine et exigeante pour vous accompagner vers la réussite.</p>
+      <p class="ph-section-subtitle" data-i18n="why.subtitle">Parce que votre progression mérite une méthode qui fonctionne, une équipe qui vous accompagne et une expérience qui donne envie d'apprendre.</p>
     </div>
 
     <div class="ph-why-grid">
@@ -262,7 +262,7 @@
         <div class="ph-why-card ph-why-card-large ph-why-card--1 ph-reveal" data-delay="1">
           <div class="ph-why-icon-wrap"><span class="ph-why-icon">👩‍🏫</span></div>
           <h3 data-i18n="why.card1.title">Enseignants certifiés</h3>
-          <p data-i18n="why.card1.desc">Tous nos enseignants sont diplômés FLE et spécialisés dans la préparation aux examens TCF.</p>
+          <p data-i18n="why.card1.desc">Tous nos enseignants sont qualifiés, experts de l'apprentissage des adultes. Un accompagnement précis, bienveillant et efficace pour des résultats concrets.</p>
         </div>
         <div class="ph-why-card ph-why-card--2 ph-reveal" data-delay="2">
           <div class="ph-why-icon-wrap"><span class="ph-why-icon">🌐</span></div>
@@ -301,17 +301,17 @@
         <tbody>
           <tr>
             <td data-i18n="compare.row.objectif">Objectif</td>
-            <td data-i18n="compare.pl.objectif">Progrès général en français</td>
-            <td data-i18n="compare.oral.objectif">Maîtrise orale & TCO</td>
-            <td data-i18n="compare.tcf.objectif">TCF Québec & immigration</td>
+            <td data-i18n="compare.pl.objectif">Progrès général en français et en anglais.</td>
+            <td data-i18n="compare.oral.objectif">Préparation ciblée à l'épreuve TCO (niveau B ou C).</td>
+            <td data-i18n="compare.tcf.objectif">Préparation aux tests de langues d'immigration.</td>
             <td data-i18n="compare.solo.objectif">Objectifs personnalisés</td>
           </tr>
           <tr>
             <td data-i18n="compare.row.format">Format</td>
             <td data-i18n="compare.pl.format">Groupe (max 5)</td>
-            <td data-i18n="compare.oral.format">Groupe (max 5), temps partiel ou intensif</td>
+            <td data-i18n="compare.oral.format">Groupe (max 5)</td>
             <td data-i18n="compare.tcf.format">Parcours guidé, simulations</td>
-            <td data-i18n="compare.solo.format">1-to-1, full flexible</td>
+            <td data-i18n="compare.solo.format">1-to-1, individuel</td>
           </tr>
           <tr>
             <td data-i18n="compare.row.accompagnement">Accompagnement</td>
@@ -324,62 +324,18 @@
             <td data-i18n="compare.row.ideal">Idéal pour</td>
             <td data-i18n="compare.pl.ideal">Adultes tous niveaux</td>
             <td data-i18n="compare.oral.ideal">Candidats TCO</td>
-            <td data-i18n="compare.tcf.ideal">Projets immigration Québec</td>
-            <td data-i18n="compare.solo.ideal">Profil flexible ou ciblé</td>
+            <td data-i18n="compare.tcf.ideal">Candidats à l'immigration Québec ou Canada.</td>
+            <td data-i18n="compare.solo.ideal">Candidats avec des objectifs spécifiques</td>
           </tr>
           <tr>
             <td data-i18n="compare.row.flexibilite">Flexibilité</td>
             <td data-i18n="compare.pl.flex">Calendrier fixe</td>
             <td data-i18n="compare.oral.flex">Temps partiel ou intensif</td>
             <td data-i18n="compare.tcf.flex">Parcours progressif</td>
-            <td data-i18n="compare.solo.flex">Totale (5h–20h)</td>
+            <td data-i18n="compare.solo.flex">Forfaits (de 5h à 20h)</td>
           </tr>
         </tbody>
       </table>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
-       TESTIMONIALS — Featured + stacked layout
-       ═══════════════════════════════════════════ -->
-  <section class="ph-testimonials">
-    <div class="ph-testimonials-header ph-reveal">
-      <span class="ph-eyebrow">Témoignages</span>
-      <h2 class="ph-section-title">Ils nous font <span class="ph-text-gradient">confiance</span></h2>
-      <p class="ph-section-subtitle" data-i18n="testimonials.subtitle">Découvrez les témoignages de nos étudiants.</p>
-    </div>
-    <div class="ph-testimonials-layout">
-      <div class="ph-testimonial-photo ph-reveal">
-        <img src="{{ asset('img/client-photo-5.png') }}" alt="" loading="lazy">
-      </div>
-      @if($testimonials->count() > 0)
-      <div class="ph-testimonial-featured ph-reveal">
-        <div class="ph-testimonial-stars">★★★★★</div>
-        <p class="ph-testimonial-text">{{ $testimonials->first()->content_fr }}</p>
-        <div class="ph-testimonial-author">
-          <div class="ph-testimonial-avatar">{{ substr($testimonials->first()->name_fr, 0, 1) }}</div>
-          <div>
-            <h4>{{ $testimonials->first()->name_fr }}</h4>
-            <span>{{ $testimonials->first()->role_fr }}</span>
-          </div>
-        </div>
-      </div>
-      @endif
-      <div class="ph-testimonial-stack">
-        @foreach($testimonials->skip(1) as $testimonial)
-        <div class="ph-testimonial-card ph-reveal">
-          <div class="ph-testimonial-stars">★★★★★</div>
-          <p class="ph-testimonial-text">{{ $testimonial->content_fr }}</p>
-          <div class="ph-testimonial-author">
-            <div class="ph-testimonial-avatar">{{ substr($testimonial->name_fr, 0, 1) }}</div>
-            <div>
-              <h4>{{ $testimonial->name_fr }}</h4>
-              <span>{{ $testimonial->role_fr }}</span>
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
     </div>
   </section>
 
@@ -390,7 +346,7 @@
     <div class="ph-cta-deco" aria-hidden="true"></div>
     <div class="ph-cta-inner ph-reveal">
       <h2 data-i18n="cta.home.title">Prêt à commencer votre parcours ?</h2>
-      <p data-i18n="cta.home.desc">Rejoignez plus de 950 étudiants qui nous font confiance pour leur préparation linguistique.</p>
+      <p data-i18n="cta.home.desc">Rejoignez ceux qui choisissent l’excellence pour leur progression linguistique.</p>
       <a href="{{ route('register') }}" class="ph-btn ph-btn-white ph-btn-xl" data-i18n="cta.home.btn">
         <span>Créer mon compte gratuit</span>
         <svg class="ph-btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -398,7 +354,7 @@
       <div class="ph-cta-trust">
         <div class="ph-cta-trust-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <span>Plus de 950 étudiants</span>
+          <span>Apprenants nombreux, motivés, en action.</span>
         </div>
         <div class="ph-cta-trust-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>

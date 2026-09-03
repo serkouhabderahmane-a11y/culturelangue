@@ -1,41 +1,41 @@
 (function () {
   'use strict';
 
-  /* ══════════════════════════════════════════════════════════════
-     TRANSLATIONS — FR / EN
-     ══════════════════════════════════════════════════════════════ */
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     TRANSLATIONS â€” FR / EN
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   window.translations = {
     fr: {
       /* Nav */
       'nav.home': 'Accueil',
       'nav.private': 'Cours Particuliers',
-      'nav.tcf': 'Préparation TCF Québec',
-      'nav.tcf_desc': 'Se préparer sereinement au test officiel',
+      'nav.tcf': 'PrÃ©paration TCF QuÃ©bec',
+      'nav.tcf_desc': 'Se prÃ©parer sereinement au test officiel',
       'nav.workshops': 'Ateliers',
-      'nav.about': 'À propos',
+      'nav.about': 'Ã€ propos',
       'nav.contact': 'Contact',
       'nav.programs': 'Programmes',
       'nav.parcours': 'Parcours linguistique',
       'nav.parcours_desc': 'Apprendre et progresser en petit groupe',
       'nav.oral': 'Cap sur l\'oral',
-      'nav.oral_desc': 'Développer une expression orale fluide et stratégique',
+      'nav.oral_desc': 'DÃ©velopper une expression orale fluide et stratÃ©gique',
       'nav.solo': 'Formation en solo',
-      'nav.solo_desc': 'Un accompagnement 100 % personnalisé',
+      'nav.solo_desc': 'Un accompagnement 100 % personnalisÃ©',
       'nav.login': 'Connexion',
       'nav.register': 'S\'inscrire',
 
       /* Footer */
-      'footer.brand': 'Formation linguistique & Préparation aux examens.',
+      'footer.brand': 'Formation linguistique & PrÃ©paration aux examens.',
       'footer.courses': 'Cours',
       'footer.info': 'Informations',
-      'footer.info.about': 'À propos',
+      'footer.info.about': 'Ã€ propos',
       'footer.info.contact': 'Contact',
-      'footer.info.terms': 'Mentions légales',
-      'footer.info.privacy': 'Politique de confidentialité',
+      'footer.info.terms': 'Mentions lÃ©gales',
+      'footer.info.privacy': 'Politique de confidentialitÃ©',
       'footer.contact.title': 'Contact',
       'footer.contact.email': 'admin@cultulangues.ca',
-      'footer.contact.phone': '+1 (819) 271-9783',
-      'footer.copyright': 'Cultulangues. Tous droits réservés.',
+      'footer.contact.phone': '873-973-0513',
+      'footer.copyright': 'Cultulangues. Tous droits rÃ©servÃ©s.',
       'footer.made': 'Fait avec bienveillance',
 
       /* Lang switcher */
@@ -43,179 +43,167 @@
       'lang.en': 'EN',
 
       /* Hero */
-      'hero.badge': 'École certifiée — +950 étudiants',
-      'hero.h1': 'Chez CultuLangues, nous construisons<br>votre réussite et donnons un nouvel<br>élan à vos <span class="text-gradient">projets</span>.',
+      'hero.badge': 'Ã‰cole certifiÃ©e â€” +950 Ã©tudiants',
+      'hero.h1': 'Chez CultuLangues, nous construisons<br>votre rÃ©ussite et donnons un nouvel<br>Ã©lan Ã  vos <span class="text-gradient">projets</span>.',
       'hero.intro': 'Vous souhaitez apprendre l\'une des langues officielles du Canada :',
-      'hero.list.1': 'Faire évoluer votre carrière',
-      'hero.list.2': 'Réussir votre projet d\'immigration',
+      'hero.list.1': 'Faire Ã©voluer votre carriÃ¨re',
+      'hero.list.2': 'RÃ©ussir votre projet d\'immigration',
       'hero.list.3': 'Gagner confiance et autonomie dans la vie quotidienne',
-      'hero.btn.primary': 'Découvrez nos parcours d\'apprentissage →',
+      'hero.btn.primary': 'DÃ©couvrez nos parcours d\'apprentissage â†’',
       'hero.btn.secondary': 'Choisissez le format qui vous ressemble',
       'hero.stat1.value': '98%',
-      'hero.stat1.label': 'Taux de réussite',
+      'hero.stat1.label': 'Taux de rÃ©ussite',
       'hero.stat2.value': '4.9/5',
-      'hero.stat2.label': 'Avis étudiants',
+      'hero.stat2.label': 'Avis Ã©tudiants',
       'hero.stat3.value': '+950',
-      'hero.stat3.label': 'Étudiants accompagnés',
+      'hero.stat3.label': 'Ã‰tudiants accompagnÃ©s',
       'hero.card1.text': 'Cours particuliers',
       'hero.card1.label': 'Accompagnement 1-to-1',
-      'hero.card2.text': 'Préparation TCF',
-      'hero.card2.label': 'Québec & Canada',
-      'hero.card3.text': 'Objectif Réussite',
+      'hero.card2.text': 'PrÃ©paration TCF',
+      'hero.card2.label': 'QuÃ©bec & Canada',
+      'hero.card3.text': 'Objectif RÃ©ussite',
       'hero.card3.label': 'Accompagnement',
       'hero.card4.text': 'Native Teachers',
-      'hero.card4.label': '100% certifiés FLE',
+      'hero.card4.label': '100% certifiÃ©s FLE',
       'hero.card5.text': 'Certificat',
       'hero.card5.label': 'Reconnu',
 
-      /* Hero — client revision */
+      /* Hero â€” client revision */
       'hero.client.brand': 'Cultulangues',
-      'hero.client.line1': 'Maîtrisez les langues !',
+      'hero.client.line1': 'MaÃ®trisez les langues !',
       'hero.client.line2': 'Transformez votre avenir !',
 
       /* Stats */
       'stat1.value': '12',
-      'stat1.label': 'Années d\'expérience',
+      'stat1.label': 'AnnÃ©es d\'expÃ©rience',
       'stat2.value': '98',
-      'stat2.label': '% de réussite aux examens',
+      'stat2.label': '% de rÃ©ussite aux examens',
       'stat3.value': '950',
-      'stat3.label': 'Étudiants accompagnés',
-      'stat4.value': '4.9★',
+      'stat3.label': 'Ã‰tudiants accompagnÃ©s',
+      'stat4.value': '4.9â˜…',
       'stat4.label': 'Avis Google',
 
       /* Services */
       'services.title': 'Nos parcours <span class="text-gradient">phares</span>',
-      'services.subtitle': 'Des parcours pensés pour des objectifs concrets : progresser à l\'oral, préparer un test officiel, renforcer son français au quotidien ou bénéficier d\'un accompagnement 100 % personnalisé.',
+      'services.subtitle': 'Des parcours pensÃ©s pour des objectifs concrets : progresser Ã  l\'oral, prÃ©parer un test officiel, renforcer son franÃ§ais au quotidien ou bÃ©nÃ©ficier d\'un accompagnement 100 % personnalisÃ©.',
       'services.private.title': 'Cours Particuliers',
-      'services.private.desc': 'Accompagnement sur-mesure avec un enseignant dédié. Programme 100% adapté à vos objectifs, votre niveau et votre rythme. Forfaits flexibles de 5h à 20h.',
-      'services.private.btn': 'Découvrir les programmes →',
-      'services.tcf.title': 'Préparation TCF',
-      'services.tcf.desc': 'Programmes intensifs et réguliers pour le TCF Québec et TCF Canada. Simulations d\'examen hebdomadaires, corrections personnalisées et suivi individuel.',
-      'services.tcf.btn': 'Découvrir les programmes →',
+      'services.private.desc': 'Accompagnement sur-mesure avec un enseignant dÃ©diÃ©. Programme 100% adaptÃ© Ã  vos objectifs, votre niveau et votre rythme. Forfaits flexibles de 5h Ã  20h.',
+      'services.private.btn': 'DÃ©couvrir les programmes â†’',
+      'services.tcf.title': 'PrÃ©paration TCF',
+      'services.tcf.desc': 'Programmes intensifs et rÃ©guliers pour le TCF QuÃ©bec et TCF Canada. Simulations d\'examen hebdomadaires, corrections personnalisÃ©es et suivi individuel.',
+      'services.tcf.btn': 'DÃ©couvrir les programmes â†’',
       'services.atelier.title': 'Ateliers',
-      'services.atelier.desc': 'Des ateliers thématiques pour pratiquer, échanger et perfectionner votre français. Conversation, culture canadienne, maintien du niveau et préparation orale TCF.',
-      'services.atelier.btn': 'Découvrir les ateliers →',
+      'services.atelier.desc': 'Des ateliers thÃ©matiques pour pratiquer, Ã©changer et perfectionner votre franÃ§ais. Conversation, culture canadienne, maintien du niveau et prÃ©paration orale TCF.',
+      'services.atelier.btn': 'DÃ©couvrir les ateliers â†’',
 
       /* Flagship offers */
       'flagship.1.title': 'Parcours linguistique',
-      'flagship.1.desc': 'Un programme structuré en petit groupe pour progresser en français avec confiance, dans un environnement motivant et stimulant.',
+      'flagship.1.desc': 'Un programme structurÃ© en petit groupe pour progresser en franÃ§ais avec confiance, dans un environnement motivant et stimulant.',
       'flagship.1.tag1': 'Groupes de 5 max',
       'flagship.1.tag2': 'Adultes',
       'flagship.1.tag3': 'Confiance',
-      'flagship.1.tag4': 'Français',
-      'flagship.1.cta': 'Découvrir le parcours →',
-      'flagship.2.title': 'Cap sur l\'oral — Lingo Test',
-      'flagship.2.desc': 'Deux parcours collaboratifs en petit groupe pour maîtriser l\'oral avec confiance et précision, spécialement conçus pour le TCO.',
+      'flagship.1.tag4': 'FranÃ§ais',
+      'flagship.1.cta': 'DÃ©couvrir le parcours â†’',
+      'flagship.2.title': 'Cap sur l\'oral â€” Lingo Test',
+      'flagship.2.desc': 'Deux parcours collaboratifs en petit groupe pour maÃ®triser l\'oral avec confiance et prÃ©cision, spÃ©cialement conÃ§us pour le TCO.',
       'flagship.2.tag1': 'Parcours B & C',
       'flagship.2.tag2': 'TCO',
       'flagship.2.tag3': 'Temps partiel/intensif',
       'flagship.2.tag4': 'Anglais',
-      'flagship.2.cta': 'Découvrir le parcours →',
-      'flagship.3.title': 'Préparation TCF Québec',
-      'flagship.3.desc': 'Un accompagnement structuré et bienveillant pour réussir votre TCF Québec et avancer sereinement dans votre projet d\'immigration.',
+      'flagship.2.cta': 'DÃ©couvrir le parcours â†’',
+      'flagship.3.title': 'PrÃ©paration TCF QuÃ©bec',
+      'flagship.3.desc': 'Un accompagnement structurÃ© et bienveillant pour rÃ©ussir votre TCF QuÃ©bec et avancer sereinement dans votre projet d\'immigration.',
       'flagship.3.tag1': 'Immigration',
       'flagship.3.tag2': 'Niveau B2',
       'flagship.3.tag3': 'Examens blancs',
       'flagship.3.tag4': 'TCF',
-      'flagship.3.cta': 'Découvrir le parcours →',
+      'flagship.3.cta': 'DÃ©couvrir le parcours â†’',
       'flagship.4.title': 'Formation en solo',
-      'flagship.4.desc': 'Des cours particuliers 100 % personnalisés, flexibles et adaptés à vos objectifs spécifiques. Forfaits de 5 h à 20 h.',
+      'flagship.4.desc': 'Des cours particuliers 100 % personnalisÃ©s, flexibles et adaptÃ©s Ã  vos objectifs spÃ©cifiques. Forfaits de 5 h Ã  20 h.',
       'flagship.4.tag1': '1-to-1',
       'flagship.4.tag2': 'Flexible',
-      'flagship.4.tag3': 'Forfaits 5h–20h',
-      'flagship.4.tag4': 'Personnalisé',
-      'flagship.4.cta': 'Découvrir le parcours →',
+      'flagship.4.tag3': 'Forfaits 5hâ€“20h',
+      'flagship.4.tag4': 'PersonnalisÃ©',
+      'flagship.4.cta': 'DÃ©couvrir le parcours â†’',
 
       /* Compare */
       'compare.title': 'Quel parcours vous <span class="text-gradient">correspond</span> ?',
-      'compare.subtitle': 'Comparez nos 4 parcours phares pour trouver celui qui correspond à vos objectifs, votre rythme et vos besoins.',
-      'compare.th.critere': 'Critère',
+      'compare.subtitle': 'Comparez nos 4 parcours phares pour trouver celui qui correspond Ã  vos objectifs, votre rythme et vos besoins.',
+      'compare.th.critere': 'CritÃ¨re',
       'compare.th.pl': 'Parcours linguistique',
       'compare.th.oral': 'Cap sur l\'oral',
-      'compare.th.tcf': 'Préparation TCF',
+      'compare.th.tcf': 'PrÃ©paration TCF',
       'compare.th.solo': 'Formation solo',
       'compare.row.objectif': 'Objectif',
       'compare.row.format': 'Format',
       'compare.row.accompagnement': 'Accompagnement',
-      'compare.row.ideal': 'Idéal pour',
-      'compare.row.flexibilite': 'Flexibilité',
-      'compare.pl.objectif': 'Progrès général en français',
+      'compare.row.ideal': 'IdÃ©al pour',
+      'compare.row.flexibilite': 'FlexibilitÃ©',
+      'compare.pl.objectif': 'ProgrÃ¨s gÃ©nÃ©ral en franÃ§ais et en anglais.',
       'compare.pl.format': 'Groupe (max 5)',
-      'compare.pl.accomp': 'Structuré, collectif',
+      'compare.pl.accomp': 'StructurÃ©, collectif',
       'compare.pl.ideal': 'Adultes tous niveaux',
       'compare.pl.flex': 'Calendrier fixe',
-      'compare.oral.objectif': 'Maîtrise orale & TCO',
-      'compare.oral.format': 'Groupe (max 5), temps partiel ou intensif',
+      'compare.oral.objectif': 'PrÃ©paration ciblÃ©e Ã  l\'Ã©preuve TCO (niveau B ou C).',
+      'compare.oral.format': 'Groupe (max 5)',
       'compare.oral.accomp': 'Expert oral, collaboratif',
       'compare.oral.ideal': 'Candidats TCO',
       'compare.oral.flex': 'Temps partiel ou intensif',
-      'compare.tcf.objectif': 'TCF Québec & immigration',
-      'compare.tcf.format': 'Parcours guidé, simulations',
-      'compare.tcf.accomp': 'Étape par étape, bienveillant',
-      'compare.tcf.ideal': 'Projets immigration Québec',
+      'compare.tcf.objectif': 'PrÃ©paration aux tests de langues d\'immigration.',
+      'compare.tcf.format': 'Parcours guidÃ©, simulations',
+      'compare.tcf.accomp': 'Ã‰tape par Ã©tape, bienveillant',
+      'compare.tcf.ideal': 'Candidats Ã  l\'immigration QuÃ©bec ou Canada.',
       'compare.tcf.flex': 'Parcours progressif',
-      'compare.solo.objectif': 'Objectifs personnalisés',
-      'compare.solo.format': '1-to-1, full flexible',
+      'compare.solo.objectif': 'Objectifs personnalisÃ©s',
+      'compare.solo.format': '1-to-1, individuel',
       'compare.solo.accomp': '100 % sur-mesure',
-      'compare.solo.ideal': 'Profil flexible ou ciblé',
-      'compare.solo.flex': 'Totale (5h–20h)',
+      'compare.solo.ideal': 'Candidats avec des objectifs spÃ©cifiques',
+      'compare.solo.flex': 'Forfaits (de 5h Ã  20h)',
 
       /* Why */
       'why.title': 'Pourquoi <span class="text-gradient">Cultulangues</span> ?',
-      'why.subtitle': 'Nous croyons en une approche humaine et exigeante pour vous accompagner vers la réussite.',
-      'why.card1.title': 'Enseignants certifiés',
-      'why.card1.desc': 'Tous nos enseignants sont diplômés FLE et spécialisés dans la préparation aux examens TCF.',
-      'why.card2.title': 'Suivi personnalisé',
-      'why.card2.desc': 'Un parcours adapté à votre niveau, vos objectifs et votre rythme d\'apprentissage.',
+      'why.subtitle': 'Parce que votre progression mÃ©rite une mÃ©thode qui fonctionne, une Ã©quipe qui vous accompagne et une expÃ©rience qui donne envie d\'apprendre.',
+      'why.card1.title': 'Enseignants certifiÃ©s',
+      'why.card1.desc': 'Tous nos enseignants sont qualifiÃ©s, experts de l\'apprentissage des adultes. Un accompagnement prÃ©cis, bienveillant et efficace pour des rÃ©sultats concrets.',
+      'why.card2.title': 'Suivi personnalisÃ©',
+      'why.card2.desc': 'Un parcours adaptÃ© Ã  votre niveau, vos objectifs et votre rythme d\'apprentissage.',
       'why.card3.title': 'Approche bienveillante',
-      'why.card3.desc': 'Nous plaçons l\'humain au cœur de notre pédagogie pour vous aider à donner le meilleur.',
+      'why.card3.desc': 'Nous plaÃ§ons l\'humain au cÅ“ur de notre pÃ©dagogie pour vous aider Ã  donner le meilleur.',
 
       /* Testimonials Home */
-      'testimonials.title': 'Ils nous font <span class="text-gradient">confiance</span>',
-      'testimonials.subtitle': 'Découvrez les témoignages de nos étudiants.',
-      'testimonial1.text': 'Grâce à Cultulangues, j\'ai obtenu mon TCF Québec avec mention B2. L\'accompagnement personnalisé et les simulations d\'examen m\'ont vraiment préparée.',
-      'testimonial1.name': 'Maria S.',
-      'testimonial1.info': 'TCF Québec — Niveau B2',
-      'testimonial2.text': 'Une équipe formidable qui m\'a aidé à reprendre confiance en mon français oral. Les ateliers de conversation ont été une vraie révélation.',
-      'testimonial2.name': 'Ahmed K.',
-      'testimonial2.info': 'Préparation Orale — Niveau C1',
-      'testimonial3.text': 'Je recommande sans hésiter. La plateforme est claire, les cours sont bien structurés et les professeurs sont à l\'écoute. Exactement ce qu\'il me fallait.',
-      'testimonial3.name': 'Laura P.',
-      'testimonial3.info': 'TCF Canada — Niveau C1',
-
       /* CTA */
-      'cta.home.title': 'Prêt à commencer votre parcours ?',
-      'cta.home.desc': 'Rejoignez plus de 950 étudiants qui nous font confiance pour leur préparation linguistique.',
-      'cta.home.btn': 'Créer mon compte gratuit →',
+      'cta.home.title': 'PrÃªt Ã  commencer votre parcours ?',
+      'cta.home.desc': 'Rejoignez ceux qui choisissent lâ€™excellence pour leur progression linguistique.',
+      'cta.home.btn': 'CrÃ©er mon compte gratuit â†’',
 
       /* About Page */
-      'about.title': 'À propos — Cultulangues',
+      'about.title': 'Ã€ propos â€” Cultulangues',
       'about.mission.title': 'Notre mission',
-      'about.mission.text': 'Chez Cultulangues, nous croyons que la maîtrise du français est la clé de la réussite linguistique et professionnelle. Notre mission est d\'accompagner chaque apprenant avec bienveillance, professionnalisme et exigence vers la réussite de ses projets.',
-      'about.pedagogy.title': 'Notre approche pédagogique',
-      'about.pedagogy.subtitle': 'Une méthode qui place l\'humain au centre de l\'apprentissage.',
+      'about.mission.text': 'Chez Cultulangues, nous croyons que la maÃ®trise du franÃ§ais est la clÃ© de la rÃ©ussite linguistique et professionnelle. Notre mission est d\'accompagner chaque apprenant avec bienveillance, professionnalisme et exigence vers la rÃ©ussite de ses projets.',
+      'about.pedagogy.title': 'Notre approche pÃ©dagogique',
+      'about.pedagogy.subtitle': 'Une mÃ©thode qui place l\'humain au centre de l\'apprentissage.',
       'about.value1.title': 'Bienveillance',
-      'about.value1.desc': 'Nous créons un environnement sécurisant où chaque apprenant peut progresser à son rythme, sans jugement.',
+      'about.value1.desc': 'Nous crÃ©ons un environnement sÃ©curisant oÃ¹ chaque apprenant peut progresser Ã  son rythme, sans jugement.',
       'about.value2.title': 'Exigence',
-      'about.value2.desc': 'Nous fixons des objectifs clairs et accompagnons chaque élève avec rigueur pour les atteindre.',
-      'about.value3.title': 'Proximité',
-      'about.value3.desc': 'Un suivi personnalisé et une écoute attentive pour répondre aux besoins spécifiques de chacun.',
+      'about.value2.desc': 'Nous fixons des objectifs clairs et accompagnons chaque Ã©lÃ¨ve avec rigueur pour les atteindre.',
+      'about.value3.title': 'ProximitÃ©',
+      'about.value3.desc': 'Un suivi personnalisÃ© et une Ã©coute attentive pour rÃ©pondre aux besoins spÃ©cifiques de chacun.',
       'about.trust.title': 'Pourquoi nous faire confiance ?',
-      'about.trust1.title': 'Des enseignants certifiés qui font vraiment la différence',
-      'about.trust1.desc': 'Nos formateurs sont certifiés, expérimentés et sélectionnés pour leur excellence pédagogique. Ils savent transformer un cours en une expérience, créer des déclics, et vous faire progresser plus vite que vous ne l’imaginiez.<br><strong>Un enseignement de haut niveau, pensé pour des résultats visibles.</strong>',
-      'about.trust2.title': 'Une communauté internationale venue des quatre coins du monde',
-      'about.trust2.desc': 'Cultulangues rassemble des apprenants issus de plusieurs pays, cultures et parcours. Vous pratiquez avec des personnes qui vivent au Canada, en Europe, en Afrique, en Amérique du Sud… une diversité qui enrichit chaque échange et ouvre vos horizons.<br><strong>Vous apprenez une langue, vous rejoignez une communauté mondiale.</strong>',
-      'about.trust3.title': 'Des résultats rapides, concrets et durables',
-      'about.trust3.desc': 'Nos apprenants voient la différence dès les premières semaines : plus d\'aisance, plus de confiance, plus de précision. Chaque étape est mesurable, chaque progrès est réel, et chaque objectif devient atteignable.<br><strong>Votre réussite n’est pas un hasard — c’est notre méthode.</strong>',
+      'about.trust1.title': 'Des enseignants certifiÃ©s qui font vraiment la diffÃ©rence',
+      'about.trust1.desc': 'Nos formateurs sont certifiÃ©s, expÃ©rimentÃ©s et sÃ©lectionnÃ©s pour leur excellence pÃ©dagogique. Ils savent transformer un cours en une expÃ©rience, crÃ©er des dÃ©clics, et vous faire progresser plus vite que vous ne lâ€™imaginiez.<br><strong>Un enseignement de haut niveau, pensÃ© pour des rÃ©sultats visibles.</strong>',
+      'about.trust2.title': 'Une communautÃ© internationale venue des quatre coins du monde',
+      'about.trust2.desc': 'Cultulangues rassemble des apprenants issus de plusieurs pays, cultures et parcours. Vous pratiquez avec des personnes qui vivent au Canada, en Europe, en Afrique, en AmÃ©rique du Sudâ€¦ une diversitÃ© qui enrichit chaque Ã©change et ouvre vos horizons.<br><strong>Vous apprenez une langue, vous rejoignez une communautÃ© mondiale.</strong>',
+      'about.trust3.title': 'Des rÃ©sultats rapides, concrets et durables',
+      'about.trust3.desc': 'Nos apprenants voient la diffÃ©rence dÃ¨s les premiÃ¨res semaines : plus d\'aisance, plus de confiance, plus de prÃ©cision. Chaque Ã©tape est mesurable, chaque progrÃ¨s est rÃ©el, et chaque objectif devient atteignable.<br><strong>Votre rÃ©ussite nâ€™est pas un hasard â€” câ€™est notre mÃ©thode.</strong>',
 
       /* Contact Page */
       'contact.title': 'Contactez-nous',
-      'contact.subtitle': 'Une question ? Un projet ? Nous sommes là pour vous accompagner.',
-      'contact.form.firstname': 'Prénom',
+      'contact.subtitle': 'Une question ? Un projet ? Nous sommes lÃ  pour vous accompagner.',
+      'contact.form.firstname': 'PrÃ©nom',
       'contact.form.lastname': 'Nom',
       'contact.form.email': 'Email',
       'contact.form.subject': 'Sujet',
-      'contact.form.subject.placeholder': 'Sélectionnez un sujet',
+      'contact.form.subject.placeholder': 'SÃ©lectionnez un sujet',
       'contact.form.subject.programs': 'Information sur les programmes',
       'contact.form.subject.registration': 'Inscription',
       'contact.form.subject.tcf': 'Question TCF / Examens',
@@ -223,9 +211,9 @@
       'contact.form.subject.other': 'Autre',
       'contact.form.message': 'Message',
       'contact.form.submit': 'Envoyer le message',
-      'contact.info.title': 'Nos coordonnées',
-      'contact.info.phone.title': 'Téléphone',
-      'contact.info.phone.value': '+1 (819) 271-9783',
+      'contact.info.title': 'Nos coordonnÃ©es',
+      'contact.info.phone.title': 'TÃ©lÃ©phone',
+      'contact.info.phone.value': '873-973-0513',
       'contact.info.email.title': 'Email',
       'contact.info.email.value': 'admin@cultulangues.ca',
       'contact.info.hours.title': 'Horaires',
@@ -233,87 +221,87 @@
 
       /* Private Lessons Page */
       'private.title': 'Cours Particuliers <span class="text-gradient">1-to-1</span>',
-      'private.subtitle': 'Choisissez le programme qui correspond à vos objectifs. Accompagnement personnalisé avec un enseignant certifié FLE.',
+      'private.subtitle': 'Choisissez le programme qui correspond Ã  vos objectifs. Accompagnement personnalisÃ© avec un enseignant certifiÃ© FLE.',
       'private.section.title': 'Choisissez votre <span class="text-gradient">programme</span>',
-      'private.section.subtitle': 'Chaque programme est adapté à vos besoins spécifiques. Forfaits flexibles de 5h à 20h.',
+      'private.section.subtitle': 'Chaque programme est adaptÃ© Ã  vos besoins spÃ©cifiques. Forfaits flexibles de 5h Ã  20h.',
       'private.packages.title': 'Nos forfaits',
       'private.packages.subtitle': 'Choisissez le nombre d\'heures qui vous convient. Plus le forfait est grand, plus le tarif horaire est avantageux.',
-      'private.how.title': 'Comment ça marche ?',
-      'private.how.subtitle': 'Réservez votre cours particulier en toute simplicité.',
-      'private.cta.title': 'Prêt à commencer votre parcours personnalisé ?',
-      'private.cta.desc': 'Choisissez votre programme, réservez votre première séance et laissez-vous guider par nos enseignants experts.',
-      'private.cta.btn': 'Réservez votre cours particulier',
+      'private.how.title': 'Comment Ã§a marche ?',
+      'private.how.subtitle': 'RÃ©servez votre cours particulier en toute simplicitÃ©.',
+      'private.cta.title': 'PrÃªt Ã  commencer votre parcours personnalisÃ© ?',
+      'private.cta.desc': 'Choisissez votre programme, rÃ©servez votre premiÃ¨re sÃ©ance et laissez-vous guider par nos enseignants experts.',
+      'private.cta.btn': 'RÃ©servez votre cours particulier',
 
       /* TCF Page */
-      'tcf.breadcrumb': 'Préparation TCF',
-      'tcf.title': 'Préparation <span class="text-gradient">TCF</span>',
-      'tcf.subtitle': 'Des programmes intensifs et réguliers pour réussir le TCF Québec et le TCF Canada. Simulations d\'examen hebdomadaires et suivi personnalisé.',
+      'tcf.breadcrumb': 'PrÃ©paration TCF',
+      'tcf.title': 'PrÃ©paration <span class="text-gradient">TCF</span>',
+      'tcf.subtitle': 'Des programmes intensifs et rÃ©guliers pour rÃ©ussir le TCF QuÃ©bec et le TCF Canada. Simulations d\'examen hebdomadaires et suivi personnalisÃ©.',
       'tcf.section.title': 'Choisissez votre <span class="text-gradient">programme</span>',
-      'tcf.section.subtitle': 'Des formations complètes pour chaque examen, avec un accompagnement adapté à votre rythme.',
-      'tcf.how.title': 'Comment ça marche ?',
-      'tcf.how.subtitle': 'Rejoignez nos programmes de préparation TCF en toute simplicité.',
-      'tcf.cta.title': 'Prêt à réussir votre TCF ?',
-      'tcf.cta.desc': 'Rejoignez nos programmes de préparation et maximisez vos chances de succès.',
+      'tcf.section.subtitle': 'Des formations complÃ¨tes pour chaque examen, avec un accompagnement adaptÃ© Ã  votre rythme.',
+      'tcf.how.title': 'Comment Ã§a marche ?',
+      'tcf.how.subtitle': 'Rejoignez nos programmes de prÃ©paration TCF en toute simplicitÃ©.',
+      'tcf.cta.title': 'PrÃªt Ã  rÃ©ussir votre TCF ?',
+      'tcf.cta.desc': 'Rejoignez nos programmes de prÃ©paration et maximisez vos chances de succÃ¨s.',
       'tcf.cta.btn': 'S\'inscrire maintenant',
 
       /* Workshops Page */
       'workshops.breadcrumb': 'Ateliers',
       'workshops.title': 'Nos <span class="text-gradient">Ateliers</span>',
-      'workshops.subtitle': 'Des ateliers thématiques pour pratiquer, échanger et perfectionner votre français dans une ambiance conviviale.',
+      'workshops.subtitle': 'Des ateliers thÃ©matiques pour pratiquer, Ã©changer et perfectionner votre franÃ§ais dans une ambiance conviviale.',
       'workshops.section.title': 'Choisissez votre <span class="text-gradient">atelier</span>',
-      'workshops.section.subtitle': 'Des formats variés pour tous les niveaux et tous les objectifs.',
+      'workshops.section.subtitle': 'Des formats variÃ©s pour tous les niveaux et tous les objectifs.',
       'workshops.cta.title': 'Vous ne trouvez pas l\'atelier qu\'il vous faut ?',
-      'workshops.cta.desc': 'Contactez-nous pour un accompagnement personnalisé. Nous créons des ateliers sur mesure selon vos besoins.',
+      'workshops.cta.desc': 'Contactez-nous pour un accompagnement personnalisÃ©. Nous crÃ©ons des ateliers sur mesure selon vos besoins.',
       'workshops.cta.btn': 'Nous contacter',
 
       /* Programs Page */
       'programs.title': 'Nos Programmes',
-      'programs.subtitle': 'Des formations adaptées à chaque objectif, du niveau débutant à l\'expertise. Trouvez le programme qui vous correspond.',
+      'programs.subtitle': 'Des formations adaptÃ©es Ã  chaque objectif, du niveau dÃ©butant Ã  l\'expertise. Trouvez le programme qui vous correspond.',
       'programs.filter.all': 'Tous',
-      'programs.cta.title': 'Prêt à commencer votre parcours ?',
-      'programs.cta.desc': 'Contactez-nous pour un test de placement gratuit et trouvez le programme qui correspond à vos objectifs.',
+      'programs.cta.title': 'PrÃªt Ã  commencer votre parcours ?',
+      'programs.cta.desc': 'Contactez-nous pour un test de placement gratuit et trouvez le programme qui correspond Ã  vos objectifs.',
       'programs.cta.btn': 'Nous contacter',
 
       /* Program Detail */
       'detail.back': '&larr; Retour aux programmes',
       'detail.description': 'Description du programme',
       'detail.structure': 'Structure du programme',
-      'detail.objectives': 'Objectifs pédagogiques',
-      'detail.detail': 'Programme détaillé',
+      'detail.objectives': 'Objectifs pÃ©dagogiques',
+      'detail.detail': 'Programme dÃ©taillÃ©',
       'detail.included': 'Ce qui est inclus',
       'detail.teachers': 'Nos enseignants',
       'detail.price.total': 'pour l\'ensemble du programme',
-      'detail.faq.title': 'Questions fréquentes',
+      'detail.faq.title': 'Questions frÃ©quentes',
       'detail.faq.subtitle': 'Tout ce que vous devez savoir avant de rejoindre le programme.',
-      'detail.testimonials.title': 'Ce que disent nos élèves',
-      'detail.testimonials.subtitle': 'Des témoignages d\'apprenants qui ont suivi ce programme.',
-      'detail.cta.title': 'Prêt à débuter votre préparation ?',
-      'detail.cta.desc': 'Rejoignez notre programme intensif et mettez toutes les chances de votre côté pour réussir le TCF Québec.',
+      'detail.testimonials.title': 'Ce que disent nos Ã©lÃ¨ves',
+      'detail.testimonials.subtitle': 'Des tÃ©moignages d\'apprenants qui ont suivi ce programme.',
+      'detail.cta.title': 'PrÃªt Ã  dÃ©buter votre prÃ©paration ?',
+      'detail.cta.desc': 'Rejoignez notre programme intensif et mettez toutes les chances de votre cÃ´tÃ© pour rÃ©ussir le TCF QuÃ©bec.',
 
       /* Breadcrumbs */
       'breadcrumb.home': 'Accueil',
 
       /* Common */
-      'common.details': 'Détails',
-      'common.book': 'Réserver',
+      'common.details': 'DÃ©tails',
+      'common.book': 'RÃ©server',
       'common.choose': 'Choisir',
       'common.register': 'S\'inscrire',
       'common.contact': 'Nous contacter',
-      'common.see.details': 'Voir détails',
+      'common.see.details': 'Voir dÃ©tails',
       'common.month': '/ mois',
       'common.hour': '/ h',
-      'common.session': '/ séance',
+      'common.session': '/ sÃ©ance',
       'common.week': 'sem',
       'common.popular': 'Populaire',
 
       /* Filter buttons */
       'filter.tcf-canada': 'TCF Canada',
-      'filter.tcf-quebec': 'TCF Québec',
+      'filter.tcf-quebec': 'TCF QuÃ©bec',
       'filter.oral': 'Oral',
       'filter.particuliers': 'Particuliers',
       'filter.groupe': 'Groupe',
       'filter.intensif': 'Intensif',
-      'filter.evaluations': 'Évaluations',
+      'filter.evaluations': 'Ã‰valuations',
 
       /* Admin Sidebar */
       'admin.sidebar.section.gestion': 'Gestion',
@@ -993,21 +981,21 @@
       'booking.form.notes.placeholder': 'Informations compl\u00e9mentaires...',
       'booking.step1.footer.cancel': 'Annuler',
       'booking.step1.footer.confirm': 'Confirmer l\'inscription et commencer le test',
-      'booking.step1.footer.confirm.solo': 'Confirmer ma réservation et commencer le test',
-      'booking.step1.solo.title': 'Choisissez votre date et votre créneau',
-      'booking.step1.solo.calendar': 'Sélectionnez une date',
-      'booking.step1.solo.slots': 'Créneaux disponibles',
-      'booking.step1.solo.default': 'Sélectionnez une date',
+      'booking.step1.footer.confirm.solo': 'Confirmer ma rÃ©servation et commencer le test',
+      'booking.step1.solo.title': 'Choisissez votre date et votre crÃ©neau',
+      'booking.step1.solo.calendar': 'SÃ©lectionnez une date',
+      'booking.step1.solo.slots': 'CrÃ©neaux disponibles',
+      'booking.step1.solo.default': 'SÃ©lectionnez une date',
       'booking.step1.solo.prompt': 'Choisissez une date dans le calendrier',
-      'booking.step1.solo.pkg.title': 'Sélectionnez votre formule',
-      'booking.step1.solo.pkg.after': 'Ensuite, choisissez votre date et votre créneau',
+      'booking.step1.solo.pkg.title': 'SÃ©lectionnez votre formule',
+      'booking.step1.solo.pkg.after': 'Ensuite, choisissez votre date et votre crÃ©neau',
       'booking.step1.group.title': 'Attribution de votre groupe',
-      'booking.step1.group.desc1': 'Votre groupe sera déterminé après votre appel / test oral d\'évaluation.',
-      'booking.step1.group.desc2': 'Cette étape nous permet de vous orienter vers le niveau et le groupe les plus adaptés à votre profil, à vos objectifs et à votre disponibilité.',
+      'booking.step1.group.desc1': 'Votre groupe sera dÃ©terminÃ© aprÃ¨s votre appel / test oral d\'Ã©valuation.',
+      'booking.step1.group.desc2': 'Cette Ã©tape nous permet de vous orienter vers le niveau et le groupe les plus adaptÃ©s Ã  votre profil, Ã  vos objectifs et Ã  votre disponibilitÃ©.',
       'booking.step1.group.step1': 'Soumettez votre demande d\'inscription',
-      'booking.step1.group.step2': 'Complétez le test écrit de placement',
-      'booking.step1.group.step3': 'Participez à l\'appel d\'évaluation orale',
-      'booking.step1.group.step4': 'Nous vous assignons au groupe le plus adapté à votre niveau et à vos disponibilités',
+      'booking.step1.group.step2': 'ComplÃ©tez le test Ã©crit de placement',
+      'booking.step1.group.step3': 'Participez Ã  l\'appel d\'Ã©valuation orale',
+      'booking.step1.group.step4': 'Nous vous assignons au groupe le plus adaptÃ© Ã  votre niveau et Ã  vos disponibilitÃ©s',
       'booking.step1.group.step5': 'Vous recevez votre horaire et votre confirmation finale',
       'booking.step2.label': '2',
       'booking.step2.title': 'Test de niveau',
@@ -1321,7 +1309,7 @@
       /* Nav */
       'nav.home': 'Home',
       'nav.private': 'Private Lessons',
-      'nav.tcf': 'TCF Québec Preparation',
+      'nav.tcf': 'TCF QuÃ©bec Preparation',
       'nav.tcf_desc': 'Prepare calmly for the official test',
       'nav.workshops': 'Workshops',
       'nav.about': 'About',
@@ -1346,7 +1334,7 @@
       'footer.info.privacy': 'Privacy Policy',
       'footer.contact.title': 'Contact',
       'footer.contact.email': 'admin@cultulangues.ca',
-      'footer.contact.phone': '+1 (819) 271-9783',
+      'footer.contact.phone': '873-973-0513',
       'footer.copyright': 'Cultulangues. All rights reserved.',
       'footer.made': 'Made with care',
 
@@ -1355,13 +1343,13 @@
       'lang.en': 'EN',
 
       /* Hero */
-      'hero.badge': 'Certified school — +950 students',
+      'hero.badge': 'Certified school â€” +950 students',
       'hero.h1': 'At CultuLangues, we build your<br>success and give your <span class="text-gradient">projects</span><br>a fresh start.',
       'hero.intro': 'You want to learn one of Canada\'s official languages to:',
       'hero.list.1': 'Advance your career',
       'hero.list.2': 'Succeed in your immigration project',
       'hero.list.3': 'Gain confidence and independence in daily life',
-      'hero.btn.primary': 'Discover Our Learning Paths →',
+      'hero.btn.primary': 'Discover Our Learning Paths â†’',
       'hero.btn.secondary': 'Choose Your Format',
       'hero.stat1.value': '98%',
       'hero.stat1.label': 'Success Rate',
@@ -1372,7 +1360,7 @@
       'hero.card1.text': 'Private Lessons',
       'hero.card1.label': '1-to-1 Support',
       'hero.card2.text': 'TCF Preparation',
-      'hero.card2.label': 'Québec & Canada',
+      'hero.card2.label': 'QuÃ©bec & Canada',
       'hero.card3.text': 'Goal Success',
       'hero.card3.label': 'Support',
       'hero.card4.text': 'Native Teachers',
@@ -1380,7 +1368,7 @@
       'hero.card5.text': 'Certificate',
       'hero.card5.label': 'Recognized',
 
-      /* Hero — client revision */
+      /* Hero â€” client revision */
       'hero.client.brand': 'Cultulangues',
       'hero.client.line1': 'Master the languages!',
       'hero.client.line2': 'Transform your future!',
@@ -1392,7 +1380,7 @@
       'stat2.label': '% exam success rate',
       'stat3.value': '950',
       'stat3.label': 'Students supported',
-      'stat4.value': '4.9★',
+      'stat4.value': '4.9â˜…',
       'stat4.label': 'Google Reviews',
 
       /* Services */
@@ -1400,13 +1388,13 @@
       'services.subtitle': 'Programs designed for concrete goals: improve your oral skills, prepare for an official test, strengthen your everyday French, or get 100% personalized coaching.',
       'services.private.title': 'Private Lessons',
       'services.private.desc': 'Tailored support with a dedicated teacher. 100% adapted to your goals, level and pace. Flexible packages from 5h to 20h.',
-      'services.private.btn': 'Discover programs →',
+      'services.private.btn': 'Discover programs â†’',
       'services.tcf.title': 'TCF Preparation',
-      'services.tcf.desc': 'Intensive and regular programs for TCF Québec and TCF Canada. Weekly mock exams, personalized corrections and individual monitoring.',
-      'services.tcf.btn': 'Discover programs →',
+      'services.tcf.desc': 'Intensive and regular programs for TCF QuÃ©bec and TCF Canada. Weekly mock exams, personalized corrections and individual monitoring.',
+      'services.tcf.btn': 'Discover programs â†’',
       'services.atelier.title': 'Workshops',
       'services.atelier.desc': 'Thematic workshops to practice, exchange and perfect your French. Conversation, Canadian culture, level maintenance and TCF oral preparation.',
-      'services.atelier.btn': 'Discover workshops →',
+      'services.atelier.btn': 'Discover workshops â†’',
 
       /* Flagship offers */
       'flagship.1.title': 'Language Path',
@@ -1415,28 +1403,28 @@
       'flagship.1.tag2': 'Adults',
       'flagship.1.tag3': 'Confidence',
       'flagship.1.tag4': 'French',
-      'flagship.1.cta': 'Discover the program →',
-      'flagship.2.title': 'Cap sur l\'oral — Lingo Test',
+      'flagship.1.cta': 'Discover the program â†’',
+      'flagship.2.title': 'Cap sur l\'oral â€” Lingo Test',
       'flagship.2.desc': 'Two collaborative small-group paths to master oral French with confidence and precision, specially designed for the TCO.',
       'flagship.2.tag1': 'Path B & C',
       'flagship.2.tag2': 'TCO',
       'flagship.2.tag3': 'Part-time/Intensive',
       'flagship.2.tag4': 'English',
-      'flagship.2.cta': 'Discover the program →',
-      'flagship.3.title': 'TCF Québec Preparation',
-      'flagship.3.desc': 'Structured and caring support to pass your TCF Québec and move forward serenely in your immigration project.',
+      'flagship.2.cta': 'Discover the program â†’',
+      'flagship.3.title': 'TCF QuÃ©bec Preparation',
+      'flagship.3.desc': 'Structured and caring support to pass your TCF QuÃ©bec and move forward serenely in your immigration project.',
       'flagship.3.tag1': 'Immigration',
       'flagship.3.tag2': 'Level B2',
       'flagship.3.tag3': 'Mock exams',
       'flagship.3.tag4': 'TCF',
-      'flagship.3.cta': 'Discover the program →',
+      'flagship.3.cta': 'Discover the program â†’',
       'flagship.4.title': 'Solo Training',
       'flagship.4.desc': '100% personalized private lessons, flexible and adapted to your specific goals. Packages from 5h to 20h.',
       'flagship.4.tag1': '1-to-1',
       'flagship.4.tag2': 'Flexible',
-      'flagship.4.tag3': '5h–20h packages',
+      'flagship.4.tag3': '5hâ€“20h packages',
       'flagship.4.tag4': 'Custom',
-      'flagship.4.cta': 'Discover the program →',
+      'flagship.4.cta': 'Discover the program â†’',
 
       /* Compare */
       'compare.title': 'Which program <span class="text-gradient">fits</span> you?',
@@ -1451,57 +1439,45 @@
       'compare.row.accompagnement': 'Support',
       'compare.row.ideal': 'Ideal for',
       'compare.row.flexibilite': 'Flexibility',
-      'compare.pl.objectif': 'General French progress',
+      'compare.pl.objectif': 'General progress in French and English.',
       'compare.pl.format': 'Group (max 5)',
       'compare.pl.accomp': 'Structured, collective',
       'compare.pl.ideal': 'Adults all levels',
       'compare.pl.flex': 'Fixed schedule',
-      'compare.oral.objectif': 'Oral mastery & TCO',
-      'compare.oral.format': 'Group (max 5), part-time or intensive',
+      'compare.oral.objectif': 'Targeted preparation for the TCO test (level B or C).',
+      'compare.oral.format': 'Group (max 5)',
       'compare.oral.accomp': 'Oral expert, collaborative',
       'compare.oral.ideal': 'TCO candidates',
       'compare.oral.flex': 'Part-time or intensive',
-      'compare.tcf.objectif': 'TCF Québec & immigration',
+      'compare.tcf.objectif': 'Preparation for immigration language tests.',
       'compare.tcf.format': 'Guided path, simulations',
       'compare.tcf.accomp': 'Step by step, caring',
-      'compare.tcf.ideal': 'Quebec immigration projects',
+      'compare.tcf.ideal': 'Candidates for Quebec or Canada immigration.',
       'compare.tcf.flex': 'Progressive path',
       'compare.solo.objectif': 'Custom goals',
-      'compare.solo.format': '1-to-1, fully flexible',
+      'compare.solo.format': '1-to-1, individual',
       'compare.solo.accomp': '100% tailored',
-      'compare.solo.ideal': 'Flexible or targeted profile',
-      'compare.solo.flex': 'Total (5h–20h)',
+      'compare.solo.ideal': 'Candidates with specific goals',
+      'compare.solo.flex': 'Packages (from 5h to 20h)',
 
       /* Why */
       'why.title': 'Why <span class="text-gradient">Cultulangues</span>?',
-      'why.subtitle': 'We believe in a humane and demanding approach to guide you toward success.',
+      'why.subtitle': 'Because your progress deserves a method that works, a team that supports you, and an experience that makes you want to learn.',
       'why.card1.title': 'Certified Teachers',
-      'why.card1.desc': 'All our teachers hold FLE degrees and specialize in TCF exam preparation.',
+      'why.card1.desc': 'All our teachers are qualified, experts in adult learning. Precise, caring and effective support for concrete results.',
       'why.card2.title': 'Personalized Follow-up',
       'why.card2.desc': 'A path adapted to your level, goals, and learning pace.',
       'why.card3.title': 'Caring Approach',
       'why.card3.desc': 'We put people at the heart of our teaching to help you give your best.',
 
       /* Testimonials Home */
-      'testimonials.title': 'They <span class="text-gradient">trust</span> us',
-      'testimonials.subtitle': 'Discover what our students say.',
-      'testimonial1.text': 'Thanks to Cultulangues, I obtained my TCF Québec with B2 level. The personalized support and mock exams really prepared me.',
-      'testimonial1.name': 'Maria S.',
-      'testimonial1.info': 'TCF Québec — Level B2',
-      'testimonial2.text': 'A great team that helped me regain confidence in my oral French. The conversation workshops were a real revelation.',
-      'testimonial2.name': 'Ahmed K.',
-      'testimonial2.info': 'Oral Preparation — Level C1',
-      'testimonial3.text': 'I recommend without hesitation. The platform is clear, the courses are well-structured and the teachers are attentive. Exactly what I needed.',
-      'testimonial3.name': 'Laura P.',
-      'testimonial3.info': 'TCF Canada — Level C1',
-
       /* CTA */
       'cta.home.title': 'Ready to start your journey?',
-      'cta.home.desc': 'Join over 950 students who trust us for their language preparation.',
-      'cta.home.btn': 'Create my free account →',
+      'cta.home.desc': 'Join those who choose excellence for their language progress.',
+      'cta.home.btn': 'Create my free account â†’',
 
       /* About Page */
-      'about.title': 'About — Cultulangues',
+      'about.title': 'About â€” Cultulangues',
       'about.mission.title': 'Our Mission',
       'about.mission.text': 'At Cultulangues, we believe that mastering French is the key to linguistic and professional success. Our mission is to support each learner with care, professionalism and rigor toward the success of their projects.',
       'about.pedagogy.title': 'Our Teaching Approach',
@@ -1516,9 +1492,9 @@
       'about.trust1.title': 'Certified teachers who truly make a difference',
       'about.trust1.desc': 'Our instructors are certified, experienced and selected for their teaching excellence. They know how to turn a lesson into an experience, create breakthrough moments, and help you progress faster than you ever imagined.<br><strong>Top-level teaching designed for visible results.</strong>',
       'about.trust2.title': 'An international community from all four corners of the world',
-      'about.trust2.desc': 'Cultulangues brings together learners from many countries, cultures and backgrounds. You practise with people living in Canada, Europe, Africa, South America… a diversity that enriches every exchange and broadens your horizons.<br><strong>You learn a language, you join a global community.</strong>',
+      'about.trust2.desc': 'Cultulangues brings together learners from many countries, cultures and backgrounds. You practise with people living in Canada, Europe, Africa, South Americaâ€¦ a diversity that enriches every exchange and broadens your horizons.<br><strong>You learn a language, you join a global community.</strong>',
       'about.trust3.title': 'Fast, concrete and lasting results',
-      'about.trust3.desc': 'Our learners see the difference within the first few weeks: more fluency, more confidence, more precision. Every step is measurable, every improvement is real, and every goal becomes achievable.<br><strong>Your success is no accident — it\'s our method.</strong>',
+      'about.trust3.desc': 'Our learners see the difference within the first few weeks: more fluency, more confidence, more precision. Every step is measurable, every improvement is real, and every goal becomes achievable.<br><strong>Your success is no accident â€” it\'s our method.</strong>',
 
       /* Contact Page */
       'contact.title': 'Contact Us',
@@ -1537,7 +1513,7 @@
       'contact.form.submit': 'Send Message',
       'contact.info.title': 'Our Details',
       'contact.info.phone.title': 'Phone',
-      'contact.info.phone.value': '+1 (819) 271-9783',
+      'contact.info.phone.value': '873-973-0513',
       'contact.info.email.title': 'Email',
       'contact.info.email.value': 'admin@cultulangues.ca',
       'contact.info.hours.title': 'Hours',
@@ -1559,7 +1535,7 @@
       /* TCF Page */
       'tcf.breadcrumb': 'TCF Preparation',
       'tcf.title': '<span class="text-gradient">TCF</span> Preparation',
-      'tcf.subtitle': 'Intensive and regular programs to succeed in TCF Québec and TCF Canada. Weekly mock exams and personalized monitoring.',
+      'tcf.subtitle': 'Intensive and regular programs to succeed in TCF QuÃ©bec and TCF Canada. Weekly mock exams and personalized monitoring.',
       'tcf.section.title': 'Choose your <span class="text-gradient">program</span>',
       'tcf.section.subtitle': 'Complete training for each exam, with support adapted to your pace.',
       'tcf.how.title': 'How it works?',
@@ -1600,7 +1576,7 @@
       'detail.testimonials.title': 'What Our Students Say',
       'detail.testimonials.subtitle': 'Testimonials from learners who completed this program.',
       'detail.cta.title': 'Ready to start your preparation?',
-      'detail.cta.desc': 'Join our intensive program and maximize your chances of succeeding in the TCF Québec.',
+      'detail.cta.desc': 'Join our intensive program and maximize your chances of succeeding in the TCF QuÃ©bec.',
 
       /* Breadcrumbs */
       'breadcrumb.home': 'Home',
@@ -1620,7 +1596,7 @@
 
       /* Filter buttons */
       'filter.tcf-canada': 'TCF Canada',
-      'filter.tcf-quebec': 'TCF Québec',
+      'filter.tcf-quebec': 'TCF QuÃ©bec',
       'filter.oral': 'Oral',
       'filter.particuliers': 'Private',
       'filter.groupe': 'Group',
@@ -2630,12 +2606,12 @@
     }
   };
 
-  /* ═══════════════════════════════════════════════
-     COURSE & SERVICE CONTENT — Multilingual Data
-     ═══════════════════════════════════════════════ */
+  /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     COURSE & SERVICE CONTENT â€” Multilingual Data
+     â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   window.courseContent = {
     fr: {
-      /* ─── Programs Page (programs.html) ─── */
+      /* â”€â”€â”€ Programs Page (programs.html) â”€â”€â”€ */
       programs: {
         '1': { badge1:'TCF Canada', badge2:'Intensif', title:'TCF Canada \u00b7 Intensif', desc:'Programme intensif d\u00e9di\u00e9 au TCF Canada avec un focus sur l\'expression \u00e9crite et orale. Simulations d\'examen hebdomadaires et corrections personnalis\u00e9es pour maximiser votre score.', duration:'\ud83d\udcc5 16 sem', frequency:'\u23f1 2h30 \u2014 3x/sem', students:'\ud83d\udc64 6 \u00e9l\u00e8ves max', priceLabel:'/ mois' },
         '2': { badge1:'TCF Canada', badge2:'R\u00e9gulier', title:'TCF Canada \u00b7 R\u00e9gulier', desc:'Pr\u00e9paration progressive au TCF Canada en petits groupes. Id\u00e9al pour les apprenants qui souhaitent concilier apprentissage et emploi du temps charg\u00e9 tout en restant encadr\u00e9s.', duration:'\ud83d\udcc5 24 sem', frequency:'\u23f1 1h30 \u2014 2x/sem', students:'\ud83d\udc64 10 \u00e9l\u00e8ves max', priceLabel:'/ mois' },
@@ -2649,7 +2625,7 @@
         '10': { badge1:'\u00c9valuation', badge2:'', title:'Test de Placement', desc:'\u00c9valuation compl\u00e8te de votre niveau en fran\u00e7ais (compr\u00e9hension et expression \u00e9crite). R\u00e9sultats d\u00e9taill\u00e9s avec recommandations personnalis\u00e9es.', duration:'\ud83d\udcc5 1 s\u00e9ance', frequency:'\u23f1 2h', students:'\ud83d\udc64 Individuel', priceLabel:'' },
         '11': { badge1:'\u00c9valuation', badge2:'', title:'\u00c9valuation Orale', desc:'Test oral individuel de 45 minutes pour \u00e9valuer votre expression et compr\u00e9hension orales. Id\u00e9al avant de choisir votre programme.', duration:'\ud83d\udcc5 1 s\u00e9ance', frequency:'\u23f1 45 min', students:'\ud83d\udc64 Individuel', priceLabel:'' }
       },
-      /* ─── TCF Page (tcf-preparation.html) ─── */
+      /* â”€â”€â”€ TCF Page (tcf-preparation.html) â”€â”€â”€ */
       tcf: {
         '1': { badge1:'TCF Qu\u00e9bec', badge2:'', title:'TCF Qu\u00e9bec \u00b7 Intensif', desc:'Programme intensif con\u00e7u pour r\u00e9ussir le TCF Qu\u00e9bec. Cours complets, simulations d\'examen et suivi personnalis\u00e9.', duration:'\ud83d\udcc5 12 semaines', frequency:'\u23f1 2h/s\u00e9ance', students:'\ud83d\udc64 8 \u00e9l\u00e8ves max', priceLabel:'/ mois' },
         '2': { badge1:'TCF Qu\u00e9bec', badge2:'', title:'TCF Qu\u00e9bec \u00b7 R\u00e9gulier', desc:'Pr\u00e9paration \u00e9quilibr\u00e9e au TCF Qu\u00e9bec avec un rythme adapt\u00e9. Parfait pour une progression durable.', duration:'\ud83d\udcc5 16 semaines', frequency:'\u23f1 1h30/s\u00e9ance', students:'\ud83d\udc64 10 \u00e9l\u00e8ves max', priceLabel:'/ mois' },
@@ -2658,7 +2634,7 @@
         '5': { badge1:'Oral B/C', badge2:'', title:'Oral B/C \u00b7 Intensif', desc:'Ateliers intensifs d\u00e9di\u00e9s \u00e0 l\'expression orale niveaux B et C. Coaching personnalis\u00e9 et mises en situation.', duration:'\ud83d\udcc5 8 semaines', frequency:'\u23f1 1h30/s\u00e9ance', students:'\ud83d\udc64 4 \u00e9l\u00e8ves max', priceLabel:'/ mois' },
         '6': { badge1:'G\u00e9n\u00e9ral', badge2:'', title:'Programme Intensif G\u00e9n\u00e9ral', desc:'Immersion totale avec 8h de cours par semaine. Progression rapide garantie pour tous les niveaux.', duration:'\ud83d\udcc5 8 semaines', frequency:'\u23f1 2h/s\u00e9ance', students:'\ud83d\udc64 10 \u00e9l\u00e8ves max', priceLabel:'/ mois' }
       },
-      /* ─── Private Lessons Page (private-lessons.html) ─── */
+      /* â”€â”€â”€ Private Lessons Page (private-lessons.html) â”€â”€â”€ */
       private: {
         '1': { badge1:'Fran\u00e7ais g\u00e9n\u00e9ral', badge2:'', title:'Programme de Fran\u00e7ais Complet', desc:'Apprentissage complet du fran\u00e7ais du niveau A1 \u00e0 C2. Grammaire, vocabulaire, expression \u00e9crite et orale.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / s\u00e9ance', students:'\ud83d\udc64 1 \u00e9l\u00e8ve', priceLabel:'/ h' },
         '2': { badge1:'Oral', badge2:'', title:'Communication Orale', desc:'Am\u00e9liorez votre aisance, votre prononciation et votre fluidit\u00e9 \u00e0 l\'oral. Coaching personnalis\u00e9.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / s\u00e9ance', students:'\ud83d\udc64 1 \u00e9l\u00e8ve', priceLabel:'/ h' },
@@ -2668,70 +2644,70 @@
         '6': { badge1:'Simulation', badge2:'', title:'Simulations d\'Examen', desc:'Examens blancs complets dans les conditions r\u00e9elles. Mises en situation d\'entretien et pr\u00e9sentations.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / s\u00e9ance', students:'\ud83d\udc64 1 \u00e9l\u00e8ve', priceLabel:'/ h' },
         '7': { badge1:'Maintien', badge2:'', title:'Maintien du Fran\u00e7ais', desc:'Pratique r\u00e9guli\u00e8re pour entretenir et approfondir vos comp\u00e9tences linguistiques avec un suivi continu.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / s\u00e9ance', students:'\ud83d\udc64 1 \u00e9l\u00e8ve', priceLabel:'/ h' }
       },
-      /* ─── Workshops Page (workshops.html) ─── */
+      /* â”€â”€â”€ Workshops Page (workshops.html) â”€â”€â”€ */
       workshops: {
         '1': { badge1:'Conversation', badge2:'', title:'Atelier de Conversation', desc:'Am\u00e9liorez votre aisance \u00e0 l\'oral dans une ambiance conviviale et bienveillante. Th\u00e8mes vari\u00e9s : actualit\u00e9, culture, soci\u00e9t\u00e9.', duration:'\ud83d\udcc5 6 s\u00e9ances', frequency:'\u23f1 1h30 / s\u00e9ance', students:'\ud83d\udc64 8 participants max', priceLabel:'' },
         '2': { badge1:'Culture', badge2:'', title:'Culture Canadienne & Qu\u00e9b\u00e9coise', desc:'Plongez dans la culture francophone nord-am\u00e9ricaine : histoire, expressions, coutumes et enjeux contemporains.', duration:'\ud83d\udcc5 4 s\u00e9ances', frequency:'\u23f1 1h30 / s\u00e9ance', students:'\ud83d\udc64 12 participants max', priceLabel:'' },
         '3': { badge1:'Maintien', badge2:'', title:'Maintien & Renforcement', desc:'Pour les apprenants de niveau avanc\u00e9 souhaitant entretenir leur niveau et approfondir leurs comp\u00e9tences.', duration:'\ud83d\udcc5 8 s\u00e9ances', frequency:'\u23f1 1h / s\u00e9ance', students:'\ud83d\udc64 10 participants max', priceLabel:'' }
       },
-      /* ─── Private Packages ─── */
+      /* â”€â”€â”€ Private Packages â”€â”€â”€ */
       packages: {
-        '1': { title:'Forfait Découverte', desc:'Idéal pour découvrir la méthode ou pour un besoin ponctuel.', sessions:'⏱ 5 séances', rate:'💰 45€/h', price:'225€' },
-        '2': { title:'Forfait Standard', desc:'Parfait pour un suivi régulier sur plusieurs semaines.', sessions:'⏱ 10 séances', rate:'💰 42€/h', price:'420€' },
-        '3': { title:'Forfait Avancé', desc:'Le meilleur rapport qualité-prix pour une progression significative.', sessions:'⏱ 15 séances', rate:'💰 40€/h', price:'600€' },
-        '4': { title:'Forfait Intensif', desc:'Pour un accompagnement complet et une immersion linguistique totale.', sessions:'⏱ 20 séances', rate:'💰 38€/h', price:'760€' }
+        '1': { title:'Forfait DÃ©couverte', desc:'IdÃ©al pour dÃ©couvrir la mÃ©thode ou pour un besoin ponctuel.', sessions:'â± 5 sÃ©ances', rate:'ðŸ’° 45â‚¬/h', price:'225â‚¬' },
+        '2': { title:'Forfait Standard', desc:'Parfait pour un suivi rÃ©gulier sur plusieurs semaines.', sessions:'â± 10 sÃ©ances', rate:'ðŸ’° 42â‚¬/h', price:'420â‚¬' },
+        '3': { title:'Forfait AvancÃ©', desc:'Le meilleur rapport qualitÃ©-prix pour une progression significative.', sessions:'â± 15 sÃ©ances', rate:'ðŸ’° 40â‚¬/h', price:'600â‚¬' },
+        '4': { title:'Forfait Intensif', desc:'Pour un accompagnement complet et une immersion linguistique totale.', sessions:'â± 20 sÃ©ances', rate:'ðŸ’° 38â‚¬/h', price:'760â‚¬' }
       },
-      /* ─── Program Detail Page (program-detail.html) ─── */
+      /* â”€â”€â”€ Program Detail Page (program-detail.html) â”€â”€â”€ */
       'program-detail': {
         'tcf-quebec-intensif': {
-          badge1:'TCF Québec', badge2:'Intensif',
-          title:'Préparation Intensive TCF Québec',
-          subtitle:'Maîtrisez toutes les épreuves du TCF Québec avec un programme intensif conçu par des experts FLE. Simulations hebdomadaires, suivi individualisé et progression garantie.',
-          desc1:'Notre préparation intensive au TCF Québec est conçue pour vous permettre d\'atteindre le niveau requis pour vos objectifs linguistiques. Encadré par des enseignants certifiés FLE, vous bénéficierez d\'une formation complète couvrant les 4 compétences évaluées : compréhension orale, compréhension écrite, expression orale et expression écrite.',
-          desc2:'Le programme alterne cours théoriques, ateliers pratiques et simulations d\'examen en conditions réelles. Chaque séance est pensée pour maximiser votre progression et vous familiariser avec les formats et les exigences du TCF Québec. Un test diagnostique est réalisé en début de parcours pour identifier vos forces et axes d\'amélioration.',
-          duration:'12 semaines', rhythm:'3 séances / semaine', session:'2h / séance', students:'8 élèves max',
-          price:'450€', priceTotal:'Soit 1 350€ pour l\'ensemble du programme (12 semaines)',
+          badge1:'TCF QuÃ©bec', badge2:'Intensif',
+          title:'PrÃ©paration Intensive TCF QuÃ©bec',
+          subtitle:'MaÃ®trisez toutes les Ã©preuves du TCF QuÃ©bec avec un programme intensif conÃ§u par des experts FLE. Simulations hebdomadaires, suivi individualisÃ© et progression garantie.',
+          desc1:'Notre prÃ©paration intensive au TCF QuÃ©bec est conÃ§ue pour vous permettre d\'atteindre le niveau requis pour vos objectifs linguistiques. EncadrÃ© par des enseignants certifiÃ©s FLE, vous bÃ©nÃ©ficierez d\'une formation complÃ¨te couvrant les 4 compÃ©tences Ã©valuÃ©es : comprÃ©hension orale, comprÃ©hension Ã©crite, expression orale et expression Ã©crite.',
+          desc2:'Le programme alterne cours thÃ©oriques, ateliers pratiques et simulations d\'examen en conditions rÃ©elles. Chaque sÃ©ance est pensÃ©e pour maximiser votre progression et vous familiariser avec les formats et les exigences du TCF QuÃ©bec. Un test diagnostique est rÃ©alisÃ© en dÃ©but de parcours pour identifier vos forces et axes d\'amÃ©lioration.',
+          duration:'12 semaines', rhythm:'3 sÃ©ances / semaine', session:'2h / sÃ©ance', students:'8 Ã©lÃ¨ves max',
+          price:'450â‚¬', priceTotal:'Soit 1 350â‚¬ pour l\'ensemble du programme (12 semaines)',
           durationSidebar:'12 semaines', rhythmSidebar:'3x / semaine', studentsSidebar:'8 max', nextSession:'5 Sept 2026', level:'A2 minimum'
         }
       },
-      /* ─── Booking Page (booking.html) ─── */
+      /* â”€â”€â”€ Booking Page (booking.html) â”€â”€â”€ */
       booking: {
         courseDB: {
-          'private': { name:'Cours particuliers', desc:'Cours 1-on-1 avec un enseignant certifié. Programme personnalisé selon vos objectifs.' },
-          'tcf-quebec': { name:'TCF Québec', desc:'Préparation complète au TCF Québec. Cours en groupe avec horaire fixe.' },
-          'tcf-canada': { name:'TCF Canada', desc:'Préparation complète au TCF Canada. Cours en groupe avec horaire fixe.' },
-          'oral-bc': { name:'Préparation orale — Colombie-Britannique', desc:'Préparation en petit groupe à l\'examen oral de la Colombie-Britannique. Maximum 4 élèves.' },
-          'intensif': { name:'Programme intensif', desc:'Cours intensif en groupe. 4 séances par semaine pour des progrès rapides.' },
+          'private': { name:'Cours particuliers', desc:'Cours 1-on-1 avec un enseignant certifiÃ©. Programme personnalisÃ© selon vos objectifs.' },
+          'tcf-quebec': { name:'TCF QuÃ©bec', desc:'PrÃ©paration complÃ¨te au TCF QuÃ©bec. Cours en groupe avec horaire fixe.' },
+          'tcf-canada': { name:'TCF Canada', desc:'PrÃ©paration complÃ¨te au TCF Canada. Cours en groupe avec horaire fixe.' },
+          'oral-bc': { name:'PrÃ©paration orale â€” Colombie-Britannique', desc:'PrÃ©paration en petit groupe Ã  l\'examen oral de la Colombie-Britannique. Maximum 4 Ã©lÃ¨ves.' },
+          'intensif': { name:'Programme intensif', desc:'Cours intensif en groupe. 4 sÃ©ances par semaine pour des progrÃ¨s rapides.' },
           'groupe': { name:'Cours en groupe', desc:'Apprenez en groupe avec d\'autres apprenants. Ambiance conviviale et motivante.' },
-          'samedi': { name:'Programme du samedi', desc:'Cours en groupe chaque samedi matin. Parfait pour les professionnels occupés.' },
-          'workshop-conversation': { name:'Atelier de conversation', desc:'Atelier hebdomadaire de conversation. Thèmes variés pour pratiquer l\'oral.' },
-          'workshop-culture': { name:'Atelier culturel', desc:'Atelier hebdomadaire sur la culture francophone. Cinéma, littérature, actualité.' },
-          'workshop-maintenance': { name:'Atelier de maintien', desc:'Atelier hebdomadaire pour maintenir et pratiquer votre français.' }
+          'samedi': { name:'Programme du samedi', desc:'Cours en groupe chaque samedi matin. Parfait pour les professionnels occupÃ©s.' },
+          'workshop-conversation': { name:'Atelier de conversation', desc:'Atelier hebdomadaire de conversation. ThÃ¨mes variÃ©s pour pratiquer l\'oral.' },
+          'workshop-culture': { name:'Atelier culturel', desc:'Atelier hebdomadaire sur la culture francophone. CinÃ©ma, littÃ©rature, actualitÃ©.' },
+          'workshop-maintenance': { name:'Atelier de maintien', desc:'Atelier hebdomadaire pour maintenir et pratiquer votre franÃ§ais.' }
         },
         programData: {
-          'complete-french': 'Français complet',
+          'complete-french': 'FranÃ§ais complet',
           'oral-communication': 'Communication orale',
-          'tcf-preparation': 'Préparation au TCF',
-          'french-refresher': 'Remise à niveau',
+          'tcf-preparation': 'PrÃ©paration au TCF',
+          'french-refresher': 'Remise Ã  niveau',
           'public-service': 'Fonction publique',
           'exam-simulations': 'Simulations d\'examen',
-          'french-maintenance': 'Maintien du français',
+          'french-maintenance': 'Maintien du franÃ§ais',
           'intensif': 'Intensif',
-          'regulier': 'Régulier'
+          'regulier': 'RÃ©gulier'
         },
         descriptionOverrides: {
-          'private-complete-french': 'Programme complet de français en cours particuliers. Idéal pour une immersion totale.',
-          'private-oral-communication': 'Cours particuliers axés sur la communication orale. Améliorez votre expression et votre compréhension.',
-          'private-tcf-preparation': 'Préparation individuelle au TCF avec un enseignant dédié.',
-          'private-french-refresher': 'Remise à niveau en français. Parfait pour réactiver vos connaissances.',
-          'private-public-service': 'Français pour la fonction publique. Vocabulaire et situations administratives.',
-          'private-exam-simulations': 'Simulations d\'examen en conditions réelles. Préparez-vous en toute confiance.',
-          'private-french-maintenance': 'Cours de maintien pour garder votre niveau de français.'
+          'private-complete-french': 'Programme complet de franÃ§ais en cours particuliers. IdÃ©al pour une immersion totale.',
+          'private-oral-communication': 'Cours particuliers axÃ©s sur la communication orale. AmÃ©liorez votre expression et votre comprÃ©hension.',
+          'private-tcf-preparation': 'PrÃ©paration individuelle au TCF avec un enseignant dÃ©diÃ©.',
+          'private-french-refresher': 'Remise Ã  niveau en franÃ§ais. Parfait pour rÃ©activer vos connaissances.',
+          'private-public-service': 'FranÃ§ais pour la fonction publique. Vocabulaire et situations administratives.',
+          'private-exam-simulations': 'Simulations d\'examen en conditions rÃ©elles. PrÃ©parez-vous en toute confiance.',
+          'private-french-maintenance': 'Cours de maintien pour garder votre niveau de franÃ§ais.'
         }
       }
     },
     en: {
-      /* ─── Programs Page ─── */
+      /* â”€â”€â”€ Programs Page â”€â”€â”€ */
       programs: {
         '1': { badge1:'TCF Canada', badge2:'Intensive', title:'TCF Canada \u00b7 Intensive', desc:'Intensive program dedicated to the TCF Canada with a focus on writing and speaking. Weekly exam simulations and personalized corrections to maximize your score.', duration:'\ud83d\udcc5 16 weeks', frequency:'\u23f1 2h30 \u2014 3x/week', students:'\ud83d\udc64 6 students max', priceLabel:'/ month' },
         '2': { badge1:'TCF Canada', badge2:'Regular', title:'TCF Canada \u00b7 Regular', desc:'Progressive TCF Canada preparation in small groups. Perfect for learners who need to balance studies with a busy schedule while staying guided.', duration:'\ud83d\udcc5 24 weeks', frequency:'\u23f1 1h30 \u2014 2x/week', students:'\ud83d\udc64 10 students max', priceLabel:'/ month' },
@@ -2745,7 +2721,7 @@
         '10': { badge1:'Assessment', badge2:'', title:'Placement Test', desc:'Complete evaluation of your French level (reading comprehension and writing). Detailed results with personalized recommendations.', duration:'\ud83d\udcc5 1 session', frequency:'\u23f1 2h', students:'\ud83d\udc64 Individual', priceLabel:'' },
         '11': { badge1:'Assessment', badge2:'', title:'Oral Assessment', desc:'45-minute individual oral test to evaluate your speaking and listening skills. Ideal before choosing your program.', duration:'\ud83d\udcc5 1 session', frequency:'\u23f1 45 min', students:'\ud83d\udc64 Individual', priceLabel:'' }
       },
-      /* ─── TCF Page ─── */
+      /* â”€â”€â”€ TCF Page â”€â”€â”€ */
       tcf: {
         '1': { badge1:'TCF Qu\u00e9bec', badge2:'', title:'TCF Qu\u00e9bec \u00b7 Intensive', desc:'Intensive program designed to pass the TCF Qu\u00e9bec. Comprehensive classes, exam simulations, and personalized support.', duration:'\ud83d\udcc5 12 weeks', frequency:'\u23f1 2h/session', students:'\ud83d\udc64 8 students max', priceLabel:'/ month' },
         '2': { badge1:'TCF Qu\u00e9bec', badge2:'', title:'TCF Qu\u00e9bec \u00b7 Regular', desc:'Balanced TCF Qu\u00e9bec preparation at an adapted pace. Perfect for steady progress.', duration:'\ud83d\udcc5 16 weeks', frequency:'\u23f1 1h30/session', students:'\ud83d\udc64 10 students max', priceLabel:'/ month' },
@@ -2754,7 +2730,7 @@
         '5': { badge1:'Oral B/C', badge2:'', title:'Oral B/C \u00b7 Intensive', desc:'Intensive workshops for B and C level oral expression. Personalized coaching and real-life scenarios.', duration:'\ud83d\udcc5 8 weeks', frequency:'\u23f1 1h30/session', students:'\ud83d\udc64 4 students max', priceLabel:'/ month' },
         '6': { badge1:'General', badge2:'', title:'General Intensive Program', desc:'Total immersion with 8 hours of class per week. Fast progress guaranteed for all levels.', duration:'\ud83d\udcc5 8 weeks', frequency:'\u23f1 2h/session', students:'\ud83d\udc64 10 students max', priceLabel:'/ month' }
       },
-      /* ─── Private Lessons Page ─── */
+      /* â”€â”€â”€ Private Lessons Page â”€â”€â”€ */
       private: {
         '1': { badge1:'General French', badge2:'', title:'Complete French Program', desc:'Complete French learning from A1 to C2 levels. Grammar, vocabulary, writing and speaking skills.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / session', students:'\ud83d\udc64 1 student', priceLabel:'/ h' },
         '2': { badge1:'Oral', badge2:'', title:'Oral Communication', desc:'Improve your fluency, pronunciation, and speaking confidence. Personalized coaching.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / session', students:'\ud83d\udc64 1 student', priceLabel:'/ h' },
@@ -2764,20 +2740,20 @@
         '6': { badge1:'Simulation', badge2:'', title:'Exam Simulations', desc:'Full mock exams under real conditions. Interview role-plays and presentations.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / session', students:'\ud83d\udc64 1 student', priceLabel:'/ h' },
         '7': { badge1:'Maintenance', badge2:'', title:'French Maintenance', desc:'Regular practice to maintain and deepen your language skills with ongoing support.', duration:'\ud83d\udcc5 Flexible', frequency:'\u23f1 1h / session', students:'\ud83d\udc64 1 student', priceLabel:'/ h' }
       },
-      /* ─── Workshops Page ─── */
+      /* â”€â”€â”€ Workshops Page â”€â”€â”€ */
       workshops: {
         '1': { badge1:'Conversation', badge2:'', title:'Conversation Workshop', desc:'Improve your speaking fluency in a warm and supportive environment. Varied topics: news, culture, society.', duration:'\ud83d\udcc5 6 sessions', frequency:'\u23f1 1h30 / session', students:'\ud83d\udc64 8 participants max', priceLabel:'' },
         '2': { badge1:'Culture', badge2:'', title:'Canadian & Qu\u00e9b\u00e9cois Culture', desc:'Explore North American Francophone culture: history, expressions, customs, and contemporary issues.', duration:'\ud83d\udcc5 4 sessions', frequency:'\u23f1 1h30 / session', students:'\ud83d\udc64 12 participants max', priceLabel:'' },
         '3': { badge1:'Maintenance', badge2:'', title:'Maintenance & Reinforcement', desc:'For advanced learners who want to maintain their level and deepen their skills.', duration:'\ud83d\udcc5 8 sessions', frequency:'\u23f1 1h / session', students:'\ud83d\udc64 10 participants max', priceLabel:'' }
       },
-      /* ─── Private Packages ─── */
+      /* â”€â”€â”€ Private Packages â”€â”€â”€ */
       packages: {
         '1': { title:'Discovery Package', desc:'Ideal for trying the method or for one-off needs.', sessions:'\u23f1 5 sessions', rate:'\ud83d\udcb0 45\u20ac/h', price:'225\u20ac' },
         '2': { title:'Standard Package', desc:'Perfect for regular support over several weeks.', sessions:'\u23f1 10 sessions', rate:'\ud83d\udcb0 42\u20ac/h', price:'420\u20ac' },
         '3': { title:'Advanced Package', desc:'Best value for meaningful progress.', sessions:'\u23f1 15 sessions', rate:'\ud83d\udcb0 40\u20ac/h', price:'600\u20ac' },
         '4': { title:'Intensive Package', desc:'For complete support and total language immersion.', sessions:'\u23f1 20 sessions', rate:'\ud83d\udcb0 38\u20ac/h', price:'760\u20ac' }
       },
-      /* ─── Program Detail Page (program-detail.html) ─── */
+      /* â”€â”€â”€ Program Detail Page (program-detail.html) â”€â”€â”€ */
       'program-detail': {
         'tcf-quebec-intensif': {
           badge1:'TCF Qu\u00e9bec', badge2:'Intensive',
@@ -2790,13 +2766,13 @@
           durationSidebar:'12 weeks', rhythmSidebar:'3x / week', studentsSidebar:'8 max', nextSession:'Sept 5, 2026', level:'A2 minimum'
         }
       },
-      /* ─── Booking Page (booking.html) ─── */
+      /* â”€â”€â”€ Booking Page (booking.html) â”€â”€â”€ */
       booking: {
         courseDB: {
           'private': { name:'Private Lessons', desc:'1-on-1 classes with a certified teacher. Personalized program based on your goals.' },
           'tcf-quebec': { name:'TCF Qu\u00e9bec', desc:'Complete TCF Qu\u00e9bec preparation. Group classes with a fixed schedule.' },
           'tcf-canada': { name:'TCF Canada', desc:'Complete TCF Canada preparation. Group classes with a fixed schedule.' },
-          'oral-bc': { name:'Oral Preparation — British Columbia', desc:'Small-group preparation for the British Columbia oral exam. Maximum 4 students.' },
+          'oral-bc': { name:'Oral Preparation â€” British Columbia', desc:'Small-group preparation for the British Columbia oral exam. Maximum 4 students.' },
           'intensif': { name:'Intensive Program', desc:'Intensive group classes. 4 sessions per week for rapid progress.' },
           'groupe': { name:'Group Classes', desc:'Learn in a group with other learners. Friendly and motivating environment.' },
           'samedi': { name:'Saturday Program', desc:'Group classes every Saturday morning. Perfect for busy professionals.' },
@@ -2828,7 +2804,7 @@
     }
   };
 
-  /* ─── Render course content on language switch ─── */
+  /* â”€â”€â”€ Render course content on language switch â”€â”€â”€ */
   function renderCourseCards() {
     var lang = window.currentLang;
     var data = window.courseContent[lang];
@@ -2899,9 +2875,9 @@
 
   function init() {
 
-    /* ───────────────────────────────────────────────
-       SCROLL REVEAL — IntersectionObserver
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       SCROLL REVEAL â€” IntersectionObserver
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initScrollReveal() {
       var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger');
       if (!els.length) return;
@@ -2917,9 +2893,9 @@
     }
     initScrollReveal();
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        COUNTER ANIMATION
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initCounters() {
       var counters = document.querySelectorAll('.counter');
       if (!counters.length) return;
@@ -2952,9 +2928,9 @@
     }
     initCounters();
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        PROGRESSIVE DISCLOSURE (stagger animation class)
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initStagger() {
       document.querySelectorAll('.reveal-stagger').forEach(function (container) {
         var observer = new IntersectionObserver(function (entries) {
@@ -2970,9 +2946,9 @@
     }
     initStagger();
 
-    /* ───────────────────────────────────────────────
-       STAGGERED CARD REVEAL — Premium
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       STAGGERED CARD REVEAL â€” Premium
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initStaggeredCards() {
       var grids = document.querySelectorAll('.flagship-grid, .why-grid, .testimonials-grid, .stats-row');
       grids.forEach(function (grid) {
@@ -2998,9 +2974,9 @@
     }
     initStaggeredCards();
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        PARALLAX DECORATIVE ELEMENTS
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initParallaxDecos() {
       var decos = document.querySelectorAll('.hero-deco, .page-deco');
       if (!decos.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -3021,9 +2997,9 @@
     }
     initParallaxDecos();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Scroll reveal (.ph-reveal)
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Scroll reveal (.ph-reveal)
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhReveal() {
       var els = document.querySelectorAll('.ph-reveal');
       if (!els.length) return;
@@ -3039,9 +3015,9 @@
     }
     initPhReveal();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Staggered grid reveals
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Staggered grid reveals
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhStagger() {
       var grids = document.querySelectorAll('.ph-why-grid, .ph-testimonials-grid');
       grids.forEach(function (grid) {
@@ -3067,9 +3043,9 @@
     }
     initPhStagger();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Explore cards smooth scroll + stagger
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Explore cards smooth scroll + stagger
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhExplore() {
       /* Smooth scroll for anchor links */
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
@@ -3111,9 +3087,9 @@
     }
     initPhExplore();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Nav glass effect on scroll
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Nav glass effect on scroll
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhNav() {
       var header = document.querySelector('.ph-nav');
       if (!header) return;
@@ -3125,9 +3101,9 @@
     }
     initPhNav();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Hamburger toggle
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Hamburger toggle
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhHamburger() {
       var hamburger = document.querySelector('.ph-hamburger');
       var nav = document.querySelector('.ph-nav');
@@ -3141,9 +3117,9 @@
     }
     initPhHamburger();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Parallax hero decorative shapes
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Parallax hero decorative shapes
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhHeroParallax() {
       var decos = document.querySelectorAll('.ph-hero-deco');
       if (!decos.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -3164,9 +3140,9 @@
     }
     initPhHeroParallax();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Hero image mouse parallax
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Hero image mouse parallax
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhHeroMouseParallax() {
       var frame = document.querySelector('.ph-hero-image-frame');
       var hero = document.querySelector('.ph-hero');
@@ -3193,9 +3169,9 @@
     }
     initPhHeroMouseParallax();
 
-    /* ───────────────────────────────────────────────
-       HOMEPAGE — Hero search bar scrolls to programs
-       ─────────────────────────────────────────────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+       HOMEPAGE â€” Hero search bar scrolls to programs
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initPhHeroSearch() {
       var search = document.querySelector('.ph-hero-search');
       if (!search) return;
@@ -3206,9 +3182,9 @@
     }
     initPhHeroSearch();
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        HEADER SCROLL
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     function initHeaderScroll() {
       var header = document.querySelector('.public-header');
       if (!header) return;
@@ -3218,9 +3194,9 @@
     }
     initHeaderScroll();
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        MOBILE NAV
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var hamburger = document.querySelector('.hamburger');
     var nav = document.querySelector('.nav');
     if (hamburger) {
@@ -3232,9 +3208,9 @@
       });
     }
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        FAQ ACCORDION
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.faq-question').forEach(function (q) {
       q.addEventListener('click', function () {
         var item = q.closest('.faq-item');
@@ -3249,9 +3225,9 @@
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        DASHBOARD SIDEBAR TOGGLE
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var sidebarToggle = document.querySelector('.sidebar-toggle');
     var sidebar = document.querySelector('.dashboard-sidebar');
     var sidebarOverlay = document.querySelector('.sidebar-overlay');
@@ -3262,9 +3238,9 @@
       }
     }
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        DROPDOWN
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.dropdown').forEach(function (d) {
       var trigger = d.querySelector('.dropdown-trigger');
       if (trigger) {
@@ -3280,9 +3256,9 @@
       document.querySelectorAll('.dropdown.active').forEach(function (d) { d.classList.remove('active'); });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        MODALS
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     window.openModal = function (id) {
       var el = document.getElementById(id);
       if (el) { el.classList.add('active'); document.body.style.overflow = 'hidden'; }
@@ -3311,9 +3287,9 @@
       }
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        TABS
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.tabs').forEach(function (g) {
       var tabs = g.querySelectorAll('.tab');
       tabs.forEach(function (t) {
@@ -3329,17 +3305,17 @@
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        ALERT DISMISS
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.alert-dismissible').forEach(function (a) {
       var b = a.querySelector('.alert-close');
       if (b) b.addEventListener('click', function () { a.style.display = 'none'; });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        FILTER BUTTONS (with card filtering)
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.filters-bar .filter-btn').forEach(function (b) {
       b.addEventListener('click', function () {
         var parent = b.closest('.filters-bar');
@@ -3357,118 +3333,118 @@
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        PROGRAM DETAIL LOADER (from URL param)
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var programData = {
       'tcf-quebec-intensif': {
-        title: 'Préparation Intensive TCF Québec',
-        subtitle: 'Programme complet pour maîtriser toutes les épreuves du TCF Québec. Simulations hebdomadaires et correction personnalisée.',
+        title: 'PrÃ©paration Intensive TCF QuÃ©bec',
+        subtitle: 'Programme complet pour maÃ®triser toutes les Ã©preuves du TCF QuÃ©bec. Simulations hebdomadaires et correction personnalisÃ©e.',
         badges: ['badge-emerald', 'badge-blue', 'badge-gray'],
-        badgeLabels: ['TCF Québec', 'Intensif', 'B1-C2'],
-        duration: '12 semaines', rythme: '3 séances / semaine', seance: '2h / séance', effectif: '8 élèves max',
-        price: '450€', priceLabel: '/ mois', priceTotal: '1 350€ pour l\'ensemble du programme',
+        badgeLabels: ['TCF QuÃ©bec', 'Intensif', 'B1-C2'],
+        duration: '12 semaines', rythme: '3 sÃ©ances / semaine', seance: '2h / sÃ©ance', effectif: '8 Ã©lÃ¨ves max',
+        price: '450â‚¬', priceLabel: '/ mois', priceTotal: '1 350â‚¬ pour l\'ensemble du programme',
         nextSession: '5 Sept 2026',
-        description: ['Notre préparation intensive au TCF Québec est conçue pour vous permettre d\'atteindre le niveau requis pour vos objectifs linguistiques.', 'Encadré par des enseignants certifiés FLE, vous bénéficierez d\'une formation complète couvrant les 4 compétences évaluées : compréhension orale, compréhension écrite, expression orale et expression écrite.'],
-        objectives: ['Compréhension orale : analyser des documents audio variés (actualités, débats, conférences)', 'Compréhension écrite : maîtriser la lecture de textes académiques et administratifs', 'Expression orale : s\'exprimer avec aisance, clarté et argumentation structurée', 'Expression écrite : produire des textes argumentés et synthétiques', 'Stratégies d\'examen : gestion du temps et techniques de passation'],
+        description: ['Notre prÃ©paration intensive au TCF QuÃ©bec est conÃ§ue pour vous permettre d\'atteindre le niveau requis pour vos objectifs linguistiques.', 'EncadrÃ© par des enseignants certifiÃ©s FLE, vous bÃ©nÃ©ficierez d\'une formation complÃ¨te couvrant les 4 compÃ©tences Ã©valuÃ©es : comprÃ©hension orale, comprÃ©hension Ã©crite, expression orale et expression Ã©crite.'],
+        objectives: ['ComprÃ©hension orale : analyser des documents audio variÃ©s (actualitÃ©s, dÃ©bats, confÃ©rences)', 'ComprÃ©hension Ã©crite : maÃ®triser la lecture de textes acadÃ©miques et administratifs', 'Expression orale : s\'exprimer avec aisance, clartÃ© et argumentation structurÃ©e', 'Expression Ã©crite : produire des textes argumentÃ©s et synthÃ©tiques', 'StratÃ©gies d\'examen : gestion du temps et techniques de passation'],
         tableRows: [
-          ['1-2', 'Diagnostic', 'Test de niveau complet et introduction aux épreuves du TCF'],
-          ['3-5', 'Compréhension', 'Stratégies de compréhension orale et écrite - exercices progressifs'],
-          ['6-8', 'Expression', 'Techniques d\'expression orale et écrite - production guidée'],
-          ['9-10', 'Simulations', 'Examens blancs complets dans les conditions réelles'],
-          ['11-12', 'Perfectionnement', 'Révisions ciblées et préparation finale personnalisée'],
-          ['12+', 'Bilan', 'Évaluation finale et conseils pour le jour J']
+          ['1-2', 'Diagnostic', 'Test de niveau complet et introduction aux Ã©preuves du TCF'],
+          ['3-5', 'ComprÃ©hension', 'StratÃ©gies de comprÃ©hension orale et Ã©crite - exercices progressifs'],
+          ['6-8', 'Expression', 'Techniques d\'expression orale et Ã©crite - production guidÃ©e'],
+          ['9-10', 'Simulations', 'Examens blancs complets dans les conditions rÃ©elles'],
+          ['11-12', 'Perfectionnement', 'RÃ©visions ciblÃ©es et prÃ©paration finale personnalisÃ©e'],
+          ['12+', 'Bilan', 'Ã‰valuation finale et conseils pour le jour J']
         ]
       },
       'tcf-quebec-regulier': {
-        title: 'Préparation Régulière TCF Québec',
-        subtitle: 'Programme équilibré pour les apprenants qui souhaitent progresser à leur rythme avec un accompagnement constant.',
+        title: 'PrÃ©paration RÃ©guliÃ¨re TCF QuÃ©bec',
+        subtitle: 'Programme Ã©quilibrÃ© pour les apprenants qui souhaitent progresser Ã  leur rythme avec un accompagnement constant.',
         badges: ['badge-emerald', 'badge-gray'],
-        badgeLabels: ['TCF Québec', 'Régulier'],
-        duration: '16 semaines', rythme: '2 séances / semaine', seance: '1h30 / séance', effectif: '10 élèves max',
-        price: '290€', priceLabel: '/ mois', priceTotal: '1 160€ pour l\'ensemble du programme',
+        badgeLabels: ['TCF QuÃ©bec', 'RÃ©gulier'],
+        duration: '16 semaines', rythme: '2 sÃ©ances / semaine', seance: '1h30 / sÃ©ance', effectif: '10 Ã©lÃ¨ves max',
+        price: '290â‚¬', priceLabel: '/ mois', priceTotal: '1 160â‚¬ pour l\'ensemble du programme',
         nextSession: '12 Sept 2026'
       },
       'tcf-canada-intensif': {
-        title: 'Préparation Intensive TCF Canada',
-        subtitle: 'Formation intensive axée sur les spécificités du TCF Canada. Focus sur l\'expression écrite et orale.',
+        title: 'PrÃ©paration Intensive TCF Canada',
+        subtitle: 'Formation intensive axÃ©e sur les spÃ©cificitÃ©s du TCF Canada. Focus sur l\'expression Ã©crite et orale.',
         badges: ['badge-blue', 'badge-gold', 'badge-gray'],
         badgeLabels: ['TCF Canada', 'Intensif', 'Niveau C'],
-        duration: '16 semaines', rythme: '3 séances / semaine', seance: '2h30 / séance', effectif: '6 élèves max',
-        price: '520€', priceLabel: '/ mois', priceTotal: '2 080€ pour l\'ensemble du programme',
+        duration: '16 semaines', rythme: '3 sÃ©ances / semaine', seance: '2h30 / sÃ©ance', effectif: '6 Ã©lÃ¨ves max',
+        price: '520â‚¬', priceLabel: '/ mois', priceTotal: '2 080â‚¬ pour l\'ensemble du programme',
         nextSession: '5 Sept 2026'
       },
       'tcf-canada-regulier': {
-        title: 'Préparation Régulière TCF Canada',
-        subtitle: 'Formation progressive pour le TCF Canada avec un rythme adapté aux apprenants en activité.',
+        title: 'PrÃ©paration RÃ©guliÃ¨re TCF Canada',
+        subtitle: 'Formation progressive pour le TCF Canada avec un rythme adaptÃ© aux apprenants en activitÃ©.',
         badges: ['badge-blue', 'badge-gray'],
-        badgeLabels: ['TCF Canada', 'Régulier'],
-        duration: '24 semaines', rythme: '2 séances / semaine', seance: '1h30 / séance', effectif: '10 élèves max',
-        price: '310€', priceLabel: '/ mois', priceTotal: '1 860€ pour l\'ensemble du programme',
+        badgeLabels: ['TCF Canada', 'RÃ©gulier'],
+        duration: '24 semaines', rythme: '2 sÃ©ances / semaine', seance: '1h30 / sÃ©ance', effectif: '10 Ã©lÃ¨ves max',
+        price: '310â‚¬', priceLabel: '/ mois', priceTotal: '1 860â‚¬ pour l\'ensemble du programme',
         nextSession: '19 Sept 2026'
       },
       'oral-bc-intensif': {
-        title: 'Préparation Orale B & C',
-        subtitle: 'Ateliers intensifs d\'expression orale avec coaching personnalisé et mises en situation réalistes.',
+        title: 'PrÃ©paration Orale B & C',
+        subtitle: 'Ateliers intensifs d\'expression orale avec coaching personnalisÃ© et mises en situation rÃ©alistes.',
         badges: ['badge-red', 'badge-gold', 'badge-gray'],
         badgeLabels: ['Oral B/C', 'Intensif', 'B1-C2'],
-        duration: '8 semaines', rythme: '2 séances / semaine', seance: '1h30 / séance', effectif: '4 élèves max',
-        price: '320€', priceLabel: '/ mois', priceTotal: '640€ pour l\'ensemble du programme',
+        duration: '8 semaines', rythme: '2 sÃ©ances / semaine', seance: '1h30 / sÃ©ance', effectif: '4 Ã©lÃ¨ves max',
+        price: '320â‚¬', priceLabel: '/ mois', priceTotal: '640â‚¬ pour l\'ensemble du programme',
         nextSession: '12 Sept 2026'
       },
       'cours-particuliers': {
         title: 'Cours Particuliers 1-to-1',
-        subtitle: 'Accompagnement 100% personnalisé avec un enseignant dédié. Programme adapté à vos besoins spécifiques.',
+        subtitle: 'Accompagnement 100% personnalisÃ© avec un enseignant dÃ©diÃ©. Programme adaptÃ© Ã  vos besoins spÃ©cifiques.',
         badges: ['badge-gold', 'badge-gray'],
-        badgeLabels: ['Cours solo', 'Personnalisé'],
-        duration: 'Flexible', rythme: 'À votre rythme', seance: '1h / séance', effectif: '1 élève',
-        price: '45€', priceLabel: '/ heure', priceTotal: 'Forfaits 5h, 10h, 15h ou 20h disponibles',
-        nextSession: 'À définir'
+        badgeLabels: ['Cours solo', 'PersonnalisÃ©'],
+        duration: 'Flexible', rythme: 'Ã€ votre rythme', seance: '1h / sÃ©ance', effectif: '1 Ã©lÃ¨ve',
+        price: '45â‚¬', priceLabel: '/ heure', priceTotal: 'Forfaits 5h, 10h, 15h ou 20h disponibles',
+        nextSession: 'Ã€ dÃ©finir'
       },
       'cours-groupe': {
         title: 'Cours en Groupe',
-        subtitle: 'Apprenez en groupe dans une ambiance dynamique et collaborative. Idéal pour pratiquer l\'oral.',
+        subtitle: 'Apprenez en groupe dans une ambiance dynamique et collaborative. IdÃ©al pour pratiquer l\'oral.',
         badges: ['badge-green', 'badge-gray'],
-        badgeLabels: ['Groupe', 'Régulier'],
-        duration: '12 semaines', rythme: '1 séance / semaine', seance: '1h30 / séance', effectif: '15 élèves max',
-        price: '120€', priceLabel: '/ mois', priceTotal: '360€ pour l\'ensemble du programme',
+        badgeLabels: ['Groupe', 'RÃ©gulier'],
+        duration: '12 semaines', rythme: '1 sÃ©ance / semaine', seance: '1h30 / sÃ©ance', effectif: '15 Ã©lÃ¨ves max',
+        price: '120â‚¬', priceLabel: '/ mois', priceTotal: '360â‚¬ pour l\'ensemble du programme',
         nextSession: '5 Sept 2026'
       },
       'samedi': {
         title: 'Programme du Samedi',
-        subtitle: 'Des sessions intensives le samedi pour ceux qui ont un emploi du temps chargé en semaine.',
+        subtitle: 'Des sessions intensives le samedi pour ceux qui ont un emploi du temps chargÃ© en semaine.',
         badges: ['badge-blue', 'badge-gray'],
         badgeLabels: ['Samedi', 'Intensif'],
-        duration: '10 semaines', rythme: 'Samedi', seance: '3h / session', effectif: '12 élèves max',
-        price: '180€', priceLabel: '/ mois', priceTotal: '450€ pour l\'ensemble du programme',
+        duration: '10 semaines', rythme: 'Samedi', seance: '3h / session', effectif: '12 Ã©lÃ¨ves max',
+        price: '180â‚¬', priceLabel: '/ mois', priceTotal: '450â‚¬ pour l\'ensemble du programme',
         nextSession: '6 Sept 2026'
       },
       'intensif-general': {
-        title: 'Programme Intensif Général',
-        subtitle: 'Immersion totale en français avec un rythme soutenu pour des progrès rapides.',
+        title: 'Programme Intensif GÃ©nÃ©ral',
+        subtitle: 'Immersion totale en franÃ§ais avec un rythme soutenu pour des progrÃ¨s rapides.',
         badges: ['badge-gold', 'badge-emerald'],
-        badgeLabels: ['Intensif', 'Général'],
-        duration: '8 semaines', rythme: '4 séances / semaine', seance: '2h / séance', effectif: '10 élèves max',
-        price: '380€', priceLabel: '/ mois', priceTotal: '760€ pour l\'ensemble du programme',
+        badgeLabels: ['Intensif', 'GÃ©nÃ©ral'],
+        duration: '8 semaines', rythme: '4 sÃ©ances / semaine', seance: '2h / sÃ©ance', effectif: '10 Ã©lÃ¨ves max',
+        price: '380â‚¬', priceLabel: '/ mois', priceTotal: '760â‚¬ pour l\'ensemble du programme',
         nextSession: '5 Sept 2026'
       },
 
       'test-placement': {
         title: 'Test de Placement',
-        subtitle: 'Évaluez votre niveau de français avec notre test complet couvrant toutes les compétences.',
+        subtitle: 'Ã‰valuez votre niveau de franÃ§ais avec notre test complet couvrant toutes les compÃ©tences.',
         badges: ['badge-gray', 'badge-emerald'],
-        badgeLabels: ['Évaluation', 'Individuel'],
-        duration: '1 séance', rythme: 'Unique', seance: '2h', effectif: 'Individuel',
-        price: '60€', priceLabel: '', priceTotal: 'Résultats sous 48h',
+        badgeLabels: ['Ã‰valuation', 'Individuel'],
+        duration: '1 sÃ©ance', rythme: 'Unique', seance: '2h', effectif: 'Individuel',
+        price: '60â‚¬', priceLabel: '', priceTotal: 'RÃ©sultats sous 48h',
         nextSession: 'Tous les jours'
       },
       'evaluation-orale': {
-        title: 'Évaluation Orale',
-        subtitle: 'Une évaluation personnalisée de votre expression orale avec feedback détaillé.',
+        title: 'Ã‰valuation Orale',
+        subtitle: 'Une Ã©valuation personnalisÃ©e de votre expression orale avec feedback dÃ©taillÃ©.',
         badges: ['badge-gray', 'badge-red'],
-        badgeLabels: ['Évaluation', 'Oral'],
-        duration: '1 séance', rythme: 'Unique', seance: '45min', effectif: 'Individuel',
-        price: '40€', priceLabel: '', priceTotal: 'Résultats immédiats',
+        badgeLabels: ['Ã‰valuation', 'Oral'],
+        duration: '1 sÃ©ance', rythme: 'Unique', seance: '45min', effectif: 'Individuel',
+        price: '40â‚¬', priceLabel: '', priceTotal: 'RÃ©sultats immÃ©diats',
         nextSession: 'Tous les jours'
       }
     };
@@ -3516,13 +3492,13 @@
           });
         });
       }
-      document.title = data.title + ' — Cultulangues';
+      document.title = data.title + ' â€” Cultulangues';
     }
     if (window.location.pathname.includes('program-detail')) loadProgramDetail();
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        SIDEBAR NAVIGATION
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.sidebar-item').forEach(function (i) {
       i.addEventListener('click', function () {
         var href = i.getAttribute('data-href');
@@ -3530,24 +3506,24 @@
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        PASSWORD TOGGLE
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.password-toggle').forEach(function (b) {
       b.addEventListener('click', function () {
         var input = b.parentElement.querySelector('input');
         if (input) {
           input.type = input.type === 'password' ? 'text' : 'password';
-          b.textContent = input.type === 'password' ? '🔒' : '👁';
+          b.textContent = input.type === 'password' ? 'ðŸ”’' : 'ðŸ‘';
         }
       });
     });
 
 
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        LEVEL TEST
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.test-option').forEach(function (o) {
       o.addEventListener('click', function () {
         var q = o.closest('.test-question');
@@ -3558,9 +3534,9 @@
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        SCHEDULE CELLS
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.schedule-cell').forEach(function (c) {
       c.addEventListener('click', function () {
         document.querySelectorAll('.schedule-cell.selected').forEach(function (x) { x.classList.remove('selected'); });
@@ -3568,9 +3544,9 @@
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        TOAST
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     window.showToast = function (message, type) {
       type = type || 'success';
       var t = document.createElement('div');
@@ -3584,43 +3560,43 @@
       }, 3500);
     };
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        INVOICE DOWNLOAD
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.btn-download-invoice').forEach(function (b) {
       b.addEventListener('click', function (e) {
         e.preventDefault();
-        showToast('Facture téléchargée avec succès ✓', 'success');
+        showToast('Facture tÃ©lÃ©chargÃ©e avec succÃ¨s âœ“', 'success');
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        SIDEBAR ACTIVE STATE
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var path = window.location.pathname;
     document.querySelectorAll('.sidebar-item').forEach(function (i) {
       var href = i.getAttribute('data-href');
       if (href && path.includes(href)) i.classList.add('active');
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        NOTIFICATION BELL
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.topbar-notification').forEach(function (b) {
       b.addEventListener('click', function () {
         showToast('Aucune nouvelle notification', 'info');
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        CALENDAR NAVIGATION
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var calPrev = document.querySelector('.calendar-prev');
     var calNext = document.querySelector('.calendar-next');
     var calTitle = document.querySelector('.calendar-nav h3');
     if (calPrev && calNext && calTitle) {
-      var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-        'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+      var months = ['Janvier', 'FÃ©vrier', 'Mars', 'Avril', 'Mai', 'Juin',
+        'Juillet', 'AoÃ»t', 'Septembre', 'Octobre', 'Novembre', 'DÃ©cembre'];
       var month = new Date().getMonth();
       var year = new Date().getFullYear();
       function updateTitle() { calTitle.textContent = months[month] + ' ' + year; }
@@ -3632,14 +3608,14 @@
       });
     }
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        BOOKING CALENDAR RENDER
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     window.renderBookingCalendar = function (containerId, onSelectDay) {
       var container = document.getElementById(containerId);
       if (!container) return;
-      var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-        'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+      var months = ['Janvier', 'FÃ©vrier', 'Mars', 'Avril', 'Mai', 'Juin',
+        'Juillet', 'AoÃ»t', 'Septembre', 'Octobre', 'Novembre', 'DÃ©cembre'];
       var daysShort = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
       var today = new Date();
       var calMonth = today.getMonth();
@@ -3666,9 +3642,9 @@
         var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
         var daysInPrev = new Date(calYear, calMonth, 0).getDate();
         var html = '<div class="month-nav mb-md">';
-        html += '<button class="btn-icon btn-ghost" onclick="window.prevCalMonth()">←</button>';
+        html += '<button class="btn-icon btn-ghost" onclick="window.prevCalMonth()">â†</button>';
         html += '<span class="month-nav-title">' + months[calMonth] + ' ' + calYear + '</span>';
-        html += '<button class="btn-icon btn-ghost" onclick="window.nextCalMonth()">→</button>';
+        html += '<button class="btn-icon btn-ghost" onclick="window.nextCalMonth()">â†’</button>';
         html += '</div>';
         html += '<div class="month-grid">';
         for (var i = 0; i < 7; i++) { html += '<div class="month-day-header">' + daysShort[i] + '</div>'; }
@@ -3728,9 +3704,9 @@
       return { getSelected: function () { return selectedDateStr; }, getMonth: function () { return calMonth; }, getYear: function () { return calYear; } };
     };
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        HOUR GRID RENDER
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     window.renderHourGrid = function (containerId, dateKey, onSelectHour) {
       var container = document.getElementById(containerId);
       if (!container) return;
@@ -3755,10 +3731,10 @@
       }
 
       function render() {
-        var html = '<div class="flex justify-between items-center mb-md"><h4 class="text-sm font-semibold">Créneaux disponibles</h4><span class="text-xs text-muted">Fuseau: Europe/Paris</span></div>';
+        var html = '<div class="flex justify-between items-center mb-md"><h4 class="text-sm font-semibold">CrÃ©neaux disponibles</h4><span class="text-xs text-muted">Fuseau: Europe/Paris</span></div>';
         html += '<div class="availability-legend">';
         html += '<span><span class="availability-dot green"></span> Disponible</span>';
-        html += '<span><span class="availability-dot red"></span> Réservé</span>';
+        html += '<span><span class="availability-dot red"></span> RÃ©servÃ©</span>';
         html += '<span><span class="availability-dot gray"></span> Indisponible</span>';
         html += '</div>';
         html += '<div class="hour-grid">';
@@ -3771,7 +3747,7 @@
           else if (state === 'booked') html += '<span class="availability-dot red"></span>';
           else html += '<span class="availability-dot gray"></span>';
           html += '<div class="hour-time">' + h.time + '</div>';
-          html += '<div class="hour-label">' + (state === 'available' ? 'Disponible' : state === 'booked' ? 'Réservé' : 'Indisponible') + '</div>';
+          html += '<div class="hour-label">' + (state === 'available' ? 'Disponible' : state === 'booked' ? 'RÃ©servÃ©' : 'Indisponible') + '</div>';
           html += '</div>';
         });
         html += '</div>';
@@ -3792,9 +3768,9 @@
       return { getSelected: function () { return selectedHour; } };
     };
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        TEACHER SELECTION
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-teacher-select]');
       if (btn) {
@@ -3803,10 +3779,10 @@
           document.querySelectorAll('.teacher-card.selected').forEach(function (c) { c.classList.remove('selected'); });
           card.classList.add('selected');
           document.querySelectorAll('[data-teacher-select]').forEach(function (b) {
-            b.textContent = 'Sélectionner';
+            b.textContent = 'SÃ©lectionner';
             b.className = 'btn-select selecting';
           });
-          btn.textContent = '✓ Sélectionné';
+          btn.textContent = 'âœ“ SÃ©lectionnÃ©';
           btn.className = 'btn-select selected-teacher';
           var teacherId = btn.getAttribute('data-teacher-select');
           var teacherName = card.querySelector('.teacher-card-name')?.textContent;
@@ -3815,9 +3791,9 @@
       }
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        FORM VALIDATION
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     document.querySelectorAll('.needs-validation').forEach(function (f) {
       f.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -3826,19 +3802,19 @@
           if (!field.value.trim()) { field.classList.add('error'); valid = false; }
           else { field.classList.remove('error'); }
         });
-        if (valid) showToast('Formulaire soumis avec succès ✓', 'success');
+        if (valid) showToast('Formulaire soumis avec succÃ¨s âœ“', 'success');
         else showToast('Veuillez remplir tous les champs obligatoires', 'error');
       });
     });
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        BOOKING FLOW CONFIG
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var flowConfigs = {
       'private-lesson':  { label: 'Cours Particuliers', flow: 'private', steps: ['package','info','schedule','confirm','test','results','meeting'], hasTest: true },
       'group-intensif':  { label: 'Programme Intensif', flow: 'group', steps: ['schedules','info','confirm','test','results','meeting'], hasTest: true },
       'group-samedi':  { label: 'Programme du Samedi', flow: 'group', steps: ['schedules','info','confirm','test','results','meeting'], hasTest: true },
-      'group-tcf-quebec':  { label: 'TCF Québec', flow: 'group', steps: ['schedules','info','confirm','test','results','meeting'], hasTest: true },
+      'group-tcf-quebec':  { label: 'TCF QuÃ©bec', flow: 'group', steps: ['schedules','info','confirm','test','results','meeting'], hasTest: true },
       'group-tcf-canada':  { label: 'TCF Canada', flow: 'group', steps: ['schedules','info','confirm','test','results','meeting'], hasTest: true },
       'group-oral-bc':  { label: 'Oral B/C', flow: 'group', steps: ['schedules','info','confirm','test','results','meeting'], hasTest: true },
       'group-groupe':  { label: 'Cours en Groupe', flow: 'group', steps: ['schedules','info','confirm','test','results','meeting'], hasTest: true },
@@ -3846,41 +3822,41 @@
       'workshop-culture':  { label: 'Atelier Culture', flow: 'workshop', steps: ['info','confirm','meeting'], hasTest: false },
       'workshop-maintenance':  { label: 'Atelier Maintien', flow: 'workshop', steps: ['info','confirm','meeting'], hasTest: false }
     };
-    var stepLabels = { package:'Forfait', info:'Inscription', schedules:'Horaire', schedule:'Horaire', confirm:'Confirmation', test:'Test', results:'Résultats', meeting:'Rendez-vous' };
+    var stepLabels = { package:'Forfait', info:'Inscription', schedules:'Horaire', schedule:'Horaire', confirm:'Confirmation', test:'Test', results:'RÃ©sultats', meeting:'Rendez-vous' };
 
-    /* ── Static group schedule data ── */
+    /* â”€â”€ Static group schedule data â”€â”€ */
     var groupSchedules = {
       'group-intensif': [
-        { day:'Lundi', time:'09:00-12:00', sessions:'3 séances/sem', label:'Matin — Intensif', desc:'Lundi, Mercredi, Vendredi' },
-        { day:'Lundi', time:'14:00-17:00', sessions:'3 séances/sem', label:'Après-midi — Intensif', desc:'Lundi, Mercredi, Vendredi' },
-        { day:'Mardi', time:'18:00-21:00', sessions:'3 séances/sem', label:'Soir — Intensif', desc:'Mardi, Jeudi, Samedi' }
+        { day:'Lundi', time:'09:00-12:00', sessions:'3 sÃ©ances/sem', label:'Matin â€” Intensif', desc:'Lundi, Mercredi, Vendredi' },
+        { day:'Lundi', time:'14:00-17:00', sessions:'3 sÃ©ances/sem', label:'AprÃ¨s-midi â€” Intensif', desc:'Lundi, Mercredi, Vendredi' },
+        { day:'Mardi', time:'18:00-21:00', sessions:'3 sÃ©ances/sem', label:'Soir â€” Intensif', desc:'Mardi, Jeudi, Samedi' }
       ],
       'group-samedi': [
-        { day:'Samedi', time:'09:00-13:00', sessions:'1 séance/sem', label:'Matin — Samedi', desc:'4 samedis par mois' },
-        { day:'Samedi', time:'14:00-18:00', sessions:'1 séance/sem', label:'Après-midi — Samedi', desc:'4 samedis par mois' }
+        { day:'Samedi', time:'09:00-13:00', sessions:'1 sÃ©ance/sem', label:'Matin â€” Samedi', desc:'4 samedis par mois' },
+        { day:'Samedi', time:'14:00-18:00', sessions:'1 sÃ©ance/sem', label:'AprÃ¨s-midi â€” Samedi', desc:'4 samedis par mois' }
       ],
       'group-tcf-quebec': [
-        { day:'Lundi', time:'18:00-20:00', sessions:'2 séances/sem', label:'Soir — TCF Québec', desc:'Lundi & Mercredi' },
-        { day:'Mardi', time:'18:00-20:00', sessions:'2 séances/sem', label:'Soir — TCF Québec', desc:'Mardi & Jeudi' }
+        { day:'Lundi', time:'18:00-20:00', sessions:'2 sÃ©ances/sem', label:'Soir â€” TCF QuÃ©bec', desc:'Lundi & Mercredi' },
+        { day:'Mardi', time:'18:00-20:00', sessions:'2 sÃ©ances/sem', label:'Soir â€” TCF QuÃ©bec', desc:'Mardi & Jeudi' }
       ],
       'group-tcf-canada': [
-        { day:'Lundi', time:'18:00-20:30', sessions:'2 séances/sem', label:'Soir — TCF Canada', desc:'Lundi & Mercredi' },
-        { day:'Mardi', time:'18:00-20:30', sessions:'2 séances/sem', label:'Soir — TCF Canada', desc:'Mardi & Jeudi' }
+        { day:'Lundi', time:'18:00-20:30', sessions:'2 sÃ©ances/sem', label:'Soir â€” TCF Canada', desc:'Lundi & Mercredi' },
+        { day:'Mardi', time:'18:00-20:30', sessions:'2 sÃ©ances/sem', label:'Soir â€” TCF Canada', desc:'Mardi & Jeudi' }
       ],
       'group-oral-bc': [
-        { day:'Mercredi', time:'18:00-19:30', sessions:'1 séance/sem', label:'Soir — Oral B/C', desc:'Mercredi soir' },
-        { day:'Samedi', time:'10:00-11:30', sessions:'1 séance/sem', label:'Matin — Oral B/C', desc:'Samedi matin' }
+        { day:'Mercredi', time:'18:00-19:30', sessions:'1 sÃ©ance/sem', label:'Soir â€” Oral B/C', desc:'Mercredi soir' },
+        { day:'Samedi', time:'10:00-11:30', sessions:'1 sÃ©ance/sem', label:'Matin â€” Oral B/C', desc:'Samedi matin' }
       ],
       'group-groupe': [
-        { day:'Lundi', time:'10:00-12:00', sessions:'2 séances/sem', label:'Matin — Groupe', desc:'Lundi & Mercredi' },
-        { day:'Mardi', time:'14:00-16:00', sessions:'2 séances/sem', label:'Après-midi — Groupe', desc:'Mardi & Jeudi' },
-        { day:'Mercredi', time:'18:00-20:00', sessions:'2 séances/sem', label:'Soir — Groupe', desc:'Mercredi & Vendredi' }
+        { day:'Lundi', time:'10:00-12:00', sessions:'2 sÃ©ances/sem', label:'Matin â€” Groupe', desc:'Lundi & Mercredi' },
+        { day:'Mardi', time:'14:00-16:00', sessions:'2 sÃ©ances/sem', label:'AprÃ¨s-midi â€” Groupe', desc:'Mardi & Jeudi' },
+        { day:'Mercredi', time:'18:00-20:00', sessions:'2 sÃ©ances/sem', label:'Soir â€” Groupe', desc:'Mercredi & Vendredi' }
       ]
     };
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        BOOKING WIZARD (dual-flow with state management)
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var bookingWizard = {
       flowType: null,
       flow: null,
@@ -3940,7 +3916,7 @@
         var link = 'https://meet.cultulangues.ca/demo';
         navigator.clipboard.writeText(link).then(function () {
           var btn = document.querySelector('.meeting-actions .btn-outline');
-          if (btn) { btn.textContent = '✅ Copié!'; setTimeout(function () { btn.textContent = '📋 Copier le lien'; }, 2000); }
+          if (btn) { btn.textContent = 'âœ… CopiÃ©!'; setTimeout(function () { btn.textContent = 'ðŸ“‹ Copier le lien'; }, 2000); }
         }).catch(function () { prompt('Copiez le lien:', link); });
       },
 
@@ -3950,13 +3926,13 @@
         var title = document.getElementById('wizard-title');
         var desc = document.getElementById('wizard-desc');
         var badge = document.getElementById('wizard-service-badge');
-        if (title) title.textContent = 'Réservez votre ' + cfg.label;
+        if (title) title.textContent = 'RÃ©servez votre ' + cfg.label;
         if (badge) badge.textContent = cfg.label;
         if (desc) {
           var texts = {
-            'private-lesson': 'Choisissez votre forfait, puis sélectionnez vos créneaux horaires'
+            'private-lesson': 'Choisissez votre forfait, puis sÃ©lectionnez vos crÃ©neaux horaires'
           };
-          desc.textContent = texts[this.flowType] || 'Complétez votre inscription en quelques étapes';
+          desc.textContent = texts[this.flowType] || 'ComplÃ©tez votre inscription en quelques Ã©tapes';
         }
       },
 
@@ -4003,18 +3979,18 @@
       next: function () {
         var stepName = this.steps[this.currentStepIdx];
         if (stepName === 'package' && !this.selectedPackage) {
-          showToast('Veuillez sélectionner un forfait', 'error'); return;
+          showToast('Veuillez sÃ©lectionner un forfait', 'error'); return;
         }
         if (stepName === 'schedules' && !this.selectedSchedule) {
-          showToast('Veuillez sélectionner un horaire', 'error'); return;
+          showToast('Veuillez sÃ©lectionner un horaire', 'error'); return;
         }
         if (stepName === 'schedule' && this.flow === 'private') {
           if (this.selectedSlots.length === 0) {
-            showToast('Veuillez sélectionner au moins un créneau', 'error'); return;
+            showToast('Veuillez sÃ©lectionner au moins un crÃ©neau', 'error'); return;
           }
           var needed = parseInt((this.selectedPackage || {}).hours) || 0;
           if (this.selectedSlots.length < needed) {
-            showToast('Veuillez sélectionner ' + needed + ' créneaux (actuellement: ' + this.selectedSlots.length + ')', 'error'); return;
+            showToast('Veuillez sÃ©lectionner ' + needed + ' crÃ©neaux (actuellement: ' + this.selectedSlots.length + ')', 'error'); return;
           }
         }
         this.goToStep(this.currentStepIdx + 1);
@@ -4067,7 +4043,7 @@
         }
       },
 
-      /* ─── GROUP SCHEDULE CARDS ─── */
+      /* â”€â”€â”€ GROUP SCHEDULE CARDS â”€â”€â”€ */
       renderGroupSchedules: function () {
         var container = document.getElementById('group-schedules');
         if (!container) return;
@@ -4075,7 +4051,7 @@
         if (schedules.length === 0) { container.innerHTML = '<p class="text-secondary">Aucun horaire disponible pour ce programme.</p>'; return; }
         var html = '<div class="schedule-grid">';
         schedules.forEach(function (s, i) {
-          html += '<div class="schedule-card" data-schedule="' + i + '"><div class="schedule-card-header"><h4>' + s.label + '</h4><span class="schedule-badge">' + s.sessions + '</span></div><div class="schedule-card-body"><div class="schedule-detail"><span class="schedule-detail-icon">📅</span><span>' + s.day + '</span></div><div class="schedule-detail"><span class="schedule-detail-icon">⏰</span><span>' + s.time + '</span></div><div class="schedule-detail"><span class="schedule-detail-icon">📋</span><span>' + s.desc + '</span></div></div><div class="schedule-card-footer"><button class="btn-select" onclick="window.bookingWizard.selectGroupSchedule(' + i + ')">Sélectionner</button></div></div>';
+          html += '<div class="schedule-card" data-schedule="' + i + '"><div class="schedule-card-header"><h4>' + s.label + '</h4><span class="schedule-badge">' + s.sessions + '</span></div><div class="schedule-card-body"><div class="schedule-detail"><span class="schedule-detail-icon">ðŸ“…</span><span>' + s.day + '</span></div><div class="schedule-detail"><span class="schedule-detail-icon">â°</span><span>' + s.time + '</span></div><div class="schedule-detail"><span class="schedule-detail-icon">ðŸ“‹</span><span>' + s.desc + '</span></div></div><div class="schedule-card-footer"><button class="btn-select" onclick="window.bookingWizard.selectGroupSchedule(' + i + ')">SÃ©lectionner</button></div></div>';
         });
         html += '</div>';
         container.innerHTML = html;
@@ -4089,18 +4065,18 @@
         var card = document.querySelector('.schedule-card[data-schedule="' + idx + '"]');
         if (card) {
           card.classList.add('selected');
-          card.querySelector('.btn-select').textContent = '✓ Sélectionné';
+          card.querySelector('.btn-select').textContent = 'âœ“ SÃ©lectionnÃ©';
           card.querySelector('.btn-select').className = 'btn-select selected-teacher';
         }
         this.selectedSchedule = sched;
         this.selectedSchedule.label = sched.label;
       },
 
-      /* ─── PRIVATE MULTI-DATE CALENDAR + HOUR PICKER ─── */
+      /* â”€â”€â”€ PRIVATE MULTI-DATE CALENDAR + HOUR PICKER â”€â”€â”€ */
       initMultiCalendar: function () {
         var container = document.getElementById('multi-calendar');
         if (!container) return;
-        var months = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+        var months = ['Janvier','FÃ©vrier','Mars','Avril','Mai','Juin','Juillet','AoÃ»t','Septembre','Octobre','Novembre','DÃ©cembre'];
         var daysShort = ['Di','Lu','Ma','Me','Je','Ve','Sa'];
         var today = new Date();
         var calMonthIdx = 0; // 0 = current month displayed
@@ -4120,14 +4096,14 @@
         function updateLessonTracker() {
           var tracker = document.getElementById('lesson-tracker');
           if (!tracker) return;
-          var pkg = that.selectedPackage || { hours: '—' };
+          var pkg = that.selectedPackage || { hours: 'â€”' };
           var needed = parseInt(pkg.hours) || 0;
           var count = that.selectedSlots.length;
           var pct = needed > 0 ? Math.min(100, (count / needed) * 100) : 0;
           var cls = 'lesson-tracker-count';
           if (count >= needed) cls += ' complete';
           else if (count > 0) cls += ' partial';
-          tracker.innerHTML = '<div class="lesson-tracker"><div class="lesson-tracker-header"><span class="' + cls + '">' + count + ' / ' + needed + ' séances</span></div><div class="lesson-tracker-bar"><div class="lesson-tracker-fill" style="width:' + pct + '%"></div></div></div>';
+          tracker.innerHTML = '<div class="lesson-tracker"><div class="lesson-tracker-header"><span class="' + cls + '">' + count + ' / ' + needed + ' sÃ©ances</span></div><div class="lesson-tracker-bar"><div class="lesson-tracker-fill" style="width:' + pct + '%"></div></div></div>';
         }
 
         function renderHours(dateEl) {
@@ -4142,7 +4118,7 @@
           slots.forEach(function (h) {
             var selected = isSlotSelected(d, m, y, h);
             if (selected) selCount++;
-            html += '<div class="day-hour-card' + (selected ? ' selected' : '') + '" data-slot-hour="' + h + '"><span class="hour-time">' + h + '</span>' + (selected ? '<span class="hour-check">✓</span>' : '') + '</div>';
+            html += '<div class="day-hour-card' + (selected ? ' selected' : '') + '" data-slot-hour="' + h + '"><span class="hour-time">' + h + '</span>' + (selected ? '<span class="hour-check">âœ“</span>' : '') + '</div>';
           });
           html += '</div>';
           hourContainer.innerHTML = html;
@@ -4167,9 +4143,9 @@
           var firstDay = new Date(calYear, calMonth, 1).getDay();
           var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
           var html = '<div class="month-nav mb-md">';
-          html += '<button class="btn-icon btn-ghost" id="cal-prev-btn">←</button>';
+          html += '<button class="btn-icon btn-ghost" id="cal-prev-btn">â†</button>';
           html += '<span class="month-nav-title">' + months[calMonth] + ' ' + calYear + '</span>';
-          html += '<button class="btn-icon btn-ghost" id="cal-next-btn">→</button>';
+          html += '<button class="btn-icon btn-ghost" id="cal-next-btn">â†’</button>';
           html += '</div><div class="month-grid">';
           for (var i = 0; i < 7; i++) html += '<div class="month-day-header">' + daysShort[i] + '</div>';
           var startOffset = firstDay === 0 ? 6 : firstDay - 1;
@@ -4212,32 +4188,32 @@
         var container = document.getElementById('booking-summary');
         if (!container) return;
         var cfg = flowConfigs[this.flowType];
-        var info = this.studentInfo || { name: '—', email: '—', phone: '—' };
+        var info = this.studentInfo || { name: 'â€”', email: 'â€”', phone: 'â€”' };
         var html = '<div class="booking-summary-card">';
         html += '<div class="summary-row"><span class="label">Service</span><span>' + (cfg ? cfg.label : this.flowType) + '</span></div>';
         if (this.program) {
           html += '<div class="summary-row"><span class="label">Programme</span><span>' + this.program + '</span></div>';
         }
         if (this.flow === 'private') {
-          var pkg = this.selectedPackage || { hours: '—', price: '—', label: '—' };
-          html += '<div class="summary-row"><span class="label">Forfait</span><span>' + pkg.label + ' (' + pkg.price + '€)</span></div>';
-          html += '<div class="summary-row"><span class="label">Séances</span><span>' + this.selectedSlots.length + ' créneaux</span></div>';
-          html += '<div class="summary-row"><span class="label">Détails</span><span>';
+          var pkg = this.selectedPackage || { hours: 'â€”', price: 'â€”', label: 'â€”' };
+          html += '<div class="summary-row"><span class="label">Forfait</span><span>' + pkg.label + ' (' + pkg.price + 'â‚¬)</span></div>';
+          html += '<div class="summary-row"><span class="label">SÃ©ances</span><span>' + this.selectedSlots.length + ' crÃ©neaux</span></div>';
+          html += '<div class="summary-row"><span class="label">DÃ©tails</span><span>';
           this.selectedSlots.forEach(function (s) {
-            html += '<div style="font-size:0.85rem;opacity:0.8">' + s.dateKey + ' à ' + s.hour + '</div>';
+            html += '<div style="font-size:0.85rem;opacity:0.8">' + s.dateKey + ' Ã  ' + s.hour + '</div>';
           });
           html += '</span></div>';
           var total = parseInt((this.selectedPackage || {}).price) || 0;
-          html += '<div class="summary-row" style="font-weight:700;font-size:1rem;padding-top:var(--space-md);color:var(--color-emerald)"><span class="label">Total</span><span>' + total + '€</span></div>';
+          html += '<div class="summary-row" style="font-weight:700;font-size:1rem;padding-top:var(--space-md);color:var(--color-emerald)"><span class="label">Total</span><span>' + total + 'â‚¬</span></div>';
         } else if (this.flow === 'group') {
-          var sched = this.selectedSchedule || { label: '—', day: '—', time: '—' };
+          var sched = this.selectedSchedule || { label: 'â€”', day: 'â€”', time: 'â€”' };
           html += '<div class="summary-row"><span class="label">Horaire</span><span>' + sched.label + '</span></div>';
           html += '<div class="summary-row"><span class="label">Jour</span><span>' + sched.day + '</span></div>';
           html += '<div class="summary-row"><span class="label">Heure</span><span>' + sched.time + '</span></div>';
         }
-        html += '<div class="summary-row"><span class="label">Élève</span><span>' + info.name + '</span></div>';
+        html += '<div class="summary-row"><span class="label">Ã‰lÃ¨ve</span><span>' + info.name + '</span></div>';
         html += '<div class="summary-row"><span class="label">Email</span><span>' + info.email + '</span></div>';
-        html += '<div class="summary-row"><span class="label">Téléphone</span><span>' + info.phone + '</span></div>';
+        html += '<div class="summary-row"><span class="label">TÃ©lÃ©phone</span><span>' + info.phone + '</span></div>';
         html += '</div>';
         container.innerHTML = html;
       },
@@ -4250,20 +4226,20 @@
         var html = '';
         if (this.flow === 'private') {
           var pkg = this.selectedPackage || {};
-          html += '<div class="success-step-item"><div class="success-step-icon done">✓</div><div class="success-step-content"><h4>Réservation confirmée</h4><p>Forfait <strong>' + (pkg.label || '—') + '</strong> — <strong>' + (pkg.price || '—') + '€</strong> · ' + this.selectedSlots.length + ' séances</p></div></div>';
+          html += '<div class="success-step-item"><div class="success-step-icon done">âœ“</div><div class="success-step-content"><h4>RÃ©servation confirmÃ©e</h4><p>Forfait <strong>' + (pkg.label || 'â€”') + '</strong> â€” <strong>' + (pkg.price || 'â€”') + 'â‚¬</strong> Â· ' + this.selectedSlots.length + ' sÃ©ances</p></div></div>';
         }
         if (this.flow === 'group') {
           var sched = this.selectedSchedule || {};
-          html += '<div class="success-step-item"><div class="success-step-icon done">✓</div><div class="success-step-content"><h4>Horaire réservé</h4><p><strong>' + (sched.label || '—') + '</strong> · ' + (sched.day || '—') + ' ' + (sched.time || '—') + '</p></div></div>';
+          html += '<div class="success-step-item"><div class="success-step-icon done">âœ“</div><div class="success-step-content"><h4>Horaire rÃ©servÃ©</h4><p><strong>' + (sched.label || 'â€”') + '</strong> Â· ' + (sched.day || 'â€”') + ' ' + (sched.time || 'â€”') + '</p></div></div>';
         }
-        html += '<div class="success-step-item"><div class="success-step-icon done">✓</div><div class="success-step-content"><h4>Inscription confirmée</h4><p>' + (cfg ? cfg.label : '') + ' · ' + (info.name || '—') + '</p></div></div>';
+        html += '<div class="success-step-item"><div class="success-step-icon done">âœ“</div><div class="success-step-content"><h4>Inscription confirmÃ©e</h4><p>' + (cfg ? cfg.label : '') + ' Â· ' + (info.name || 'â€”') + '</p></div></div>';
         if (cfg && cfg.hasTest) {
-          html += '<div class="success-step-item"><div class="success-step-icon done">✓</div><div class="success-step-content"><h4>Test de niveau complété</h4><p>Votre niveau a été évalué avec précision</p></div></div>';
+          html += '<div class="success-step-item"><div class="success-step-icon done">âœ“</div><div class="success-step-content"><h4>Test de niveau complÃ©tÃ©</h4><p>Votre niveau a Ã©tÃ© Ã©valuÃ© avec prÃ©cision</p></div></div>';
           var lvl = document.querySelector('.results-level-badge');
-          html += '<div class="success-step-item"><div class="success-step-icon done">✓</div><div class="success-step-content"><h4>Niveau déterminé</h4><p>' + (lvl ? lvl.textContent.trim() : 'À définir lors du rendez-vous') + '</p></div></div>';
+          html += '<div class="success-step-item"><div class="success-step-icon done">âœ“</div><div class="success-step-content"><h4>Niveau dÃ©terminÃ©</h4><p>' + (lvl ? lvl.textContent.trim() : 'Ã€ dÃ©finir lors du rendez-vous') + '</p></div></div>';
         }
         var mtgDate = document.getElementById('meeting-date');
-        html += '<div class="success-step-item"><div class="success-step-icon pending">⏳</div><div class="success-step-content"><h4>Rendez-vous coordinatrice</h4><p>' + (mtgDate ? mtgDate.textContent : 'Planifiez votre entretien') + '</p></div></div>';
+        html += '<div class="success-step-item"><div class="success-step-icon pending">â³</div><div class="success-step-content"><h4>Rendez-vous coordinatrice</h4><p>' + (mtgDate ? mtgDate.textContent : 'Planifiez votre entretien') + '</p></div></div>';
         container.innerHTML = html;
       },
 
@@ -4281,45 +4257,45 @@
     };
     window.bookingWizard = bookingWizard;
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        PLACEMENT TEST ENGINE (32 questions)
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var placementTest = {
       currentQ: 0, answers: {}, questions: [], sections: {}, completed: false,
 
       questionsData: [
-        { id:0, section:'Grammaire', text:'Complétez : "Si j\'___ le temps, je voyagerais plus."', options:[{l:'A',t:'ai'},{l:'B',t:'avais'},{l:'C',t:'aurai'},{l:'D',t:'aurais'}], correct:1 },
+        { id:0, section:'Grammaire', text:'ComplÃ©tez : "Si j\'___ le temps, je voyagerais plus."', options:[{l:'A',t:'ai'},{l:'B',t:'avais'},{l:'C',t:'aurai'},{l:'D',t:'aurais'}], correct:1 },
         { id:1, section:'Grammaire', text:'Choisissez la forme correcte : "Il faut que tu ___ tes devoirs."', options:[{l:'A',t:'fais'},{l:'B',t:'fasses'},{l:'C',t:'fait'},{l:'D',t:'feras'}], correct:1 },
-        { id:2, section:'Grammaire', text:'Complétez : "C\'est le livre ___ j\'ai parlé."', options:[{l:'A',t:'que'},{l:'B',t:'qui'},{l:'C',t:'dont'},{l:'D',t:'auquel'}], correct:2 },
-        { id:3, section:'Grammaire', text:'Quelle phrase est correcte ?', options:[{l:'A',t:'Je suis allé au cinéma hier'},{l:'B',t:'Je suis allé au cinéma hier soir'},{l:'C',t:'Je suis allé au cinéma la hier'},{l:'D',t:'Je suis allé au cinéma le hier'}], correct:1 },
-        { id:4, section:'Grammaire', text:'Complétez : "Nous ___ depuis deux heures quand il est arrivé."', options:[{l:'A',t:'travaillons'},{l:'B',t:'travaillions'},{l:'C',t:'avons travaillé'},{l:'D',t:'travaillerons'}], correct:1 },
-        { id:5, section:'Grammaire', text:'Complétez : "Il ___ mieux de partir tôt."', options:[{l:'A',t:'faut'},{l:'B',t:'vaut'},{l:'C',t:'veut'},{l:'D',t:'peut'}], correct:1 },
-        { id:6, section:'Grammaire', text:'Choisissez la bonne préposition : "Je suis intéressé ___ la linguistique."', options:[{l:'A',t:'à'},{l:'B',t:'de'},{l:'C',t:'par'},{l:'D',t:'pour'}], correct:2 },
-        { id:7, section:'Grammaire', text:'Complétez : "Elle est la personne ___ m\'a le plus aidé."', options:[{l:'A',t:'que'},{l:'B',t:'dont'},{l:'C',t:'qui'},{l:'D',t:'où'}], correct:2 },
+        { id:2, section:'Grammaire', text:'ComplÃ©tez : "C\'est le livre ___ j\'ai parlÃ©."', options:[{l:'A',t:'que'},{l:'B',t:'qui'},{l:'C',t:'dont'},{l:'D',t:'auquel'}], correct:2 },
+        { id:3, section:'Grammaire', text:'Quelle phrase est correcte ?', options:[{l:'A',t:'Je suis allÃ© au cinÃ©ma hier'},{l:'B',t:'Je suis allÃ© au cinÃ©ma hier soir'},{l:'C',t:'Je suis allÃ© au cinÃ©ma la hier'},{l:'D',t:'Je suis allÃ© au cinÃ©ma le hier'}], correct:1 },
+        { id:4, section:'Grammaire', text:'ComplÃ©tez : "Nous ___ depuis deux heures quand il est arrivÃ©."', options:[{l:'A',t:'travaillons'},{l:'B',t:'travaillions'},{l:'C',t:'avons travaillÃ©'},{l:'D',t:'travaillerons'}], correct:1 },
+        { id:5, section:'Grammaire', text:'ComplÃ©tez : "Il ___ mieux de partir tÃ´t."', options:[{l:'A',t:'faut'},{l:'B',t:'vaut'},{l:'C',t:'veut'},{l:'D',t:'peut'}], correct:1 },
+        { id:6, section:'Grammaire', text:'Choisissez la bonne prÃ©position : "Je suis intÃ©ressÃ© ___ la linguistique."', options:[{l:'A',t:'Ã '},{l:'B',t:'de'},{l:'C',t:'par'},{l:'D',t:'pour'}], correct:2 },
+        { id:7, section:'Grammaire', text:'ComplÃ©tez : "Elle est la personne ___ m\'a le plus aidÃ©."', options:[{l:'A',t:'que'},{l:'B',t:'dont'},{l:'C',t:'qui'},{l:'D',t:'oÃ¹'}], correct:2 },
         { id:8, section:'Grammaire', text:'Quel est le pluriel correct de "un travail" ?', options:[{l:'A',t:'des travails'},{l:'B',t:'des travaux'},{l:'C',t:'des travaille'},{l:'D',t:'des travailles'}], correct:1 },
-        { id:9, section:'Grammaire', text:'Complétez : "Avant de ___, réfléchissez."', options:[{l:'A',t:'parler'},{l:'B',t:'parlé'},{l:'C',t:'parlant'},{l:'D',t:'parle'}], correct:0 },
-        { id:10, section:'Vocabulaire', text:'Choisissez le synonyme du mot "cependant" :', options:[{l:'A',t:'Donc'},{l:'B',t:'Néanmoins'},{l:'C',t:'Parce que'},{l:'D',t:'Alors'}], correct:1 },
-        { id:11, section:'Vocabulaire', text:'Que signifie "un enjeu" ?', options:[{l:'A',t:'Un jeu de société'},{l:'B',t:'Un défi important'},{l:'C',t:'Une interdiction'},{l:'D',t:'Une récompense'}], correct:1 },
+        { id:9, section:'Grammaire', text:'ComplÃ©tez : "Avant de ___, rÃ©flÃ©chissez."', options:[{l:'A',t:'parler'},{l:'B',t:'parlÃ©'},{l:'C',t:'parlant'},{l:'D',t:'parle'}], correct:0 },
+        { id:10, section:'Vocabulaire', text:'Choisissez le synonyme du mot "cependant" :', options:[{l:'A',t:'Donc'},{l:'B',t:'NÃ©anmoins'},{l:'C',t:'Parce que'},{l:'D',t:'Alors'}], correct:1 },
+        { id:11, section:'Vocabulaire', text:'Que signifie "un enjeu" ?', options:[{l:'A',t:'Un jeu de sociÃ©tÃ©'},{l:'B',t:'Un dÃ©fi important'},{l:'C',t:'Une interdiction'},{l:'D',t:'Une rÃ©compense'}], correct:1 },
         { id:12, section:'Vocabulaire', text:'Choisissez l\'antonyme du mot "abondant" :', options:[{l:'A',t:'Rare'},{l:'B',t:'Nombreux'},{l:'C',t:'Suffisant'},{l:'D',t:'Plentitude'}], correct:0 },
-        { id:13, section:'Vocabulaire', text:'Complétez : "Il a obtenu un ___ résultat à l\'examen."', options:[{l:'A',t:'excellent'},{l:'B',t:'excellente'},{l:'C',t:'excellents'},{l:'D',t:'excellentes'}], correct:0 },
-        { id:14, section:'Vocabulaire', text:'Que signifie "une aubaine" ?', options:[{l:'A',t:'Une difficulté'},{l:'B',t:'Une bonne affaire'},{l:'C',t:'Une obligation'},{l:'D',t:'Une interdiction'}], correct:1 },
-        { id:15, section:'Vocabulaire', text:'Choisissez le bon mot : "Un discours ___ est un discours sans préparation."', options:[{l:'A',t:'improvisé'},{l:'B',t:'prémédité'},{l:'C',t:'organisé'},{l:'D',t:'structuré'}], correct:0 },
-        { id:16, section:'Vocabulaire', text:'Que signifie "se dépêcher" ?', options:[{l:'A',t:'Se reposer'},{l:'B',t:'Se hâter'},{l:'C',t:'Se préparer'},{l:'D',t:'Se détendre'}], correct:1 },
-        { id:17, section:'Vocabulaire', text:'Complétez : "C\'est un ___ en la matière."', options:[{l:'A',t:'débutant'},{l:'B',t:'expert'},{l:'C',t:'amateur'},{l:'D',t:'novice'}], correct:1 },
-        { id:18, section:'Vocabulaire', text:'Choisissez le synonyme de "cependant" :', options:[{l:'A',t:'Donc'},{l:'B',t:'Néanmoins'},{l:'C',t:'Parce que'},{l:'D',t:'Alors'}], correct:1 },
-        { id:19, section:'Vocabulaire', text:'Que signifie "périlleux" ?', options:[{l:'A',t:'Facile'},{l:'B',t:'Dangereux'},{l:'C',t:'Rapide'},{l:'D',t:'Agréable'}], correct:1 },
-        { id:20, section:'Lecture', text:'Selon le texte, quel est le principal avantage du bilinguisme ?', passage:'De nombreuses études montrent que le bilinguisme améliore les capacités cognitives, retarde le déclin mental et facilite l\'apprentissage d\'autres langues.', options:[{l:'A',t:'Améliore les capacités cognitives'},{l:'B',t:'Permet de voyager'},{l:'C',t:'Augmente le salaire'},{l:'D',t:'Réduit le temps d\'étude'}], correct:0 },
-        { id:21, section:'Lecture', text:'Que signifie "mettre les points sur les i" ?', passage:'Cette expression signifie clarifier une situation, préciser les choses pour éviter toute ambiguïté.', options:[{l:'A',t:'Terminer un travail'},{l:'B',t:'Clarifier une situation'},{l:'C',t:'Commencer un projet'},{l:'D',t:'Corriger une erreur'}], correct:1 },
-        { id:22, section:'Lecture', text:'D\'après le texte, quel est le rôle des examens officiels ?', passage:'Les examens officiels de langue évaluent les compétences selon des standards internationaux, reconnus par les institutions académiques et les autorités officielles.', options:[{l:'A',t:'Ils certifient un niveau standardisé'},{l:'B',t:'Ils remplacent les diplômes'},{l:'C',t:'Ils sont valables seulement en France'},{l:'D',t:'Ils ne sont pas reconnus au Canada'}], correct:0 },
-        { id:23, section:'Lecture', text:'Quelle est l\'idée principale du texte ?', passage:'Apprendre une langue demande du temps, de la régularité et une exposition authentique. Les meilleurs résultats combinent cours structurés et pratique quotidienne.', options:[{l:'A',t:'Suivre uniquement des cours'},{l:'B',t:'Cours + pratique régulière'},{l:'C',t:'Pratique seule suffit'},{l:'D',t:'Le temps est le même pour tous'}], correct:1 },
-        { id:24, section:'Lecture', text:'Que suggère le texte sur l\'apprentissage en groupe ?', passage:'L\'apprentissage en groupe favorise les échanges et la pratique orale. Il permet également de développer des compétences collaboratives essentielles dans le monde professionnel.', options:[{l:'A',t:'C\'est moins efficace'},{l:'B',t:'Favorise les échanges et l\'oral'},{l:'C',t:'Uniquement pour les débutants'},{l:'D',t:'Remplace les cours individuels'}], correct:1 },
-        { id:25, section:'Complétion', text:'Complétez : "Bien qu\'il ___ fatigué, il a terminé son travail."', options:[{l:'A',t:'est'},{l:'B',t:'soit'},{l:'C',t:'était'},{l:'D',t:'serait'}], correct:1 },
-        { id:26, section:'Complétion', text:'Complétez : "Après ___ terminé ses études, il a trouvé un emploi."', options:[{l:'A',t:'avoir'},{l:'B',t:'être'},{l:'C',t:'ayant'},{l:'D',t:'a'}], correct:0 },
-        { id:27, section:'Complétion', text:'Complétez : "Elle est la personne ___ je parle souvent."', options:[{l:'A',t:'que'},{l:'B',t:'dont'},{l:'C',t:'à qui'},{l:'D',t:'laquelle'}], correct:2 },
-        { id:28, section:'Complétion', text:'Complétez : "___ la pluie, nous sommes sortis."', options:[{l:'A',t:'Malgré'},{l:'B',t:'Pendant'},{l:'C',t:'Depuis'},{l:'D',t:'Sans'}], correct:0 },
-        { id:29, section:'Complétion', text:'Complétez : "Plus il étudie, ___ il comprend."', options:[{l:'A',t:'plus'},{l:'B',t:'moins'},{l:'C',t:'mieux'},{l:'D',t:'meilleur'}], correct:2 },
-        { id:30, section:'Compréhension Orale', text:'Écoutez le message. Quel est le sujet principal ?', options:[{l:'A',t:'Invitation à un événement culturel'},{l:'B',t:'Rendez-vous médical'},{l:'C',t:'Confirmation de réservation'},{l:'D',t:'Annulation de cours'}], correct:0 },
-        { id:31, section:'Compréhension Orale', text:'Que doit faire le destinataire ?', options:[{l:'A',t:'Appeler pour confirmer'},{l:'B',t:'Envoyer un email'},{l:'C',t:'Se présenter à l\'adresse'},{l:'D',t:'Rien, automatique'}], correct:2 }
+        { id:13, section:'Vocabulaire', text:'ComplÃ©tez : "Il a obtenu un ___ rÃ©sultat Ã  l\'examen."', options:[{l:'A',t:'excellent'},{l:'B',t:'excellente'},{l:'C',t:'excellents'},{l:'D',t:'excellentes'}], correct:0 },
+        { id:14, section:'Vocabulaire', text:'Que signifie "une aubaine" ?', options:[{l:'A',t:'Une difficultÃ©'},{l:'B',t:'Une bonne affaire'},{l:'C',t:'Une obligation'},{l:'D',t:'Une interdiction'}], correct:1 },
+        { id:15, section:'Vocabulaire', text:'Choisissez le bon mot : "Un discours ___ est un discours sans prÃ©paration."', options:[{l:'A',t:'improvisÃ©'},{l:'B',t:'prÃ©mÃ©ditÃ©'},{l:'C',t:'organisÃ©'},{l:'D',t:'structurÃ©'}], correct:0 },
+        { id:16, section:'Vocabulaire', text:'Que signifie "se dÃ©pÃªcher" ?', options:[{l:'A',t:'Se reposer'},{l:'B',t:'Se hÃ¢ter'},{l:'C',t:'Se prÃ©parer'},{l:'D',t:'Se dÃ©tendre'}], correct:1 },
+        { id:17, section:'Vocabulaire', text:'ComplÃ©tez : "C\'est un ___ en la matiÃ¨re."', options:[{l:'A',t:'dÃ©butant'},{l:'B',t:'expert'},{l:'C',t:'amateur'},{l:'D',t:'novice'}], correct:1 },
+        { id:18, section:'Vocabulaire', text:'Choisissez le synonyme de "cependant" :', options:[{l:'A',t:'Donc'},{l:'B',t:'NÃ©anmoins'},{l:'C',t:'Parce que'},{l:'D',t:'Alors'}], correct:1 },
+        { id:19, section:'Vocabulaire', text:'Que signifie "pÃ©rilleux" ?', options:[{l:'A',t:'Facile'},{l:'B',t:'Dangereux'},{l:'C',t:'Rapide'},{l:'D',t:'AgrÃ©able'}], correct:1 },
+        { id:20, section:'Lecture', text:'Selon le texte, quel est le principal avantage du bilinguisme ?', passage:'De nombreuses Ã©tudes montrent que le bilinguisme amÃ©liore les capacitÃ©s cognitives, retarde le dÃ©clin mental et facilite l\'apprentissage d\'autres langues.', options:[{l:'A',t:'AmÃ©liore les capacitÃ©s cognitives'},{l:'B',t:'Permet de voyager'},{l:'C',t:'Augmente le salaire'},{l:'D',t:'RÃ©duit le temps d\'Ã©tude'}], correct:0 },
+        { id:21, section:'Lecture', text:'Que signifie "mettre les points sur les i" ?', passage:'Cette expression signifie clarifier une situation, prÃ©ciser les choses pour Ã©viter toute ambiguÃ¯tÃ©.', options:[{l:'A',t:'Terminer un travail'},{l:'B',t:'Clarifier une situation'},{l:'C',t:'Commencer un projet'},{l:'D',t:'Corriger une erreur'}], correct:1 },
+        { id:22, section:'Lecture', text:'D\'aprÃ¨s le texte, quel est le rÃ´le des examens officiels ?', passage:'Les examens officiels de langue Ã©valuent les compÃ©tences selon des standards internationaux, reconnus par les institutions acadÃ©miques et les autoritÃ©s officielles.', options:[{l:'A',t:'Ils certifient un niveau standardisÃ©'},{l:'B',t:'Ils remplacent les diplÃ´mes'},{l:'C',t:'Ils sont valables seulement en France'},{l:'D',t:'Ils ne sont pas reconnus au Canada'}], correct:0 },
+        { id:23, section:'Lecture', text:'Quelle est l\'idÃ©e principale du texte ?', passage:'Apprendre une langue demande du temps, de la rÃ©gularitÃ© et une exposition authentique. Les meilleurs rÃ©sultats combinent cours structurÃ©s et pratique quotidienne.', options:[{l:'A',t:'Suivre uniquement des cours'},{l:'B',t:'Cours + pratique rÃ©guliÃ¨re'},{l:'C',t:'Pratique seule suffit'},{l:'D',t:'Le temps est le mÃªme pour tous'}], correct:1 },
+        { id:24, section:'Lecture', text:'Que suggÃ¨re le texte sur l\'apprentissage en groupe ?', passage:'L\'apprentissage en groupe favorise les Ã©changes et la pratique orale. Il permet Ã©galement de dÃ©velopper des compÃ©tences collaboratives essentielles dans le monde professionnel.', options:[{l:'A',t:'C\'est moins efficace'},{l:'B',t:'Favorise les Ã©changes et l\'oral'},{l:'C',t:'Uniquement pour les dÃ©butants'},{l:'D',t:'Remplace les cours individuels'}], correct:1 },
+        { id:25, section:'ComplÃ©tion', text:'ComplÃ©tez : "Bien qu\'il ___ fatiguÃ©, il a terminÃ© son travail."', options:[{l:'A',t:'est'},{l:'B',t:'soit'},{l:'C',t:'Ã©tait'},{l:'D',t:'serait'}], correct:1 },
+        { id:26, section:'ComplÃ©tion', text:'ComplÃ©tez : "AprÃ¨s ___ terminÃ© ses Ã©tudes, il a trouvÃ© un emploi."', options:[{l:'A',t:'avoir'},{l:'B',t:'Ãªtre'},{l:'C',t:'ayant'},{l:'D',t:'a'}], correct:0 },
+        { id:27, section:'ComplÃ©tion', text:'ComplÃ©tez : "Elle est la personne ___ je parle souvent."', options:[{l:'A',t:'que'},{l:'B',t:'dont'},{l:'C',t:'Ã  qui'},{l:'D',t:'laquelle'}], correct:2 },
+        { id:28, section:'ComplÃ©tion', text:'ComplÃ©tez : "___ la pluie, nous sommes sortis."', options:[{l:'A',t:'MalgrÃ©'},{l:'B',t:'Pendant'},{l:'C',t:'Depuis'},{l:'D',t:'Sans'}], correct:0 },
+        { id:29, section:'ComplÃ©tion', text:'ComplÃ©tez : "Plus il Ã©tudie, ___ il comprend."', options:[{l:'A',t:'plus'},{l:'B',t:'moins'},{l:'C',t:'mieux'},{l:'D',t:'meilleur'}], correct:2 },
+        { id:30, section:'ComprÃ©hension Orale', text:'Ã‰coutez le message. Quel est le sujet principal ?', options:[{l:'A',t:'Invitation Ã  un Ã©vÃ©nement culturel'},{l:'B',t:'Rendez-vous mÃ©dical'},{l:'C',t:'Confirmation de rÃ©servation'},{l:'D',t:'Annulation de cours'}], correct:0 },
+        { id:31, section:'ComprÃ©hension Orale', text:'Que doit faire le destinataire ?', options:[{l:'A',t:'Appeler pour confirmer'},{l:'B',t:'Envoyer un email'},{l:'C',t:'Se prÃ©senter Ã  l\'adresse'},{l:'D',t:'Rien, automatique'}], correct:2 }
       ],
 
       init: function () {
@@ -4335,7 +4311,7 @@
         var counter = document.querySelector('.test-question-counter');
         if (counter) { counter.innerHTML = '<strong>' + (this.currentQ + 1) + '</strong> / ' + this.questions.length; }
         var sectionLabel = document.querySelector('.test-section-label');
-        if (sectionLabel && this.questions[this.currentQ]) { sectionLabel.textContent = '📖 ' + this.questions[this.currentQ].section; }
+        if (sectionLabel && this.questions[this.currentQ]) { sectionLabel.textContent = 'ðŸ“– ' + this.questions[this.currentQ].section; }
       },
 
       renderQuestion: function () {
@@ -4347,8 +4323,8 @@
         var html = '<div class="test-question-card">';
         if (q.passage) html += '<div class="test-question-passage">' + q.passage + '</div>';
         html += '<div class="test-question-text">' + q.text + '</div>';
-        if (q.section === 'Compréhension Orale') {
-          html += '<div class="test-listening-placeholder"><div class="play-btn" onclick="this.style.transform=\'scale(1.2)\'">▶</div><p>Cliquez pour écouter le message audio (simulation)</p></div>';
+        if (q.section === 'ComprÃ©hension Orale') {
+          html += '<div class="test-listening-placeholder"><div class="play-btn" onclick="this.style.transform=\'scale(1.2)\'">â–¶</div><p>Cliquez pour Ã©couter le message audio (simulation)</p></div>';
         }
         html += '<div class="test-options">';
         q.options.forEach(function (opt, i) {
@@ -4377,7 +4353,7 @@
         var nav = document.querySelector('.test-nav');
         if (!nav) return;
         var isLast = this.currentQ === this.questions.length - 1;
-        nav.innerHTML = '<button class="btn btn-ghost" onclick="window.placementTest.prevQuestion()"' + (this.currentQ === 0 ? ' disabled' : '') + '>← Précédent</button>' + (isLast ? '<button class="btn btn-primary" onclick="window.placementTest.submitTest()">Soumettre le test</button>' : '<button class="btn btn-primary" onclick="window.placementTest.nextQuestion()">Suivant →</button>');
+        nav.innerHTML = '<button class="btn btn-ghost" onclick="window.placementTest.prevQuestion()"' + (this.currentQ === 0 ? ' disabled' : '') + '>â† PrÃ©cÃ©dent</button>' + (isLast ? '<button class="btn btn-primary" onclick="window.placementTest.submitTest()">Soumettre le test</button>' : '<button class="btn btn-primary" onclick="window.placementTest.nextQuestion()">Suivant â†’</button>');
       },
 
       nextQuestion: function () { if (this.currentQ < this.questions.length - 1) { this.currentQ++; this.renderQuestion(); } },
@@ -4387,7 +4363,7 @@
         var that = this;
         var container = document.querySelector('.wizard-panel-test .test-container');
         if (container) {
-          container.innerHTML = '<div style="text-align:center;padding:var(--space-4xl)"><div style="font-size:3rem;margin-bottom:var(--space-lg);animation:pulseGlow 1.5s ease-in-out infinite">🧠</div><h3>Analyse de vos réponses...</h3><p style="color:var(--color-text-secondary)">Notre système évalue vos compétences linguistiques</p><div class="progress" style="max-width:320px;margin:var(--space-lg) auto"><div class="progress-bar" style="width:0%" id="grading-bar"></div></div></div>';
+          container.innerHTML = '<div style="text-align:center;padding:var(--space-4xl)"><div style="font-size:3rem;margin-bottom:var(--space-lg);animation:pulseGlow 1.5s ease-in-out infinite">ðŸ§ </div><h3>Analyse de vos rÃ©ponses...</h3><p style="color:var(--color-text-secondary)">Notre systÃ¨me Ã©value vos compÃ©tences linguistiques</p><div class="progress" style="max-width:320px;margin:var(--space-lg) auto"><div class="progress-bar" style="width:0%" id="grading-bar"></div></div></div>';
         }
         var pct = 0;
         var gradeTimer = setInterval(function () {
@@ -4431,9 +4407,9 @@
           if (sectionPcts[sec] >= 70) strengths.push(sec);
           else if (sectionPcts[sec] < 50) weaknesses.push(sec);
         });
-        if (strengths.length === 0) strengths = ['Compréhension générale'];
-        if (weaknesses.length === 0) weaknesses = ['Structures avancées', 'Expressions idiomatiques'];
-        var progMap = { 'A1':'Programme Débutant (A1)','A2':'Programme Élémentaire (A2)','B1':'Programme Intermédiaire (B1)','B2':'Programme Avancé (B2)','C1':'Programme Maîtrise (C1)' };
+        if (strengths.length === 0) strengths = ['ComprÃ©hension gÃ©nÃ©rale'];
+        if (weaknesses.length === 0) weaknesses = ['Structures avancÃ©es', 'Expressions idiomatiques'];
+        var progMap = { 'A1':'Programme DÃ©butant (A1)','A2':'Programme Ã‰lÃ©mentaire (A2)','B1':'Programme IntermÃ©diaire (B1)','B2':'Programme AvancÃ© (B2)','C1':'Programme MaÃ®trise (C1)' };
         return { overall:overall, cefr:cefrLevel, sections:sectionPcts, correct:correct, total:total, strengths:strengths, weaknesses:weaknesses, recommendation:progMap[cefrLevel] || 'Programme sur mesure' };
       },
 
@@ -4441,26 +4417,26 @@
         var results = this.calculateScore();
         var container = document.getElementById('test-results-container');
         if (!container) return;
-        var emojis = {'A1':'🌱','A2':'🌿','B1':'🌳','B2':'🌲','C1':'🏆'};
-        var secEmojis = {'Grammaire':'📐','Vocabulaire':'📝','Lecture':'📖','Complétion':'✍️','Compréhension Orale':'🎧'};
-        var html = '<div class="results-container"><div class="results-header"><h1>📊 Vos Résultats</h1><p>Évaluation de votre niveau de français</p></div>';
-        html += '<div style="text-align:center"><div class="results-level-badge">' + (emojis[results.cefr]||'📘') + ' Niveau ' + results.cefr + '</div></div>';
+        var emojis = {'A1':'ðŸŒ±','A2':'ðŸŒ¿','B1':'ðŸŒ³','B2':'ðŸŒ²','C1':'ðŸ†'};
+        var secEmojis = {'Grammaire':'ðŸ“','Vocabulaire':'ðŸ“','Lecture':'ðŸ“–','ComplÃ©tion':'âœï¸','ComprÃ©hension Orale':'ðŸŽ§'};
+        var html = '<div class="results-container"><div class="results-header"><h1>ðŸ“Š Vos RÃ©sultats</h1><p>Ã‰valuation de votre niveau de franÃ§ais</p></div>';
+        html += '<div style="text-align:center"><div class="results-level-badge">' + (emojis[results.cefr]||'ðŸ“˜') + ' Niveau ' + results.cefr + '</div></div>';
         html += '<div class="results-score-grid">';
         Object.keys(results.sections).forEach(function (sec) {
           var pct = results.sections[sec];
           var offset = 339.292 - (pct/100)*339.292;
           var color = pct>=80?'var(--color-emerald)':pct>=60?'var(--color-gold)':'var(--color-warning)';
-          html += '<div class="results-score-card"><h4>'+(secEmojis[sec]||'📘')+' '+sec+'</h4><div class="results-ring-container"><svg class="results-ring" viewBox="0 0 120 120"><circle class="results-ring-bg" cx="60" cy="60" r="54"/><circle class="results-ring-fill" cx="60" cy="60" r="54" style="stroke:'+color+';stroke-dashoffset:'+offset+'" data-offset="'+offset+'"/></svg><div class="results-ring-text"><span class="score-value">'+pct+'%</span><span class="score-label">'+sec+'</span></div></div></div>';
+          html += '<div class="results-score-card"><h4>'+(secEmojis[sec]||'ðŸ“˜')+' '+sec+'</h4><div class="results-ring-container"><svg class="results-ring" viewBox="0 0 120 120"><circle class="results-ring-bg" cx="60" cy="60" r="54"/><circle class="results-ring-fill" cx="60" cy="60" r="54" style="stroke:'+color+';stroke-dashoffset:'+offset+'" data-offset="'+offset+'"/></svg><div class="results-ring-text"><span class="score-value">'+pct+'%</span><span class="score-label">'+sec+'</span></div></div></div>';
         });
         html += '</div>';
-        html += '<div class="results-level-overall"><div class="level-badge">'+results.cefr+'</div><div class="level-info"><h3>Niveau Global '+results.cefr+'</h3><p>Score global : '+results.overall+'% · '+results.correct+'/'+results.total+' réponses correctes</p></div></div>';
-        html += '<div class="results-detail-grid"><div class="results-detail-card"><h4>💪 Points forts</h4><ul>';
-        results.strengths.forEach(function(s){html+='<li><span class="icon">✅</span>'+s+'</li>';});
-        html += '</ul></div><div class="results-detail-card"><h4>🎯 Axes d\'amélioration</h4><ul>';
-        results.weaknesses.forEach(function(w){html+='<li><span class="icon">📌</span>'+w+'</li>';});
+        html += '<div class="results-level-overall"><div class="level-badge">'+results.cefr+'</div><div class="level-info"><h3>Niveau Global '+results.cefr+'</h3><p>Score global : '+results.overall+'% Â· '+results.correct+'/'+results.total+' rÃ©ponses correctes</p></div></div>';
+        html += '<div class="results-detail-grid"><div class="results-detail-card"><h4>ðŸ’ª Points forts</h4><ul>';
+        results.strengths.forEach(function(s){html+='<li><span class="icon">âœ…</span>'+s+'</li>';});
+        html += '</ul></div><div class="results-detail-card"><h4>ðŸŽ¯ Axes d\'amÃ©lioration</h4><ul>';
+        results.weaknesses.forEach(function(w){html+='<li><span class="icon">ðŸ“Œ</span>'+w+'</li>';});
         html += '</ul></div></div>';
-        html += '<div class="results-detail-card mb-xl"><h4>🎓 Recommandation</h4><p style="color:var(--color-text-secondary);line-height:1.7">Basé sur vos résultats, nous vous recommandons : <strong>'+results.recommendation+'</strong>. Notre coordinatrice pédagogique vous accompagnera dans le choix du programme adapté à vos objectifs.</p></div>';
-        html += '<div class="results-cta"><button class="btn btn-primary btn-lg" onclick="window.bookingWizard.goToStep(window.bookingWizard.steps.indexOf(\'meeting\'))">Continuer vers votre suivi personnalisé →</button></div></div>';
+        html += '<div class="results-detail-card mb-xl"><h4>ðŸŽ“ Recommandation</h4><p style="color:var(--color-text-secondary);line-height:1.7">BasÃ© sur vos rÃ©sultats, nous vous recommandons : <strong>'+results.recommendation+'</strong>. Notre coordinatrice pÃ©dagogique vous accompagnera dans le choix du programme adaptÃ© Ã  vos objectifs.</p></div>';
+        html += '<div class="results-cta"><button class="btn btn-primary btn-lg" onclick="window.bookingWizard.goToStep(window.bookingWizard.steps.indexOf(\'meeting\'))">Continuer vers votre suivi personnalisÃ© â†’</button></div></div>';
         container.innerHTML = html;
         setTimeout(function () {
           document.querySelectorAll('.results-ring-fill').forEach(function (ring) {
@@ -4473,9 +4449,9 @@
     };
     window.placementTest = placementTest;
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        CONFETTI ANIMATION
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     var confettiParticles = [];
     var confettiInterval = null;
     var confettiCanvas = null;
@@ -4522,9 +4498,9 @@
       confettiParticles = [];
     };
 
-    /* ───────────────────────────────────────────────
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
        INIT WIZARD & SERVICE SELECTOR
-       ─────────────────────────────────────────────── */
+       â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     if (document.querySelector('#wizard-steps') && window.bookingWizard) {
       document.querySelectorAll('.service-selector-card').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -4539,7 +4515,7 @@
       }
     }
 
-    console.log('🌿 Cultulangues UI initialized');
+    console.log('ðŸŒ¿ Cultulangues UI initialized');
   }
 
 })();

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title', $settings['site_name'] ?? 'Cultulangues') — {{ $settings['site_description'] ?? 'Formation linguistique' }}</title>
+  <title>@yield('title', $settings['site_name'] ?? 'Cultulangues') â€” {{ $settings['site_description'] ?? 'Formation linguistique' }}</title>
   <meta name="description" content="@yield('meta_description', $settings['site_description'] ?? '')">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/premium.css') }}">
@@ -11,12 +11,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('css/read-more.css') }}">
   <link rel="stylesheet" href="{{ asset('css/model-4.css') }}">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸŒ¿</text></svg>">
   @stack('head')
 </head>
 <body>
 
-  <!-- ═══ HEADER ═══ -->
+  <!-- â•â•â• HEADER â•â•â• -->
   <header class="public-header" id="header">
     <div class="container">
       <a href="{{ url('/') }}" class="logo">
@@ -43,7 +43,7 @@
             @endforeach
           </div>
         </div>
-        <a href="{{ url('/pages/about') }}" class="{{ request()->is('pages/about*') ? 'active' : '' }}" data-i18n="nav.about">À propos</a>
+        <a href="{{ url('/pages/about') }}" class="{{ request()->is('pages/about*') ? 'active' : '' }}" data-i18n="nav.about">Ã€ propos</a>
         <a href="{{ route('contact') }}" class="{{ request()->is('contact*') ? 'active' : '' }}" data-i18n="nav.contact">Contact</a>
         <div class="nav-cta">
           <a href="{{ route('login') }}" class="nav-login" data-i18n="nav.login">Connexion</a>
@@ -65,7 +65,7 @@
     @yield('content')
   </main>
 
-  <!-- ═══ FOOTER ═══ -->
+  <!-- â•â•â• FOOTER â•â•â• -->
   <footer class="public-footer">
     <div class="footer-inner">
       <div class="footer-grid">
@@ -73,7 +73,7 @@
           <a href="{{ url('/') }}" class="logo">
             <img src="{{ asset('img/image-Photoroom.png') }}" alt="Cultulangues" class="logo-img">
           </a>
-          <p class="brand-desc" data-i18n="footer.brand">Formation linguistique & Préparation aux examens.</p>
+          <p class="brand-desc" data-i18n="footer.brand">Formation linguistique & PrÃ©paration aux examens.</p>
         </div>
         <div>
           <h4 class="footer-heading" data-i18n="footer.courses">Cours</h4>
@@ -81,7 +81,7 @@
             <a href="{{ url('/services/category/parcours-linguistique') }}" data-i18n="nav.parcours">Parcours linguistique</a>
             <a href="{{ url('/services/category/english-linguistic-pathway') }}">English Linguistic Pathway</a>
             <a href="{{ url('/services/category/cap-sur-l-oral') }}" data-i18n="nav.oral">Cap sur l'oral</a>
-            <a href="{{ url('/services/category/tcf-quebec') }}">TCF Québec</a>
+            <a href="{{ url('/services/category/tcf-quebec') }}">TCF QuÃ©bec</a>
             <a href="{{ url('/services/category/tcf-canada') }}">TCF Canada</a>
             <a href="{{ url('/services/category/formation-en-solo') }}" data-i18n="nav.solo">Formation en solo</a>
             <a href="{{ url('/services/category/ateliers') }}" data-i18n="nav.ateliers">Ateliers</a>
@@ -91,38 +91,38 @@
         <div>
           <h4 class="footer-heading" data-i18n="footer.info">Informations</h4>
           <div class="footer-links">
-            <a href="{{ url('/pages/about') }}" data-i18n="footer.info.about">À propos</a>
+            <a href="{{ url('/pages/about') }}" data-i18n="footer.info.about">Ã€ propos</a>
             <a href="{{ route('contact') }}" data-i18n="footer.info.contact">Contact</a>
-            <a href="#" data-i18n="footer.info.terms">Mentions légales</a>
-            <a href="#" data-i18n="footer.info.privacy">Politique de confidentialité</a>
+            <a href="#" data-i18n="footer.info.terms">Mentions lÃ©gales</a>
+            <a href="#" data-i18n="footer.info.privacy">Politique de confidentialitÃ©</a>
           </div>
         </div>
         <div>
           <h4 class="footer-heading" data-i18n="footer.contact.title">Contact</h4>
           <div class="footer-contact-item">
-            <span class="fci-icon">✉</span>
+            <span class="fci-icon">âœ‰</span>
             <span class="fci-text" data-i18n="footer.contact.email">{{ $settings['email'] ?? 'admin@cultulangues.ca' }}</span>
           </div>
           <div class="footer-contact-item">
-            <span class="fci-icon">📞</span>
-            <span class="fci-text" data-i18n="footer.contact.phone">{{ $settings['phone'] ?? '+1 (819) 271-9783' }}</span>
+            <span class="fci-icon">ðŸ“ž</span>
+            <span class="fci-text" data-i18n="footer.contact.phone">{{ $settings['phone'] ?? '873-973-0513' }}</span>
           </div>
           <div class="footer-contact-item">
-            <span class="fci-icon">📍</span>
+            <span class="fci-icon">ðŸ“</span>
             <span class="fci-text">{{ $settings['address'] ?? '468 rue Plouffe suite 3, Gatineau J8P 4B7 (QC)' }}</span>
           </div>
           <div class="footer-social-row">
             <a href="#" title="Facebook">f</a>
-            <a href="#" title="Instagram">◻</a>
+            <a href="#" title="Instagram">â—»</a>
             <a href="#" title="LinkedIn">in</a>
-            <a href="#" title="YouTube">▶</a>
+            <a href="#" title="YouTube">â–¶</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-left">
-          <span>© {{ date('Y') }} <span data-i18n="footer.copyright">Cultulangues. Tous droits réservés.</span></span>
-          <span data-i18n="footer.made">🌿 Fait avec bienveillance</span>
+          <span>Â© {{ date('Y') }} <span data-i18n="footer.copyright">Cultulangues. Tous droits rÃ©servÃ©s.</span></span>
+          <span data-i18n="footer.made">ðŸŒ¿ Fait avec bienveillance</span>
         </div>
         <div class="lang-switcher">
           <button class="lang-opt" data-lang="fr" onclick="window.switchLanguage && window.switchLanguage('fr')" data-i18n="lang.fr">FR</button>
