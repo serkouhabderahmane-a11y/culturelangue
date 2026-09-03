@@ -35,4 +35,4 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "-c", "php artisan migrate --force; php artisan db:seed --force --class=RoleSeeder; php artisan view:cache; /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/bin/sh", "-c", "php artisan migrate --force; php artisan db:seed --force --class=RoleSeeder; php artisan db:seed --force --class=SettingSeeder; php artisan view:cache; /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
